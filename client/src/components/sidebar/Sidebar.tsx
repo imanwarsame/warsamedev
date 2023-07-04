@@ -33,25 +33,25 @@ export default function Sidebar() {
 					<Divider />
 					<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<HomeOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<HomeOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<PersonOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<PersonOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<WorkOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<WorkOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<SchoolOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<SchoolOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<LayersOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<LayersOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<CreateOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<CreateOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<ChatBubbleOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
+							<ChatBubbleOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 1 }}/>
 						</IconButton>
 					</Box>
 					<Divider />
