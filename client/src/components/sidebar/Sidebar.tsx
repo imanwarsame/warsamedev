@@ -1,4 +1,4 @@
-import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Box, Divider, Drawer, IconButton, Theme, Typography, useMediaQuery } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
@@ -9,8 +9,11 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import Logo from '../../assets/logo.png';
 
 export default function Sidebar() {
-	const drawerWidth = '10vw';
+	const drawerWidth = '7vw';
+
 	const currentYear = new Date().getFullYear();
+	const isLargeScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+	const copyrightText = isLargeScreen ? '© ' + currentYear : 'Copyright © ' + currentYear + ' Iman Warsame';
 
 	return(
 		<Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -25,36 +28,36 @@ export default function Sidebar() {
 					},
 				}}
 			>
-				<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', position: 'relative', height: '100%' }}>
-					<img src={Logo} height={50} width={50} style={{ position: 'absolute', top: 0 }} />
+				<Box sx={{ display: 'flex', overflow: 'hidden', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', position: 'relative', height: '100%' }}>
+					<img src={Logo} height={50} width={50} style={{ position: 'absolute', top: 5 }} />
 					<Divider />
 					<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 						<IconButton>
-							<HomeOutlinedIcon fontSize='large'/>
+							<HomeOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 						<IconButton>
-							<PersonOutlineOutlinedIcon fontSize='large'/>
+							<PersonOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 						<IconButton>
-							<WorkOutlineOutlinedIcon fontSize='large'/>
+							<WorkOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 						<IconButton>
-							<SchoolOutlinedIcon fontSize='large'/>
+							<SchoolOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 						<IconButton>
-							<LayersOutlinedIcon fontSize='large'/>
+							<LayersOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 						<IconButton>
-							<CreateOutlinedIcon fontSize='large'/>
+							<CreateOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 						<IconButton>
-							<ChatBubbleOutlineOutlinedIcon fontSize='large'/>
+							<ChatBubbleOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 					</Box>
 					<Divider />
 					<Typography
 						sx={{
-							typography: { md: 'caption' },
+							typography: { xs: 'caption' },
 							position: 'absolute',
 							bottom: '0',
 							alignSelf: 'flex-end',
@@ -64,7 +67,7 @@ export default function Sidebar() {
 						}}
 						color="textSecondary"
 					>
-						Copyright &copy; {currentYear} Iman Warsame
+						{copyrightText}
 					</Typography>
 				</Box>
 			</Drawer>
