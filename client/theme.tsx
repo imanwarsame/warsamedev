@@ -30,6 +30,15 @@ const lightTheme = createTheme({
 					borderRadius: 10,
 				},
 			}
+		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					'&:hover': {
+						color: '#FF6666'
+					}
+				}
+			}
 		}
 	}
 });

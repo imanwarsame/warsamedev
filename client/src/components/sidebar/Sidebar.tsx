@@ -32,25 +32,25 @@ export default function Sidebar() {
 					<img src={Logo} height={50} width={50} style={{ position: 'absolute', top: 5 }} />
 					<Divider />
 					<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<HomeOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<PersonOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<WorkOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<SchoolOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<LayersOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<CreateOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
-						<IconButton>
+						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<ChatBubbleOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 } }}/>
 						</IconButton>
 					</Box>
