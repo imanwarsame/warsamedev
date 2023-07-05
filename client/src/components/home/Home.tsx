@@ -1,8 +1,10 @@
-import { Avatar, Box, Button, IconButton, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Button, IconButton, Stack } from '@mui/material';
+import Lottie from 'lottie-react';
 import avatar from './Profile.jpg';
 import BackgroundPattern from './Background.png';
 import TwitterIcon from './twitter.svg';
 import LinkedInIcon from './linkedin-in.svg';
+import animatedScrollIcon from './scroll-down.json';
 
 export default function Home() {
 
@@ -28,6 +30,9 @@ export default function Home() {
 					</IconButton>
 				</Stack>
 				<Button variant="contained" color='secondary' sx={{ color: 'white', borderRadius: 20, boxShadow: 'none' }}>Contact me</Button>
+				<Box display='flex' alignItems='center' justifyContent='center' sx={{ position: 'absolute', bottom: '20px' }}>
+					<Lottie animationData={animatedScrollIcon} height={50} width={50} />
+				</Box>
 			</Stack>
 		</Box>
 	);
