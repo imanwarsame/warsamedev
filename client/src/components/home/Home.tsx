@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, IconButton, Stack } from '@mui/material';
+import { Avatar, Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import Lottie from 'lottie-react';
 import avatar from './Profile.jpg';
 import BackgroundPattern from './Background.png';
@@ -21,6 +21,7 @@ export default function Home() {
 		}}>
 			<Stack direction='column' alignItems='center' spacing={3}>
 				<Avatar src={avatar} sx={{ width: 200, height: 200 }}/>
+				<Typography sx={{ backgroundColor: 'white' }}>Full Stack Developer | Civil Engineer | Architectural Photographer</Typography>
 				<Stack direction='row' spacing={3}>
 					<IconButton size='medium' href='https://twitter.com/imnwrsm' target="_blank" rel="noopener noreferrer">
 						<img src={TwitterIcon} alt='Twitter logo of tweeting bird' height={30}/>
