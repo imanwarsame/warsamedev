@@ -1,6 +1,8 @@
-import { Avatar, Box, Typography } from '@mui/material';
+import { Avatar, Box, IconButton, Stack, Typography } from '@mui/material';
 import avatar from './Profile.jpg';
 import BackgroundPattern from './Background.png';
+import TwitterIcon from './twitter.svg';
+import LinkedInIcon from './linkedin-in.svg';
 
 export default function Home() {
 
@@ -10,10 +12,22 @@ export default function Home() {
 			height: '100vh',
 			backgroundRepeat: 'no-repeat',
 			backgroundPosition: 'center center',
-			backgroundSize: 'cover'
+			backgroundSize: 'cover',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
 		}}>
-			<Avatar src={avatar} sx={{ width: 200, height: 200 }}/>
-			<Typography>Hello</Typography>
+			<Stack direction='column' alignItems='center' spacing={3}>
+				<Avatar src={avatar} sx={{ width: 200, height: 200 }}/>
+				<Stack direction='row' spacing={3}>
+					<IconButton size='medium' href='https://twitter.com/imnwrsm' target="_blank" rel="noopener noreferrer">
+						<img src={TwitterIcon} alt='Twitter logo of tweeting bird' height={30}/>
+					</IconButton>
+					<IconButton size='medium' href='https://www.linkedin.com/in/imanwarsame/' target="_blank" rel="noopener noreferrer">
+						<img src={LinkedInIcon} alt='The letters i and n representing the LinkedIn logo' height={30}/>
+					</IconButton>
+				</Stack>
+			</Stack>
 		</Box>
 	);
 }
