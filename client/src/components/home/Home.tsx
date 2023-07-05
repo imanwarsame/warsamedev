@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import avatar from './Profile.jpg';
 import BackgroundPattern from './Background.png';
 import TwitterIcon from './twitter.svg';
@@ -27,6 +27,7 @@ export default function Home() {
 						<img src={LinkedInIcon} alt='The letters i and n representing the LinkedIn logo' height={30}/>
 					</IconButton>
 				</Stack>
+				<Button variant="contained" color='secondary' sx={{ color: 'white', borderRadius: 20, boxShadow: 'none' }}>Contact me</Button>
 			</Stack>
 		</Box>
 	);
