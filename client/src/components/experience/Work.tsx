@@ -29,10 +29,10 @@ export default function Work() {
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
-						<Typography variant="h6" component="span">
+						<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component="span">
 							Senior Engineer
 						</Typography>
-						<Typography>Ramboll</Typography>
+						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 				<TimelineItem>
@@ -51,10 +51,10 @@ export default function Work() {
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
-						<Typography variant="h6" component="span">
+						<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component="span">
 							Engineer
 						</Typography>
-						<Typography>Ramboll</Typography>
+						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 				<TimelineItem>
@@ -74,10 +74,10 @@ export default function Work() {
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
-						<Typography variant="h6" component="span">
+						<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component="span">
 							Graduate Engineer
 						</Typography>
-						<Typography>Ramboll</Typography>
+						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 				<TimelineItem>
@@ -96,10 +96,10 @@ export default function Work() {
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
-						<Typography variant="h6" component="span">
-							Undergraduate Engineer
+						<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component="span">
+							Intern
 						</Typography>
-						<Typography>Ramboll</Typography>
+						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 			</Timeline>

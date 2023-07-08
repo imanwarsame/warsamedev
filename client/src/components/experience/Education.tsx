@@ -1,4 +1,6 @@
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent, TimelineOppositeContent } from '@mui/lab';
+import { Box, Typography } from '@mui/material';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 export default function Education() {
 
@@ -9,14 +11,53 @@ export default function Education() {
 			alignItems: 'center',
 			justifyContent: 'center'
 		}}>
-			<Paper sx={{ width: '60vw', minHeight: '300px', padding: 3 }}>
-				<Stack direction='column'>
-					<Typography variant='h4' marginBottom={3}>About</Typography>
-					<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Hi! My name is Iman, I'm a senior software and civil engineer at Ramboll.</Typography>
-					<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>I have proven expertise in managing and implementing software solutions both in web and desktop development.</Typography>
-					<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>I am also national lead for digital transformation for the Association for Consultancy and Engineering Emerging Professionals and founder of Warsame Studio.</Typography>
-				</Stack>
-			</Paper>
+			<Timeline position="alternate">
+				<TimelineItem>
+					<TimelineOppositeContent
+						sx={{ m: 'auto 0' }}
+						align="right"
+						variant="body2"
+						color="text.secondary"
+					>
+						2015-2019
+					</TimelineOppositeContent>
+					<TimelineSeparator>
+						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+						<TimelineDot color="primary" variant="outlined">
+							<SchoolOutlinedIcon />
+						</TimelineDot>
+						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+					</TimelineSeparator>
+					<TimelineContent sx={{ py: '12px', px: 2 }}>
+						<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component="span">
+							Civil Engineering, MEng
+						</Typography>
+						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>University of Southampton</Typography>
+					</TimelineContent>
+				</TimelineItem>
+				<TimelineItem>
+					<TimelineOppositeContent
+						sx={{ m: 'auto 0' }}
+						variant="body2"
+						color="text.secondary"
+					>
+						2008-2015
+					</TimelineOppositeContent>
+					<TimelineSeparator>
+						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+						<TimelineDot color="primary" variant="outlined">
+							<SchoolOutlinedIcon />
+						</TimelineDot>
+						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+					</TimelineSeparator>
+					<TimelineContent sx={{ py: '12px', px: 2 }}>
+						<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component="span">
+							A Levels & GCSEs
+						</Typography>
+						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ruislip High School</Typography>
+					</TimelineContent>
+				</TimelineItem>
+			</Timeline>
 		</Box>
 	);
 }
