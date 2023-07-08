@@ -11,8 +11,8 @@ export default function App() {
 			<Sidebar/>
 			<Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
 				<Home/>
-				<Contact/>
 				<About/>
+				<Contact/>
 			</Box>
 		</Box>
 	);

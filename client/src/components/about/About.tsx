@@ -1,8 +1,38 @@
-import { Typography } from '@mui/material';
+import { Box, Button, Paper, Stack, Typography } from '@mui/material';
 
 export default function About() {
+	// Function to download CV PDF
+	const downloadCV = () => {
+		// using Java Script method to get PDF file
+		fetch('CV.pdf').then(response => {
+			response.blob().then(blob => {
+				// Creating new object of PDF file
+				const fileURL = window.URL.createObjectURL(blob);
+				// Setting various property values
+				const alink = document.createElement('a');
+				alink.href = fileURL;
+				alink.download = 'CV.pdf';
+				alink.click();
+			});
+		});
+	};
 
 	return(
-		<Typography>About</Typography>
+		<Box sx={{
+			height: '100vh',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center'
+		}}>
+			<Paper sx={{ width: '50vw', minHeight: '300px', padding: 3 }}>
+				<Stack direction='column'>
+					<Typography variant='h4' marginBottom={3}>About</Typography>
+					<Typography>Hi! My name is Iman, I'm a senior software and civil engineer at Ramboll.</Typography>
+					<Typography>I have proven expertise in managing and implementing software solutions both in web and desktop development.</Typography>
+					<Typography>I am also national lead for digital transformation for the Association for Consultancy and Engineering Emerging Professionals and founder of Warsame Studio.</Typography>
+					<Button variant="contained" color='secondary' onClick={downloadCV} sx={{ color: 'white', borderRadius: 20, boxShadow: 'none', marginTop: 3 }}>Download CV</Button>
+				</Stack>
+			</Paper>
+		</Box>
 	);
 }
