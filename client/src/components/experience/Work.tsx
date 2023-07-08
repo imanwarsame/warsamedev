@@ -19,7 +19,7 @@ export default function Work() {
 						variant="body2"
 						color="text.secondary"
 					>
-          9:30 am
+						June 2023
 					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
@@ -30,9 +30,9 @@ export default function Work() {
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
 						<Typography variant="h6" component="span">
-            Eat
+							Senior Engineer
 						</Typography>
-						<Typography>Because you need strength</Typography>
+						<Typography>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 				<TimelineItem>
@@ -41,7 +41,7 @@ export default function Work() {
 						variant="body2"
 						color="text.secondary"
 					>
-          10:00 am
+						June 2021
 					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
@@ -52,12 +52,20 @@ export default function Work() {
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
 						<Typography variant="h6" component="span">
-            Code
+							Engineer
 						</Typography>
-						<Typography>Because it&apos;s awesome!</Typography>
+						<Typography>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 				<TimelineItem>
+					<TimelineOppositeContent
+						sx={{ m: 'auto 0' }}
+						align="right"
+						variant="body2"
+						color="text.secondary"
+					>
+						September 2019
+					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 						<TimelineDot color="primary" variant="outlined">
@@ -67,12 +75,19 @@ export default function Work() {
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
 						<Typography variant="h6" component="span">
-            Sleep
+							Graduate Engineer
 						</Typography>
-						<Typography>Because you need rest</Typography>
+						<Typography>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 				<TimelineItem>
+					<TimelineOppositeContent
+						sx={{ m: 'auto 0' }}
+						variant="body2"
+						color="text.secondary"
+					>
+						Summer 2017 & 2018
+					</TimelineOppositeContent>
 					<TimelineSeparator>
 						<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
 						<TimelineDot color="primary" variant="outlined">
@@ -82,9 +97,9 @@ export default function Work() {
 					</TimelineSeparator>
 					<TimelineContent sx={{ py: '12px', px: 2 }}>
 						<Typography variant="h6" component="span">
-							Repeat
+							Undergraduate Engineer
 						</Typography>
-						<Typography>Because this is the life you love!</Typography>
+						<Typography>Ramboll</Typography>
 					</TimelineContent>
 				</TimelineItem>
 			</Timeline>
