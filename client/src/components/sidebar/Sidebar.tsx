@@ -4,7 +4,6 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import Logo from '../../assets/logo.png';
 
@@ -46,9 +45,6 @@ export default function Sidebar() {
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<LayersOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}/>
-						</IconButton>
-						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
-							<CreateOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}/>
 						</IconButton>
 						<IconButton disableFocusRipple disableRipple sx={{ backgroundColor: 'transparent' }}>
 							<ChatBubbleOutlineOutlinedIcon sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}/>
