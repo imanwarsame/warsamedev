@@ -46,8 +46,7 @@ export default function ProjectModal ({ data, close }: { data: any, close: () =>
 					width: { xs: '80vw', md: '50vw' },
 					left: '50%',
 					transform: 'translateX(-50%)',
-					top: '50px',
-					overflow: 'scroll'
+					top: '50px'
 				}}
 			>
 				<motion.img

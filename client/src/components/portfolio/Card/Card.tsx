@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { AnimatePresence } from 'framer-motion';
-import { Dialog } from '@mui/material';
+import { Dialog, Grid } from '@mui/material';
 import ProjectModal from './ProjectModal';
 
 export default function Card ( data: any ) {
@@ -16,16 +16,16 @@ export default function Card ( data: any ) {
 	};
 
 	return (
-		<>
-			<ProjectCard data={data} open={openModal} />
+		<Grid item sm={12} md={4}>
+			<ProjectCard data={data.data} open={openModal} />
 			<AnimatePresence>
 				{/* <Modal open={open} onClose={closeModal}>
 					<ProjectModal data={data} close={closeModal}/>
 				</Modal> */}
-				<Dialog open={open} onClose={closeModal} sx={{ overflow: 'scroll' }}>
-					<ProjectModal data={data} close={closeModal}/>
+				<Dialog open={open} onClose={closeModal}>
+					<ProjectModal data={data.data} close={closeModal}/>
 				</Dialog>
 			</AnimatePresence>
-		</>
+		</Grid>
 	);
 }

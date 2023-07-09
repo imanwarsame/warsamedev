@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
 export default function ProjectCard ({ data, open }: { data: any, open: () => void }) {
@@ -5,16 +6,17 @@ export default function ProjectCard ({ data, open }: { data: any, open: () => vo
 
 	return (
 		<motion.div className="listing" onClick={open} whileHover={{ scale: 1.1 }}>
-			<div className="listing__content">
-				<div className="listing__image-container">
-					<img
-						className="listing__image"
-						alt="real estate mansion"
-						src={imageUrl}
-						height={200}
-					/>
-				</div>
-			</div>
+			<Box sx={{ backgroundImage: `url(${imageUrl})`, backgroundColor: 'salmon', border: 2, borderRadius: 5, borderColor: 'fuchsia',
+				backgroundRepeat: 'no-repeat',
+				backgroundPosition: 'center center',
+				backgroundSize: 'cover', height: '400px' }}>
+				{/* <img
+					className="listing__image"
+					alt="real estate mansion"
+					src={imageUrl}
+					height={200}
+				/> */}
+			</Box>
 		</motion.div>
 	);
 }
