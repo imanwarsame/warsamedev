@@ -4,6 +4,7 @@ import avatar from './Profile.jpg';
 import BackgroundPattern from './Background.png';
 import TwitterIcon from './twitter.svg';
 import LinkedInIcon from './linkedin-in.svg';
+import GithubIcon from './github.svg';
 import animatedScrollIcon from './scroll-down.json';
 
 export default function Home() {
@@ -23,6 +24,9 @@ export default function Home() {
 				<Avatar src={avatar} sx={{ width: 200, height: 200 }}/>
 				<Typography display={{ sm: 'block', xs: 'none' }} sx={{ backgroundColor: 'white' }}>Full Stack Developer | Civil Engineer | Architectural Photographer</Typography>
 				<Stack direction='row' spacing={3}>
+					<IconButton size='medium' href='https://github.com/imanwarsame' target="_blank" rel="noopener noreferrer">
+						<img src={GithubIcon} alt='Silhoutte of an octopus cat hybrid' height={30}/>
+					</IconButton>
 					<IconButton size='medium' href='https://twitter.com/imnwrsm' target="_blank" rel="noopener noreferrer">
 						<img src={TwitterIcon} alt='Twitter logo of tweeting bird' height={30}/>
 					</IconButton>
