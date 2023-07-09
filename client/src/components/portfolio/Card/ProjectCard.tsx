@@ -9,7 +9,7 @@ export default function ProjectCard ({ data, open }: { data: any, open: () => vo
 			<Box sx={{ backgroundImage: `url(${imageUrl})`, backgroundColor: 'salmon', border: 2, borderRadius: 5, borderColor: 'fuchsia',
 				backgroundRepeat: 'no-repeat',
 				backgroundPosition: 'center center',
-				backgroundSize: 'cover', height: '400px' }}>
+				backgroundSize: 'cover', height: '300px' }}>
 				{/* <img
 					className="listing__image"
 					alt="real estate mansion"

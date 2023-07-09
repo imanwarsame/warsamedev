@@ -1,4 +1,6 @@
 import Logo from '../../assets/logo.png';
+import WeatherApp from '../../assets/WeatherApp.png';
+import WarsameStudio from '../../assets/WarsameStudio.png';
 
 export const projects = [
 	{
@@ -14,8 +16,7 @@ export const projects = [
 	},
 	{
 		id: 2,
-		imageUrl:
-      'https://blog.dupontregistry.com/wp-content/uploads/2021/02/IMP1-scaled.jpg',
+		imageUrl: WeatherApp,
 		price: '$1,200,000',
 		address: '1204 Fake Address',
 		description:
@@ -26,8 +27,7 @@ export const projects = [
 	},
 	{
 		id: 3,
-		imageUrl:
-      'https://ca-times.brightspotcdn.com/dims4/default/c12c0dd/2147483647/strip/true/crop/2000x1195+0+0/resize/1486x888!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fad%2Ff4%2F1f1b2193479eafb7cbba65691184%2F10480-sunset-fullres-01.jpg',
+		imageUrl: WarsameStudio,
 		price: '$2,400,000',
 		address: '7177 Fake Address',
 		description:
