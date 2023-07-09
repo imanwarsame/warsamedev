@@ -8,6 +8,14 @@ import GithubIcon from './github.svg';
 import animatedScrollIcon from './scroll-down.json';
 
 export default function Home() {
+	function handleScroll() {
+		window.scroll({
+			top: document.body.offsetHeight,
+			left: 0,
+			behavior: 'smooth',
+		});
+	}
+
 
 	return(
 		<Box sx={{
@@ -34,7 +42,7 @@ export default function Home() {
 						<img src={LinkedInIcon} alt='The letters i and n representing the LinkedIn logo' height={30}/>
 					</IconButton>
 				</Stack>
-				<Button variant="contained" color='secondary' sx={{ color: 'white', borderRadius: 20, boxShadow: 'none' }}>Contact me</Button>
+				<Button variant="contained" onClick={handleScroll} color='secondary' sx={{ color: 'white', borderRadius: 20, boxShadow: 'none' }}>Contact me</Button>
 				<Box display='flex' alignItems='center' justifyContent='center' sx={{ position: 'absolute', bottom: '20px' }}>
 					<Lottie animationData={animatedScrollIcon} height={50} width={50} />
 				</Box>
