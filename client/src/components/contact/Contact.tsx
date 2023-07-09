@@ -6,11 +6,6 @@ import { Element } from 'react-scroll';
 export default function Contact() {
 	const form = useRef<HTMLFormElement>(null);
 
-	console.log(import.meta.env.VITE_EMAILJS_SERVICE_ID);
-	console.log(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-	console.log(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-
-
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
