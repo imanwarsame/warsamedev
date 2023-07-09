@@ -1,17 +1,9 @@
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { Box } from '@mui/material';
 import { motion } from 'framer-motion';
+import { PortfolioItem } from './Types';
 
-export default function ProjectModal ({ data, close }: { data: any, close: () => void }) {
-	const {
-		imageUrl,
-		price,
-		address,
-		description,
-		numBedroom,
-		numWashrooms,
-		livingSpace,
-	} = data;
+export default function ProjectModal ({ data, close }: { data: PortfolioItem, close: () => void }) {
 
 	const modalVariants = {
 		open: {
@@ -52,22 +44,22 @@ export default function ProjectModal ({ data, close }: { data: any, close: () =>
 				<motion.img
 					className="modal__image"
 					alt="real estate mansion"
-					src={imageUrl}
+					src={data.imageUrl}
 					variants={imageVariants}
 					height={50}
 				></motion.img>
 				<motion.div className="modal__info" variants={modalInfoVariants}>
 					<motion.div className="modal__row" variants={modalRowVariants}>
-						<span className="modal__price">{price}</span>
+						<span className="modal__price">{data.description}</span>
 					</motion.div>
 					<motion.div className="modal__row" variants={modalRowVariants}>
-						<span className="modal__address">{address}</span>
+						<span className="modal__address">{data.githubLink}</span>
 					</motion.div>
 					<motion.div
 						className="modal__description-wrapper"
 						variants={modalRowVariants}
 					>
-						<p className="modal__description">{description}</p>
+						<p className="modal__description">{data.webLink}</p>
 					</motion.div>
 					<motion.button
 						className="modal__close-wrapper"

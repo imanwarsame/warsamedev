@@ -3,8 +3,9 @@ import ProjectCard from './ProjectCard';
 import { AnimatePresence } from 'framer-motion';
 import { Dialog, Grid } from '@mui/material';
 import ProjectModal from './ProjectModal';
+import { PortfolioItem } from './Types';
 
-export default function Card ( data: any ) {
+export default function Card ( data: PortfolioItem ) {
 	const [open, setOpen] = useState(false);
 
 	const openModal = () => {
@@ -17,13 +18,10 @@ export default function Card ( data: any ) {
 
 	return (
 		<Grid item sm={12} md={4}>
-			<ProjectCard data={data.data} open={openModal} />
+			<ProjectCard data={data} open={openModal} />
 			<AnimatePresence>
-				{/* <Modal open={open} onClose={closeModal}>
-					<ProjectModal data={data} close={closeModal}/>
-				</Modal> */}
 				<Dialog open={open} onClose={closeModal}>
-					<ProjectModal data={data.data} close={closeModal}/>
+					<ProjectModal data={data} close={closeModal}/>
 				</Dialog>
 			</AnimatePresence>
 		</Grid>
