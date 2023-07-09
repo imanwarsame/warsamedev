@@ -9,7 +9,9 @@ export default function Contact() {
 		e.preventDefault();
 
 		if (form.current) {
-			emailjs.sendForm('service_9ajbpvi', 'template_z1ct7br', form.current, 'XzAdvhqwE_a6T_Sn5')
+			emailjs.sendForm(import.meta.env.VITE_EMAILJS_SERVICE_ID,
+				import.meta.env.VITE_EMAILJS_TEMPLATE_ID, form.current,
+				import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
 				.then(
 					(result) => {
 						console.log(result.text);
