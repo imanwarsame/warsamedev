@@ -1,35 +1,30 @@
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-import { Box } from '@mui/material';
+import { Box, IconButton, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { PortfolioItem } from './Types';
+import GithubIcon from './github.svg';
+import WebIcon from './earth.svg';
+
 
 export default function ProjectModal ({ data, close }: { data: PortfolioItem, close: () => void }) {
 
-	const modalVariants = {
-		open: {
+	const container = {
+		hidden: { opacity: 0 },
+		show: {
 			opacity: 1,
-			transition: { staggerChildren: 1, delayChildren: 1 },
-		},
-		closed: { opacity: 0 },
+			transition: {
+				staggerChildren: 0.5
+			}
+		}
 	};
 
-	const imageVariants = {
-		open: { opacity: 1, y: '0vh' },
-		closed: { opacity: 0, y: '-10vh' },
-	};
-
-	const modalInfoVariants = {
-		open: { opacity: 1, transition: { staggerChildren: 1 } },
-		closed: { opacity: 0 },
-	};
-
-	const modalRowVariants = {
-		open: { opacity: 1, x: 0 },
-		closed: { opacity: 0, x: '10%' },
+	const item = {
+		hidden: { opacity: 0, y: '10vh' },
+		show: { opacity: 1, y: '0vh' }
 	};
 
 	return (
-		<motion.div variants={modalVariants}>
+		<motion.div variants={container} initial="hidden" animate="show">
 			<Box position='fixed'
 				sx={{
 					backgroundColor: 'rgba(255,255,255,0.75)',
@@ -41,34 +36,29 @@ export default function ProjectModal ({ data, close }: { data: PortfolioItem, cl
 					top: '50px'
 				}}
 			>
-				<motion.img
-					className="modal__image"
-					alt="real estate mansion"
-					src={data.imageUrl}
-					variants={imageVariants}
-					height={50}
-				></motion.img>
-				<motion.div className="modal__info" variants={modalInfoVariants}>
-					<motion.div className="modal__row" variants={modalRowVariants}>
-						<span className="modal__price">{data.description}</span>
+				<img src={data.imageUrl} width='100%'></img>
+				<Box sx={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}>
+					<motion.div>
+						<motion.div variants={item}>
+							<Typography>{data.description}</Typography>
+						</motion.div>
+						<Stack direction='row' justifyContent='center'>
+							<motion.div variants={item}>
+								<IconButton size='medium' href={data.githubLink} target="_blank" rel="noopener noreferrer">
+									<img src={GithubIcon} alt='Silhoutte of an octopus cat hybrid' height={30}/>
+								</IconButton>
+							</motion.div>
+							<motion.div variants={item}>
+								<IconButton size='medium' href={data.webLink} target="_blank" rel="noopener noreferrer">
+									<img src={WebIcon} alt='Planet earth, signifying website' height={30}/>
+								</IconButton>
+							</motion.div>
+						</Stack>
 					</motion.div>
-					<motion.div className="modal__row" variants={modalRowVariants}>
-						<span className="modal__address">{data.githubLink}</span>
-					</motion.div>
-					<motion.div
-						className="modal__description-wrapper"
-						variants={modalRowVariants}
-					>
-						<p className="modal__description">{data.webLink}</p>
-					</motion.div>
-					<motion.button
-						className="modal__close-wrapper"
-						whileHover={{ scale: 1.2 }}
-						onClick={close}
-					>
-						<CancelOutlinedIcon/>
-					</motion.button>
-				</motion.div>
+				</Box>
+				<IconButton size='medium' onClick={close} sx={{ alignSelf: 'center' }}>
+					<CancelOutlinedIcon/>
+				</IconButton>
 			</Box>
 		</motion.div>
 	);

@@ -26,5 +26,5 @@ export const projects = [
 		description: 'Development portfolio',
 		githubLink: 'https://github.com/imanwarsame/warsamedev',
 		webLink: 'https://warsame.dev/',
-	},
+	}
 ];
