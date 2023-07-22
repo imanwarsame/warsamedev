@@ -9,7 +9,7 @@ export default function Portfolio() {
 		<Element name='portfolio_element'>
 			<Grid container spacing={2} sx={{ padding: 10 }}>
 				{projects.map((item) => (
-					<Card {...item} key={item.id} />
+					<Card {...item} key={item.id}/>
 				))}
 			</Grid>
 		</Element>

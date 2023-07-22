@@ -5,7 +5,7 @@ import { PortfolioItem } from './Types';
 export default function ProjectCard ({ data, open }: { data: PortfolioItem, open: () => void }) {
 
 	return (
-		<motion.div className="listing" onClick={open} whileHover={{ scale: 1.1 }}>
+		<motion.div className='project_card' onClick={open} whileHover={{ scale: 1.1 }}>
 			<Box sx={{
 				backgroundImage: `url(${data.imageUrl})`,
 				borderRadius: 5,

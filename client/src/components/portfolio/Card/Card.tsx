@@ -18,7 +18,7 @@ export default function Card ( data: PortfolioItem ) {
 
 	return (
 		<Grid item xs={12} md={4}>
-			<ProjectCard data={data} open={openModal} />
+			<ProjectCard data={data} open={openModal}/>
 			<AnimatePresence>
 				<Dialog open={open} onClose={closeModal}>
 					<ProjectModal data={data} close={closeModal}/>
