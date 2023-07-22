@@ -6,6 +6,9 @@ import { Element } from 'react-scroll';
 export default function Contact() {
 	const form = useRef<HTMLFormElement>(null);
 
+	/**
+	 * The function `sendEmail` sends an email using the EmailJS service when a form is submitted.
+	 */
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -39,10 +42,10 @@ export default function Contact() {
 				<form ref={form} onSubmit={sendEmail} className='contact_form'>
 					<Grid container spacing={2} sx={{ padding: 10 }}>
 						<Grid item xs={12} md={6}>
-							<TextField required fullWidth type='text' name='user_name' id="outlined-required" label="Name"/>
+							<TextField required fullWidth type='text' name='user_name' id="user_name" label="Name"/>
 						</Grid>
 						<Grid item xs={12} md={6}>
-							<TextField required fullWidth type='email' name='user_email' id="outlined-required" label="Email"/>
+							<TextField required fullWidth type='email' name='user_email' id="user_email" label="Email"/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
@@ -50,7 +53,7 @@ export default function Contact() {
 								fullWidth
 								type='text'
 								name='message'
-								id="outlined-multiline-flexible"
+								id="message"
 								label="Message"
 								multiline
 								rows={4}
