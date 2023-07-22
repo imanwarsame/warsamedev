@@ -4,14 +4,14 @@ import userEvent  from '@testing-library/user-event';
 import About from '../about/About';
 
 // Mock fetch function
-(global as any).fetch = (url: string) => {
+(global as any).fetch = () => {
 	return Promise.resolve({
 		blob: () => Promise.resolve(new Blob()),
 	}) as any;
 };
 
 // Mock URL.createObjectURL function
-(global as any).URL.createObjectURL = (blob: Blob) => 'CV.pdf';
+(global as any).URL.createObjectURL = () => 'CV.pdf';
 
 describe('About component test', () => {
 	test('should render text', () => {
