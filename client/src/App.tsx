@@ -6,19 +6,20 @@ import Home from './components/home/Home';
 import Portfolio from './components/portfolio/Portfolio';
 import Work from './components/experience/Work';
 import Education from './components/experience/Education';
+import Blob from './components/blob/Blob';
 
 export default function App() {
-
 	return (
-		<Box sx={{ display: 'flex' }}>
-			<Sidebar/>
+		<Box component="div" sx={{ display: 'flex' }}>
+			<Sidebar />
 			<Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
-				<Home/>
-				<About/>
-				<Work/>
-				<Education/>
-				<Portfolio/>
-				<Contact/>
+				<Blob />
+				<Home />
+				<About />
+				<Work />
+				<Education />
+				<Portfolio />
+				<Contact />
 			</Box>
 		</Box>
 	);
