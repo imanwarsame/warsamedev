@@ -1,56 +1,53 @@
-import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import './NoiseMaterial';
+import { MeshProps, useFrame } from '@react-three/fiber';
+import { useControls } from 'leva';
+import { useRef, useState, useMemo } from 'react';
+import * as THREE from 'three';
+import { noiseSphereShaderMaterial } from './NoiseSphereShaderMaterial';
 
-interface NoiseSphereProps {
+interface NoiseSphereProps extends MeshProps {
 	frequency: number;
 	amplitude: number;
-	time: number;
-	setTime: React.Dispatch<React.SetStateAction<number>>;
-	type: number;
-	offset?: number;
-	[key: string]: any;
 }
 
-interface CustomMaterial extends THREE.ShaderMaterial {
-	uniforms: {
-		u_amplitude: { value: number };
-		u_frequency: { value: number };
-		u_time: { value: number };
-		// Add any other uniforms you might have
-	};
-}
-
-const d = 120;
-const radius = 70;
-
-export const NoiseSphere = ({
+export default function NoiseSphere({
 	frequency,
 	amplitude,
-	time,
-	setTime,
-	type,
-	offset = 0,
 	...props
-}: NoiseSphereProps) => {
-	const sphere = useRef<THREE.Mesh>(null!);
+}: NoiseSphereProps) {
+	const meshRef = useRef<THREE.Mesh>(null!);
+	const [active, setActive] = useState(false);
 
+	// Use Leva controls
+	const { Frequency: levaIntensity, Amplitude: levaTime } = useControls({
+		Frequency: { value: frequency, min: 0, max: 10, step: 0.1 },
+		Amplitude: { value: amplitude, min: 0, max: 10, step: 0.1 },
+	});
+
+	// Apply the custom material to the mesh
+	const material = useMemo(() => noiseSphereShaderMaterial, []);
+
+	// Use useFrame to update the shader uniforms
 	useFrame((state) => {
-		if (sphere.current) {
-			setTime(state.clock.elapsedTime);
-
-			const material = sphere.current.material as CustomMaterial; // Type assertion
-
-			material.uniforms.u_amplitude.value = amplitude;
-			material.uniforms.u_frequency.value = frequency;
-			material.uniforms.u_time.value = time;
+		const { clock } = state;
+		if (meshRef.current) {
+			material.uniforms.u_time.value = levaIntensity * clock.getElapsedTime();
+			material.uniforms.u_intensity.value = THREE.MathUtils.lerp(
+				material.uniforms.u_intensity.value,
+				levaTime,
+				0.02,
+			);
 		}
 	});
 
 	return (
-		<mesh ref={sphere} {...props}>
-			<icosahedronBufferGeometry args={[radius, 60]} />
-			<noiseMaterialMatCap attach="material" args={[type, offset]} />
+		<mesh
+			{...props}
+			ref={meshRef}
+			scale={active ? 1.5 : 1}
+			onClick={() => setActive(!active)}
+		>
+			<icosahedronGeometry attach="geometry" args={[2, 20]} />
+			<primitive object={material} attach="material" />
 		</mesh>
 	);
-};
+}

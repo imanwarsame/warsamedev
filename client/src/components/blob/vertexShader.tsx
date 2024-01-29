@@ -1,4 +1,4 @@
-const vertexShader = `
+export const vertexShader = `
 uniform float u_intensity;
 uniform float u_time;
 
@@ -102,5 +102,3 @@ void main() {
     gl_Position = projectedPosition;
 }
 `;
-
-export default vertexShader;

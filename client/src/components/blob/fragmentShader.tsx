@@ -1,4 +1,4 @@
-const fragmentShader = `
+export const fragmentShader = `
 uniform float u_intensity;
 uniform float u_time;
 
@@ -13,5 +13,3 @@ void main() {
 }
 
 `;
-
-export default fragmentShader;
