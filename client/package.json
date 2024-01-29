@@ -23,6 +23,7 @@
     "@types/react-scroll": "^1.8.7",
     "@types/three": "^0.160.0",
     "framer-motion": "^10.12.18",
+    "leva": "^0.9.35",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 import { useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
+import { Canvas, useFrame, MeshProps } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Box } from '@mui/material';
 import vertexShader from './vertexShader';
 import fragmentShader from './fragmentShader';
+import { useControls } from 'leva';
 
 const sphereShaderMaterial = new THREE.ShaderMaterial({
 	uniforms: {
@@ -15,12 +16,27 @@ const sphereShaderMaterial = new THREE.ShaderMaterial({
 	fragmentShader: fragmentShader,
 });
 
-function Sphere(props: ThreeElements['mesh']) {
+interface NoiseSphereProps extends MeshProps {
+	frequency: number;
+	amplitude: number;
+}
+
+export const Sphere = ({
+	frequency,
+	amplitude,
+	...props
+}: NoiseSphereProps) => {
 	const meshRef = useRef<THREE.Mesh>(null!);
-	const [hovered, setHover] = useState(false);
+	const [_hovered, setHover] = useState(false);
 	const [active, setActive] = useState(false);
 
 	// useFrame((_state, delta) => (meshRef.current.rotation.x += delta / 3));
+
+	// Use Leva controls
+	const { Frequency: levaIntensity, Amplitude: levaTime } = useControls({
+		Frequency: { value: frequency, min: 0, max: 10, step: 0.1 },
+		Amplitude: { value: amplitude, min: 0, max: 10, step: 0.1 },
+	});
 
 	// Apply the custom material to the mesh
 	const material = useMemo(() => sphereShaderMaterial, []);
@@ -29,10 +45,10 @@ function Sphere(props: ThreeElements['mesh']) {
 	useFrame((state) => {
 		const { clock } = state;
 		if (meshRef.current) {
-			material.uniforms.u_time.value = 0.4 * clock.getElapsedTime();
+			material.uniforms.u_time.value = levaIntensity * clock.getElapsedTime();
 			material.uniforms.u_intensity.value = THREE.MathUtils.lerp(
 				material.uniforms.u_intensity.value,
-				0.15,
+				levaTime,
 				0.02,
 			);
 		}
@@ -55,7 +71,7 @@ function Sphere(props: ThreeElements['mesh']) {
 			/> */}
 		</mesh>
 	);
-}
+};
 
 export default function Blob() {
 	return (
@@ -71,8 +87,8 @@ export default function Blob() {
 					intensity={Math.PI}
 				/>
 				<pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-				<Sphere position={[-2, 0, 0]} />
-				<Sphere position={[2, 0, 0]} />
+				<Sphere frequency={1} amplitude={0.3} position={[-2, 0, 0]} />
+				<Sphere frequency={1} amplitude={0.3} position={[2, 0, 0]} />
 			</Canvas>
 		</Box>
 	);
