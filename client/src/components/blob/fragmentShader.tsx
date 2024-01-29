@@ -4,12 +4,14 @@ uniform float u_time;
 
 varying vec2 vUv;
 varying float vDisplacement;
+uniform sampler2D u_matCapMap;
 
 void main() {
-    float distort = 2.0 * vDisplacement * u_intensity * sin(vUv.y * 10.0 + u_time);
-// this defines our gradient
-    vec3 color = vec3(abs(vUv - 0.5) * 2.0  * (1.0 - distort), 1.0);
-    gl_FragColor = vec4(color, 1.0);
+    // Sample the texture using the UV coordinates
+    vec3 matCapColor = texture2D(u_matCapMap, vUv).rgb;
+
+    // Use the sampled color directly without distortion
+    gl_FragColor = vec4(matCapColor, 1.0);
 }
 
 `;

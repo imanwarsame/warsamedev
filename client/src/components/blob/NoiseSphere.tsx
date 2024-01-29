@@ -31,6 +31,8 @@ export default function NoiseSphere({
 		const { clock } = state;
 		if (meshRef.current) {
 			material.uniforms.u_time.value = levaIntensity * clock.getElapsedTime();
+
+			//Lerp is used to ease the transition between the base value and the max value
 			material.uniforms.u_intensity.value = THREE.MathUtils.lerp(
 				material.uniforms.u_intensity.value,
 				levaTime,
