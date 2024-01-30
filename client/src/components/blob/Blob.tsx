@@ -17,7 +17,7 @@ export default function Blob() {
 					intensity={Math.PI}
 				/>
 				<pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-				<NoiseSphere frequency={0.5} amplitude={0.3} position={[-2, 0, 0]} />
+				<NoiseSphere position={[0, 0, 0]} />
 			</Canvas>
 		</Box>
 	);
