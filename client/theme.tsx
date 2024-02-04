@@ -11,17 +11,14 @@ const theme = createTheme({
 		},
 		background: {
 			default: '#F1F6F9',
-			paper: '#FFFFFF'
+			paper: '#FFFFFF',
 		},
 		text: {
-			primary: '#001C30'
-		}
+			primary: '#001C30',
+		},
 	},
 	typography: {
-		fontFamily: [
-			'Poppins',
-			'sans-serif'
-		].join(','),
+		fontFamily: ['Poppins', 'sans-serif'].join(','),
 	},
 	components: {
 		MuiPaper: {
@@ -29,20 +26,19 @@ const theme = createTheme({
 				root: {
 					borderRadius: 10,
 				},
-			}
+			},
 		},
 		MuiIconButton: {
 			styleOverrides: {
 				root: {
 					'&:hover': {
-						color: '#FF6666'
+						color: '#FF6666',
 					},
-					color: '#001C30'
-				}
-			}
-		}
-	}
+					color: '#001C30',
+				},
+			},
+		},
+	},
 });
-
 
 export { theme };

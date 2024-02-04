@@ -15,17 +15,17 @@ interface NoiseSphereProps extends MeshProps {
 }
 
 export default function NoiseSphere({
-	frequency = 3.0,
+	frequency = 2.0,
 	amplitude = 6.0,
 	speed = 0.2,
 	density = 1.2,
-	strength = 0.3,
+	strength = 3.0,
 	intensity: propIntensity = 7.0, // Using a different name to avoid conflicts
 	...props
 }: NoiseSphereProps) {
 	const sphereRef = useRef<THREE.Mesh>(null!);
 	const theme = useTheme();
-	const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 	const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
 
 	// Use Leva controls
@@ -65,20 +65,26 @@ export default function NoiseSphere({
 
 	useEffect(() => {
 		if (isSmallScreen) {
-			sphereRef.current.position.x = 5;
-			sphereRef.current.position.y = 5;
+			console.log('small');
+
+			sphereRef.current.position.x = 8;
+			sphereRef.current.position.y = 0;
 		} else if (isMediumScreen) {
-			sphereRef.current.position.x = 5;
-			sphereRef.current.position.y = 5;
+			console.log('medium');
+
+			sphereRef.current.position.x = 8;
+			sphereRef.current.position.y = 0;
 		} else {
-			sphereRef.current.position.x = 1;
-			sphereRef.current.position.y = 1;
+			console.log('large');
+
+			sphereRef.current.position.x = 12;
+			sphereRef.current.position.y = 0;
 		}
 	}, [isSmallScreen, isMediumScreen]);
 
 	return (
 		<mesh {...props} ref={sphereRef}>
-			<icosahedronGeometry attach="geometry" args={[6, 64]} />
+			<icosahedronGeometry attach="geometry" args={[12, 64]} />
 			<primitive object={material} attach="material" />
 		</mesh>
 	);

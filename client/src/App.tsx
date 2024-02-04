@@ -9,6 +9,22 @@ import Education from './components/experience/Education';
 import Blob from './components/blob/Blob';
 
 export default function App() {
+	console.log(`
+	#####  #####         ###         #####    
+	#####   ####         ###        #####     
+	 #####  #####       #####      #####      
+	 ###### #####      ######     #####       
+	  #####  #####    #######    #####        
+	   ##### #####   #### ####   ####         
+	   #####  ##### ####  ##### #####         
+		####  #########    #########          
+		#####  #######      #######           
+		#####  ######       ######            
+		 #####  ####         ####             
+		 ####   ####         ###              
+		  ##     ##          ##               
+	`);
+
 	return (
 		<Box component="div" sx={{ display: 'flex' }}>
 			<Sidebar />

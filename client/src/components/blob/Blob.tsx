@@ -1,8 +1,8 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { Perf } from 'r3f-perf';
 import { Box } from '@mui/material';
 import NoiseSphere from './NoiseSphere';
+// import { OrbitControls } from '@react-three/drei';
+// import { Perf } from 'r3f-perf';
 
 export default function Blob() {
 	return (
@@ -12,15 +12,16 @@ export default function Blob() {
 				position: 'relative',
 				height: '100vh',
 				width: '100%',
+				overflowX: 'hidden',
+				opacity: 0.9,
 				border: 1,
 			}}
 		>
-			<Canvas
-				camera={{ position: [5, 5, 5] }} // Adjust the camera position if needed
-			>
-				<OrbitControls />
-				<ambientLight intensity={Math.PI / 2} />
+			<Canvas camera={{ position: [0, 0, 15] }}>
+				{/* <OrbitControls />
 				<Perf position="bottom-left" />
+				<axesHelper args={[10]} /> */}
+				<ambientLight intensity={Math.PI / 2} />
 				<spotLight
 					position={[10, 10, 10]}
 					angle={0.15}
