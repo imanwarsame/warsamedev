@@ -33,7 +33,7 @@ export const noiseSphereShaderMaterial = new THREE.ShaderMaterial({
 		uFrequency: { value: settings.frequency },
 		uAmplitude: { value: settings.amplitude },
 		uIntensity: { value: settings.intensity },
-		u_matCapMap: { value: matCaps[2] },
+		u_matCapMap: { value: matCaps[1] },
 	},
 	vertexShader: vertexShader,
 	fragmentShader: fragmentShader,

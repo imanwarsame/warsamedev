@@ -1,8 +1,9 @@
 import { MeshProps, useFrame } from '@react-three/fiber';
 import { useControls } from 'leva';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
 import { noiseSphereShaderMaterial } from './NoiseSphereShaderMaterial';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 interface NoiseSphereProps extends MeshProps {
 	frequency?: number;
@@ -22,8 +23,10 @@ export default function NoiseSphere({
 	intensity: propIntensity = 7.0, // Using a different name to avoid conflicts
 	...props
 }: NoiseSphereProps) {
-	const meshRef = useRef<THREE.Mesh>(null!);
-	const [active, setActive] = useState(false);
+	const sphereRef = useRef<THREE.Mesh>(null!);
+	const theme = useTheme();
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
+	const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
 
 	// Use Leva controls
 	const {
@@ -48,7 +51,7 @@ export default function NoiseSphere({
 	// Use useFrame to update the shader uniforms
 	useFrame((state) => {
 		const { clock } = state;
-		if (meshRef.current && material && material.uniforms) {
+		if (sphereRef.current && material && material.uniforms) {
 			material.uniforms.uTime.value = levaFrequency * clock.getElapsedTime();
 
 			material.uniforms.uSpeed.value = levaSpeed;
@@ -57,24 +60,25 @@ export default function NoiseSphere({
 			material.uniforms.uFrequency.value = levaFrequency;
 			material.uniforms.uAmplitude.value = levaAmplitude;
 			material.uniforms.uIntensity.value = levaIntensity;
-
-			// //Lerp is used to ease the transition between the base value and the max value
-			// material.uniforms.u_intensity.value = THREE.MathUtils.lerp(
-			// 	material.uniforms.u_intensity.value,
-			// 	levaTime,
-			// 	0.02,
-			// );
 		}
 	});
 
+	useEffect(() => {
+		if (isSmallScreen) {
+			sphereRef.current.position.x = 5;
+			sphereRef.current.position.y = 5;
+		} else if (isMediumScreen) {
+			sphereRef.current.position.x = 5;
+			sphereRef.current.position.y = 5;
+		} else {
+			sphereRef.current.position.x = 1;
+			sphereRef.current.position.y = 1;
+		}
+	}, [isSmallScreen, isMediumScreen]);
+
 	return (
-		<mesh
-			{...props}
-			ref={meshRef}
-			scale={active ? 1.5 : 1}
-			onClick={() => setActive(!active)}
-		>
-			<icosahedronGeometry attach="geometry" args={[1, 64]} />
+		<mesh {...props} ref={sphereRef}>
+			<icosahedronGeometry attach="geometry" args={[6, 64]} />
 			<primitive object={material} attach="material" />
 		</mesh>
 	);

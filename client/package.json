@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^7.33.2",
     "jsdom": "^22.1.0",
     "prettier": "3.2.4",
+    "r3f-perf": "^7.1.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
     "vitest": "^0.33.0",
