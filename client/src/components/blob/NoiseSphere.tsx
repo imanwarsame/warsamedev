@@ -15,12 +15,12 @@ interface NoiseSphereProps extends MeshProps {
 }
 
 export default function NoiseSphere({
-	frequency = 2.0,
-	amplitude = 6.0,
-	speed = 0.2,
-	density = 1.2,
-	strength = 3.0,
-	intensity: propIntensity = 7.0, // Using a different name to avoid conflicts
+	frequency = 0.7,
+	amplitude = 10,
+	speed = 0.1,
+	density = 8.0,
+	strength = 2.8,
+	intensity: propIntensity = 5.2, // Using a different name to avoid conflicts
 	...props
 }: NoiseSphereProps) {
 	const sphereRef = useRef<THREE.Mesh>(null!);

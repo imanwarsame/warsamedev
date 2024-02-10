@@ -8,11 +8,7 @@ import matCapUrl3 from '../../assets/matte_mint.png';
 
 const loader = new TextureLoader();
 
-const matCaps = [
-	loader.load(matCapUrl1),
-	loader.load(matCapUrl2),
-	loader.load(matCapUrl3),
-];
+const matCaps = [loader.load(matCapUrl1), loader.load(matCapUrl2), loader.load(matCapUrl3)];
 
 const settings = {
 	speed: 0.2,
