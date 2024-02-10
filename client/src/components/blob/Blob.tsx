@@ -18,7 +18,6 @@ export default function Blob() {
 				width: '100%',
 				overflowX: 'hidden',
 				opacity: 0.9,
-				border: 1,
 			}}
 		>
 			<Canvas camera={{ position: [0, 0, 15] }}>

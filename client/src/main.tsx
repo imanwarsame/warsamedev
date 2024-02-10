@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import App from './App.tsx';
-import { theme } from '../theme';
+import { lightTheme } from '../theme';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<div>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={lightTheme}>
 				{/* Globally resets CSS to create a baseline to build on */}
 				<CssBaseline />
 				<App />

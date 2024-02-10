@@ -46,7 +46,7 @@ export default function ScrambleText({ strings, timeDelay }: ScrambleTextProps) 
 					}, '') // default value
 					.join('');
 
-				iteration += 1 / 5;
+				iteration += 1 / 8;
 
 				if (iteration >= text.length) {
 					setHeadlineText(text);
