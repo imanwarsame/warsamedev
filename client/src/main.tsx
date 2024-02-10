@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 		<div>
 			<ThemeProvider theme={theme}>
 				{/* Globally resets CSS to create a baseline to build on */}
-				<CssBaseline/>
+				<CssBaseline />
 				<App />
 			</ThemeProvider>
 		</div>

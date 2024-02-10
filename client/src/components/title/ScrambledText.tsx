@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { getRandomJapaneseCharacter } from '../../../Utilities';
 
 interface ScrambleTextProps {
 	strings: string[];
@@ -10,7 +11,7 @@ export default function ScrambleText({ strings, timeDelay }: ScrambleTextProps) 
 	const [currentTextIndex, setCurrentTextIndex] = useState(0);
 	const [headlineText, setHeadlineText] = useState(strings[0]); // Initialise with the first string
 
-	//Cycle through each string in strings with time delay
+	//Cycle through each string in strings with time delay. Note, doesn't work well in strict mode
 	useEffect(() => {
 		//Cycles through the length of the strings continuously (e.g 0,1,2,3,0,1,2,3,0,...)
 		const intervalId = setInterval(() => {
@@ -40,11 +41,12 @@ export default function ScrambleText({ strings, timeDelay }: ScrambleTextProps) 
 						if (index < iteration) {
 							return text[index] || '';
 						}
-						return String.fromCharCode(65 + Math.floor(Math.random() * 26));
+						// return String.fromCharCode(65 + Math.floor(Math.random() * 26));
+						return getRandomJapaneseCharacter();
 					}, '') // default value
 					.join('');
 
-				iteration += 1;
+				iteration += 1 / 5;
 
 				if (iteration >= text.length) {
 					setHeadlineText(text);
@@ -68,5 +70,7 @@ export default function ScrambleText({ strings, timeDelay }: ScrambleTextProps) 
 		};
 	}, [strings, currentTextIndex]);
 
-	return <Typography variant="h2">{headlineText}</Typography>;
+	return (
+		<Typography sx={{ typography: { xs: 'subtitle2', md: 'h4' } }}>{headlineText}</Typography>
+	);
 }
