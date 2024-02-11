@@ -43,6 +43,34 @@ const lightTheme = createTheme({
 				},
 			},
 		},
+		MuiCssBaseline: {
+			styleOverrides: {
+				html: {
+					'&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+						backgroundColor: '#F1FBF0',
+						width: '20px',
+					},
+					'&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
+						borderRadius: '20px',
+						backgroundColor: '#D6DEE1',
+						border: '4px solid transparent',
+						backgroundClip: 'content-box',
+					},
+					'&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus': {
+						backgroundColor: '#8FF18D', // Adjusted to primary color
+					},
+					'&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active': {
+						backgroundColor: '#8FF18D', // Adjusted to secondary color
+					},
+					'&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
+						backgroundColor: '#8FF18D', // Adjusted to primary color
+					},
+					'&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
+						backgroundColor: '#F1FBF0', // Adjusted to paper background color
+					},
+				},
+			},
+		},
 	},
 });
 
@@ -53,11 +81,11 @@ const darkTheme = createTheme({
 			main: '#2AC828',
 		},
 		secondary: {
-			main: '#10710E',
+			main: '#071F19',
 		},
 		background: {
 			default: '#051004',
-			paper: '#111B10',
+			paper: '#071F19',
 		},
 		text: {
 			primary: '#E9F7E9',
@@ -81,6 +109,34 @@ const darkTheme = createTheme({
 					// 	color: '#10710E',
 					// 	borderColor: '#10710E',
 					// },
+				},
+			},
+		},
+		MuiCssBaseline: {
+			styleOverrides: {
+				html: {
+					'&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+						backgroundColor: '#051004',
+						width: '20px',
+					},
+					'&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
+						borderRadius: '20px',
+						backgroundColor: '#D6DEE1',
+						border: '4px solid transparent',
+						backgroundClip: 'content-box',
+					},
+					'&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus': {
+						backgroundColor: '#2AC828', // Adjusted to primary color
+					},
+					'&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active': {
+						backgroundColor: '#2AC828', // Adjusted to secondary color
+					},
+					'&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
+						backgroundColor: '#2AC828', // Adjusted to primary color
+					},
+					'&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
+						backgroundColor: '#051004', // Adjusted to paper background color
+					},
 				},
 			},
 		},
