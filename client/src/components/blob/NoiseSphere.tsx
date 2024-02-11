@@ -1,5 +1,5 @@
 import { MeshProps, useFrame } from '@react-three/fiber';
-import { useControls } from 'leva';
+// import { useControls } from 'leva';
 import { useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
 import { noiseSphereShaderMaterial } from './NoiseSphereShaderMaterial';
@@ -30,22 +30,22 @@ export default function NoiseSphere({
 	const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
 	const { darkMode } = useDevStore();
 
-	// Use Leva controls
-	const {
-		Frequency: levaFrequency,
-		Amplitude: levaAmplitude,
-		Speed: levaSpeed,
-		Density: levaDensity,
-		Strength: levaStrength,
-		Intensity: levaIntensity,
-	} = useControls({
-		Frequency: { value: frequency, min: 0, max: 10, step: 0.1 },
-		Amplitude: { value: amplitude, min: 0, max: 10, step: 0.1 },
-		Speed: { value: speed, min: 0, max: 10, step: 0.1 },
-		Density: { value: density, min: 0, max: 10, step: 0.1 },
-		Strength: { value: strength, min: 0, max: 10, step: 0.1 },
-		Intensity: { value: propIntensity, min: 0, max: 10, step: 0.1 },
-	});
+	// // Use Leva controls
+	// const {
+	// 	Frequency: levaFrequency,
+	// 	Amplitude: levaAmplitude,
+	// 	Speed: levaSpeed,
+	// 	Density: levaDensity,
+	// 	Strength: levaStrength,
+	// 	Intensity: levaIntensity,
+	// } = useControls({
+	// 	Frequency: { value: frequency, min: 0, max: 10, step: 0.1 },
+	// 	Amplitude: { value: amplitude, min: 0, max: 10, step: 0.1 },
+	// 	Speed: { value: speed, min: 0, max: 10, step: 0.1 },
+	// 	Density: { value: density, min: 0, max: 10, step: 0.1 },
+	// 	Strength: { value: strength, min: 0, max: 10, step: 0.1 },
+	// 	Intensity: { value: propIntensity, min: 0, max: 10, step: 0.1 },
+	// });
 
 	// Apply the custom material to the mesh
 	const material = useMemo(() => noiseSphereShaderMaterial(darkMode), [darkMode]);
@@ -54,31 +54,35 @@ export default function NoiseSphere({
 	useFrame((state) => {
 		const { clock } = state;
 		if (sphereRef.current && material && material.uniforms) {
-			material.uniforms.uTime.value = levaFrequency * clock.getElapsedTime();
+			material.uniforms.uTime.value = frequency * clock.getElapsedTime();
 
-			material.uniforms.uSpeed.value = levaSpeed;
-			material.uniforms.uNoiseDensity.value = levaDensity;
-			material.uniforms.uNoiseStrength.value = levaStrength;
-			material.uniforms.uFrequency.value = levaFrequency;
-			material.uniforms.uAmplitude.value = levaAmplitude;
-			material.uniforms.uIntensity.value = levaIntensity;
+			material.uniforms.uSpeed.value = speed;
+			material.uniforms.uNoiseDensity.value = density;
+			material.uniforms.uNoiseStrength.value = strength;
+			material.uniforms.uFrequency.value = frequency;
+			material.uniforms.uAmplitude.value = amplitude;
+			material.uniforms.uIntensity.value = propIntensity;
+
+			// //Leva version
+			// material.uniforms.uTime.value = levaFrequency * clock.getElapsedTime();
+
+			// material.uniforms.uSpeed.value = levaSpeed;
+			// material.uniforms.uNoiseDensity.value = levaDensity;
+			// material.uniforms.uNoiseStrength.value = levaStrength;
+			// material.uniforms.uFrequency.value = levaFrequency;
+			// material.uniforms.uAmplitude.value = levaAmplitude;
+			// material.uniforms.uIntensity.value = levaIntensity;
 		}
 	});
 
 	useEffect(() => {
 		if (isSmallScreen) {
-			console.log('small');
-
 			sphereRef.current.position.x = 8;
 			sphereRef.current.position.y = 0;
 		} else if (isMediumScreen) {
-			console.log('medium');
-
 			sphereRef.current.position.x = 8;
 			sphereRef.current.position.y = 0;
 		} else {
-			console.log('large');
-
 			sphereRef.current.position.x = 12;
 			sphereRef.current.position.y = 0;
 		}
