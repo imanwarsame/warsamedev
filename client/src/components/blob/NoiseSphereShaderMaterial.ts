@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import { TextureLoader } from 'three';
 import { vertexShader } from './vertexShader';
 import { fragmentShader } from './fragmentShader';
-import matCapUrl1 from '../../assets/matte_black.png';
-import matCapUrl2 from '../../assets/matte_green.png';
+import matCapUrl1 from '../../assets/matte_green.png';
+import matCapUrl2 from '../../assets/matte_dark_green.png';
 import matCapUrl3 from '../../assets/matte_mint.png';
 
 const loader = new TextureLoader();
