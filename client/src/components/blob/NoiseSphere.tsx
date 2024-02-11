@@ -4,6 +4,7 @@ import { useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
 import { noiseSphereShaderMaterial } from './NoiseSphereShaderMaterial';
 import { useMediaQuery, useTheme } from '@mui/material';
+import { useDevStore } from '../../store';
 
 interface NoiseSphereProps extends MeshProps {
 	frequency?: number;
@@ -27,6 +28,7 @@ export default function NoiseSphere({
 	const theme = useTheme();
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 	const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+	const { darkMode } = useDevStore();
 
 	// Use Leva controls
 	const {
@@ -46,7 +48,7 @@ export default function NoiseSphere({
 	});
 
 	// Apply the custom material to the mesh
-	const material = useMemo(() => noiseSphereShaderMaterial, []);
+	const material = useMemo(() => noiseSphereShaderMaterial(darkMode), [darkMode]);
 
 	// Use useFrame to update the shader uniforms
 	useFrame((state) => {
@@ -84,8 +86,8 @@ export default function NoiseSphere({
 
 	return (
 		<mesh {...props} ref={sphereRef}>
-			<icosahedronGeometry attach="geometry" args={[12, 64]} />
-			<primitive object={material} attach="material" />
+			<icosahedronGeometry attach='geometry' args={[12, 64]} />
+			<primitive object={material} attach='material' />
 		</mesh>
 	);
 }
