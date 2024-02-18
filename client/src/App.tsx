@@ -3,8 +3,7 @@ import Contact from './components/contact/Contact';
 import About from './components/about/About';
 import Sidebar from './components/sidebar/Sidebar';
 import Portfolio from './components/portfolio/Portfolio';
-import Work from './components/experience/Work';
-import Education from './components/experience/Education';
+import Experience from './components/experience/Experience';
 import Blob from './components/blob/Blob';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
@@ -32,17 +31,16 @@ export default function App() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			{/* Globally resets CSS to create a baseline to build on. Enable color scheme allows 
+			{/* Globally resets CSS to create a baseline to build on. Enables colour scheme allows 
 				switching between "light" and "dark" modes of native components such as scrollbar */}
 			<CssBaseline enableColorScheme />
 			<Box component='div' sx={{ display: 'flex' }}>
 				<Sidebar />
 				<Box component='main' sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
-					<Blob />
 					<DarkModeToggle />
+					<Blob />
 					<About />
-					<Work />
-					<Education />
+					<Experience />
 					<Portfolio />
 					<Contact />
 				</Box>
