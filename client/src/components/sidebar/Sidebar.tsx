@@ -70,6 +70,7 @@ export default function Sidebar() {
 							disableRipple
 							sx={{ backgroundColor: 'transparent' }}
 							onClick={() => scrollToElement('home_element')}
+							aria-label='home-button'
 						>
 							<HomeOutlinedIcon
 								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}
@@ -80,6 +81,7 @@ export default function Sidebar() {
 							disableRipple
 							sx={{ backgroundColor: 'transparent' }}
 							onClick={() => scrollToElement('about_element')}
+							aria-label='about-me-button'
 						>
 							<PersonOutlineOutlinedIcon
 								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}
@@ -90,6 +92,7 @@ export default function Sidebar() {
 							disableRipple
 							sx={{ backgroundColor: 'transparent' }}
 							onClick={() => scrollToElement('experience_element')}
+							aria-label='experience-button'
 						>
 							<WorkOutlineOutlinedIcon
 								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}
@@ -100,6 +103,7 @@ export default function Sidebar() {
 							disableRipple
 							sx={{ backgroundColor: 'transparent' }}
 							onClick={() => scrollToElement('portfolio_element')}
+							aria-label='portfolio-button'
 						>
 							<LayersOutlinedIcon
 								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}
@@ -110,6 +114,7 @@ export default function Sidebar() {
 							disableRipple
 							sx={{ backgroundColor: 'transparent' }}
 							onClick={() => scrollToElement('contact_element')}
+							aria-label='contact-button'
 						>
 							<ChatBubbleOutlineOutlinedIcon
 								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}

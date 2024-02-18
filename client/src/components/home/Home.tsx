@@ -1,11 +1,4 @@
-import {
-	Avatar,
-	Box,
-	Button,
-	IconButton,
-	Stack,
-	Typography,
-} from '@mui/material';
+import { Avatar, Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import Lottie from 'lottie-react';
 import avatar from './Profile.jpg';
 import BackgroundPattern from './Background.png';
@@ -25,9 +18,9 @@ export default function Home() {
 	}
 
 	return (
-		<Element name="home_element">
+		<Element name='home_element'>
 			<Box
-				component="div"
+				component='div'
 				sx={{
 					backgroundImage: `url(${BackgroundPattern})`,
 					height: '100vh',
@@ -39,65 +32,55 @@ export default function Home() {
 					justifyContent: 'center',
 				}}
 			>
-				<Stack direction="column" alignItems="center" spacing={3}>
+				<Stack direction='column' alignItems='center' spacing={3}>
 					<Avatar src={avatar} sx={{ width: 200, height: 200 }} />
-					<Typography
-						display={{ sm: 'block', xs: 'none' }}
-						sx={{ backgroundColor: 'white' }}
-					>
+					<Typography display={{ sm: 'block', xs: 'none' }} sx={{ backgroundColor: 'white' }}>
 						Full Stack Developer | Civil Engineer | Architectural Photographer
 					</Typography>
-					<Stack direction="row" spacing={3}>
+					<Stack direction='row' spacing={3}>
 						<IconButton
-							size="medium"
-							href="https://github.com/imanwarsame"
-							target="_blank"
-							rel="noopener noreferrer"
+							size='medium'
+							href='https://github.com/imanwarsame'
+							target='_blank'
+							rel='noopener noreferrer'
 						>
-							<img
-								src={GithubIcon}
-								alt="Silhoutte of an octopus cat hybrid"
-								height={30}
-							/>
+							<img src={GithubIcon} alt='Silhoutte of an octopus cat hybrid' height={30} />
 						</IconButton>
 						<IconButton
-							size="medium"
-							href="https://twitter.com/imnwrsm"
-							target="_blank"
-							rel="noopener noreferrer"
+							size='medium'
+							href='https://twitter.com/imnwrsm'
+							target='_blank'
+							rel='noopener noreferrer'
 						>
-							<img
-								src={TwitterIcon}
-								alt="Twitter logo of tweeting bird"
-								height={30}
-							/>
+							<img src={TwitterIcon} alt='Twitter logo of tweeting bird' height={30} />
 						</IconButton>
 						<IconButton
-							size="medium"
-							href="https://www.linkedin.com/in/imanwarsame/"
-							target="_blank"
-							rel="noopener noreferrer"
+							size='medium'
+							href='https://www.linkedin.com/in/imanwarsame/'
+							target='_blank'
+							rel='noopener noreferrer'
 						>
 							<img
 								src={LinkedInIcon}
-								alt="The letters i and n representing the LinkedIn logo"
+								alt='The letters i and n representing the LinkedIn logo'
 								height={30}
 							/>
 						</IconButton>
 					</Stack>
 					<Button
-						variant="contained"
+						variant='contained'
 						onClick={handleScroll}
-						color="secondary"
+						color='secondary'
 						sx={{ color: 'white', borderRadius: 20, boxShadow: 'none' }}
+						aria-label='contact-me-button'
 					>
 						Contact me
 					</Button>
 					<Box
-						component="div"
-						display="flex"
-						alignItems="center"
-						justifyContent="center"
+						component='div'
+						display='flex'
+						alignItems='center'
+						justifyContent='center'
 						sx={{ position: 'absolute', bottom: '20px' }}
 					>
 						<Lottie animationData={animatedScrollIcon} height={50} width={50} />

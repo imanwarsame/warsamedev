@@ -50,6 +50,7 @@ export default function About() {
 							color='secondary'
 							onClick={downloadCV}
 							sx={{ color: 'white', borderRadius: 20, boxShadow: 'none', marginTop: 3 }}
+							aria-label='download-cv-button'
 						>
 							Download CV
 						</Button>

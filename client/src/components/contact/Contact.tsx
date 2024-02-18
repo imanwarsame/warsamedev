@@ -81,7 +81,7 @@ export default function Contact() {
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<Button type='submit' variant='outlined'>
+							<Button type='submit' variant='outlined' aria-label='submit-contact-form-button'>
 								Submit
 							</Button>
 						</Grid>
