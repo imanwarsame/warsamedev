@@ -59,6 +59,7 @@ export default function Sidebar() {
 						height={50}
 						width={50}
 						style={{ position: 'absolute', top: 5 }}
+						aria-label='IW-letters-logo'
 					/>
 					<Divider />
 					<Box
