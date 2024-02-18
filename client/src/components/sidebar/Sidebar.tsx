@@ -2,7 +2,6 @@ import { Box, Divider, Drawer, IconButton, Theme, Typography, useMediaQuery } fr
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import LogoLight from '../../assets/logo_light_mode.png';
@@ -90,19 +89,9 @@ export default function Sidebar() {
 							disableFocusRipple
 							disableRipple
 							sx={{ backgroundColor: 'transparent' }}
-							onClick={() => scrollToElement('work_element')}
+							onClick={() => scrollToElement('experience_element')}
 						>
 							<WorkOutlineOutlinedIcon
-								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}
-							/>
-						</IconButton>
-						<IconButton
-							disableFocusRipple
-							disableRipple
-							sx={{ backgroundColor: 'transparent' }}
-							onClick={() => scrollToElement('education_element')}
-						>
-							<SchoolOutlinedIcon
 								sx={{ fontSize: { xs: 20, md: 30 }, stroke: '#ffffff', strokeWidth: 0.5 }}
 							/>
 						</IconButton>

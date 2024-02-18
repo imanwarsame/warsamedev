@@ -9,11 +9,12 @@ import {
 } from '@mui/lab';
 import { Box, Typography } from '@mui/material';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import { Element } from 'react-scroll';
 
-export default function Work() {
+export default function Experience() {
 	return (
-		<Element name='work_element'>
+		<Element name='experience_element'>
 			<Box
 				component='div'
 				sx={{
@@ -104,6 +105,31 @@ export default function Work() {
 								Intern
 							</Typography>
 							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
+						</TimelineContent>
+					</TimelineItem>
+					<TimelineItem>
+						<TimelineOppositeContent
+							sx={{ m: 'auto 0' }}
+							align='right'
+							variant='body2'
+							color='text.secondary'
+						>
+							2015-2019
+						</TimelineOppositeContent>
+						<TimelineSeparator>
+							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+							<TimelineDot color='primary' variant='outlined'>
+								<SchoolOutlinedIcon />
+							</TimelineDot>
+							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+						</TimelineSeparator>
+						<TimelineContent sx={{ py: '12px', px: 2 }}>
+							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
+								Civil Engineering, MEng
+							</Typography>
+							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
+								University of Southampton
+							</Typography>
 						</TimelineContent>
 					</TimelineItem>
 				</Timeline>
