@@ -1,4 +1,4 @@
-import { ListItem, Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import './TextEffect.css';
 
 interface NavLinksProps {
@@ -21,26 +21,9 @@ export default function NavigationLinks({ links }: NavLinksProps) {
 			spacing={5}
 		>
 			{links.map((text, index) => (
-				<ListItem
-					key={index}
-					sx={{
-						cursor: 'pointer',
-						textAlign: 'center',
-					}}
-					onClick={() => console.log(text)}
-				>
-					<Typography
-						variant='h6'
-						className='navigation-links'
-						sx={{
-							textTransform: 'uppercase',
-							textDecoration: 'none',
-							color: (theme) => theme.palette.text.primary,
-						}}
-					>
-						{text}
-					</Typography>
-				</ListItem>
+				<a key={index} href='#' className='cta'>
+					<span>{text}</span>
+				</a>
 			))}
 		</Stack>
 	);
