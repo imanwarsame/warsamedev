@@ -15,8 +15,8 @@ export default function NavigationLinks({ links }: NavLinksProps) {
 				bgcolor: 'transparent',
 				border: '1px solid green',
 				width: 'auto',
-				height: '100vh',
-				padding: 3,
+				height: 'auto',
+				padding: 0,
 			}}
 			spacing={5}
 		>
@@ -24,7 +24,6 @@ export default function NavigationLinks({ links }: NavLinksProps) {
 				<ListItem
 					key={index}
 					sx={{
-						position: 'relative',
 						cursor: 'pointer',
 						textAlign: 'center',
 					}}

@@ -31,17 +31,20 @@ export default function App() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			{/* Globally resets CSS to create a baseline to build on. Enables colour scheme allows 
+			{/* Globally resets CSS to create a baseline to build on. enableColorScheme allows 
 				switching between "light" and "dark" modes of native components such as scrollbar */}
 			<CssBaseline enableColorScheme />
 			<Box component='div' sx={{ display: 'flex' }}>
 				<Sidebar />
-				<Box component='main' sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
+				<Box
+					component='main'
+					sx={{ flexGrow: 1, bgcolor: 'background.default', marginLeft: '100px' }}
+				>
 					<DarkModeToggle />
 					<Blob />
 					<About />
 					<Experience />
-					<Portfolio />
+					{/* <Portfolio /> */}
 					<Contact />
 				</Box>
 			</Box>

@@ -90,7 +90,7 @@ export default function NoiseSphere({
 
 	return (
 		<mesh {...props} ref={sphereRef}>
-			<icosahedronGeometry attach='geometry' args={[12, 64]} />
+			<icosahedronGeometry attach='geometry' args={[12, 48]} />
 			<primitive object={material} attach='material' />
 		</mesh>
 	);
