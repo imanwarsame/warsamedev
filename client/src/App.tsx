@@ -1,4 +1,4 @@
-import { Box, ThemeProvider, CssBaseline } from '@mui/material';
+import { Box, ThemeProvider, CssBaseline, Typography } from '@mui/material';
 import Contact from './components/contact/Contact';
 import About from './components/about/About';
 import Sidebar from './components/sidebar/Sidebar';
@@ -12,6 +12,8 @@ import DarkModeToggle from './components/darkmode/DarkModeToggle';
 export default function App() {
 	const { darkMode } = useDevStore();
 	const theme = darkMode ? darkTheme : lightTheme;
+	const currentYear = new Date().getFullYear();
+	const copyrightText = '© ' + currentYear;
 
 	console.log(`
 	#####  #####         ###         #####    
@@ -47,6 +49,20 @@ export default function App() {
 					{/* <Portfolio /> */}
 					<Contact />
 				</Box>
+				<Typography
+					sx={{
+						position: 'fixed',
+						bottom: 0,
+						left: '50%',
+						typography: { xs: 'caption' },
+						textAlign: 'center',
+						padding: '5px',
+						border: 1,
+					}}
+					color='textSecondary'
+				>
+					{copyrightText}
+				</Typography>
 			</Box>
 		</ThemeProvider>
 	);

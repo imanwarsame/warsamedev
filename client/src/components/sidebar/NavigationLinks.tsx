@@ -8,20 +8,21 @@ interface NavLinksProps {
 export default function NavigationLinks({ links }: NavLinksProps) {
 	return (
 		<Stack
+			direction='row'
 			sx={{
 				display: 'flex',
-				flexDirection: 'column',
 				alignItems: 'center',
+				justifyContent: 'center',
 				bgcolor: 'transparent',
-				border: '1px solid green',
+				border: '0px solid green',
 				width: 'auto',
 				height: 'auto',
 				padding: 0,
 			}}
-			spacing={5}
+			spacing={3}
 		>
 			{links.map((text, index) => (
-				<a key={index} href='#' className='cta'>
+				<a key={index} href='#' className='cta' style={{ border: '0px solid orange' }}>
 					<span>{text}</span>
 				</a>
 			))}

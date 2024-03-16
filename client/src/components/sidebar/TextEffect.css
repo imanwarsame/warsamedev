@@ -12,28 +12,28 @@ a {
 .cta:before {
 	content: '';
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	display: block;
 	border-radius: 28px;
-	background: rgba(143, 241, 141, 0.25);
+	/* background: rgba(143, 241, 141, 0.25); */
 	width: 56px;
 	height: 56px;
 	transition: all 0.3s ease;
 }
 .cta span {
 	position: relative;
-	font-size: 12px;
+	font-size: 16px;
 	line-height: 18px;
 	font-weight: 900;
 	letter-spacing: 0.25em;
 	text-transform: uppercase;
 	vertical-align: middle;
-	writing-mode: vertical-rl;
-	transform: rotate(180deg);
+	/* writing-mode: vertical-rl;
+	transform: rotate(180deg); */
 }
 .cta:hover:before {
-	height: 100%;
+	width: 100%;
 	background: rgba(143, 241, 141, 1);
 }
 .cta:active {

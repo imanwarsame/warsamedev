@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
@@ -7,8 +7,6 @@ import NavigationLinks from './NavigationLinks';
 
 export default function Sidebar() {
 	const { darkMode } = useDevStore();
-	const currentYear = new Date().getFullYear();
-	const copyrightText = '© ' + currentYear;
 	const navigationHeaders = ['Articles', 'Experience', 'Projects', 'Contact'];
 
 	/**
@@ -28,20 +26,19 @@ export default function Sidebar() {
 
 	return (
 		<Stack
-			direction='column'
+			direction='row'
 			spacing={2}
 			sx={{
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
 				zIndex: 99,
-				width: '7vw',
+				width: 'auto',
 				minWidth: 50,
 				height: 'auto',
-				transform: 'translateY(-50%)',
-				top: '50%',
+				top: '1%',
 				position: 'fixed',
-				border: '1px solid yellow',
+				border: '0px solid yellow',
 			}}
 		>
 			<img
@@ -53,18 +50,6 @@ export default function Sidebar() {
 				onClick={() => scrollToElement('home_element')}
 			/>
 			<NavigationLinks links={navigationHeaders} />
-			<Typography
-				sx={{
-					typography: { xs: 'caption' },
-					width: '100%',
-					textAlign: 'center',
-					padding: '5px',
-					border: 1,
-				}}
-				color='textSecondary'
-			>
-				{copyrightText}
-			</Typography>
 		</Stack>
 	);
 }
