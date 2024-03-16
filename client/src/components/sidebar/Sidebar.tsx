@@ -37,8 +37,8 @@ export default function Sidebar() {
 				minWidth: 50,
 				height: 'auto',
 				top: '1%',
+				left: '1%',
 				position: 'fixed',
-				border: '0px solid yellow',
 			}}
 		>
 			<img

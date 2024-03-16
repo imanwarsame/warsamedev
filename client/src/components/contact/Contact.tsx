@@ -5,6 +5,8 @@ import { Element } from 'react-scroll';
 
 export default function Contact() {
 	const form = useRef<HTMLFormElement>(null);
+	const currentYear = new Date().getFullYear();
+	const copyrightText = '© ' + currentYear;
 
 	/**
 	 * The function `sendEmail` sends an email using the EmailJS service when a form is submitted.
@@ -43,6 +45,7 @@ export default function Contact() {
 					alignItems: 'center',
 					justifyContent: 'center',
 					backgroundColor: 'secondary.main',
+					position: 'relative',
 				}}
 			>
 				<Typography variant='h4'>Get in touch!</Typography>
@@ -87,6 +90,19 @@ export default function Contact() {
 						</Grid>
 					</Grid>
 				</form>
+				<Typography
+					sx={{
+						position: 'absolute',
+						transform: 'translateX(-50%)',
+						bottom: 0,
+						left: '50%',
+						typography: { xs: 'caption' },
+						textAlign: 'center',
+						padding: '5px',
+					}}
+				>
+					{'Iman Warsame ' + copyrightText}
+				</Typography>
 			</Box>
 		</Element>
 	);

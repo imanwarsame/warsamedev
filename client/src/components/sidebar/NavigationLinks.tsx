@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Button, Stack, useTheme } from '@mui/material';
 import './TextEffect.css';
 
 interface NavLinksProps {
@@ -6,6 +6,8 @@ interface NavLinksProps {
 }
 
 export default function NavigationLinks({ links }: NavLinksProps) {
+	const theme = useTheme();
+
 	return (
 		<Stack
 			direction='row'
@@ -17,14 +19,22 @@ export default function NavigationLinks({ links }: NavLinksProps) {
 				border: '0px solid green',
 				width: 'auto',
 				height: 'auto',
-				padding: 0,
+				paddingTop: '5px',
+				'.navLink::after': {
+					backgroundColor: theme.palette.primary.main,
+				},
 			}}
 			spacing={3}
 		>
 			{links.map((text, index) => (
-				<a key={index} href='#' className='cta' style={{ border: '0px solid orange' }}>
-					<span>{text}</span>
-				</a>
+				<Button
+					key={index}
+					className='navLink'
+					size='large'
+					sx={{ color: theme.palette.text.primary }}
+				>
+					{text}
+				</Button>
 			))}
 		</Stack>
 	);

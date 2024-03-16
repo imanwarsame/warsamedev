@@ -1,41 +1,14 @@
-a {
-	text-decoration: none;
-	color: inherit;
+.navLink::after {
+	content: '';
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 0;
+	bottom: 0;
+	left: 0;
+	transition: width 0.3s ease-in-out;
 }
 
-.cta {
-	position: relative;
-	margin: auto;
-	padding: 19px 19px;
-	transition: all 0.2s ease;
-}
-.cta:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: block;
-	border-radius: 28px;
-	/* background: rgba(143, 241, 141, 0.25); */
-	width: 56px;
-	height: 56px;
-	transition: all 0.3s ease;
-}
-.cta span {
-	position: relative;
-	font-size: 16px;
-	line-height: 18px;
-	font-weight: 900;
-	letter-spacing: 0.25em;
-	text-transform: uppercase;
-	vertical-align: middle;
-	/* writing-mode: vertical-rl;
-	transform: rotate(180deg); */
-}
-.cta:hover:before {
-	width: 100%;
-	background: rgba(143, 241, 141, 1);
-}
-.cta:active {
-	transform: scale(0.96);
+.navLink:hover::after {
+	width: 50px;
 }
