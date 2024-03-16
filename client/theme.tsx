@@ -69,6 +69,9 @@ const lightTheme = createTheme({
 						backgroundColor: '#F1FBF0', // Adjusted to paper background color
 					},
 				},
+				body: {
+					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
+				},
 			},
 		},
 	},
@@ -137,6 +140,9 @@ const darkTheme = createTheme({
 					'&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
 						backgroundColor: '#051004', // Adjusted to paper background color
 					},
+				},
+				body: {
+					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
 				},
 			},
 		},

@@ -18,10 +18,12 @@ export default function Experience() {
 			<Box
 				component='div'
 				sx={{
-					height: '100vh',
+					height: '100svh',
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
+					paddingTop: '50px',
+					paddingBottom: '50px',
 				}}
 			>
 				<Timeline position='alternate'>

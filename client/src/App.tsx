@@ -1,13 +1,13 @@
 import { Box, ThemeProvider, CssBaseline } from '@mui/material';
 import Contact from './components/contact/Contact';
 import About from './components/about/About';
-import Sidebar from './components/sidebar/Sidebar';
-import Portfolio from './components/portfolio/Portfolio';
+import Navbar from './components/navbar/Navbar';
 import Experience from './components/experience/Experience';
 import Blob from './components/blob/Blob';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
 import DarkModeToggle from './components/darkmode/DarkModeToggle';
+import Portfolio from './components/portfolio/Portfolio';
 
 export default function App() {
 	const { darkMode } = useDevStore();
@@ -31,17 +31,28 @@ export default function App() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			{/* Globally resets CSS to create a baseline to build on. Enables colour scheme allows 
+			{/* Globally resets CSS to create a baseline to build on. enableColorScheme allows 
 				switching between "light" and "dark" modes of native components such as scrollbar */}
 			<CssBaseline enableColorScheme />
-			<Box component='div' sx={{ display: 'flex' }}>
-				<Sidebar />
-				<Box component='main' sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
-					<DarkModeToggle />
+			<Box
+				component='div'
+				sx={{ display: 'flex', WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}
+			>
+				<Navbar />
+				<DarkModeToggle />
+				<Box
+					component='main'
+					sx={{
+						flexGrow: 1,
+						transform: 'translateZ(0)', //Enables hardware acceleration
+						bgcolor: 'background.default',
+						WebkitOverflowScrolling: 'touch',
+					}}
+				>
 					<Blob />
 					<About />
-					<Experience />
 					<Portfolio />
+					<Experience />
 					<Contact />
 				</Box>
 			</Box>
