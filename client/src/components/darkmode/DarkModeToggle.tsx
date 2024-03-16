@@ -12,7 +12,15 @@ export default function DarkModeToggle() {
 	};
 
 	return (
-		<Box component='div' sx={{ position: 'fixed', top: '2%', right: '2%', zIndex: 9999 }}>
+		<Box
+			component='div'
+			sx={{
+				position: 'fixed',
+				top: { xs: '10px', md: '20px' },
+				right: { xs: '1px', md: '20px' },
+				zIndex: 9999,
+			}}
+		>
 			<Expand
 				duration={750}
 				toggled={darkMode}

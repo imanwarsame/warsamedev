@@ -8,7 +8,7 @@ import animatedScrollLight from '../../assets/scroll-down-light.json';
 import { Element } from 'react-scroll';
 import { useDevStore } from '../../store';
 // import { OrbitControls } from '@react-three/drei';
-import { Perf } from 'r3f-perf';
+// import { Perf } from 'r3f-perf';
 
 export default function Blob() {
 	const { darkMode } = useDevStore();
@@ -21,7 +21,7 @@ export default function Blob() {
 				component='div'
 				sx={{
 					position: 'relative',
-					height: '100vh',
+					height: '100svh',
 					width: '100%',
 					overflowX: 'hidden',
 					opacity: 0.9,
@@ -30,7 +30,7 @@ export default function Blob() {
 				<Canvas camera={{ position: [0, 0, 15] }}>
 					{/* <OrbitControls /> */}
 					{/* <axesHelper args={[10]} /> */}
-					{import.meta.env.DEV && <Perf position='bottom-right' />}
+					{/* {import.meta.env.DEV && <Perf position='bottom-right' />} */}
 					<ambientLight intensity={Math.PI / 2} />
 					<spotLight
 						position={[10, 10, 10]}

@@ -39,13 +39,14 @@ export default function Contact() {
 			<Box
 				component='div'
 				sx={{
-					height: '100vh',
+					height: '100svh',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
-					backgroundColor: 'secondary.main',
+					backgroundColor: 'background.paper',
 					position: 'relative',
+					paddingTop: '50px',
 				}}
 			>
 				<Typography variant='h4'>Get in touch!</Typography>
@@ -84,7 +85,13 @@ export default function Contact() {
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<Button type='submit' variant='outlined' aria-label='submit-contact-form-button'>
+							<Button
+								disableElevation
+								color='secondary'
+								type='submit'
+								variant='contained'
+								aria-label='submit-contact-form-button'
+							>
 								Submit
 							</Button>
 						</Grid>

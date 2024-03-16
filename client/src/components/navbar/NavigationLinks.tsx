@@ -3,9 +3,10 @@ import './TextEffect.css';
 
 interface NavLinksProps {
 	links: string[];
+	onClickHandler: (link: string) => void;
 }
 
-export default function NavigationLinks({ links }: NavLinksProps) {
+export default function NavigationLinks({ links, onClickHandler }: NavLinksProps) {
 	const theme = useTheme();
 
 	return (
@@ -32,6 +33,7 @@ export default function NavigationLinks({ links }: NavLinksProps) {
 					className='navLink'
 					size='large'
 					sx={{ color: theme.palette.text.primary }}
+					onClick={() => onClickHandler(text)}
 				>
 					{text}
 				</Button>

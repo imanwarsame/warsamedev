@@ -1,13 +1,13 @@
-import { Stack } from '@mui/material';
+import { Hidden, Stack } from '@mui/material';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
 import { useDevStore } from '../../store';
 import NavigationLinks from './NavigationLinks';
 
-export default function Sidebar() {
+export default function Navbar() {
 	const { darkMode } = useDevStore();
-	const navigationHeaders = ['Articles', 'Experience', 'Projects', 'Contact'];
+	const navigationHeaders = ['About', 'Projects', 'Experience', 'Contact', 'Articles'];
 
 	/**
 	 * The scrollToElement function scrolls to a specified element with a smooth animation using specified
@@ -36,7 +36,7 @@ export default function Sidebar() {
 				width: 'auto',
 				minWidth: 50,
 				height: 'auto',
-				top: '1%',
+				top: { xs: '5px', md: '10px' },
 				left: '1%',
 				position: 'fixed',
 			}}
@@ -49,7 +49,12 @@ export default function Sidebar() {
 				aria-label='IW-letters-logo'
 				onClick={() => scrollToElement('home_element')}
 			/>
-			<NavigationLinks links={navigationHeaders} />
+			<Hidden mdDown>
+				<NavigationLinks
+					links={navigationHeaders}
+					onClickHandler={(link) => scrollToElement(link.toLowerCase() + '_element')}
+				/>
+			</Hidden>
 		</Stack>
 	);
 }
