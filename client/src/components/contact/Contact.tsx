@@ -39,7 +39,7 @@ export default function Contact() {
 			<Box
 				component='div'
 				sx={{
-					height: '100svh',
+					height: '100lvh',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
