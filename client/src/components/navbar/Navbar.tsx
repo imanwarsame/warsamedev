@@ -4,6 +4,7 @@ import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
 import { useDevStore } from '../../store';
 import NavigationLinks from './NavigationLinks';
+import DarkModeToggle from '../darkmode/DarkModeToggle';
 
 export default function Navbar() {
 	const { darkMode } = useDevStore();
@@ -25,36 +26,49 @@ export default function Navbar() {
 	};
 
 	return (
-		<Stack
-			direction='row'
-			spacing={2}
-			sx={{
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
-				zIndex: 99,
-				width: 'auto',
-				minWidth: 50,
-				height: 'auto',
-				top: { xs: '5px', md: '10px' },
-				left: '1%',
-				position: 'fixed',
-			}}
-		>
-			<img
-				src={darkMode ? LogoDark : LogoLight}
-				height={50}
-				width={50}
-				style={{ top: 5, cursor: 'pointer' }}
-				aria-label='IW-letters-logo'
-				onClick={() => scrollToElement('home_element')}
-			/>
-			<Hidden mdDown>
-				<NavigationLinks
-					links={navigationHeaders}
-					onClickHandler={(link) => scrollToElement(link.toLowerCase() + '_element')}
+		<>
+			<Stack
+				direction='row'
+				aria-label='top-right-menu'
+				sx={{
+					position: 'fixed',
+					top: { xs: '10px', md: '20px' },
+					right: { xs: '1px', md: '20px' },
+					zIndex: 9999,
+				}}
+			>
+				<DarkModeToggle />
+			</Stack>
+			<Stack
+				direction='row'
+				spacing={2}
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					zIndex: 99,
+					minWidth: 50,
+					height: 'auto',
+					top: { xs: '5px', md: '10px' },
+					left: '1%',
+					position: 'fixed',
+				}}
+			>
+				<img
+					src={darkMode ? LogoDark : LogoLight}
+					height={50}
+					width={50}
+					style={{ top: 5, cursor: 'pointer' }}
+					aria-label='IW-letters-logo'
+					onClick={() => scrollToElement('home_element')}
 				/>
-			</Hidden>
-		</Stack>
+				<Hidden mdDown>
+					<NavigationLinks
+						links={navigationHeaders}
+						onClickHandler={(link) => scrollToElement(link.toLowerCase() + '_element')}
+					/>
+				</Hidden>
+			</Stack>
+		</>
 	);
 }

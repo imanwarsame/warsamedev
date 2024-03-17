@@ -1,4 +1,4 @@
-import { Box, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
 import '@theme-toggles/react/css/Expand.css';
 import { Expand } from '@theme-toggles/react';
 import { useDevStore } from '../../store';
@@ -12,32 +12,22 @@ export default function DarkModeToggle() {
 	};
 
 	return (
-		<Box
-			component='div'
-			sx={{
-				position: 'fixed',
-				top: { xs: '10px', md: '20px' },
-				right: { xs: '1px', md: '20px' },
-				zIndex: 9999,
+		<Expand
+			duration={750}
+			toggled={darkMode}
+			toggle={handleDarkModeToggle}
+			style={{
+				color: theme.palette.text.primary,
 			}}
 		>
-			<Expand
-				duration={750}
-				toggled={darkMode}
-				toggle={handleDarkModeToggle}
-				style={{
-					color: theme.palette.text.primary,
-				}}
-			>
-				<style>
-					{`
+			<style>
+				{`
 						.theme-toggle__expand {
 						height: 3em;
 						width: 3em;
 						}
 					`}
-				</style>
-			</Expand>
-		</Box>
+			</style>
+		</Expand>
 	);
 }
