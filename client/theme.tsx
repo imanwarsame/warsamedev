@@ -72,6 +72,16 @@ const lightTheme = createTheme({
 				body: {
 					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
 				},
+				//Selection highlight colours
+				'::-moz-selection': {
+					background: '#8FF18D',
+				},
+				'::-webkit-selection': {
+					background: '#8FF18D',
+				},
+				'::selection': {
+					background: '#8FF18D',
+				},
 			},
 		},
 	},
@@ -143,6 +153,16 @@ const darkTheme = createTheme({
 				},
 				body: {
 					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
+				},
+				//Selection highlight colours
+				'::-moz-selection': {
+					background: '#8FF18D',
+				},
+				'::-webkit-selection': {
+					background: '#8FF18D',
+				},
+				'::selection': {
+					background: '#8FF18D',
 				},
 			},
 		},
