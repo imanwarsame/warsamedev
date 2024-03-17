@@ -6,7 +6,6 @@ import Experience from './components/experience/Experience';
 import Blob from './components/blob/Blob';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
-import DarkModeToggle from './components/darkmode/DarkModeToggle';
 import Portfolio from './components/portfolio/Portfolio';
 
 export default function App() {
@@ -39,7 +38,6 @@ export default function App() {
 				sx={{ display: 'flex', WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}
 			>
 				<Navbar />
-				<DarkModeToggle />
 				<Box
 					component='main'
 					sx={{

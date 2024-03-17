@@ -21,7 +21,7 @@ export default function NoiseSphere({
 	speed = 0.1,
 	density = 8.0,
 	strength = 2.8,
-	intensity: propIntensity = 5.2, // Using a different name to avoid conflicts
+	intensity: propIntensity = 5.2, //Using a different name to avoid conflicts
 	...props
 }: NoiseSphereProps) {
 	const sphereRef = useRef<THREE.Mesh>(null!);
@@ -47,10 +47,10 @@ export default function NoiseSphere({
 	// 	Intensity: { value: propIntensity, min: 0, max: 10, step: 0.1 },
 	// });
 
-	// Apply the custom material to the mesh
+	//Apply the custom material to the mesh
 	const material = useMemo(() => noiseSphereShaderMaterial(darkMode), [darkMode]);
 
-	// Use useFrame to update the shader uniforms
+	//Use useFrame to update the shader uniforms
 	useFrame((state) => {
 		const { clock } = state;
 		if (sphereRef.current && material && material.uniforms) {
@@ -75,9 +75,10 @@ export default function NoiseSphere({
 		}
 	});
 
+	/* Adjust the position of the sphere based on the screen size. */
 	useEffect(() => {
 		if (isSmallScreen) {
-			sphereRef.current.position.x = 8;
+			sphereRef.current.position.x = 12;
 			sphereRef.current.position.y = 0;
 		} else if (isMediumScreen) {
 			sphereRef.current.position.x = 8;
@@ -90,7 +91,7 @@ export default function NoiseSphere({
 
 	return (
 		<mesh {...props} ref={sphereRef}>
-			<icosahedronGeometry attach='geometry' args={[12, 48]} />
+			<icosahedronGeometry attach='geometry' args={[12, 12]} />
 			<primitive object={material} attach='material' />
 		</mesh>
 	);
