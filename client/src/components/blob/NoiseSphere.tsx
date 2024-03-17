@@ -77,7 +77,7 @@ export default function NoiseSphere({
 
 	useEffect(() => {
 		if (isSmallScreen) {
-			sphereRef.current.position.x = 8;
+			sphereRef.current.position.x = 12;
 			sphereRef.current.position.y = 0;
 		} else if (isMediumScreen) {
 			sphereRef.current.position.x = 8;
@@ -90,7 +90,7 @@ export default function NoiseSphere({
 
 	return (
 		<mesh {...props} ref={sphereRef}>
-			<icosahedronGeometry attach='geometry' args={[12, 48]} />
+			<icosahedronGeometry attach='geometry' args={[12, 12]} />
 			<primitive object={material} attach='material' />
 		</mesh>
 	);

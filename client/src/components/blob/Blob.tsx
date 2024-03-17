@@ -27,7 +27,7 @@ export default function Blob() {
 					opacity: 0.9,
 				}}
 			>
-				<Canvas camera={{ position: [0, 0, 15] }}>
+				<Canvas camera={{ position: [0, 0, 15] }} resize={{ scroll: false }}>
 					{/* <OrbitControls /> */}
 					{/* <axesHelper args={[10]} /> */}
 					{/* {import.meta.env.DEV && <Perf position='bottom-right' />} */}
