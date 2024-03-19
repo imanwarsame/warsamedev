@@ -71,6 +71,7 @@ const lightTheme = createTheme({
 				},
 				body: {
 					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
+					cursor: 'wait', //This is for the splash screen
 				},
 				//Selection highlight colours
 				'::-moz-selection': {
@@ -153,6 +154,7 @@ const darkTheme = createTheme({
 				},
 				body: {
 					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
+					cursor: 'wait', //This is for the splash screen
 				},
 				//Selection highlight colours
 				'::-moz-selection': {

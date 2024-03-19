@@ -19,7 +19,7 @@ export default function Home() {
 					position: 'absolute',
 					top: '50%',
 					left: { xs: '10%', md: '2%' },
-					zIndex: 9999,
+					zIndex: 2,
 				}}
 			>
 				<Stack direction='column' spacing={1}>
