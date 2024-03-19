@@ -55,7 +55,7 @@ export default function MobileNavbar() {
 				overflow: 'hidden',
 				backgroundColor: theme.palette.secondary.main,
 				width: '100vw',
-				zIndex: 10,
+				zIndex: 3,
 				display: 'flex',
 				gap: '50px',
 				flexDirection: 'column',
