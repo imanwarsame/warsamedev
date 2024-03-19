@@ -70,7 +70,7 @@ export default function Splash() {
 				justifyContent: 'center',
 				position: 'fixed',
 				zIndex: 5,
-				backgroundColor: 'orange',
+				backgroundColor: '#071F19',
 				overflow: 'hidden',
 			}}
 		>

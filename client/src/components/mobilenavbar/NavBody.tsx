@@ -40,7 +40,7 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 
 	const translate = {
 		initial: {
-			y: '-100px',
+			y: '10vh',
 			opacity: 0,
 		},
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -51,7 +51,7 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 		}),
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		exit: (i: any[]) => ({
-			y: '-100px',
+			y: '10vh',
 			opacity: 0,
 			transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: i[1] },
 		}),
@@ -62,6 +62,7 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 		word.split('').forEach((char, i) => {
 			chars.push(
 				<motion.span
+					className={char + i}
 					custom={[i * 0.1, (word.length - i) * 0.01]}
 					variants={translate}
 					initial='initial'
@@ -97,6 +98,7 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 					// <Link key={`l_${index}`} href={href}>
 					<Button key={`l_${index}`} disableRipple>
 						<Typography
+							className={`l_${index}`}
 							onMouseOver={() => {
 								setSelectedLink({ isActive: true, index });
 							}}
@@ -125,7 +127,7 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 					sx={{ minWidth: 0, height: 40, width: 40 }}
 					disableRipple
 				>
-					<GitHubIcon color='primary' sx={{ fontSize: '40px' }} />
+					<GitHubIcon color='action' sx={{ fontSize: '40px' }} />
 				</IconButton>
 				<IconButton
 					size='medium'
@@ -136,7 +138,7 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 					sx={{ minWidth: 0, height: 40, width: 40 }}
 					disableRipple
 				>
-					<LinkedInIcon color='primary' sx={{ fontSize: '45px' }} />
+					<LinkedInIcon color='action' sx={{ fontSize: '45px' }} />
 				</IconButton>
 			</Stack>
 		</Box>

@@ -45,7 +45,7 @@ export default function Navbar() {
 					right: { xs: '15px', md: '20px' },
 					display: 'flex',
 					alignItems: 'center',
-					zIndex: 3,
+					zIndex: 4,
 				}}
 			>
 				<DarkModeToggle />
@@ -69,7 +69,7 @@ export default function Navbar() {
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
-					zIndex: 3,
+					zIndex: 4,
 					minWidth: 50,
 					height: 'auto',
 					top: { xs: '5px', md: '10px' },

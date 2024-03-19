@@ -46,6 +46,7 @@ export default function MobileNavbar() {
 
 	return (
 		<motion.div
+			className='mobile_navbar'
 			variants={height}
 			initial='initial'
 			animate='enter'
