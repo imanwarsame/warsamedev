@@ -1,4 +1,4 @@
-import { Hidden, Stack, useTheme } from '@mui/material';
+import { Hidden, Stack, useMediaQuery, useTheme } from '@mui/material';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
@@ -9,12 +9,16 @@ import MenuButton from './MenuButton';
 import { useState } from 'react';
 import MobileNavbar from '../mobilenavbar/MobileNavbar';
 import { AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
+	const theme = useTheme();
+	const navigate = useNavigate();
+	const location = useLocation();
 	const { darkMode } = useDevStore();
 	const [isOpen, setOpen] = useState(false);
-	const theme = useTheme();
-	const navigationHeaders = ['About', 'Projects', 'Experience', 'Contact', 'Articles'];
+	const lowerThanMd = useMediaQuery(theme.breakpoints.down('md'));
+	const currentLocation = location.pathname;
 
 	/**
 	 * The scrollToElement function scrolls to a specified element with a smooth animation using specified
@@ -31,7 +35,73 @@ export default function Navbar() {
 		});
 	};
 
-	console.log(isOpen);
+	/**
+	 * The function `handleRouteChange` navigates to a new route and closes the menu (for mobile).
+	 * @param {string} href - The `href` parameter in the `handleRouteChange` function is a string that
+	 * represents the URL of the route that the application will navigate to.
+	 */
+	const handleRouteChange = (href: string) => {
+		navigate(href);
+
+		if (lowerThanMd) {
+			setOpen(false);
+		}
+	};
+
+	const links = [
+		{
+			title: 'About',
+			action: async () => {
+				if (currentLocation !== '/') {
+					await handleRouteChange('/');
+					scrollToElement('about_element');
+				} else {
+					scrollToElement('about_element');
+				}
+			},
+		},
+		{
+			title: 'Projects',
+			action: async () => {
+				if (currentLocation !== '/') {
+					await handleRouteChange('/');
+					scrollToElement('projects_element');
+				} else {
+					scrollToElement('projects_element');
+				}
+			},
+		},
+		{
+			title: 'Experience',
+			action: async () => {
+				if (currentLocation !== '/') {
+					await handleRouteChange('/');
+					scrollToElement('experience_element');
+				} else {
+					scrollToElement('experience_element');
+				}
+			},
+		},
+		{
+			title: 'Contact',
+			action: async () => {
+				if (currentLocation !== '/') {
+					await handleRouteChange('/');
+					scrollToElement('contact_element');
+				} else {
+					scrollToElement('contact_element');
+				}
+			},
+		},
+		{
+			title: 'Articles',
+			action: () => {
+				if (currentLocation === '/') {
+					handleRouteChange('/articles');
+				}
+			},
+		},
+	];
 
 	return (
 		<>
@@ -86,14 +156,13 @@ export default function Navbar() {
 					onClick={() => scrollToElement('home_element')}
 				/>
 				<Hidden mdDown>
-					<NavigationLinks
-						links={navigationHeaders}
-						onClickHandler={(link) => scrollToElement(link.toLowerCase() + '_element')}
-					/>
+					<NavigationLinks links={links} />
 				</Hidden>
 			</Stack>
 			<Hidden mdUp>
-				<AnimatePresence mode='wait'>{isOpen && <MobileNavbar />}</AnimatePresence>
+				<AnimatePresence mode='wait'>
+					{isOpen && <MobileNavbar handleRouteChange={handleRouteChange} />}
+				</AnimatePresence>
 			</Hidden>
 		</>
 	);

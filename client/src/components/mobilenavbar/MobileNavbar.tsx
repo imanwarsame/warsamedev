@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import NavBody from './NavBody';
 import { useTheme } from '@mui/material';
 
-export default function MobileNavbar() {
+interface MobileNavbarProps {
+	handleRouteChange: (href: string) => void;
+}
+
+export default function MobileNavbar({ handleRouteChange }: MobileNavbarProps) {
 	const theme = useTheme();
 	const [selectedLink, setSelectedLink] = useState({ isActive: false, index: 0 });
 
@@ -63,7 +67,12 @@ export default function MobileNavbar() {
 				justifyContent: 'space-between',
 			}}
 		>
-			<NavBody links={links} selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
+			<NavBody
+				links={links}
+				selectedLink={selectedLink}
+				setSelectedLink={setSelectedLink}
+				handleRouteChange={handleRouteChange}
+			/>
 		</motion.div>
 	);
 }
