@@ -40,6 +40,8 @@ export default function Contact() {
 				component='div'
 				sx={{
 					height: '100lvh',
+					width: '100vw',
+					overflow: 'hidden',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',

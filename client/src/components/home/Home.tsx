@@ -2,8 +2,8 @@ import { Box } from '@mui/material';
 import About from '../about/About';
 import Contact from '../contact/Contact';
 import Experience from '../experience/Experience';
-import Portfolio from '../portfolio/Portfolio';
 import Blob from '../blob/Blob';
+import Gallery from '../portfolio/Gallery';
 
 export default function Home() {
 	return (
@@ -14,11 +14,15 @@ export default function Home() {
 				transform: 'translateZ(0)', //Enables hardware acceleration
 				bgcolor: 'background.default',
 				WebkitOverflowScrolling: 'touch',
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				overflow: 'hidden',
 			}}
 		>
 			<Blob />
 			<About />
-			<Portfolio />
+			<Gallery />
 			<Experience />
 			<Contact />
 		</Box>
