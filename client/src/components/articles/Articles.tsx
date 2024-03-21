@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export default function Articles() {
 	return (
@@ -10,10 +10,9 @@ export default function Articles() {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				textAlign: 'center',
 			}}
 		>
-			<p>404 page not found</p>
+			<Typography>This page is being constructed 🏗️</Typography>
 		</Box>
 	);
 }
