@@ -153,7 +153,13 @@ export default function Navbar() {
 					width={50}
 					style={{ top: 5, cursor: 'pointer' }}
 					aria-label='IW-letters-logo'
-					onClick={() => scrollToElement('home_element')}
+					onClick={() => {
+						if (currentLocation !== '/') {
+							handleRouteChange('/');
+						} else {
+							scrollToElement('home_element');
+						}
+					}}
 				/>
 				<Hidden mdDown>
 					<NavigationLinks links={links} />
