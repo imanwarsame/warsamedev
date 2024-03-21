@@ -1,15 +1,11 @@
 import { Box, ThemeProvider, CssBaseline } from '@mui/material';
-import Contact from './components/contact/Contact';
-import About from './components/about/About';
 import Navbar from './components/navbar/Navbar';
-import Experience from './components/experience/Experience';
-import Blob from './components/blob/Blob';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
-import Portfolio from './components/portfolio/Portfolio';
 import { useEffect, useState } from 'react';
 import Splash from './components/splash/Splash';
 import { AnimatePresence } from 'framer-motion';
+import Home from './components/home/Home';
 
 export default function App() {
 	const { darkMode } = useDevStore();
@@ -55,21 +51,7 @@ export default function App() {
 				sx={{ display: 'flex', WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}
 			>
 				<Navbar />
-				<Box
-					component='main'
-					sx={{
-						flexGrow: 1,
-						transform: 'translateZ(0)', //Enables hardware acceleration
-						bgcolor: 'background.default',
-						WebkitOverflowScrolling: 'touch',
-					}}
-				>
-					<Blob />
-					<About />
-					<Portfolio />
-					<Experience />
-					<Contact />
-				</Box>
+				<Home />
 			</Box>
 		</ThemeProvider>
 	);
