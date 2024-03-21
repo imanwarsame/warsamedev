@@ -16,9 +16,15 @@ interface NavBodyProps {
 		index: number;
 	};
 	setSelectedLink: (link: { isActive: boolean; index: number }) => void;
+	handleRouteChange: (href: string) => void;
 }
 
-export default function NavBody({ links, selectedLink, setSelectedLink }: NavBodyProps) {
+export default function NavBody({
+	links,
+	selectedLink,
+	setSelectedLink,
+	handleRouteChange,
+}: NavBodyProps) {
 	const theme = useTheme();
 
 	const blur = {
@@ -92,11 +98,8 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 			{links.map((link, index) => {
 				const { title, href } = link;
 
-				console.log(href);
-
 				return (
-					// <Link key={`l_${index}`} href={href}>
-					<Button key={`l_${index}`} disableRipple>
+					<Button key={`l_${index}`} onClick={() => handleRouteChange(href)} disableRipple>
 						<Typography
 							className={`l_${index}`}
 							onMouseOver={() => {
@@ -114,7 +117,6 @@ export default function NavBody({ links, selectedLink, setSelectedLink }: NavBod
 							{getChars(title)}
 						</Typography>
 					</Button>
-					// </Link>
 				);
 			})}
 			<Stack direction='row' spacing={2} sx={{ paddingTop: '20px' }}>

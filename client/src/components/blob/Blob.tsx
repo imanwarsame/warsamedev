@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { Box } from '@mui/material';
 import NoiseSphere from './NoiseSphere';
 import { Element } from 'react-scroll';
-import Home from '../home/Home';
+import Landing from '../landing/Landing';
 // import { OrbitControls } from '@react-three/drei';
 // import { Perf } from 'r3f-perf';
 
@@ -34,7 +34,7 @@ export default function Blob() {
 					<pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 					<NoiseSphere position={[0, 0, 0]} />
 				</Canvas>
-				<Home />
+				<Landing />
 			</Box>
 		</Element>
 	);

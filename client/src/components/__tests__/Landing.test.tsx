@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Home from '../home/Home';
+import Landing from '../landing/Landing';
 
-describe('Home component test', () => {
+describe('Landing component test', () => {
 	test('should render text', () => {
-		render(<Home />);
+		render(<Landing />);
 
 		expect(screen.getByText('Iman Warsame')).toBeDefined();
 	});
