@@ -14,7 +14,7 @@ export default function Blob() {
 				sx={{
 					position: 'relative',
 					height: '100svh',
-					width: '100%',
+					width: '100vw',
 					overflowX: 'hidden',
 					opacity: 0.9,
 				}}

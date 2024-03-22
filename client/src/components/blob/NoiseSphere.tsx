@@ -27,7 +27,7 @@ export default function NoiseSphere({
 	const sphereRef = useRef<THREE.Mesh>(null!);
 	const theme = useTheme();
 	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-	const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+	const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
 	const { darkMode } = useDevStore();
 
 	// // Use Leva controls

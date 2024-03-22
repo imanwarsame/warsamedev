@@ -14,7 +14,7 @@ export default function About() {
 					paddingTop: '50px',
 				}}
 			>
-				<Paper sx={{ width: '60vw', minHeight: '300px', padding: 3 }}>
+				<Paper sx={{ width: '60vw', padding: 5 }}>
 					<Stack direction='column'>
 						<Typography variant='h4' marginBottom={3}>
 							About
