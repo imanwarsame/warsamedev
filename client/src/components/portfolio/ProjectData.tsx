@@ -1,5 +1,6 @@
-import WarsameStudio from '../../assets/WarsameStudio.png';
-import WarsameDev from '../../assets/WarsameDev.png';
+import WarsameStudio from '../../assets/Projects/WarsameStudio.png';
+import WarsameDev from '../../assets/Projects/WarsameDev.png';
+import OpenDetail from '../../assets/Projects/OpenDetail.png';
 
 export const projects = [
 	{
@@ -19,5 +20,14 @@ export const projects = [
 		// description: 'Development portfolio',
 		// githubLink: 'https://warsame.dev/',
 		webLink: 'https://github.com/imanwarsame/warsamedev',
+	},
+	{
+		id: 3,
+		title1: 'open',
+		title2: 'detail',
+		imageUrl: OpenDetail,
+		// description: 'Development portfolio',
+		// githubLink: 'https://warsame.dev/',
+		webLink: 'https://github.com/imanwarsame/opendetail',
 	},
 ];
