@@ -16,7 +16,11 @@ export default function Gallery() {
 						flexItem
 					/>
 				}
-				sx={{ padding: 10, width: { xs: '90vw', md: '75vw' } }}
+				sx={{
+					padding: { xs: 3, md: 10 },
+					width: { xs: '90vw', md: '75vw' },
+					textAlign: 'start',
+				}}
 			>
 				<Typography>Featured projects</Typography>
 				{projects.map((item) => (
