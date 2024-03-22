@@ -1,21 +1,23 @@
 import { describe, expect, test } from 'vitest';
-import { render } from '@testing-library/react';
-import WarsameStudio from '../../assets/WarsameStudio.png';
-import Card from '../portfolio/Card/Card';
+import { render, screen } from '@testing-library/react';
+import WarsameStudio from '../../assets/Projects/WarsameStudio.png';
+import Project from '../portfolio/Project';
 
 const dummyData = {
 	id: 1,
-	title: 'Warsame Studio',
+	title1: 'Warsame',
+	title2: 'Studio',
 	imageUrl: WarsameStudio,
-	description: 'Architectural photography portfolio built using Next.JS and Typescript',
 	githubLink: 'https://github.com/imanwarsame/warsamestudio',
 	webLink: 'https://warsame.studio/',
 };
 
 describe('Portfolio component test', () => {
 	test('should render card', () => {
-		const card = render(<Card {...dummyData} key={dummyData.id}/>);
+		const card = render(<Project {...dummyData} key={dummyData.id} />);
 
 		expect(card).toBeTruthy();
+		expect(screen.getByText('Warsame')).toBeDefined();
+		expect(screen.getByText('Studio')).toBeDefined();
 	});
 });
