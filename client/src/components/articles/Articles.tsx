@@ -1,5 +1,7 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
+import { articles } from './ArticlesData';
+import ArticleCard from './ArticleCard';
 
 export default function Articles() {
 	return (
@@ -12,11 +14,20 @@ export default function Articles() {
 				width: '100vw',
 				height: '100vh',
 				display: 'flex',
-				alignItems: 'center',
+				alignItems: 'flex-start',
 				justifyContent: 'center',
 			}}
 		>
-			<Typography>This page is being constructed 🏗️</Typography>
+			<Stack direction='column' spacing={2} paddingTop='10vh'>
+				{articles.map((article) => (
+					<ArticleCard
+						key={article.id}
+						title={article.title.toString()}
+						date={article.date.format('Do MMM YYYY').toString()}
+						url={article.url.toString()}
+					/>
+				))}
+			</Stack>
 		</Box>
 	);
 }
