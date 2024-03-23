@@ -9,7 +9,7 @@ export default function Articles() {
 			component={motion.div}
 			initial={{ opacity: 0 }} //Initial state (invisible)
 			animate={{ opacity: 1 }} //Final state (fully visible)
-			transition={{ duration: 1 }} //Duration of the fade-in effect
+			transition={{ duration: 1, ease: 'easeInOut' }} //Duration of the fade-in effect
 			sx={{
 				width: '100vw',
 				height: '100vh',

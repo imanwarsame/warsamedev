@@ -96,7 +96,7 @@ export default function Navbar() {
 		{
 			title: 'Articles',
 			action: () => {
-				if (currentLocation === '/') {
+				if (currentLocation !== '/articles') {
 					handleRouteChange('/articles');
 				}
 			},

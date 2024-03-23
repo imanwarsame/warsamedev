@@ -8,6 +8,8 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './components/home/Home';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Articles from './components/articles/Articles';
+import { articles } from './components/articles/ArticlesData';
+import MDPage from './components/articles/MDPage';
 
 export default function App() {
 	const { darkMode } = useDevStore();
@@ -64,6 +66,13 @@ export default function App() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/articles' element={<Articles />} />
+					{articles.map((article) => (
+						<Route
+							key={article.id}
+							path={article.url}
+							element={<MDPage fileName={article.mdFile} />}
+						/>
+					))}
 				</Routes>
 			</Box>
 		</ThemeProvider>
