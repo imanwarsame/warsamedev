@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import NavBody from './NavBody';
 import { useTheme } from '@mui/material';
+import NavBody from './NavBody';
 
 interface MobileNavbarProps {
 	handleRouteChange: (href: string) => void;

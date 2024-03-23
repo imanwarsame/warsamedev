@@ -1,4 +1,4 @@
-import { Box, ThemeProvider, CssBaseline } from '@mui/material';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import Navbar from './components/navbar/Navbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
@@ -59,22 +59,17 @@ export default function App() {
 				{location.pathname === '/' && loading && <Splash />}
 			</AnimatePresence>
 			<Navbar />
-			<Box
-				component='div'
-				sx={{ display: 'flex', WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}
-			>
-				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/articles' element={<Articles />} />
-					{articles.map((article) => (
-						<Route
-							key={article.id}
-							path={article.url}
-							element={<MDPage fileName={article.mdFile} />}
-						/>
-					))}
-				</Routes>
-			</Box>
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/articles' element={<Articles />} />
+				{articles.map((article) => (
+					<Route
+						key={article.id}
+						path={article.url}
+						element={<MDPage fileName={article.mdFile} />}
+					/>
+				))}
+			</Routes>
 		</ThemeProvider>
 	);
 }
