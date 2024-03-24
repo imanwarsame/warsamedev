@@ -1,4 +1,4 @@
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { ThemeProvider, CssBaseline, Hidden } from '@mui/material';
 import Navbar from './components/navbar/Navbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
@@ -10,6 +10,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Articles from './components/articles/Articles';
 import { articles } from './components/articles/ArticlesData';
 import MDPage from './components/articles/MDPage';
+import MobileNavbar from './components/mobilenavbar/MobileNavbar';
 
 export default function App() {
 	const { darkMode } = useDevStore();
@@ -58,7 +59,13 @@ export default function App() {
 			<AnimatePresence mode='wait'>
 				{location.pathname === '/' && loading && <Splash />}
 			</AnimatePresence>
-			<Navbar />
+			<MobileNavbar />
+			{/* <Hidden mdUp>
+				<MobileNavbar />
+			</Hidden> */}
+			<Hidden mdDown>
+				<Navbar />
+			</Hidden>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/articles' element={<Articles />} />

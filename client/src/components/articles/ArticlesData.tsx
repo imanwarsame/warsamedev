@@ -5,7 +5,7 @@ export const articles = [
 	{
 		id: uuidv4(),
 		title: 'AI and failure',
-		date: moment('2023-12-28'),
+		date: moment('2024-03-23'),
 		url: '/articles/ai-and-failure',
 		mdFile: 'AIandFailure',
 	},

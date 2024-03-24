@@ -1,23 +1,18 @@
-import { Hidden, Stack, useMediaQuery, useTheme } from '@mui/material';
+import { AppBar, Stack, Toolbar, useTheme } from '@mui/material';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
 import { useDevStore } from '../../store';
 import NavigationLinks from './NavigationLinks';
 import DarkModeToggle from '../darkmode/DarkModeToggle';
-import MenuButton from './MenuButton';
-import { useState } from 'react';
-import MobileNavbar from '../mobilenavbar/MobileNavbar';
-import { AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
 	const theme = useTheme();
+	const { darkMode } = useDevStore();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { darkMode } = useDevStore();
-	const [isOpen, setOpen] = useState(false);
-	const lowerThanMd = useMediaQuery(theme.breakpoints.down('md'));
 	const currentLocation = location.pathname;
 
 	/**
@@ -42,10 +37,6 @@ export default function Navbar() {
 	 */
 	const handleRouteChange = (href: string) => {
 		navigate(href);
-
-		if (lowerThanMd) {
-			setOpen(false);
-		}
 	};
 
 	const links = [
@@ -104,72 +95,48 @@ export default function Navbar() {
 	];
 
 	return (
-		<>
-			<Stack
-				direction='row'
-				spacing={2}
-				aria-label='top-right-menu'
+		<AppBar
+			position='fixed'
+			component={motion.div}
+			sx={{
+				boxShadow: 0,
+				borderRadius: 0,
+				backgroundImage:
+					currentLocation === '/'
+						? 'none'
+						: `radial-gradient(rgba(0, 0, 0, 0) 1px, ${theme.palette.background.default} 1px)`,
+				backgroundSize: currentLocation === '/' ? 'none' : '4px 4px',
+				backgroundColor: 'transparent',
+				backdropFilter: 'blur(3px)',
+				zIndex: 2,
+			}}
+		>
+			<Toolbar
 				sx={{
-					position: 'fixed',
-					top: { xs: '10px', md: '20px' },
-					right: { xs: '15px', md: '20px' },
 					display: 'flex',
 					alignItems: 'center',
-					zIndex: 4,
+					justifyContent: 'space-between',
 				}}
 			>
-				<DarkModeToggle />
-				<Hidden mdUp>
-					<MenuButton
-						isOpen={isOpen}
-						onClick={() => setOpen(!isOpen)}
-						strokeWidth='6'
-						color={theme.palette.text.primary}
-						lineProps={{ strokeLinecap: 'round' }}
-						transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-						width='24'
-						height='24'
+				<Stack direction='row' spacing={1}>
+					<img
+						src={darkMode ? LogoDark : LogoLight}
+						height={50}
+						width={50}
+						style={{ top: 5, cursor: 'pointer' }}
+						aria-label='IW-letters-logo'
+						onClick={() => {
+							if (currentLocation !== '/') {
+								handleRouteChange('/');
+							} else {
+								scrollToElement('home_element');
+							}
+						}}
 					/>
-				</Hidden>
-			</Stack>
-			<Stack
-				direction='row'
-				spacing={2}
-				sx={{
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-					zIndex: 4,
-					minWidth: 50,
-					height: 'auto',
-					top: { xs: '5px', md: '10px' },
-					left: '1%',
-					position: 'fixed',
-				}}
-			>
-				<img
-					src={darkMode ? LogoDark : LogoLight}
-					height={50}
-					width={50}
-					style={{ top: 5, cursor: 'pointer' }}
-					aria-label='IW-letters-logo'
-					onClick={() => {
-						if (currentLocation !== '/') {
-							handleRouteChange('/');
-						} else {
-							scrollToElement('home_element');
-						}
-					}}
-				/>
-				<Hidden mdDown>
 					<NavigationLinks links={links} />
-				</Hidden>
-			</Stack>
-			<Hidden mdUp>
-				<AnimatePresence mode='wait'>
-					{isOpen && <MobileNavbar handleRouteChange={handleRouteChange} />}
-				</AnimatePresence>
-			</Hidden>
-		</>
+				</Stack>
+				<DarkModeToggle />
+			</Toolbar>
+		</AppBar>
 	);
 }

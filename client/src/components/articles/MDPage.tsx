@@ -23,13 +23,7 @@ export default function MDPage({ fileName }: { fileName: string }) {
 	}, []);
 
 	return (
-		<Box
-			component={motion.div}
-			initial={{ opacity: 0 }} //Initial state (invisible)
-			animate={{ opacity: 1 }} //Final state (fully visible)
-			transition={{ duration: 1, ease: 'easeInOut' }} //Duration of the fade-in effect
-			sx={{ paddingX: 10, paddingTop: '7vh' }}
-		>
+		<>
 			<Box
 				component={motion.div}
 				sx={{
@@ -40,10 +34,19 @@ export default function MDPage({ fileName }: { fileName: string }) {
 					height: '10px',
 					backgroundColor: theme.palette.secondary.main,
 					transformOrigin: '0%',
+					zIndex: 3,
 				}}
 				style={{ scaleX }}
 			></Box>
-			<ReactMarkdown>{content}</ReactMarkdown>
-		</Box>
+			<Box
+				component={motion.div}
+				initial={{ opacity: 0 }} //Initial state (invisible)
+				animate={{ opacity: 1 }} //Final state (fully visible)
+				transition={{ duration: 1, ease: 'easeInOut' }} //Duration of the fade-in effect
+				sx={{ paddingX: 10, paddingTop: '7vh' }}
+			>
+				<ReactMarkdown>{content}</ReactMarkdown>
+			</Box>
+		</>
 	);
 }

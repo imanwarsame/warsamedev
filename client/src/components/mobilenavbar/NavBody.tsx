@@ -1,8 +1,9 @@
 import { Box, Button, Typography, IconButton, Stack, useTheme } from '@mui/material';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { JSX } from 'react/jsx-runtime';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useEffect } from 'react';
 
 interface LinkType {
 	title: string;
@@ -17,6 +18,7 @@ interface NavBodyProps {
 	};
 	setSelectedLink: (link: { isActive: boolean; index: number }) => void;
 	handleRouteChange: (href: string) => void;
+	isOpen: boolean;
 }
 
 export default function NavBody({
@@ -24,8 +26,23 @@ export default function NavBody({
 	selectedLink,
 	setSelectedLink,
 	handleRouteChange,
+	isOpen,
 }: NavBodyProps) {
 	const theme = useTheme();
+
+	useEffect(() => {
+		//Disable scrolling on mount
+		if (isOpen) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+
+		//Re-enable scrolling on unmount
+		return () => {
+			document.body.style.overflow = 'auto';
+		};
+	}, [isOpen]); //Run only on component mount and unmount
 
 	const blur = {
 		initial: {
@@ -63,6 +80,22 @@ export default function NavBody({
 		}),
 	};
 
+	const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
+
+	const height = {
+		initial: {
+			height: 0,
+		},
+		enter: {
+			height: '100vh',
+			transition,
+		},
+		exit: {
+			height: 0,
+			transition,
+		},
+	};
+
 	const getChars = (word: string) => {
 		const chars: JSX.Element[] = [];
 		word.split('').forEach((char, i) => {
@@ -84,65 +117,90 @@ export default function NavBody({
 	};
 
 	return (
-		<Box
-			component='div'
-			sx={{
-				display: 'flex',
-				flexWrap: 'wrap',
-				flexDirection: 'column',
-				alignItems: 'center',
-				justifyContent: 'center',
-				paddingTop: '100px',
-			}}
-		>
-			{links.map((link, index) => {
-				const { title, href } = link;
+		<AnimatePresence mode='wait'>
+			{isOpen && (
+				<Box
+					component={motion.div}
+					variants={height}
+					initial='initial'
+					animate='enter'
+					exit='exit'
+					style={{
+						position: 'fixed',
+						overflow: 'hidden',
+						backgroundColor: theme.palette.secondary.main,
+						width: '100vw',
+						zIndex: 1,
+						display: 'flex',
+						gap: '50px',
+						flexDirection: 'column',
+						justifyContent: 'space-between',
+					}}
+				>
+					<Box
+						component='div'
+						sx={{
+							display: 'flex',
+							flexWrap: 'wrap',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center',
+							paddingTop: '100px',
+						}}
+					>
+						{links.map((link, index) => {
+							const { title, href } = link;
 
-				return (
-					<Button key={`l_${index}`} onClick={() => handleRouteChange(href)} disableRipple>
-						<Typography
-							className={`l_${index}`}
-							onMouseOver={() => {
-								setSelectedLink({ isActive: true, index });
-							}}
-							onMouseLeave={() => {
-								setSelectedLink({ isActive: false, index });
-							}}
-							variants={blur}
-							animate={selectedLink.isActive && selectedLink.index != index ? 'open' : 'closed'}
-							variant='h2'
-							color={theme.palette.text.primary}
-							component={motion.p}
-						>
-							{getChars(title)}
-						</Typography>
-					</Button>
-				);
-			})}
-			<Stack direction='row' spacing={2} sx={{ paddingTop: '20px' }}>
-				<IconButton
-					size='large'
-					href='https://github.com/imanwarsame'
-					target='_blank'
-					rel='noopener noreferrer'
-					aria-label='Silhoutte of an octopus cat hybrid'
-					sx={{ minWidth: 0, height: 40, width: 40 }}
-					disableRipple
-				>
-					<GitHubIcon color='action' sx={{ fontSize: '40px' }} />
-				</IconButton>
-				<IconButton
-					size='medium'
-					href='https://www.linkedin.com/in/imanwarsame/'
-					target='_blank'
-					rel='noopener noreferrer'
-					aria-label='The letters i and n representing the LinkedIn logo'
-					sx={{ minWidth: 0, height: 40, width: 40 }}
-					disableRipple
-				>
-					<LinkedInIcon color='action' sx={{ fontSize: '45px' }} />
-				</IconButton>
-			</Stack>
-		</Box>
+							return (
+								<Button key={`l_${index}`} onClick={() => handleRouteChange(href)} disableRipple>
+									<Typography
+										className={`l_${index}`}
+										onMouseOver={() => {
+											setSelectedLink({ isActive: true, index });
+										}}
+										onMouseLeave={() => {
+											setSelectedLink({ isActive: false, index });
+										}}
+										variants={blur}
+										animate={
+											selectedLink.isActive && selectedLink.index != index ? 'open' : 'closed'
+										}
+										variant='h2'
+										color={theme.palette.text.primary}
+										component={motion.p}
+									>
+										{getChars(title)}
+									</Typography>
+								</Button>
+							);
+						})}
+						<Stack direction='row' spacing={2} sx={{ paddingTop: '20px' }}>
+							<IconButton
+								size='large'
+								href='https://github.com/imanwarsame'
+								target='_blank'
+								rel='noopener noreferrer'
+								aria-label='Silhoutte of an octopus cat hybrid'
+								sx={{ minWidth: 0, height: 40, width: 40 }}
+								disableRipple
+							>
+								<GitHubIcon color='action' sx={{ fontSize: '40px' }} />
+							</IconButton>
+							<IconButton
+								size='medium'
+								href='https://www.linkedin.com/in/imanwarsame/'
+								target='_blank'
+								rel='noopener noreferrer'
+								aria-label='The letters i and n representing the LinkedIn logo'
+								sx={{ minWidth: 0, height: 40, width: 40 }}
+								disableRipple
+							>
+								<LinkedInIcon color='action' sx={{ fontSize: '45px' }} />
+							</IconButton>
+						</Stack>
+					</Box>
+				</Box>
+			)}
+		</AnimatePresence>
 	);
 }
