@@ -59,10 +59,9 @@ export default function App() {
 			<AnimatePresence mode='wait'>
 				{location.pathname === '/' && loading && <Splash />}
 			</AnimatePresence>
-			<MobileNavbar />
-			{/* <Hidden mdUp>
+			<Hidden mdUp>
 				<MobileNavbar />
-			</Hidden> */}
+			</Hidden>
 			<Hidden mdDown>
 				<Navbar />
 			</Hidden>
