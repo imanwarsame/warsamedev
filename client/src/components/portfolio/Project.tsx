@@ -58,7 +58,7 @@ export default function Project(data: ProjectData) {
 				<img src={data.imageUrl} style={{ width: '10vw' }}></img>
 			</Box>
 
-			<Typography sx={{ marginLeft: '0.75vw' }} variant='h4'>
+			<Typography sx={{ marginLeft: '0vw' }} variant='h4'>
 				{data.title2}
 			</Typography>
 		</Box>
