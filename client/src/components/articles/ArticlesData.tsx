@@ -9,4 +9,11 @@ export const articles = [
 		url: '/articles/ai-and-failure',
 		mdFile: 'AIandFailure',
 	},
+	{
+		id: uuidv4(),
+		title: 'Open Source Software in the AECO Industry',
+		date: moment('2024-06-01'),
+		url: '/articles/oss-in-aeco',
+		mdFile: 'OSS',
+	},
 ];
