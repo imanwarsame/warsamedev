@@ -2,8 +2,12 @@ import { Box, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import { articles } from './ArticlesData';
 import ArticleCard from './ArticleCard';
+import moment from 'moment';
 
 export default function Articles() {
+	//Sorting the articles by date in descending order (most recent first)
+	const sortedArticles = articles.sort((a, b) => moment(b.date).diff(moment(a.date)));
+
 	return (
 		<Box
 			component={motion.div}
@@ -19,7 +23,7 @@ export default function Articles() {
 			}}
 		>
 			<Stack direction='column' spacing={2} paddingTop='10vh'>
-				{articles.map((article) => (
+				{sortedArticles.map((article) => (
 					<ArticleCard
 						key={article.id}
 						title={article.title.toString()}
