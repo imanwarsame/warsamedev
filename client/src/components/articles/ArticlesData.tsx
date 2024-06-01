@@ -15,5 +15,5 @@ export const articles = [
 		date: moment('2024-06-01'),
 		url: '/articles/oss-in-aeco',
 		mdFile: 'OSS',
-	},
+	}
 ];
