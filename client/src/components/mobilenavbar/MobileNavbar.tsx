@@ -63,13 +63,9 @@ export default function MobileNavbar() {
 				sx={{
 					boxShadow: 0,
 					borderRadius: 0,
-					backgroundImage:
-						currentLocation === '/' || isOpen
-							? 'none'
-							: `radial-gradient(rgba(0, 0, 0, 0) 1px, ${theme.palette.background.default} 1px)`,
-					backgroundSize: currentLocation === '/' || isOpen ? 'none' : '4px 4px',
+					backgroundImage: 'none',
 					backgroundColor: 'transparent',
-					backdropFilter: 'blur(3px)',
+					backdropFilter: 'blur(5px)',
 					zIndex: 2,
 				}}
 			>

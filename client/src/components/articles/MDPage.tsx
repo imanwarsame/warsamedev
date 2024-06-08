@@ -8,7 +8,7 @@ export default function MDPage({ fileName }: { fileName: string }) {
 	const [content, setContent] = useState('');
 	const { scrollYProgress } = useScroll();
 
-	const scaleX = useSpring(scrollYProgress, {
+	const scaleY = useSpring(scrollYProgress, {
 		stiffness: 100,
 		damping: 30,
 		restDelta: 0.001,
@@ -20,30 +20,45 @@ export default function MDPage({ fileName }: { fileName: string }) {
 			.then((res) => res.text())
 			.then((text) => setContent(text))
 			.catch((error) => console.error('Error fetching file:', error));
+
+		window.scrollTo(0, 5);
 	}, []);
 
 	return (
 		<>
 			<Box
-				component={motion.div}
+				component='div'
 				sx={{
 					position: 'fixed',
-					top: 0,
-					left: 0,
-					right: 0,
-					height: '10px',
-					backgroundColor: theme.palette.secondary.main,
-					transformOrigin: '0%',
+					top: '25vh',
+					left: 20,
+					width: '5px',
+					height: '50vh',
+					backgroundColor: theme.palette.background.default,
 					zIndex: 3,
+					border: '0.1px solid grey',
+					borderRadius: '8px',
 				}}
-				style={{ scaleX }}
-			></Box>
+			>
+				<Box
+					component={motion.div}
+					sx={{
+						width: '100%',
+						height: '100%',
+						backgroundColor: theme.palette.secondary.main,
+						transformOrigin: 'top',
+						zIndex: 2,
+						borderRadius: '8px',
+					}}
+					style={{ scaleY }}
+				/>
+			</Box>
 			<Box
 				component={motion.div}
 				initial={{ opacity: 0 }} //Initial state (invisible)
 				animate={{ opacity: 1 }} //Final state (fully visible)
 				transition={{ duration: 1, ease: 'easeInOut' }} //Duration of the fade-in effect
-				sx={{ paddingX: 10, paddingTop: '7vh' }}
+				sx={{ paddingX: 10, paddingY: '7vh' }}
 			>
 				<ReactMarkdown>{content}</ReactMarkdown>
 			</Box>

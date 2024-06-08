@@ -100,9 +100,9 @@ export default function Navbar() {
 			sx={{
 				boxShadow: 0,
 				borderRadius: 0,
-				backgroundImage:'none',
+				backgroundImage: 'none',
 				backgroundColor: 'transparent',
-				backdropFilter: 'blur(20px)',
+				backdropFilter: 'blur(5px)',
 				zIndex: 2,
 			}}
 		>
