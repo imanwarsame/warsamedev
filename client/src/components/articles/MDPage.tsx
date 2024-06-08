@@ -45,7 +45,7 @@ export default function MDPage({ fileName }: { fileName: string }) {
 					sx={{
 						width: '100%',
 						height: '100%',
-						backgroundColor: theme.palette.secondary.main,
+						backgroundColor: theme.palette.primary.main,
 						transformOrigin: 'top',
 						zIndex: 2,
 						borderRadius: '8px',
