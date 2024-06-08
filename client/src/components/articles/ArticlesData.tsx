@@ -4,7 +4,7 @@ import moment from 'moment';
 export const articles = [
 	{
 		id: uuidv4(),
-		title: 'AI and failure',
+		title: 'AI and Failure',
 		date: moment('2024-03-23'),
 		url: '/articles/ai-and-failure',
 		mdFile: 'AIandFailure',
@@ -15,5 +15,12 @@ export const articles = [
 		date: moment('2024-06-01'),
 		url: '/articles/oss-in-aeco',
 		mdFile: 'OSS',
+	},
+	{
+		id: uuidv4(),
+		title: 'Navigating Problem Validation in AECO',
+		date: moment('2024-06-09'),
+		url: '/articles/problem-validation',
+		mdFile: 'MumTest',
 	}
 ];

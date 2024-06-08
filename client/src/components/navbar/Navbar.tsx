@@ -1,4 +1,4 @@
-import { AppBar, Stack, Toolbar, useTheme } from '@mui/material';
+import { AppBar, Stack, Toolbar } from '@mui/material';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
@@ -9,11 +9,10 @@ import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
-	const theme = useTheme();
-	const { darkMode } = useDevStore();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const currentLocation = location.pathname;
+	const { darkMode } = useDevStore();
 
 	/**
 	 * The scrollToElement function scrolls to a specified element with a smooth animation using specified
@@ -101,13 +100,9 @@ export default function Navbar() {
 			sx={{
 				boxShadow: 0,
 				borderRadius: 0,
-				backgroundImage:
-					currentLocation === '/'
-						? 'none'
-						: `radial-gradient(rgba(0, 0, 0, 0) 1px, ${theme.palette.background.default} 1px)`,
-				backgroundSize: currentLocation === '/' ? 'none' : '4px 4px',
+				backgroundImage:'none',
 				backgroundColor: 'transparent',
-				backdropFilter: 'blur(3px)',
+				backdropFilter: 'blur(20px)',
 				zIndex: 2,
 			}}
 		>
