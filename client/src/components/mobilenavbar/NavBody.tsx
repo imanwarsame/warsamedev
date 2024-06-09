@@ -130,7 +130,7 @@ export default function NavBody({
 						overflow: 'hidden',
 						backgroundColor: theme.palette.secondary.main,
 						width: '100vw',
-						zIndex: 1,
+						zIndex: 4,
 						display: 'flex',
 						gap: '50px',
 						flexDirection: 'column',

@@ -66,7 +66,7 @@ export default function MobileNavbar() {
 					backgroundImage: 'none',
 					backgroundColor: 'transparent',
 					backdropFilter: 'blur(5px)',
-					zIndex: 2,
+					zIndex: 5,
 				}}
 			>
 				<Toolbar
