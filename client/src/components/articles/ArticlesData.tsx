@@ -22,5 +22,12 @@ export const articles = [
 		date: moment('2024-06-09'),
 		url: '/articles/problem-validation',
 		mdFile: 'MumTest',
-	}
+	},
+	{
+		id: uuidv4(),
+		title: 'Mastering the art of Festina Lente in Project Management',
+		date: moment('2024-06-23'),
+		url: '/articles/festina-lente-project-management',
+		mdFile: 'FestinaLente',
+	},
 ];
