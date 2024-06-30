@@ -30,4 +30,11 @@ export const articles = [
 		url: '/articles/festina-lente-project-management',
 		mdFile: 'FestinaLente',
 	},
+	{
+		id: uuidv4(),
+		title: 'Unlocking Innovation in the AECO Sector: Rethinking Incentives',
+		date: moment('2024-06-30'),
+		url: '/articles/value-based-pricing',
+		mdFile: 'ValueBasedPricing',
+	},
 ];
