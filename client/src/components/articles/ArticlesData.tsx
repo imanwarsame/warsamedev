@@ -37,4 +37,11 @@ export const articles = [
 		url: '/articles/value-based-pricing',
 		mdFile: 'ValueBasedPricing',
 	},
+	{
+		id: uuidv4(),
+		title: 'Setting up Visual Studio Code with Python',
+		date: moment('2024-08-17'),
+		url: '/articles/setting-up-vs-code-and-python',
+		mdFile: 'SettingUpPythonInVSCode',
+	},
 ];
