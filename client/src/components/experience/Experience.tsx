@@ -28,6 +28,26 @@ export default function Experience() {
 			>
 				<Timeline position='alternate'>
 					<TimelineItem>
+						<TimelineOppositeContent sx={{ m: 'auto 0' }} variant='body2' color='text.secondary'>
+							September 2023
+						</TimelineOppositeContent>
+						<TimelineSeparator>
+							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+							<TimelineDot color='primary' variant='outlined'>
+								<WorkOutlineOutlinedIcon />
+							</TimelineDot>
+							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+						</TimelineSeparator>
+						<TimelineContent sx={{ py: '12px', px: 2 }}>
+							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
+								Chartered Engineer (CEng)
+							</Typography>
+							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
+								Institution of Civil Engineers
+							</Typography>
+						</TimelineContent>
+					</TimelineItem>
+					<TimelineItem>
 						<TimelineOppositeContent
 							sx={{ m: 'auto 0' }}
 							align='right'
