@@ -1,8 +1,7 @@
-import { Box, Button, Typography, IconButton, Stack, useTheme } from '@mui/material';
+import { Box, Button, Text, ActionIcon, Stack, useMantineTheme } from '@mantine/core';
 import { AnimatePresence, motion } from 'framer-motion';
 import { JSX } from 'react/jsx-runtime';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
 import { useEffect } from 'react';
 
 interface LinkType {
@@ -28,7 +27,7 @@ export default function NavBody({
 	handleRouteChange,
 	isOpen,
 }: NavBodyProps) {
-	const theme = useTheme();
+	const theme = useMantineTheme();
 
 	useEffect(() => {
 		//Disable scrolling on mount
@@ -128,7 +127,7 @@ export default function NavBody({
 					style={{
 						position: 'fixed',
 						overflow: 'hidden',
-						backgroundColor: theme.palette.secondary.main,
+						backgroundColor: theme.colors.gray[1],
 						width: '100vw',
 						zIndex: 4,
 						display: 'flex',
@@ -138,8 +137,7 @@ export default function NavBody({
 					}}
 				>
 					<Box
-						component='div'
-						sx={{
+						style={{
 							display: 'flex',
 							flexWrap: 'wrap',
 							flexDirection: 'column',
@@ -152,8 +150,13 @@ export default function NavBody({
 							const { title, href } = link;
 
 							return (
-								<Button key={`l_${index}`} onClick={() => handleRouteChange(href)} disableRipple>
-									<Typography
+								<Button 
+									key={`l_${index}`} 
+									onClick={() => handleRouteChange(href)} 
+									variant="subtle"
+									style={{ background: 'none' }}
+								>
+									<Text
 										className={`l_${index}`}
 										onMouseOver={() => {
 											setSelectedLink({ isActive: true, index });
@@ -165,38 +168,40 @@ export default function NavBody({
 										animate={
 											selectedLink.isActive && selectedLink.index != index ? 'open' : 'closed'
 										}
-										variant='h2'
-										color={theme.palette.text.primary}
+										size="xl"
+										c={theme.colors.dark[9]}
 										component={motion.p}
 									>
 										{getChars(title)}
-									</Typography>
+									</Text>
 								</Button>
 							);
 						})}
-						<Stack direction='row' spacing={2} sx={{ paddingTop: '20px' }}>
-							<IconButton
-								size='large'
-								href='https://github.com/imanwarsame'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='Silhoutte of an octopus cat hybrid'
-								sx={{ minWidth: 0, height: 40, width: 40 }}
-								disableRipple
-							>
-								<GitHubIcon color='action' sx={{ fontSize: '40px' }} />
-							</IconButton>
-							<IconButton
-								size='medium'
-								href='https://www.linkedin.com/in/imanwarsame/'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='The letters i and n representing the LinkedIn logo'
-								sx={{ minWidth: 0, height: 40, width: 40 }}
-								disableRipple
-							>
-								<LinkedInIcon color='action' sx={{ fontSize: '45px' }} />
-							</IconButton>
+						<Stack style={{ paddingTop: '20px' }}>
+							<Box style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+								<ActionIcon
+									component="a"
+									size="lg"
+									href="https://github.com/imanwarsame"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Silhoutte of an octopus cat hybrid"
+									variant="subtle"
+								>
+									<IconBrandGithub size={32} color={theme.colors.gray[6]} />
+								</ActionIcon>
+								<ActionIcon
+									component="a"
+									size="lg"
+									href="https://www.linkedin.com/in/imanwarsame/"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="The letters i and n representing the LinkedIn logo"
+									variant="subtle"
+								>
+									<IconBrandLinkedin size={36} color={theme.colors.gray[6]} />
+								</ActionIcon>
+							</Box>
 						</Stack>
 					</Box>
 				</Box>

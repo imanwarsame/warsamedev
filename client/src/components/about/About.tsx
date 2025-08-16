@@ -1,35 +1,37 @@
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Title, Text } from '@mantine/core';
 import { Element } from 'react-scroll';
 
 export default function About() {
 	return (
 		<Element name='about_element'>
 			<Box
-				component='div'
-				sx={{
+				style={{
+					width: '100%',
 					height: '100svh',
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
 					paddingTop: '50px',
+					paddingLeft: '20px',
+					paddingRight: '20px',
 				}}
 			>
-				<Paper sx={{ width: '60vw', padding: 5 }}>
-					<Stack direction='column'>
-						<Typography variant='h4' marginBottom={3}>
+				<Paper p="xl" shadow="sm" radius="md" style={{ width: '100%', maxWidth: '1200px' }}>
+					<Stack gap="md">
+						<Title order={2} mb="lg">
 							About
-						</Typography>
-						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
+						</Title>
+						<Text size="md">
 							Hi! My name is Iman, I&apos;m a senior software and civil engineer at Ramboll.
-						</Typography>
-						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
+						</Text>
+						<Text size="md">
 							I have proven expertise in managing and implementing software solutions both in web
 							and desktop development.
-						</Typography>
-						<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
+						</Text>
+						<Text size="md">
 							I am also national lead for digital transformation for the Association for
 							Consultancy and Engineering Emerging Professionals and founder of Warsame Studio.
-						</Typography>
+						</Text>
 					</Stack>
 				</Paper>
 			</Box>

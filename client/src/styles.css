@@ -1,0 +1,63 @@
+/* Mantine CSS import */
+@import '@mantine/core/styles.css';
+@import '@mantine/notifications/styles.css';
+@import '@mantine/code-highlight/styles.css';
+@import '@mantine/carousel/styles.css';
+@import '@mantine/dates/styles.css';
+@import '@mantine/dropzone/styles.css';
+@import '@mantine/spotlight/styles.css';
+@import '@mantine/nprogress/styles.css';
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--mantine-color-body);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--mantine-color-dimmed);
+	border-radius: 20px;
+	border: 4px solid transparent;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--mantine-color-primary-filled);
+	background-clip: content-box;
+}
+
+/* Global styles */
+html {
+	-webkit-overflow-scrolling: touch;
+}
+
+body {
+	-webkit-tap-highlight-color: transparent;
+	cursor: wait; /* For splash screen */
+}
+
+/* Selection highlight */
+::selection {
+	background: var(--mantine-color-green-3);
+}
+
+::-moz-selection {
+	background: var(--mantine-color-green-3);
+}
+
+/* Dark theme scrollbar overrides */
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-track {
+	background: var(--mantine-color-dark-7);
+}
+
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb {
+	background: var(--mantine-color-dark-4);
+}
+
+[data-mantine-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover {
+	background: var(--mantine-color-green-4);
+	background-clip: content-box;
+}

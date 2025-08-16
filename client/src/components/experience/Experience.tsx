@@ -1,160 +1,142 @@
-import {
-	Timeline,
-	TimelineItem,
-	TimelineSeparator,
-	TimelineDot,
-	TimelineConnector,
-	TimelineContent,
-	TimelineOppositeContent,
-} from '@mui/lab';
-import { Box, Typography } from '@mui/material';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import { Box, Stack, Text, Title } from '@mantine/core';
+import { IconBriefcase, IconSchool } from '@tabler/icons-react';
 import { Element } from 'react-scroll';
+
+const timelineData = [
+	{
+		date: 'September 2023',
+		title: 'Chartered Engineer (CEng)',
+		company: 'Institution of Civil Engineers',
+		icon: IconBriefcase,
+		isRight: false
+	},
+	{
+		date: 'June 2023',
+		title: 'Senior Engineer',
+		company: 'Ramboll',
+		icon: IconBriefcase,
+		isRight: true
+	},
+	{
+		date: 'June 2021',
+		title: 'Engineer',
+		company: 'Ramboll',
+		icon: IconBriefcase,
+		isRight: false
+	},
+	{
+		date: 'September 2019',
+		title: 'Graduate Engineer',
+		company: 'Ramboll',
+		icon: IconBriefcase,
+		isRight: true
+	},
+	{
+		date: 'Summer 2017 & 2018',
+		title: 'Intern',
+		company: 'Ramboll',
+		icon: IconBriefcase,
+		isRight: false
+	},
+	{
+		date: '2015-2019',
+		title: 'Civil Engineering, MEng',
+		company: 'University of Southampton',
+		icon: IconSchool,
+		isRight: true
+	}
+];
 
 export default function Experience() {
 	return (
 		<Element name='experience_element'>
 			<Box
-				component='div'
-				sx={{
+				style={{
 					height: '100svh',
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
 					paddingTop: '50px',
 					paddingBottom: '50px',
+					padding: '50px 20px',
 				}}
 			>
-				<Timeline position='alternate'>
-					<TimelineItem>
-						<TimelineOppositeContent sx={{ m: 'auto 0' }} variant='body2' color='text.secondary'>
-							September 2023
-						</TimelineOppositeContent>
-						<TimelineSeparator>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-							<TimelineDot color='primary' variant='outlined'>
-								<WorkOutlineOutlinedIcon />
-							</TimelineDot>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-						</TimelineSeparator>
-						<TimelineContent sx={{ py: '12px', px: 2 }}>
-							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
-								Chartered Engineer (CEng)
-							</Typography>
-							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
-								Institution of Civil Engineers
-							</Typography>
-						</TimelineContent>
-					</TimelineItem>
-					<TimelineItem>
-						<TimelineOppositeContent
-							sx={{ m: 'auto 0' }}
-							align='right'
-							variant='body2'
-							color='text.secondary'
-						>
-							June 2023
-						</TimelineOppositeContent>
-						<TimelineSeparator>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-							<TimelineDot color='primary' variant='outlined'>
-								<WorkOutlineOutlinedIcon />
-							</TimelineDot>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-						</TimelineSeparator>
-						<TimelineContent sx={{ py: '12px', px: 2 }}>
-							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
-								Senior Engineer
-							</Typography>
-							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
-						</TimelineContent>
-					</TimelineItem>
-					<TimelineItem>
-						<TimelineOppositeContent sx={{ m: 'auto 0' }} variant='body2' color='text.secondary'>
-							June 2021
-						</TimelineOppositeContent>
-						<TimelineSeparator>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-							<TimelineDot color='primary' variant='outlined'>
-								<WorkOutlineOutlinedIcon />
-							</TimelineDot>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-						</TimelineSeparator>
-						<TimelineContent sx={{ py: '12px', px: 2 }}>
-							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
-								Engineer
-							</Typography>
-							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
-						</TimelineContent>
-					</TimelineItem>
-					<TimelineItem>
-						<TimelineOppositeContent
-							sx={{ m: 'auto 0' }}
-							align='right'
-							variant='body2'
-							color='text.secondary'
-						>
-							September 2019
-						</TimelineOppositeContent>
-						<TimelineSeparator>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-							<TimelineDot color='primary' variant='outlined'>
-								<WorkOutlineOutlinedIcon />
-							</TimelineDot>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-						</TimelineSeparator>
-						<TimelineContent sx={{ py: '12px', px: 2 }}>
-							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
-								Graduate Engineer
-							</Typography>
-							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
-						</TimelineContent>
-					</TimelineItem>
-					<TimelineItem>
-						<TimelineOppositeContent sx={{ m: 'auto 0' }} variant='body2' color='text.secondary'>
-							Summer 2017 & 2018
-						</TimelineOppositeContent>
-						<TimelineSeparator>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-							<TimelineDot color='primary' variant='outlined'>
-								<WorkOutlineOutlinedIcon />
-							</TimelineDot>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-						</TimelineSeparator>
-						<TimelineContent sx={{ py: '12px', px: 2 }}>
-							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
-								Intern
-							</Typography>
-							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>Ramboll</Typography>
-						</TimelineContent>
-					</TimelineItem>
-					<TimelineItem>
-						<TimelineOppositeContent
-							sx={{ m: 'auto 0' }}
-							align='right'
-							variant='body2'
-							color='text.secondary'
-						>
-							2015-2019
-						</TimelineOppositeContent>
-						<TimelineSeparator>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-							<TimelineDot color='primary' variant='outlined'>
-								<SchoolOutlinedIcon />
-							</TimelineDot>
-							<TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
-						</TimelineSeparator>
-						<TimelineContent sx={{ py: '12px', px: 2 }}>
-							<Typography sx={{ typography: { sm: 'h6' }, fontWeight: 'bold' }} component='span'>
-								Civil Engineering, MEng
-							</Typography>
-							<Typography sx={{ typography: { sm: 'body1', xs: 'caption' } }}>
-								University of Southampton
-							</Typography>
-						</TimelineContent>
-					</TimelineItem>
-				</Timeline>
+				<Box style={{ position: 'relative', maxWidth: '1200px', width: '100%' }}>
+					{/* Central timeline line */}
+					<Box
+						style={{
+							position: 'absolute',
+							left: '50%',
+							top: 0,
+							bottom: 0,
+							width: '2px',
+							backgroundColor: 'var(--mantine-color-primary-6)',
+							transform: 'translateX(-50%)',
+							zIndex: 0
+						}}
+					/>
+					
+					<Stack gap="xl">
+						{timelineData.map((item, index) => {
+							const IconComponent = item.icon;
+							return (
+								<Box
+									key={index}
+									style={{
+										display: 'flex',
+										alignItems: 'center',
+										position: 'relative',
+										flexDirection: item.isRight ? 'row-reverse' : 'row'
+									}}
+								>
+									{/* Date section */}
+									<Box style={{ flex: '0 0 45%', textAlign: item.isRight ? 'left' : 'right' }}>
+										<Text size="sm" c="dimmed">
+											{item.date}
+										</Text>
+									</Box>
+									
+									{/* Timeline dot */}
+									<Box
+										style={{
+											flex: '0 0 10%',
+											display: 'flex',
+											justifyContent: 'center',
+											alignItems: 'center',
+											position: 'relative',
+											zIndex: 1
+										}}
+									>
+										<Box
+											style={{
+												width: '40px',
+												height: '40px',
+												borderRadius: '50%',
+												backgroundColor: 'var(--mantine-color-body)',
+												border: '2px solid var(--mantine-color-primary-6)',
+												display: 'flex',
+												alignItems: 'center',
+												justifyContent: 'center'
+											}}
+										>
+											<IconComponent size={20} color="var(--mantine-color-primary-6)" />
+										</Box>
+									</Box>
+									
+									{/* Content section */}
+									<Box style={{ flex: '0 0 45%', textAlign: item.isRight ? 'right' : 'left' }}>
+										<Title order={5} fw={700}>
+											{item.title}
+										</Title>
+										<Text size="sm">
+											{item.company}
+										</Text>
+									</Box>
+								</Box>
+							);
+						})}
+					</Stack>
+				</Box>
 			</Box>
 		</Element>
 	);

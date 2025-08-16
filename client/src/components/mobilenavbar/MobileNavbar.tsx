@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { AppBar, Stack, Toolbar, useTheme } from '@mui/material';
+import { Group, Box, Image, useMantineTheme } from '@mantine/core';
 import NavBody from './NavBody';
 import { useLocation, useNavigate } from 'react-router-dom';
 import DarkModeToggle from '../darkmode/DarkModeToggle';
@@ -11,7 +11,7 @@ import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 
 export default function MobileNavbar() {
-	const theme = useTheme();
+	const theme = useMantineTheme();
 	const { darkMode } = useDevStore();
 	const [selectedLink, setSelectedLink] = useState({ isActive: false, index: 0 });
 	const [isOpen, setOpen] = useState(false);
@@ -57,31 +57,28 @@ export default function MobileNavbar() {
 
 	return (
 		<>
-			<AppBar
-				position='fixed'
+			<Box
 				component={motion.div}
-				sx={{
-					boxShadow: 0,
-					borderRadius: 0,
-					backgroundImage: 'none',
+				style={{
+					position: 'fixed',
+					top: 0,
+					left: 0,
+					right: 0,
+					height: 70,
+					zIndex: 1000,
 					backgroundColor: 'transparent',
 					backdropFilter: 'blur(5px)',
-					zIndex: 5,
+					border: 'none',
+					boxShadow: 'none',
 				}}
 			>
-				<Toolbar
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-					}}
-				>
-					<img
+				<Group h="100%" px="md" justify="space-between">
+					<Image
 						src={darkMode ? LogoDark : LogoLight}
-						height={50}
-						width={50}
-						style={{ top: 5, cursor: 'pointer' }}
-						aria-label='IW-letters-logo'
+						h={50}
+						w={50}
+						style={{ cursor: 'pointer' }}
+						alt="IW-letters-logo"
 						onClick={() => {
 							if (currentLocation !== '/') {
 								handleRouteChange('/');
@@ -90,21 +87,21 @@ export default function MobileNavbar() {
 							}
 						}}
 					/>
-					<Stack direction='row' spacing={1} sx={{ display: 'flex', alignItems: 'center' }}>
+					<Group gap="sm">
 						<DarkModeToggle />
 						<MenuButton
 							isOpen={isOpen}
 							onClick={() => setOpen(!isOpen)}
 							strokeWidth='6'
-							color={theme.palette.text.primary}
+							color={darkMode ? theme.colors.green[9] : theme.colors.green[9]}
 							lineProps={{ strokeLinecap: 'round' }}
 							transition={{ type: 'spring', stiffness: 260, damping: 20 }}
 							width='24'
 							height='24'
 						/>
-					</Stack>
-				</Toolbar>
-			</AppBar>
+					</Group>
+				</Group>
+			</Box>
 			<NavBody
 				links={links}
 				selectedLink={selectedLink}

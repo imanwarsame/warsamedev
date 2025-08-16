@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { Box } from '@mui/material';
+import { Box } from '@mantine/core';
 import NoiseSphere from './NoiseSphere';
 import { Element } from 'react-scroll';
 import Landing from '../landing/Landing';
@@ -10,8 +10,7 @@ export default function Blob() {
 	return (
 		<Element name='home_element'>
 			<Box
-				component='div'
-				sx={{
+				style={{
 					position: 'relative',
 					height: '100svh',
 					width: '100vw',

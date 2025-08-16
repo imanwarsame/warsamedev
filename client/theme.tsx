@@ -1,15 +1,32 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mantine/core';
 import '@fontsource/poppins';
 
 const lightTheme = createTheme({
-	palette: {
-		mode: 'light',
-		primary: {
-			main: '#39D735',
-		},
-		secondary: {
-			main: '#8FF18D',
-		},
+	primaryColor: 'green',
+	fontFamily: 'Poppins, sans-serif',
+	colors: {
+		green: [
+			'#F1FBF0',
+			'#DBE5E1',
+			'#C5EFC2',
+			'#8FF18D',
+			'#39D735',
+			'#2AC828',
+			'#1EA01C',
+			'#157A13',
+			'#0C540A',
+			'#072E06'
+		],
+	},
+	primaryShade: 4,
+	defaultRadius: 10,
+	shadows: {
+		sm: '0 1px 3px rgba(0, 0, 0, 0.05)',
+		md: '0 4px 6px rgba(0, 0, 0, 0.07)',
+		lg: '0 10px 15px rgba(0, 0, 0, 0.1)',
+		xl: '0 20px 25px rgba(0, 0, 0, 0.1)',
+	},
+	other: {
 		background: {
 			default: '#F1FBF0',
 			paper: '#DBE5E1',
@@ -18,155 +35,40 @@ const lightTheme = createTheme({
 			primary: '#091508',
 		},
 	},
-	typography: {
-		fontFamily: ['Poppins', 'sans-serif'].join(','),
-	},
-	components: {
-		MuiPaper: {
-			defaultProps: {
-				elevation: 0,
-			},
-			styleOverrides: {
-				root: {
-					borderRadius: 10,
-					elevation: 0,
-				},
-			},
-		},
-		MuiIconButton: {
-			styleOverrides: {
-				root: {
-					// '&:hover': {
-					// 	color: '#FF6666',
-					// },
-					// color: '#001C30',
-				},
-			},
-		},
-		MuiCssBaseline: {
-			styleOverrides: {
-				html: {
-					'&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-						backgroundColor: '#F1FBF0',
-						width: '20px',
-					},
-					'&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
-						borderRadius: '20px',
-						backgroundColor: '#D6DEE1',
-						border: '4px solid transparent',
-						backgroundClip: 'content-box',
-					},
-					'&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus': {
-						backgroundColor: '#8FF18D', // Adjusted to primary color
-					},
-					'&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active': {
-						backgroundColor: '#8FF18D', // Adjusted to secondary color
-					},
-					'&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
-						backgroundColor: '#8FF18D', // Adjusted to primary color
-					},
-					'&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
-						backgroundColor: '#F1FBF0', // Adjusted to paper background color
-					},
-				},
-				body: {
-					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
-					cursor: 'wait', //This is for the splash screen
-				},
-				//Selection highlight colours
-				'::-moz-selection': {
-					background: '#8FF18D',
-				},
-				'::-webkit-selection': {
-					background: '#8FF18D',
-				},
-				'::selection': {
-					background: '#8FF18D',
-				},
-			},
-		},
-	},
 });
 
 const darkTheme = createTheme({
-	palette: {
-		mode: 'dark',
-		primary: {
-			main: '#2AC828',
-		},
-		secondary: {
-			main: '#071F19',
-		},
+	primaryColor: 'green',
+	fontFamily: 'Poppins, sans-serif',
+	colors: {
+		green: [
+			'#051004',
+			'#071F19',
+			'#0C2F20',
+			'#0F3F27',
+			'#2AC828',
+			'#39D735',
+			'#4FE24D',
+			'#6FE86D',
+			'#8FF18D',
+			'#E9F7E9'
+		],
+	},
+	primaryShade: 4,
+	defaultRadius: 10,
+	shadows: {
+		sm: '0 1px 3px rgba(0, 0, 0, 0.2)',
+		md: '0 4px 6px rgba(0, 0, 0, 0.25)',
+		lg: '0 10px 15px rgba(0, 0, 0, 0.3)',
+		xl: '0 20px 25px rgba(0, 0, 0, 0.35)',
+	},
+	other: {
 		background: {
 			default: '#051004',
 			paper: '#071F19',
 		},
 		text: {
 			primary: '#E9F7E9',
-		},
-	},
-	typography: {
-		fontFamily: ['Poppins', 'sans-serif'].join(','),
-	},
-	components: {
-		MuiPaper: {
-			styleOverrides: {
-				root: {
-					borderRadius: 10,
-				},
-			},
-		},
-		MuiIconButton: {
-			styleOverrides: {
-				root: {
-					// '&:hover': {
-					// 	color: '#10710E',
-					// 	borderColor: '#10710E',
-					// },
-				},
-			},
-		},
-		MuiCssBaseline: {
-			styleOverrides: {
-				html: {
-					'&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-						backgroundColor: '#051004',
-						width: '20px',
-					},
-					'&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
-						borderRadius: '20px',
-						backgroundColor: '#D6DEE1',
-						border: '4px solid transparent',
-						backgroundClip: 'content-box',
-					},
-					'&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus': {
-						backgroundColor: '#2AC828', // Adjusted to primary color
-					},
-					'&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active': {
-						backgroundColor: '#2AC828', // Adjusted to secondary color
-					},
-					'&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
-						backgroundColor: '#2AC828', // Adjusted to primary color
-					},
-					'&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
-						backgroundColor: '#051004', // Adjusted to paper background color
-					},
-				},
-				body: {
-					WebkitTapHighlightColor: 'transparent', //Removes blue highlight on button click for mobile
-					cursor: 'wait', //This is for the splash screen
-				},
-				//Selection highlight colours
-				'::-moz-selection': {
-					background: '#8FF18D',
-				},
-				'::-webkit-selection': {
-					background: '#8FF18D',
-				},
-				'::selection': {
-					background: '#8FF18D',
-				},
-			},
 		},
 	},
 });

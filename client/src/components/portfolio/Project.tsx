@@ -1,4 +1,5 @@
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Text } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -18,13 +19,11 @@ const animation = {
 
 export default function Project(data: ProjectData) {
 	const [isActive, setIsActive] = useState(false);
-	const theme = useTheme();
-	const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
+	const isMediumScreen = useMediaQuery('(min-width: 768px)');
 
 	return (
 		<Box
-			component='div'
-			sx={{
+			style={{
 				paddingTop: '0.8vw',
 				paddingBottom: '0.8vw',
 				cursor: 'pointer',
@@ -45,22 +44,22 @@ export default function Project(data: ProjectData) {
 			}}
 			onClick={() => window.open(data.webLink, '_blank', 'noopener,noreferrer')}
 		>
-			<Typography sx={{ marginRight: '0.75vw' }} variant='h4'>
+			<Text size="xl" fw={400} style={{ marginRight: '0.75vw' }}>
 				{data.title1}
-			</Typography>
+			</Text>
 
 			<Box
 				component={motion.div}
 				variants={animation}
 				animate={isActive ? 'open' : 'closed'}
-				sx={{ overflow: 'hidden', display: 'flex', justifyContent: 'center', width: 0 }}
+				style={{ overflow: 'hidden', display: 'flex', justifyContent: 'center', width: 0 }}
 			>
 				<img src={data.imageUrl} style={{ width: '10vw' }}></img>
 			</Box>
 
-			<Typography variant='h4'>
+			<Text size="xl" fw={400}>
 				{data.title2}
-			</Typography>
+			</Text>
 		</Box>
 	);
 }

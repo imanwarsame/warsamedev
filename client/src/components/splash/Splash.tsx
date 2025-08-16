@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Box, Typography } from '@mui/material';
+import { Box, Text } from '@mantine/core';
 
 const words = ['Hello', 'Bonjour', 'Ciao', 'Olà', 'やあ', 'السلام عليكم', 'Guten tag', 'Hallo'];
 
@@ -62,7 +62,7 @@ export default function Splash() {
 			variants={slideUp}
 			initial='initial'
 			exit='exit'
-			sx={{
+			style={{
 				height: '100vh',
 				width: '100vw',
 				display: 'flex',
@@ -76,12 +76,12 @@ export default function Splash() {
 		>
 			{dimension.width > 0 && (
 				<>
-					<Typography
+					<Text
 						component={motion.p}
 						variants={opacity}
 						initial='initial'
 						animate='enter'
-						sx={{
+						style={{
 							display: 'flex',
 							color: 'white',
 							fontSize: '42px',
@@ -91,7 +91,7 @@ export default function Splash() {
 						}}
 					>
 						{words[index]}
-					</Typography>
+					</Text>
 					<svg
 						style={{
 							position: 'absolute',

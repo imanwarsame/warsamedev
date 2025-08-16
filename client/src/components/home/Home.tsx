@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mantine/core';
 import About from '../about/About';
 import Contact from '../contact/Contact';
 import Experience from '../experience/Experience';
@@ -8,27 +8,29 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
 	return (
-		<Box
-			component={motion.div}
-			initial={{ opacity: 0 }} //Initial state (invisible)
-			animate={{ opacity: 1 }} //Final state (fully visible)
-			transition={{ duration: 1, ease: 'easeInOut' }} //Duration of the fade-in effect
-			sx={{
-				flexGrow: 1,
-				transform: 'translateZ(0)', //Enables hardware acceleration
-				bgcolor: 'background.default',
-				WebkitOverflowScrolling: 'touch',
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				overflow: 'hidden',
-			}}
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1, ease: 'easeInOut' }}
 		>
-			<Blob />
-			<About />
-			<Gallery />
-			<Experience />
-			<Contact />
-		</Box>
+			<Box
+				style={{
+					width: '100%',
+					flexGrow: 1,
+					transform: 'translateZ(0)',
+					WebkitOverflowScrolling: 'touch',
+					overflow: 'hidden',
+					minHeight: '100vh',
+				}}
+			>
+				<Stack align="center" gap={0}>
+					<Blob />
+					<About />
+					<Gallery />
+					<Experience />
+					<Contact />
+				</Stack>
+			</Box>
+		</motion.div>
 	);
 }

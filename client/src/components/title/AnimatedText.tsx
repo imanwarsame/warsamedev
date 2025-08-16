@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box } from '@mantine/core';
 import { TypeAnimation } from 'react-type-animation';
 
 export default function AnimatedText({ items }: { items: string[] }) {
@@ -10,8 +10,11 @@ export default function AnimatedText({ items }: { items: string[] }) {
 
 	return (
 		<Box
-			component='div'
-			sx={{ display: 'flex', alignItems: 'center', typography: { xs: 'caption', md: 'body1' } }}
+			style={{ 
+				display: 'flex', 
+				alignItems: 'center',
+				fontSize: 'clamp(0.875rem, 1rem, 1rem)'
+			}}
 		>
 			<TypeAnimation
 				preRenderFirstString={true}

@@ -1,4 +1,4 @@
-import { Button, Stack, useTheme } from '@mui/material';
+import { Button, Group, useMantineTheme } from '@mantine/core';
 import './TextEffect.css';
 
 interface NavLink {
@@ -11,37 +11,34 @@ interface NavLinksProps {
 }
 
 export default function NavigationLinks({ links }: NavLinksProps) {
-	const theme = useTheme();
+	const theme = useMantineTheme();
 
 	return (
-		<Stack
-			direction='row'
-			sx={{
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-				bgcolor: 'transparent',
-				border: '0px solid green',
-				width: 'auto',
-				height: 'auto',
+		<Group
+			gap="xl"
+			style={{
 				paddingTop: '5px',
-				'.navLink::after': {
-					backgroundColor: theme.palette.primary.main,
-				},
 			}}
-			spacing={3}
 		>
+			<style>
+				{`
+					.navLink::after {
+						background-color: ${theme.colors.green[4]} !important;
+					}
+				`}
+			</style>
 			{links.map((link, index) => (
 				<Button
 					key={index}
 					className='navLink'
-					size='large'
-					sx={{ color: theme.palette.text.primary }}
+					variant="subtle"
+					size="lg"
+					color="green"
 					onClick={link.action}
 				>
 					{link.title}
 				</Button>
 			))}
-		</Stack>
+		</Group>
 	);
 }

@@ -1,4 +1,4 @@
-import { Divider, Stack, Typography } from '@mui/material';
+import { Box, Divider, Stack, Text } from '@mantine/core';
 import { projects } from './ProjectData';
 import Project from './Project';
 import { Element } from 'react-scroll';
@@ -6,27 +6,38 @@ import { Element } from 'react-scroll';
 export default function Gallery() {
 	return (
 		<Element name='projects_element'>
-			<Stack
-				direction='column'
-				spacing={2}
-				divider={
-					<Divider
-						orientation='horizontal'
-						sx={{ borderBottomWidth: 5, borderBottomRightRadius: '50%' }}
-						flexItem
-					/>
-				}
-				sx={{
-					padding: { xs: 3, md: 10 },
-					width: { xs: '90vw', md: '75vw' },
-					textAlign: 'start',
+			<Box
+				style={{
+					width: '100%',
+					padding: '0 20px',
+					maxWidth: '1200px',
+					margin: '0 auto',
 				}}
 			>
-				<Typography>Featured projects</Typography>
-				{projects.map((item) => (
-					<Project {...item} key={item.id} />
+				<Stack
+					gap="md"
+					style={{
+						padding: 'clamp(24px, 5vw, 80px) 0',
+						textAlign: 'start',
+					}}
+				>
+				<Text>Featured projects</Text>
+				{projects.map((item, index) => (
+					<div key={item.id}>
+						<Project {...item} />
+						{index < projects.length - 1 && (
+							<Divider 
+								my="lg"
+								style={{
+									borderBottomWidth: '5px',
+									borderBottomRightRadius: '50%'
+								}}
+							/>
+						)}
+					</div>
 				))}
-			</Stack>
+				</Stack>
+			</Box>
 		</Element>
 	);
 }

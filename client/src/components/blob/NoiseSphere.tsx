@@ -3,7 +3,7 @@ import { MeshProps, useFrame } from '@react-three/fiber';
 import { useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
 import { noiseSphereShaderMaterial } from './NoiseSphereShaderMaterial';
-import { useMediaQuery, useTheme } from '@mui/material';
+import { useMediaQuery } from '@mantine/hooks';
 import { useDevStore } from '../../store';
 
 interface NoiseSphereProps extends MeshProps {
@@ -25,9 +25,8 @@ export default function NoiseSphere({
 	...props
 }: NoiseSphereProps) {
 	const sphereRef = useRef<THREE.Mesh>(null!);
-	const theme = useTheme();
-	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-	const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
+	const isSmallScreen = useMediaQuery('(max-width: 768px)');
+	const isMediumScreen = useMediaQuery('(min-width: 768px)');
 	const { darkMode } = useDevStore();
 
 	// // Use Leva controls

@@ -1,4 +1,6 @@
-import { ThemeProvider, CssBaseline, Hidden } from '@mui/material';
+import { MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
 import Navbar from './components/navbar/Navbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
@@ -11,12 +13,15 @@ import Articles from './components/articles/Articles';
 import { articles } from './components/articles/ArticlesData';
 import MDPage from './components/articles/MDPage';
 import MobileNavbar from './components/mobilenavbar/MobileNavbar';
+import { useMediaQuery } from '@mantine/hooks';
+import './styles.css';
 
 export default function App() {
 	const { darkMode } = useDevStore();
 	const location = useLocation();
 	const [loading, setLoading] = useState(location.pathname === '/' ? true : false);
 	const theme = darkMode ? darkTheme : lightTheme;
+	const isMobile = useMediaQuery('(max-width: 768px)');
 
 	console.log(`
 	#####  #####         ###         #####    
@@ -39,9 +44,7 @@ export default function App() {
 			(async () => {
 				setTimeout(() => {
 					setLoading(false);
-
 					document.body.style.cursor = 'default';
-
 					window.scrollTo(0, 0);
 				}, 2000);
 			})();
@@ -52,30 +55,27 @@ export default function App() {
 	}, [location.pathname]);
 
 	return (
-		<ThemeProvider theme={theme}>
-			{/* Globally resets CSS to create a baseline to build on. enableColorScheme allows 
-				switching between "light" and "dark" modes of native components such as scrollbar */}
-			<CssBaseline enableColorScheme />
-			<AnimatePresence mode='wait'>
-				{location.pathname === '/' && loading && <Splash />}
-			</AnimatePresence>
-			<Hidden mdUp>
-				<MobileNavbar />
-			</Hidden>
-			<Hidden mdDown>
-				<Navbar />
-			</Hidden>
-			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/articles' element={<Articles />} />
-				{articles.map((article) => (
-					<Route
-						key={article.id}
-						path={article.url}
-						element={<MDPage fileName={article.mdFile} />}
-					/>
-				))}
-			</Routes>
-		</ThemeProvider>
+		<MantineProvider theme={theme} forceColorScheme={darkMode ? 'dark' : 'light'}>
+			<ModalsProvider>
+				<Notifications />
+				<AnimatePresence mode='wait'>
+					{location.pathname === '/' && loading && <Splash />}
+				</AnimatePresence>
+				
+				{isMobile ? <MobileNavbar /> : <Navbar />}
+				
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/articles' element={<Articles />} />
+					{articles.map((article) => (
+						<Route
+							key={article.id}
+							path={article.url}
+							element={<MDPage fileName={article.mdFile} />}
+						/>
+					))}
+				</Routes>
+			</ModalsProvider>
+		</MantineProvider>
 	);
 }

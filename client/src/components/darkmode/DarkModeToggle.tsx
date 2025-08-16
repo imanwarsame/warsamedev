@@ -1,11 +1,11 @@
-import { useTheme } from '@mui/material';
+import { useMantineTheme } from '@mantine/core';
 import '@theme-toggles/react/css/Expand.css';
 import { Expand } from '@theme-toggles/react';
 import { useDevStore } from '../../store';
 
 export default function DarkModeToggle() {
 	const { darkMode, setDarkMode } = useDevStore();
-	const theme = useTheme();
+	const theme = useMantineTheme();
 
 	const handleDarkModeToggle = () => {
 		setDarkMode(!darkMode);
@@ -17,7 +17,7 @@ export default function DarkModeToggle() {
 			toggled={darkMode}
 			toggle={handleDarkModeToggle}
 			style={{
-				color: theme.palette.text.primary,
+				color: darkMode ? theme.colors.green[9] : theme.colors.green[9],
 			}}
 		>
 			<style>

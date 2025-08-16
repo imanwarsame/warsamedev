@@ -1,4 +1,4 @@
-import { AppBar, Stack, Toolbar } from '@mui/material';
+import { Group, Image, Box } from '@mantine/core';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { scroller } from 'react-scroll';
@@ -94,32 +94,29 @@ export default function Navbar() {
 	];
 
 	return (
-		<AppBar
-			position='fixed'
+		<Box
 			component={motion.div}
-			sx={{
-				boxShadow: 0,
-				borderRadius: 0,
-				backgroundImage: 'none',
+			style={{
+				position: 'fixed',
+				top: 0,
+				left: 0,
+				right: 0,
+				height: 70,
+				zIndex: 1000,
 				backgroundColor: 'transparent',
 				backdropFilter: 'blur(5px)',
-				zIndex: 2,
+				border: 'none',
+				boxShadow: 'none',
 			}}
 		>
-			<Toolbar
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'space-between',
-				}}
-			>
-				<Stack direction='row' spacing={1}>
-					<img
+			<Group h="100%" px="md" justify="space-between">
+				<Group gap="sm">
+					<Image
 						src={darkMode ? LogoDark : LogoLight}
-						height={50}
-						width={50}
-						style={{ top: 5, cursor: 'pointer' }}
-						aria-label='IW-letters-logo'
+						h={50}
+						w={50}
+						style={{ cursor: 'pointer' }}
+						alt="IW-letters-logo"
 						onClick={() => {
 							if (currentLocation !== '/') {
 								handleRouteChange('/');
@@ -129,9 +126,9 @@ export default function Navbar() {
 						}}
 					/>
 					<NavigationLinks links={links} />
-				</Stack>
+				</Group>
 				<DarkModeToggle />
-			</Toolbar>
-		</AppBar>
+			</Group>
+		</Box>
 	);
 }

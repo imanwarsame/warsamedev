@@ -1,66 +1,72 @@
-import { Box, Hidden, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Stack, Text, ActionIcon } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import AnimatedText from '../title/AnimatedText';
 import Lottie from 'lottie-react';
 import animatedScrollDark from '../../assets/scroll-down-dark.json';
 import animatedScrollLight from '../../assets/scroll-down-light.json';
 import { useDevStore } from '../../store';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
 
 export default function Landing() {
 	const { darkMode } = useDevStore();
 	const strings = ['Full-stack developer', 'Chartered civil engineer', 'Photographer'];
+	const isMdUp = useMediaQuery('(min-width: 768px)');
 
 	return (
 		<>
 			<Box
-				component='div'
-				sx={{
+				style={{
 					position: 'absolute',
 					top: '50%',
-					left: { xs: '10%', md: '2%' },
+					left: isMdUp ? '2%' : '10%',
 					zIndex: 2,
 				}}
 			>
-				<Stack direction='column' spacing={1}>
-					<Typography fontWeight='bold' sx={{ typography: { xs: 'h2', md: 'h2' } }}>
+				<Stack gap="xs">
+					<Text fw={700} size="2rem">
 						Iman Warsame
-					</Typography>
+					</Text>
 					<AnimatedText items={strings} />
-					<Hidden mdDown>
-						<Stack direction='row' spacing={2}>
-							<IconButton
-								size='large'
-								href='https://github.com/imanwarsame'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='Silhoutte of an octopus cat hybrid'
-								sx={{ minWidth: 0, height: 40, width: 40 }}
-								disableRipple
-							>
-								<GitHubIcon color='primary' sx={{ fontSize: '40px' }} />
-							</IconButton>
-							<IconButton
-								size='medium'
-								href='https://www.linkedin.com/in/imanwarsame/'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='The letters i and n representing the LinkedIn logo'
-								sx={{ minWidth: 0, height: 40, width: 40 }}
-								disableRipple
-							>
-								<LinkedInIcon color='primary' sx={{ fontSize: '45px' }} />
-							</IconButton>
+					{isMdUp && (
+						<Stack>
+							<Box style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+								<ActionIcon
+									component="a"
+									href="https://github.com/imanwarsame"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Silhoutte of an octopus cat hybrid"
+									size="lg"
+									variant="subtle"
+								>
+									<IconBrandGithub size={32} color="var(--mantine-color-primary-6)" />
+								</ActionIcon>
+								<ActionIcon
+									component="a"
+									href="https://www.linkedin.com/in/imanwarsame/"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="The letters i and n representing the LinkedIn logo"
+									size="lg"
+									variant="subtle"
+								>
+									<IconBrandLinkedin size={36} color="var(--mantine-color-primary-6)" />
+								</ActionIcon>
+							</Box>
 						</Stack>
-					</Hidden>
+					)}
 				</Stack>
 			</Box>
 			<Box
-				component='div'
-				display='flex'
-				alignItems='center'
-				justifyContent='center'
-				sx={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)' }}
+				style={{
+					position: 'absolute',
+					bottom: '20px',
+					left: '50%',
+					transform: 'translateX(-50%)',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center'
+				}}
 			>
 				<Lottie
 					animationData={darkMode ? animatedScrollLight : animatedScrollDark}
