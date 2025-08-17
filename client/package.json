@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@fontsource/inter": "^5.2.6",
     "@fontsource/poppins": "^5.0.8",
     "@mantine/carousel": "^8.2.5",
     "@mantine/code-highlight": "^8.2.5",

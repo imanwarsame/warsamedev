@@ -52,6 +52,7 @@ export default function Experience() {
 		<Element name='experience_element'>
 			<Box
 				style={{
+					width: '100vw',
 					height: '100svh',
 					display: 'flex',
 					alignItems: 'center',

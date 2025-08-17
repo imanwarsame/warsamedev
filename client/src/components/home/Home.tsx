@@ -1,9 +1,9 @@
 import { Box, Stack } from '@mantine/core';
+import Hero from '../hero/Hero';
 import About from '../about/About';
 import Contact from '../contact/Contact';
 import Experience from '../experience/Experience';
-import Blob from '../blob/Blob';
-import Gallery from '../portfolio/Gallery';
+import Projects from '../projects/Projects';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -12,21 +12,21 @@ export default function Home() {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 1, ease: 'easeInOut' }}
+			style={{ width: '100%' }}
 		>
 			<Box
 				style={{
-					width: '100%',
+					width: '100vw',
 					flexGrow: 1,
 					transform: 'translateZ(0)',
 					WebkitOverflowScrolling: 'touch',
 					overflow: 'hidden',
-					minHeight: '100vh',
 				}}
 			>
-				<Stack align="center" gap={0}>
-					<Blob />
+				<Stack gap={0} style={{ width: '100%' }}>
+					<Hero />
 					<About />
-					<Gallery />
+					<Projects />
 					<Experience />
 					<Contact />
 				</Stack>

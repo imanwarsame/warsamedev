@@ -21,21 +21,21 @@ export default function Gallery() {
 						textAlign: 'start',
 					}}
 				>
-				<Text>Featured projects</Text>
-				{projects.map((item, index) => (
-					<div key={item.id}>
-						<Project {...item} />
-						{index < projects.length - 1 && (
-							<Divider 
-								my="lg"
-								style={{
-									borderBottomWidth: '5px',
-									borderBottomRightRadius: '50%'
-								}}
-							/>
-						)}
-					</div>
-				))}
+					<Text>Featured projects</Text>
+					{projects.map((item, index) => (
+						<div key={item.id}>
+							<Project {...item} />
+							{index < projects.length - 1 && (
+								<Divider 
+									my="lg"
+									style={{
+										borderBottomWidth: '5px',
+										borderBottomRightRadius: '50%'
+									}}
+								/>
+							)}
+						</div>
+					))}
 				</Stack>
 			</Box>
 		</Element>

@@ -32,11 +32,25 @@
 /* Global styles */
 html {
 	-webkit-overflow-scrolling: touch;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 body {
 	-webkit-tap-highlight-color: transparent;
 	cursor: wait; /* For splash screen */
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* Ensure root container takes full width */
+#root {
+	width: 100%;
+	overflow-x: hidden;
 }
 
 /* Selection highlight */
