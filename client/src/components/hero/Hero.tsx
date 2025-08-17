@@ -13,6 +13,7 @@ import {
 import { IconBrandGithub, IconBrandLinkedin, IconMail, IconDownload } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import Iridescence from '../iridescence/Iridescence';
+import DecryptedText from '../decryptedText/DecryptedText';
 import Lottie from 'lottie-react';
 import animatedScrollDark from '../../assets/scroll-down-dark.json';
 import animatedScrollLight from '../../assets/scroll-down-light.json';
@@ -67,7 +68,14 @@ export default function Hero() {
 							lineHeight: 1.1,
 						}}
 					>
-						Iman Warsame
+						<DecryptedText
+							text="Iman Warsame"
+							animateOn="view"
+							speed={50}
+							maxIterations={15}
+							sequential={true}
+							revealDirection="start"
+						/>
 					</Title>
 
 					{/* Role Text */}
@@ -80,7 +88,14 @@ export default function Hero() {
 							fontWeight: 500,
 						}}
 					>
-						Full Stack Developer • Product Owner • Chartered Civil Engineer
+						<DecryptedText
+							text="Full Stack Developer • Product Owner • Chartered Civil Engineer"
+							animateOn="view"
+							speed={30}
+							maxIterations={12}
+							sequential={true}
+							revealDirection="start"
+						/>
 					</Text>
 
 					{/* CTA Buttons */}
