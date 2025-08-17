@@ -16,7 +16,14 @@ import {
 	Overlay,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
-import { IconExternalLink, IconBrandGithub, IconEye, IconCode, IconX, IconPlayerPlay } from '@tabler/icons-react';
+import {
+	IconExternalLink,
+	IconBrandGithub,
+	IconEye,
+	IconCode,
+	IconX,
+	IconPlayerPlay,
+} from '@tabler/icons-react';
 import { useRef, useState } from 'react';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { projects } from './ProjectsData';
@@ -27,13 +34,17 @@ interface Project {
 	title: string;
 	title1: string;
 	title2: string;
-	imageUrl: string;
-	webLink?: string;
-	githubLink?: string;
+	imageUrl: string | null;
+	webLink?: string | null;
+	githubLink?: string | null;
 	description?: string;
 	technologies?: string[];
-	videoUrl?: string;
+	videoUrl?: string | null;
 	featured?: boolean;
+	category?: string;
+	year?: string;
+	role?: string;
+	highlights?: string[];
 }
 
 interface ProjectDetailModalProps {
@@ -51,8 +62,8 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 		<Modal
 			opened={opened}
 			onClose={onClose}
-			size="xl"
-			padding="xl"
+			size='xl'
+			padding='xl'
 			centered
 			withCloseButton={false}
 			overlayProps={{
@@ -61,24 +72,26 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 			}}
 		>
 			<Box>
-				<Group justify="space-between" mb="lg">
-					<Title order={2} size="h3">
+				<Group justify='space-between' mb='lg'>
+					<Title order={2} size='h3'>
 						{project.title}
 					</Title>
-					<ActionIcon
-						variant="subtle"
-						color="gray"
-						onClick={onClose}
-						size="lg"
-					>
+					<ActionIcon variant='subtle' color='gray' onClick={onClose} size='lg'>
 						<IconX size={20} />
 					</ActionIcon>
 				</Group>
 
 				{/* Project Video/Image */}
-				<Box mb="lg" style={{ position: 'relative' }}>
+				<Box mb='lg' style={{ position: 'relative' }}>
 					{project.videoUrl ? (
-						<Box style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+						<Box
+							style={{
+								position: 'relative',
+								paddingBottom: '56.25%',
+								height: 0,
+								overflow: 'hidden',
+							}}
+						>
 							<video
 								controls
 								style={{
@@ -90,58 +103,54 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 									borderRadius: theme.radius.md,
 								}}
 							>
-								<source src={project.videoUrl} type="video/mp4" />
+								<source src={project.videoUrl} type='video/mp4' />
 								Your browser does not support the video tag.
 							</video>
 						</Box>
 					) : (
-						<Image
-							src={project.imageUrl}
-							alt={project.title}
-							radius="md"
-							h={300}
-							fit="cover"
-						/>
+						project.imageUrl && (
+							<Image src={project.imageUrl} alt={project.title} radius='md' h={300} fit='cover' />
+						)
 					)}
 				</Box>
 
 				{/* Project Details */}
-				<Stack gap="md">
-					<Text size="lg" style={{ lineHeight: 1.6 }}>
+				<Stack gap='md'>
+					<Text size='lg' style={{ lineHeight: 1.6 }}>
 						{project.description}
 					</Text>
 
 					{project.technologies && (
-						<Group gap="xs">
+						<Group gap='xs'>
 							{project.technologies.map((tech: string, index: number) => (
-								<Badge key={index} variant="light" size="md">
+								<Badge key={index} variant='light' size='md'>
 									{tech}
 								</Badge>
 							))}
 						</Group>
 					)}
 
-					<Group gap="md" mt="lg">
+					<Group gap='md' mt='lg'>
 						{project.webLink && (
 							<Button
-								component="a"
+								component='a'
 								href={project.webLink}
-								target="_blank"
-								rel="noopener noreferrer"
+								target='_blank'
+								rel='noopener noreferrer'
 								leftSection={<IconExternalLink size={16} />}
-								variant="filled"
+								variant='filled'
 							>
 								View Live
 							</Button>
 						)}
 						{project.githubLink && (
 							<Button
-								component="a"
+								component='a'
 								href={project.githubLink}
-								target="_blank"
-								rel="noopener noreferrer"
+								target='_blank'
+								rel='noopener noreferrer'
 								leftSection={<IconBrandGithub size={16} />}
-								variant="outline"
+								variant='outline'
 							>
 								View Code
 							</Button>
@@ -196,71 +205,60 @@ export default function Projects() {
 			py={isMobile ? 60 : 100}
 			style={{
 				width: '100vw',
-				background: darkMode 
-					? theme.other.background.default 
-					: theme.other.background.paper,
+				background: darkMode ? theme.other.background.default : theme.other.background.paper,
 			}}
 		>
-			<Container size="lg">
+			<Container size='lg'>
 				<motion.div
 					variants={containerVariants}
-					initial="hidden"
+					initial='hidden'
 					animate={isInView ? 'visible' : 'hidden'}
 				>
 					{/* Section Header */}
 					<motion.div variants={itemVariants}>
-						<Stack align="center" gap="md" mb={60}>
-							<Badge size="lg" variant="light" color="blue">
+						<Stack align='center' gap='md' mb={60}>
+							<Badge size='lg' variant='light' color='blue'>
 								Projects
 							</Badge>
 							<Title
 								order={2}
 								size={isMobile ? 'h3' : 'h2'}
-								ta="center"
+								ta='center'
 								style={{
-									color: theme.colorScheme === 'dark' 
-										? theme.other.text.primary 
-										: theme.other.text.primary,
+									color: darkMode ? theme.other.text.primary : theme.other.text.primary,
 								}}
 							>
 								Featured Work
 							</Title>
 							<Text
-								size="lg"
-								ta="center"
+								size='lg'
+								ta='center'
 								maw={600}
 								style={{
-									color: theme.colorScheme === 'dark' 
-										? theme.other.text.secondary 
-										: theme.other.text.secondary,
+									color: darkMode ? theme.other.text.secondary : theme.other.text.secondary,
 									lineHeight: 1.6,
 								}}
 							>
-								A collection of projects showcasing my expertise in full-stack development, 
-								product management, and engineering solutions.
+								A collection of projects showcasing my expertise in full-stack development, product
+								management, and engineering solutions.
 							</Text>
 						</Stack>
 					</motion.div>
 
 					{/* Projects Grid */}
-					<SimpleGrid
-						cols={{ base: 1, sm: 2, lg: 3 }}
-						spacing={isMobile ? 'md' : 'lg'}
-					>
+					<SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing={isMobile ? 'md' : 'lg'}>
 						{projects.map((project) => (
 							<motion.div key={project.id} variants={itemVariants}>
 								<Paper
-									radius="lg"
+									radius='lg'
 									style={{
 										overflow: 'hidden',
 										cursor: 'pointer',
 										transition: 'all 0.3s ease',
-										background: theme.colorScheme === 'dark' 
-											? theme.other.background.paper 
-											: theme.colors.white,
-										border: `1px solid ${theme.colorScheme === 'dark' 
-											? theme.other.border.light 
-											: theme.other.border.light}`,
+										background: darkMode ? theme.other.background.paper : theme.colors.white,
+										border: `1px solid ${
+											darkMode ? theme.other.border.light : theme.other.border.light
+										}`,
 									}}
 									onMouseEnter={(e) => {
 										e.currentTarget.style.transform = 'translateY(-4px)';
@@ -272,14 +270,11 @@ export default function Projects() {
 								>
 									{/* Project Image */}
 									<Box style={{ position: 'relative' }}>
-										<Image
-											src={project.imageUrl}
-											alt={project.title}
-											h={200}
-											fit="cover"
-										/>
+										{project.imageUrl && (
+											<Image src={project.imageUrl} alt={project.title} h={200} fit='cover' />
+										)}
 										<Overlay
-											color="#000"
+											color='#000'
 											opacity={0}
 											style={{
 												transition: 'opacity 0.3s ease',
@@ -296,9 +291,9 @@ export default function Projects() {
 											}}
 										>
 											<ActionIcon
-												size="xl"
-												variant="filled"
-												color="blue"
+												size='xl'
+												variant='filled'
+												color='blue'
 												style={{
 													borderRadius: '50%',
 												}}
@@ -309,46 +304,41 @@ export default function Projects() {
 									</Box>
 
 									{/* Project Content */}
-									<Stack gap="sm" p="md">
-										<Group justify="space-between">
+									<Stack gap='sm' p='md'>
+										<Group justify='space-between'>
 											<Title
 												order={3}
-												size="h4"
+												size='h4'
 												style={{
-													color: theme.colorScheme === 'dark' 
-														? theme.other.text.primary 
-														: theme.other.text.primary,
+													color: darkMode ? theme.other.text.primary : theme.other.text.primary,
 												}}
 											>
 												{project.title1} {project.title2}
 											</Title>
 											{project.featured && (
-												<Badge size="sm" variant="light" color="blue">
+												<Badge size='sm' variant='light' color='blue'>
 													Featured
 												</Badge>
 											)}
 										</Group>
 
 										{project.description && (
-											<Text
-												size="sm"
-												c="dimmed"
-												lineClamp={2}
-												style={{ lineHeight: 1.5 }}
-											>
+											<Text size='sm' c='dimmed' lineClamp={2} style={{ lineHeight: 1.5 }}>
 												{project.description}
 											</Text>
 										)}
 
 										{project.technologies && (
-											<Group gap="xs" mt="xs">
-												{project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
-													<Badge key={techIndex} size="xs" variant="outline">
-														{tech}
-													</Badge>
-												))}
+											<Group gap='xs' mt='xs'>
+												{project.technologies
+													.slice(0, 3)
+													.map((tech: string, techIndex: number) => (
+														<Badge key={techIndex} size='xs' variant='outline'>
+															{tech}
+														</Badge>
+													))}
 												{project.technologies.length > 3 && (
-													<Badge size="xs" variant="outline" color="gray">
+													<Badge size='xs' variant='outline' color='gray'>
 														+{project.technologies.length - 3}
 													</Badge>
 												)}
@@ -356,15 +346,15 @@ export default function Projects() {
 										)}
 
 										{/* Action Buttons */}
-										<Group gap="xs" mt="md">
+										<Group gap='xs' mt='md'>
 											{project.webLink && (
 												<ActionIcon
-													component="a"
+													component='a'
 													href={project.webLink}
-													target="_blank"
-													rel="noopener noreferrer"
-													variant="light"
-													color="blue"
+													target='_blank'
+													rel='noopener noreferrer'
+													variant='light'
+													color='blue'
 													onClick={(e) => e.stopPropagation()}
 												>
 													<IconExternalLink size={16} />
@@ -372,22 +362,19 @@ export default function Projects() {
 											)}
 											{project.githubLink && (
 												<ActionIcon
-													component="a"
+													component='a'
 													href={project.githubLink}
-													target="_blank"
-													rel="noopener noreferrer"
-													variant="light"
-													color="gray"
+													target='_blank'
+													rel='noopener noreferrer'
+													variant='light'
+													color='gray'
 													onClick={(e) => e.stopPropagation()}
 												>
 													<IconBrandGithub size={16} />
 												</ActionIcon>
 											)}
 											{project.videoUrl && (
-												<ActionIcon
-													variant="light"
-													color="green"
-												>
+												<ActionIcon variant='light' color='green'>
 													<IconPlayerPlay size={16} />
 												</ActionIcon>
 											)}
@@ -400,10 +387,10 @@ export default function Projects() {
 
 					{/* View All Projects Button */}
 					<motion.div variants={itemVariants}>
-						<Group justify="center" mt={60}>
+						<Group justify='center' mt={60}>
 							<Button
-								size="lg"
-								variant="outline"
+								size='lg'
+								variant='outline'
 								leftSection={<IconCode size={20} />}
 								style={{
 									borderRadius: theme.radius.md,
@@ -417,11 +404,7 @@ export default function Projects() {
 			</Container>
 
 			{/* Project Detail Modal */}
-			<ProjectDetailModal
-				project={selectedProject}
-				opened={opened}
-				onClose={close}
-			/>
+			<ProjectDetailModal project={selectedProject} opened={opened} onClose={close} />
 		</Box>
 	);
 }

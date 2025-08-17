@@ -4,6 +4,7 @@ import About from '../about/About';
 import Contact from '../contact/Contact';
 import Experience from '../experience/Experience';
 import Projects from '../projects/Projects';
+import Technologies from '../technologies/Technologies';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
 				<Stack gap={0} style={{ width: '100%' }}>
 					<Hero />
 					<About />
+					<Technologies />
 					<Projects />
 					<Experience />
 					<Contact />

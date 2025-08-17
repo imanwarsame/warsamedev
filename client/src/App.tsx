@@ -4,24 +4,20 @@ import { ModalsProvider } from '@mantine/modals';
 import GlassNavbar from './components/navbar/GlassNavbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
-import { useEffect, useState } from 'react';
-import Splash from './components/splash/Splash';
+import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Home from './components/home/Home';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Articles from './components/articles/Articles';
 import { articles } from './components/articles/ArticlesData';
 import MDPage from './components/articles/MDPage';
-import MobileNavbar from './components/mobilenavbar/MobileNavbar';
-import { useMediaQuery } from '@mantine/hooks';
+
 import './styles.css';
 
 export default function App() {
 	const { darkMode } = useDevStore();
 	const location = useLocation();
-	const [loading, setLoading] = useState(location.pathname === '/' ? true : false);
 	const theme = darkMode ? darkTheme : lightTheme;
-	const isMobile = useMediaQuery('(max-width: 768px)');
 
 	console.log(`
 	#####  #####         ###         #####    
@@ -43,13 +39,11 @@ export default function App() {
 		if (location.pathname === '/') {
 			(async () => {
 				setTimeout(() => {
-					setLoading(false);
 					document.body.style.cursor = 'default';
 					window.scrollTo(0, 0);
 				}, 2000);
 			})();
 		} else {
-			setLoading(false);
 			document.body.style.cursor = 'default';
 		}
 	}, [location.pathname]);
@@ -61,9 +55,9 @@ export default function App() {
 				<AnimatePresence mode='wait'>
 					{/* {location.pathname === '/' && loading && <Splash />} */}
 				</AnimatePresence>
-				
+
 				<GlassNavbar />
-				
+
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/articles' element={<Articles />} />
