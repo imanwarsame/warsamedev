@@ -1,4 +1,5 @@
 import { Image, Title } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import LogoLight from '../../assets/logo_light_mode.png';
 import LogoDark from '../../assets/logo_dark_mode.png';
 import { useDevStore } from '../../store';
@@ -12,6 +13,7 @@ export default function GlassNavbar() {
 	const location = useLocation();
 	const currentLocation = location.pathname;
 	const { darkMode } = useDevStore();
+	const isMobile = useMediaQuery('(max-width: 768px)');
 
 	const handleRouteChange = (href: string) => {
 		navigate(href);
@@ -33,9 +35,9 @@ export default function GlassNavbar() {
 				transition={{ duration: 0.6, ease: 'easeOut' }}
 			>
 				<GlassSurface
-					width='85vw'
-					height={80}
-					borderRadius={40}
+					width={isMobile ? '90vw' : '85vw'}
+					height={isMobile ? 60 : 80}
+					borderRadius={isMobile ? 30 : 40}
 					className='glass-navbar'
 					backgroundOpacity={0.4}
 					style={{
@@ -52,14 +54,14 @@ export default function GlassNavbar() {
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'space-between',
-							padding: '0 32px',
+							padding: isMobile ? '0 16px' : '0 32px',
 						}}
 					>
 						<div
 							style={{
 								display: 'flex',
 								alignItems: 'center',
-								gap: '16px',
+								gap: isMobile ? '8px' : '16px',
 							}}
 						>
 							<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -73,8 +75,8 @@ export default function GlassNavbar() {
 								>
 									<Image
 										src={darkMode ? LogoDark : LogoLight}
-										h={42}
-										w={42}
+										h={isMobile ? 32 : 42}
+										w={isMobile ? 32 : 42}
 										alt='IW-letters-logo'
 									/>
 								</div>
@@ -84,7 +86,7 @@ export default function GlassNavbar() {
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 								style={{
-									padding: '10px 20px',
+									padding: isMobile ? '6px 12px' : '10px 20px',
 									borderRadius: '24px',
 									cursor: 'pointer',
 									backgroundColor:
@@ -104,10 +106,10 @@ export default function GlassNavbar() {
 								}}
 							>
 								<Title
-									order={4}
-									size='lg'
+									order={isMobile ? 5 : 4}
+									size={isMobile ? 'md' : 'lg'}
 									style={{
-										color: darkMode ? '#ffffff' : '#000000',
+										color: darkMode ? '#fafafa' : '#18181b',
 										fontWeight: 700,
 									}}
 								>

@@ -1,9 +1,11 @@
 import '@theme-toggles/react/css/Expand.css';
 import { Expand } from '@theme-toggles/react';
+import { useMediaQuery } from '@mantine/hooks';
 import { useDevStore } from '../../store';
 
 export default function DarkModeToggle() {
 	const { darkMode, setDarkMode } = useDevStore();
+	const isMobile = useMediaQuery('(max-width: 768px)');
 
 	const handleDarkModeToggle = () => {
 		setDarkMode(!darkMode);
@@ -26,8 +28,8 @@ export default function DarkModeToggle() {
 			<style>
 				{`
 						.theme-toggle__expand {
-						height: 2.2em;
-						width: 2.2em;
+						height: ${isMobile ? '1.8em' : '2.2em'};
+						width: ${isMobile ? '1.8em' : '2.2em'};
 						}
 					`}
 			</style>

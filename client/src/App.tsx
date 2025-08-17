@@ -62,7 +62,7 @@ export default function App() {
 					{/* {location.pathname === '/' && loading && <Splash />} */}
 				</AnimatePresence>
 				
-				{isMobile ? <MobileNavbar /> : <GlassNavbar />}
+				<GlassNavbar />
 				
 				<Routes>
 					<Route path='/' element={<Home />} />

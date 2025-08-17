@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { 
-	TextInput, 
-	Button, 
-	Box, 
-	Grid, 
-	Title, 
-	Text, 
-	Textarea, 
+import {
+	TextInput,
+	Button,
+	Box,
+	Grid,
+	Title,
+	Text,
+	Textarea,
 	Container,
 	Paper,
 	Stack,
@@ -16,16 +16,16 @@ import {
 	ThemeIcon,
 	Badge,
 	SimpleGrid,
-	useMantineTheme
+	useMantineTheme,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
-import { 
-	IconMail, 
-	IconBrandLinkedin, 
-	IconBrandGithub, 
-	IconMapPin, 
+import {
+	IconMail,
+	IconBrandLinkedin,
+	IconBrandGithub,
+	IconMapPin,
 	IconSend,
-	IconCheck
+	IconCheck,
 } from '@tabler/icons-react';
 import { Element } from 'react-scroll';
 import { notifications } from '@mantine/notifications';
@@ -77,11 +77,11 @@ export default function Contact() {
 					form.current,
 					import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
 				);
-				
+
 				form.current?.reset();
 				notifications.show({
 					title: 'Message Sent!',
-					message: 'Thank you for reaching out. I\'ll get back to you soon.',
+					message: 'Thank you for reaching out. I will get back to you soon.',
 					color: 'green',
 					icon: <IconCheck size={16} />,
 				});
@@ -103,29 +103,29 @@ export default function Contact() {
 			title: 'Email',
 			value: 'hello@warsame.dev',
 			href: 'mailto:hello@warsame.dev',
-			color: 'blue'
+			color: 'blue',
 		},
 		{
 			icon: IconBrandLinkedin,
 			title: 'LinkedIn',
 			value: '/in/imanwarsame',
 			href: 'https://linkedin.com/in/imanwarsame',
-			color: 'blue'
+			color: 'blue',
 		},
 		{
 			icon: IconBrandGithub,
 			title: 'GitHub',
 			value: '/imanwarsame',
 			href: 'https://github.com/imanwarsame',
-			color: 'gray'
+			color: 'gray',
 		},
 		{
 			icon: IconMapPin,
 			title: 'Location',
 			value: 'Copenhagen, Denmark',
 			href: null,
-			color: 'red'
-		}
+			color: 'red',
+		},
 	];
 
 	return (
@@ -135,62 +135,52 @@ export default function Contact() {
 				py={isMobile ? 60 : 100}
 				style={{
 					width: '100vw',
-					background: darkMode 
-						? theme.other.background.default 
-						: theme.other.background.paper,
+					background: darkMode ? theme.other.background.default : theme.other.background.paper,
 					minHeight: '100vh',
 					display: 'flex',
 					alignItems: 'center',
 				}}
 			>
-				<Container size="lg">
+				<Container size='lg'>
 					<motion.div
 						variants={containerVariants}
-						initial="hidden"
+						initial='hidden'
 						animate={isInView ? 'visible' : 'hidden'}
 					>
 						{/* Section Header */}
 						<motion.div variants={itemVariants}>
-							<Stack align="center" gap="md" mb={60}>
-								<Badge size="lg" variant="light" color="blue">
+							<Stack align='center' gap='md' mb={60}>
+								<Badge size='lg' variant='light' color='blue'>
 									Contact
 								</Badge>
 								<Title
 									order={2}
 									size={isMobile ? 'h3' : 'h2'}
-									ta="center"
+									ta='center'
 									style={{
-										color: theme.colorScheme === 'dark' 
-											? theme.other.text.primary 
-											: theme.other.text.primary,
+										color: darkMode ? theme.other.text.primary : theme.other.text.primary,
 									}}
 								>
 									Let&apos;s Work Together
 								</Title>
 								<Text
-									size="lg"
-									ta="center"
+									size='lg'
+									ta='center'
 									maw={600}
 									style={{
-										color: theme.colorScheme === 'dark' 
-											? theme.other.text.secondary 
-											: theme.other.text.secondary,
+										color: darkMode ? theme.other.text.secondary : theme.other.text.secondary,
 										lineHeight: 1.6,
 									}}
 								>
-									Have a project in mind or want to discuss opportunities? 
-									I&apos;d love to hear from you. Let&apos;s create something amazing together.
+									Have a project in mind or want to discuss opportunities? I&apos;d love to hear
+									from you. Let&apos;s create something amazing together.
 								</Text>
 							</Stack>
 						</motion.div>
 
 						{/* Contact Info Cards */}
 						<motion.div variants={itemVariants}>
-							<SimpleGrid
-								cols={{ base: 1, sm: 2, lg: 4 }}
-								spacing="md"
-								mb={60}
-							>
+							<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing='md' mb={60}>
 								{contactInfo.map((info, index) => (
 									<Paper
 										key={index}
@@ -198,56 +188,43 @@ export default function Contact() {
 										href={info.href || undefined}
 										target={info.href ? '_blank' : undefined}
 										rel={info.href ? 'noopener noreferrer' : undefined}
-										p="lg"
-										radius="lg"
+										p='lg'
+										radius='lg'
 										style={{
-											background: theme.colorScheme === 'dark' 
-												? theme.other.background.paper 
-												: theme.colors.white,
-											border: `1px solid ${theme.colorScheme === 'dark' 
-												? theme.other.border.light 
-												: theme.other.border.light}`,
+											background: darkMode ? theme.other.background.paper : theme.colors.white,
+											border: `1px solid ${
+												darkMode ? theme.other.border.light : theme.other.border.light
+											}`,
 											textDecoration: 'none',
 											cursor: info.href ? 'pointer' : 'default',
 											transition: 'all 0.3s ease',
 										}}
-										onMouseEnter={(e) => {
+										onMouseEnter={(e: { currentTarget: { style: { transform: string } } }) => {
 											if (info.href) {
 												e.currentTarget.style.transform = 'translateY(-2px)';
 											}
 										}}
-										onMouseLeave={(e) => {
+										onMouseLeave={(e: { currentTarget: { style: { transform: string } } }) => {
 											if (info.href) {
 												e.currentTarget.style.transform = 'translateY(0)';
 											}
 										}}
 									>
-										<Stack align="center" gap="sm">
-											<ThemeIcon
-												size="lg"
-												variant="light"
-												color={info.color}
-												radius="lg"
-											>
+										<Stack align='center' gap='sm'>
+											<ThemeIcon size='lg' variant='light' color={info.color} radius='lg'>
 												<info.icon size={20} />
 											</ThemeIcon>
-											<Stack gap={4} align="center">
+											<Stack gap={4} align='center'>
 												<Text
-													size="sm"
+													size='sm'
 													fw={600}
 													style={{
-														color: theme.colorScheme === 'dark' 
-															? theme.other.text.primary 
-															: theme.other.text.primary,
+														color: darkMode ? theme.other.text.primary : theme.other.text.primary,
 													}}
 												>
 													{info.title}
 												</Text>
-												<Text
-													size="xs"
-													c="dimmed"
-													ta="center"
-												>
+												<Text size='xs' c='dimmed' ta='center'>
 													{info.value}
 												</Text>
 											</Stack>
@@ -261,35 +238,26 @@ export default function Contact() {
 						<motion.div variants={itemVariants}>
 							<Paper
 								p={isMobile ? 'lg' : 'xl'}
-								radius="lg"
+								radius='lg'
 								style={{
-									background: theme.colorScheme === 'dark' 
-										? theme.other.background.paper 
-										: theme.colors.white,
-									border: `1px solid ${theme.colorScheme === 'dark' 
-										? theme.other.border.light 
-										: theme.other.border.light}`,
+									background: darkMode ? theme.other.background.paper : theme.colors.white,
+									border: `1px solid ${
+										darkMode ? theme.other.border.light : theme.other.border.light
+									}`,
 									maxWidth: 800,
 									margin: '0 auto',
 								}}
 							>
-								<Stack gap="lg">
-									<Stack align="center" gap="sm">
-										<ThemeIcon
-											size={60}
-											variant="light"
-											color="blue"
-											radius="50%"
-										>
+								<Stack gap='lg'>
+									<Stack align='center' gap='sm'>
+										<ThemeIcon size={60} variant='light' color='blue' radius='50%'>
 											<IconSend size={30} />
 										</ThemeIcon>
 										<Title
 											order={3}
-											ta="center"
+											ta='center'
 											style={{
-												color: theme.colorScheme === 'dark' 
-													? theme.other.text.primary 
-													: theme.other.text.primary,
+												color: darkMode ? theme.other.text.primary : theme.other.text.primary,
 											}}
 										>
 											Send me a message
@@ -297,7 +265,7 @@ export default function Contact() {
 									</Stack>
 
 									<form ref={form} onSubmit={sendEmail}>
-										<Stack gap="md">
+										<Stack gap='md'>
 											<Grid>
 												<Grid.Col span={{ base: 12, md: 6 }}>
 													<TextInput
@@ -306,9 +274,9 @@ export default function Contact() {
 														name='user_name'
 														id='user_name'
 														label='Name'
-														placeholder="Your full name"
-														size="md"
-														radius="md"
+														placeholder='Your full name'
+														size='md'
+														radius='md'
 													/>
 												</Grid.Col>
 												<Grid.Col span={{ base: 12, md: 6 }}>
@@ -318,37 +286,37 @@ export default function Contact() {
 														name='user_email'
 														id='user_email'
 														label='Email'
-														placeholder="your@email.com"
-														size="md"
-														radius="md"
+														placeholder='your@email.com'
+														size='md'
+														radius='md'
 													/>
 												</Grid.Col>
 											</Grid>
-											
+
 											<TextInput
 												name='subject'
 												id='subject'
 												label='Subject'
 												placeholder="What's this about?"
-												size="md"
-												radius="md"
+												size='md'
+												radius='md'
 											/>
-											
+
 											<Textarea
 												required
 												name='message'
 												id='message'
 												label='Message'
-												placeholder="Tell me about your project or just say hello..."
+												placeholder='Tell me about your project or just say hello...'
 												rows={6}
-												size="md"
-												radius="md"
+												size='md'
+												radius='md'
 											/>
-											
-											<Group justify="center" mt="lg">
+
+											<Group justify='center' mt='lg'>
 												<Button
 													type='submit'
-													size="lg"
+													size='lg'
 													leftSection={<IconSend size={20} />}
 													loading={isSubmitting}
 													style={{
@@ -366,8 +334,8 @@ export default function Contact() {
 
 						{/* Footer */}
 						<motion.div variants={itemVariants}>
-							<Stack align="center" gap="md" mt={60}>
-								<Group gap="md">
+							<Stack align='center' gap='md' mt={60}>
+								<Group gap='md'>
 									{[
 										{ icon: IconBrandGithub, href: 'https://github.com/imanwarsame' },
 										{ icon: IconBrandLinkedin, href: 'https://linkedin.com/in/imanwarsame' },
@@ -375,25 +343,21 @@ export default function Contact() {
 									].map((social, index) => (
 										<ActionIcon
 											key={index}
-											component="a"
+											component='a'
 											href={social.href}
-											target="_blank"
-											rel="noopener noreferrer"
-											size="lg"
-											variant="light"
-											color="blue"
-											radius="md"
+											target='_blank'
+											rel='noopener noreferrer'
+											size='lg'
+											variant='light'
+											color='blue'
+											radius='md'
 										>
 											<social.icon size={20} />
 										</ActionIcon>
 									))}
 								</Group>
-								<Text
-									size="sm"
-									c="dimmed"
-									ta="center"
-								>
-									© {currentYear} Iman Warsame. Built with React & Mantine.
+								<Text size='sm' c='dimmed' ta='center'>
+									© {currentYear} Iman Warsame.
 								</Text>
 							</Stack>
 						</motion.div>
