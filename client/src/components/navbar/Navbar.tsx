@@ -126,9 +126,7 @@ export default function Navbar() {
 					: 'transparent',
 				backdropFilter: scrolled ? 'blur(10px)' : 'blur(5px)',
 				border: 'none',
-				boxShadow: scrolled 
-					? theme.shadows.md 
-					: 'none',
+				boxShadow: 'none',
 				transition: 'all 0.3s ease',
 			}}
 		>

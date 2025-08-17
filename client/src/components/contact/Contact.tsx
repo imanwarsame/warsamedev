@@ -214,13 +214,11 @@ export default function Contact() {
 										onMouseEnter={(e) => {
 											if (info.href) {
 												e.currentTarget.style.transform = 'translateY(-2px)';
-												e.currentTarget.style.boxShadow = theme.shadows.md;
 											}
 										}}
 										onMouseLeave={(e) => {
 											if (info.href) {
 												e.currentTarget.style.transform = 'translateY(0)';
-												e.currentTarget.style.boxShadow = theme.shadows.sm;
 											}
 										}}
 									>

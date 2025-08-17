@@ -4,7 +4,7 @@ import '@fontsource/inter';
 
 const lightTheme = createTheme({
 	primaryColor: 'blue',
-	fontFamily: 'Inter, sans-serif',
+	fontFamily: 'Poppins, sans-serif',
 	headings: {
 		fontFamily: 'Poppins, sans-serif',
 		fontWeight: '600',
@@ -95,7 +95,7 @@ const lightTheme = createTheme({
 
 const darkTheme = createTheme({
 	primaryColor: 'blue',
-	fontFamily: 'Inter, sans-serif',
+	fontFamily: 'Poppins, sans-serif',
 	headings: {
 		fontFamily: 'Poppins, sans-serif',
 		fontWeight: '600',
