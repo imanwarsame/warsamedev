@@ -16,13 +16,18 @@ export default function DarkModeToggle() {
 			toggle={handleDarkModeToggle}
 			style={{
 				color: darkMode ? '#fafafa' : '#18181b',
+				margin: 0,
+				padding: 0,
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
 			}}
 		>
 			<style>
 				{`
 						.theme-toggle__expand {
-						height: 3em;
-						width: 3em;
+						height: 2.2em;
+						width: 2.2em;
 						}
 					`}
 			</style>

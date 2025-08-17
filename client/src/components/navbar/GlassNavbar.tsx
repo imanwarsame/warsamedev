@@ -37,11 +37,12 @@ export default function GlassNavbar() {
 					height={80}
 					borderRadius={40}
 					className='glass-navbar'
-					distortionScale={-90}
+					backgroundOpacity={0.4}
 					style={{
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'center',
+						boxShadow: 'none',
 					}}
 				>
 					<div
@@ -72,8 +73,8 @@ export default function GlassNavbar() {
 								>
 									<Image
 										src={darkMode ? LogoDark : LogoLight}
-										h={36}
-										w={36}
+										h={42}
+										w={42}
 										alt='IW-letters-logo'
 									/>
 								</div>
@@ -103,11 +104,11 @@ export default function GlassNavbar() {
 								}}
 							>
 								<Title
-									order={5}
-									size='md'
+									order={4}
+									size='lg'
 									style={{
 										color: darkMode ? '#ffffff' : '#000000',
-										fontWeight: 500,
+										fontWeight: 700,
 									}}
 								>
 									Articles
