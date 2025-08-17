@@ -2,7 +2,6 @@ import { Box, Stack } from '@mantine/core';
 import Hero from '../hero/Hero';
 import About from '../about/About';
 import Contact from '../contact/Contact';
-import Experience from '../experience/Experience';
 import Projects from '../projects/Projects';
 import Technologies from '../technologies/Technologies';
 import { motion } from 'framer-motion';
@@ -29,7 +28,6 @@ export default function Home() {
 					<About />
 					<Technologies />
 					<Projects />
-					<Experience />
 					<Contact />
 				</Stack>
 			</Box>

@@ -6,6 +6,7 @@ export interface GlassIconsItem {
 	color: string;
 	label: string;
 	customClass?: string;
+	onClick?: () => void;
 }
 
 export interface GlassIconsProps {
@@ -38,6 +39,7 @@ export default function GlassIcons({ items, className }: GlassIconsProps) {
 					type='button'
 					className={`icon-btn ${item.customClass || ''}`}
 					aria-label={item.label}
+					onClick={item.onClick}
 				>
 					<span className='icon-btn__back' style={getBackgroundStyle(item.color)}></span>
 					<span className='icon-btn__front'>

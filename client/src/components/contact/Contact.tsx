@@ -18,6 +18,7 @@ import {
 	SimpleGrid,
 	useMantineTheme,
 } from '@mantine/core';
+import GlassIcons from '../glassIcons/GlassIcons';
 import { motion, useInView } from 'framer-motion';
 import {
 	IconMail,
@@ -26,6 +27,7 @@ import {
 	IconMapPin,
 	IconSend,
 	IconCheck,
+	IconCopy,
 } from '@tabler/icons-react';
 import { Element } from 'react-scroll';
 import { notifications } from '@mantine/notifications';
@@ -97,6 +99,16 @@ export default function Contact() {
 		}
 	};
 
+	const copyEmail = () => {
+		navigator.clipboard.writeText('hello@warsame.dev');
+		notifications.show({
+			title: 'Email Copied!',
+			message: 'Email address has been copied to clipboard',
+			color: 'green',
+			icon: <IconCheck size={16} />,
+		});
+	};
+
 	const contactInfo = [
 		{
 			icon: IconMail,
@@ -104,6 +116,7 @@ export default function Contact() {
 			value: 'hello@warsame.dev',
 			href: 'mailto:hello@warsame.dev',
 			color: 'blue',
+			showCopy: true,
 		},
 		{
 			icon: IconBrandLinkedin,
@@ -132,13 +145,10 @@ export default function Contact() {
 		<Element name='contact_element'>
 			<Box
 				ref={ref}
-				py={isMobile ? 60 : 100}
 				style={{
 					width: '100vw',
 					background: darkMode ? theme.other.background.default : theme.other.background.paper,
-					minHeight: '100vh',
-					display: 'flex',
-					alignItems: 'center',
+					paddingTop: isMobile ? '120px' : '140px',
 				}}
 			>
 				<Container size='lg'>
@@ -180,7 +190,7 @@ export default function Contact() {
 
 						{/* Contact Info Cards */}
 						<motion.div variants={itemVariants}>
-							<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing='md' mb={60}>
+							<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing='md' mb={30}>
 								{contactInfo.map((info, index) => (
 									<Paper
 										key={index}
@@ -198,6 +208,7 @@ export default function Contact() {
 											textDecoration: 'none',
 											cursor: info.href ? 'pointer' : 'default',
 											transition: 'all 0.3s ease',
+											position: 'relative',
 										}}
 										onMouseEnter={(e: { currentTarget: { style: { transform: string } } }) => {
 											if (info.href) {
@@ -224,9 +235,28 @@ export default function Contact() {
 												>
 													{info.title}
 												</Text>
-												<Text size='xs' c='dimmed' ta='center'>
-													{info.value}
-												</Text>
+												<Group gap={4} align='center'>
+													<Text size='xs' c='dimmed' ta='center'>
+														{info.value}
+													</Text>
+													{info.showCopy && (
+														<ActionIcon
+															size='xs'
+															variant='subtle'
+															color='gray'
+															onClick={(e) => {
+																e.preventDefault();
+																e.stopPropagation();
+																copyEmail();
+															}}
+															style={{
+																cursor: 'pointer',
+															}}
+														>
+															<IconCopy size={12} />
+														</ActionIcon>
+													)}
+												</Group>
 											</Stack>
 										</Stack>
 									</Paper>
@@ -244,8 +274,6 @@ export default function Contact() {
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
-									maxWidth: 800,
-									margin: '0 auto',
 								}}
 							>
 								<Stack gap='lg'>
@@ -293,15 +321,6 @@ export default function Contact() {
 												</Grid.Col>
 											</Grid>
 
-											<TextInput
-												name='subject'
-												id='subject'
-												label='Subject'
-												placeholder="What's this about?"
-												size='md'
-												radius='md'
-											/>
-
 											<Textarea
 												required
 												name='message'
@@ -334,28 +353,33 @@ export default function Contact() {
 
 						{/* Footer */}
 						<motion.div variants={itemVariants}>
-							<Stack align='center' gap='md' mt={60}>
-								<Group gap='md'>
-									{[
-										{ icon: IconBrandGithub, href: 'https://github.com/imanwarsame' },
-										{ icon: IconBrandLinkedin, href: 'https://linkedin.com/in/imanwarsame' },
-										{ icon: IconMail, href: 'mailto:hello@warsame.dev' },
-									].map((social, index) => (
-										<ActionIcon
-											key={index}
-											component='a'
-											href={social.href}
-											target='_blank'
-											rel='noopener noreferrer'
-											size='lg'
-											variant='light'
-											color='blue'
-											radius='md'
-										>
-											<social.icon size={20} />
-										</ActionIcon>
-									))}
-								</Group>
+							<Stack align='center' gap='md' mt={30} mb={10}>
+								<GlassIcons
+									items={[
+										{
+											icon: <IconBrandGithub size={20} />,
+											color: 'indigo',
+											label: 'GitHub',
+											customClass: 'social-icon',
+											onClick: () => window.open('https://github.com/imanwarsame', '_blank'),
+										},
+										{
+											icon: <IconBrandLinkedin size={20} />,
+											color: 'blue',
+											label: 'LinkedIn',
+											customClass: 'social-icon',
+											onClick: () => window.open('https://linkedin.com/in/imanwarsame', '_blank'),
+										},
+										{
+											icon: <IconMail size={20} />,
+											color: 'purple',
+											label: 'Email',
+											customClass: 'social-icon',
+											onClick: () => window.open('mailto:hello@warsame.dev', '_blank'),
+										},
+									]}
+									className="social-icons"
+								/>
 								<Text size='sm' c='dimmed' ta='center'>
 									© {currentYear} Iman Warsame.
 								</Text>

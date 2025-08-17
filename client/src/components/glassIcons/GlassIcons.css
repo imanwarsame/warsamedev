@@ -9,6 +9,7 @@
 
 .icon-btn {
 	background-color: transparent;
+	border: none;
 	outline: none;
 	position: relative;
 	width: 4.5em;
@@ -88,6 +89,29 @@
 .icon-btn:hover .icon-btn__label {
 	opacity: 1;
 	transform: translateY(20%);
+}
+
+/* Smaller icons for social icons */
+.social-icons {
+	padding: 1em 0;
+	grid-gap: 2em;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.social-icons .icon-btn {
+	width: 3em;
+	height: 3em;
+}
+
+@media (max-width: 767px) {
+	.social-icons {
+		grid-gap: 1.5em;
+	}
+
+	.social-icons .icon-btn {
+		width: 2.5em;
+		height: 2.5em;
+	}
 }
 
 @media (min-width: 768px) {
