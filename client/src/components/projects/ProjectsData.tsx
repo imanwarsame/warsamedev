@@ -13,7 +13,8 @@ export const projects = [
 		webLink: 'https://designer.groundplug.dk/',
 		githubLink: null,
 		featured: true,
-		description: 'A comprehensive web application for designing and analyzing ground plug installations. Features advanced 3D visualization, real-time calculations, and automated report generation for civil engineering projects.',
+		description:
+			'A comprehensive web application for designing and analyzing ground plug installations. Features advanced 3D visualization, real-time calculations, and automated report generation for civil engineering projects.',
 		technologies: ['React', 'TypeScript', 'Three.js', 'Node.js', 'PostgreSQL', 'WebGL'],
 		videoUrl: null,
 		category: 'Full Stack Development',
@@ -23,8 +24,8 @@ export const projects = [
 			'3D visualization engine for complex engineering calculations',
 			'Real-time collaboration features for engineering teams',
 			'Automated PDF report generation with custom templates',
-			'Integration with industry-standard engineering software'
-		]
+			'Integration with industry-standard engineering software',
+		],
 	},
 	{
 		id: 2,
@@ -32,10 +33,11 @@ export const projects = [
 		title2: 'viz',
 		title: 'Garviz',
 		imageUrl: Garviz,
-		webLink: 'https://garviz.netlify.app/',
+		webLink: 'https://garviz.net/',
 		githubLink: 'https://github.com/imanwarsame/garviz',
 		featured: true,
-		description: 'An innovative data visualization platform that transforms complex datasets into interactive, beautiful charts and graphs. Built with modern web technologies for optimal performance and user experience.',
+		description:
+			'An innovative data visualization platform that transforms complex datasets into interactive, beautiful charts and graphs. Built with modern web technologies for optimal performance and user experience.',
 		technologies: ['React', 'D3.js', 'TypeScript', 'Vite', 'Tailwind CSS', 'Chart.js'],
 		videoUrl: null,
 		category: 'Data Visualization',
@@ -45,8 +47,8 @@ export const projects = [
 			'Interactive data visualization with D3.js',
 			'Real-time data processing and analysis',
 			'Responsive design for all device types',
-			'Export capabilities for various formats'
-		]
+			'Export capabilities for various formats',
+		],
 	},
 	{
 		id: 3,
@@ -57,7 +59,8 @@ export const projects = [
 		webLink: 'https://warsame.dev/',
 		githubLink: 'https://github.com/imanwarsame/warsamedev',
 		featured: false,
-		description: 'A modern, responsive portfolio website showcasing my work as a full-stack developer, product owner, and chartered civil engineer. Features smooth animations, dark mode, and optimized performance.',
+		description:
+			'A modern, responsive portfolio website showcasing my work as a full-stack developer, product owner, and chartered civil engineer. Features smooth animations, dark mode, and optimized performance.',
 		technologies: ['React', 'Mantine', 'TypeScript', 'Framer Motion', 'Vite', 'Netlify'],
 		videoUrl: null,
 		category: 'Portfolio',
@@ -67,8 +70,8 @@ export const projects = [
 			'Modern design with smooth animations',
 			'Fully responsive across all devices',
 			'Dark/light mode toggle',
-			'Optimized for performance and SEO'
-		]
+			'Optimized for performance and SEO',
+		],
 	},
 	{
 		id: 4,
@@ -79,7 +82,8 @@ export const projects = [
 		webLink: null,
 		githubLink: 'https://github.com/imanwarsame/opendetail',
 		featured: false,
-		description: 'An open-source project management tool designed for engineering teams. Features task tracking, collaborative workspaces, and integration with popular development tools.',
+		description:
+			'An open-source project management tool designed for engineering teams. Features task tracking, collaborative workspaces, and integration with popular development tools.',
 		technologies: ['Vue.js', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'Redis'],
 		videoUrl: null,
 		category: 'Project Management',
@@ -89,8 +93,8 @@ export const projects = [
 			'Collaborative project management features',
 			'Real-time updates and notifications',
 			'Integration with GitHub and GitLab',
-			'Customizable workflows and templates'
-		]
+			'Customizable workflows and templates',
+		],
 	},
 	{
 		id: 5,
@@ -101,8 +105,16 @@ export const projects = [
 		webLink: null,
 		githubLink: null,
 		featured: true,
-		description: 'An IoT-based bridge monitoring system that uses sensors to collect real-time structural health data. Includes predictive analytics for maintenance scheduling and safety assessments.',
-		technologies: ['Python', 'IoT Sensors', 'Machine Learning', 'AWS', 'React Dashboard', 'Time Series DB'],
+		description:
+			'An IoT-based bridge monitoring system that uses sensors to collect real-time structural health data. Includes predictive analytics for maintenance scheduling and safety assessments.',
+		technologies: [
+			'Python',
+			'IoT Sensors',
+			'Machine Learning',
+			'AWS',
+			'React Dashboard',
+			'Time Series DB',
+		],
 		videoUrl: '/videos/smart-bridge-demo.mp4',
 		category: 'Civil Engineering Tech',
 		year: '2024',
@@ -111,8 +123,8 @@ export const projects = [
 			'Real-time structural health monitoring',
 			'Predictive maintenance algorithms',
 			'Mobile alerts for critical conditions',
-			'Historical data analysis and reporting'
-		]
+			'Historical data analysis and reporting',
+		],
 	},
 	{
 		id: 6,
@@ -123,8 +135,16 @@ export const projects = [
 		webLink: null,
 		githubLink: null,
 		featured: true,
-		description: 'A comprehensive sustainability calculator for construction projects. Helps engineers and architects make environmentally conscious decisions by calculating carbon footprints and suggesting alternatives.',
-		technologies: ['React Native', 'Node.js', 'MongoDB', 'Express', 'Machine Learning', 'PDF Generation'],
+		description:
+			'A comprehensive sustainability calculator for construction projects. Helps engineers and architects make environmentally conscious decisions by calculating carbon footprints and suggesting alternatives.',
+		technologies: [
+			'React Native',
+			'Node.js',
+			'MongoDB',
+			'Express',
+			'Machine Learning',
+			'PDF Generation',
+		],
 		videoUrl: '/videos/ecocalc-demo.mp4',
 		category: 'Sustainability Tech',
 		year: '2023',
@@ -133,9 +153,9 @@ export const projects = [
 			'Carbon footprint calculations for materials',
 			'Alternative material suggestions',
 			'Compliance reporting for green certifications',
-			'Mobile app for field assessments'
-		]
-	}
+			'Mobile app for field assessments',
+		],
+	},
 ];
 
 export const projectCategories = [
@@ -145,7 +165,7 @@ export const projectCategories = [
 	'Civil Engineering Tech',
 	'Sustainability Tech',
 	'Portfolio',
-	'Project Management'
+	'Project Management',
 ];
 
-export const featuredProjects = projects.filter(project => project.featured);
+export const featuredProjects = projects.filter((project) => project.featured);

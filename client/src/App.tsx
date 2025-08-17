@@ -1,7 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
-import Navbar from './components/navbar/Navbar';
+import GlassNavbar from './components/navbar/GlassNavbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
 import { useEffect, useState } from 'react';
@@ -59,10 +59,10 @@ export default function App() {
 			<ModalsProvider>
 				<Notifications />
 				<AnimatePresence mode='wait'>
-					{location.pathname === '/' && loading && <Splash />}
+					{/* {location.pathname === '/' && loading && <Splash />} */}
 				</AnimatePresence>
 				
-				{isMobile ? <MobileNavbar /> : <Navbar />}
+				{isMobile ? <MobileNavbar /> : <GlassNavbar />}
 				
 				<Routes>
 					<Route path='/' element={<Home />} />

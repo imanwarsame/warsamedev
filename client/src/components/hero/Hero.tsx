@@ -82,12 +82,33 @@ export default function Hero() {
 						}}
 					>
 						<DecryptedText
-							text="Full Stack Developer • Product Owner • Chartered Civil Engineer"
-							animateOn="view"
-							speed={30}
+							text='Full Stack Developer'
+							animateOn='view'
+							speed={50}
 							maxIterations={12}
 							sequential={true}
-							revealDirection="start"
+							revealDirection='start'
+							useOriginalCharsOnly={true}
+						/>
+						{' | '}
+						<DecryptedText
+							text='Product Owner'
+							animateOn='view'
+							speed={70}
+							maxIterations={12}
+							sequential={true}
+							revealDirection='start'
+							useOriginalCharsOnly={true}
+						/>
+						{' | '}
+						<DecryptedText
+							text='Chartered Civil Engineer'
+							animateOn='view'
+							speed={80}
+							maxIterations={12}
+							sequential={true}
+							revealDirection='start'
+							useOriginalCharsOnly={true}
 						/>
 					</Text>
 
