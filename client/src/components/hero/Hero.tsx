@@ -68,14 +68,7 @@ export default function Hero() {
 							lineHeight: 1.1,
 						}}
 					>
-						<DecryptedText
-							text="Iman Warsame"
-							animateOn="view"
-							speed={50}
-							maxIterations={15}
-							sequential={true}
-							revealDirection="start"
-						/>
+						Iman Warsame
 					</Title>
 
 					{/* Role Text */}
