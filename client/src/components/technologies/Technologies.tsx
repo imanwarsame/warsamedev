@@ -66,6 +66,7 @@ export default function Technologies() {
 								alt={tech.text}
 								w={64}
 								h={64}
+								fit="contain"
 								style={{
 									filter: darkMode ? 'brightness(1)' : 'brightness(0.9)',
 								}}
