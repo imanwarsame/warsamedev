@@ -76,9 +76,7 @@ export default function About() {
 				py={isMobile ? 60 : 100}
 				style={{
 					width: '100vw',
-					background: darkMode
-						? `linear-gradient(135deg, ${theme.other.background.paper} 0%, ${theme.other.background.subtle} 100%)`
-						: `linear-gradient(135deg, ${theme.other.background.paper} 0%, ${theme.colors.gray[0]} 100%)`,
+					background: darkMode ? theme.other.background.default : theme.other.background.default,
 				}}
 			>
 				<Container size='lg'>
@@ -92,7 +90,7 @@ export default function About() {
 							size={isMobile ? 'h3' : 'h2'}
 							ta='center'
 							style={{
-								color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+								color: darkMode ? '#ffffff' : '#000000',
 							}}
 						>
 							Bridging Engineering & Technology
@@ -124,7 +122,7 @@ export default function About() {
 								p='md'
 								radius='lg'
 								style={{
-									background: darkMode ? theme.other.background.paper : theme.colors.white,
+									background: darkMode ? theme.other.background.paper : theme.other.background.paper,
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
@@ -158,7 +156,7 @@ export default function About() {
 								radius='lg'
 								style={{
 									height: '100%',
-									background: darkMode ? theme.other.background.paper : theme.colors.white,
+									background: darkMode ? theme.other.background.paper : theme.other.background.paper,
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
@@ -173,14 +171,23 @@ export default function About() {
 							>
 								<Stack gap='md' h='100%'>
 									<Group>
-										<ThemeIcon size='xl' variant='light' color={role.color} radius='lg'>
+										<ThemeIcon 
+											size='xl' 
+											variant='light' 
+											color={darkMode ? 'gray' : role.color} 
+											radius='lg'
+											style={{
+												backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.1)' : undefined,
+												color: darkMode ? '#ffffff' : undefined,
+											}}
+										>
 											<role.icon size={28} />
 										</ThemeIcon>
 										<Title
 											order={3}
 											size='h4'
 											style={{
-												color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+												color: darkMode ? '#ffffff' : '#000000',
 											}}
 										>
 											{role.title}
@@ -229,7 +236,16 @@ export default function About() {
 						}}
 					>
 						<Stack align='center' gap='md'>
-							<ThemeIcon size={60} variant='white' color='blue' radius='50%'>
+							<ThemeIcon 
+								size={60} 
+								variant='white' 
+								color={darkMode ? 'gray' : 'blue'} 
+								radius='50%'
+								style={{
+									backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.9)' : undefined,
+									color: darkMode ? '#000000' : undefined,
+								}}
+							>
 								<IconHeart size={30} />
 							</ThemeIcon>
 							<Title order={3} size='h4' style={{ color: 'white' }}>

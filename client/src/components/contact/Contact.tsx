@@ -147,7 +147,7 @@ export default function Contact() {
 				ref={ref}
 				style={{
 					width: '100vw',
-					background: darkMode ? theme.other.background.default : theme.other.background.paper,
+					background: darkMode ? theme.other.background.default : theme.other.background.default,
 					paddingTop: isMobile ? '120px' : '140px',
 				}}
 			>
@@ -168,7 +168,7 @@ export default function Contact() {
 									size={isMobile ? 'h3' : 'h2'}
 									ta='center'
 									style={{
-										color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+										color: darkMode ? '#ffffff' : '#000000',
 									}}
 								>
 									Let&apos;s Work Together
@@ -178,7 +178,7 @@ export default function Contact() {
 									ta='center'
 									maw={600}
 									style={{
-										color: darkMode ? theme.other.text.secondary : theme.other.text.secondary,
+										color: darkMode ? '#a0a0a0' : '#666666',
 										lineHeight: 1.6,
 									}}
 								>
@@ -201,7 +201,7 @@ export default function Contact() {
 										p='lg'
 										radius='lg'
 										style={{
-											background: darkMode ? theme.other.background.paper : theme.colors.white,
+											background: darkMode ? theme.other.background.paper : theme.other.background.paper,
 											border: `1px solid ${
 												darkMode ? theme.other.border.light : theme.other.border.light
 											}`,
@@ -222,7 +222,16 @@ export default function Contact() {
 										}}
 									>
 										<Stack align='center' gap='sm'>
-											<ThemeIcon size='lg' variant='light' color={info.color} radius='lg'>
+											<ThemeIcon 
+												size='lg' 
+												variant='light' 
+												color={darkMode ? 'gray' : info.color} 
+												radius='lg'
+												style={{
+													backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.1)' : undefined,
+													color: darkMode ? '#ffffff' : undefined,
+												}}
+											>
 												<info.icon size={20} />
 											</ThemeIcon>
 											<Stack gap={4} align='center'>
@@ -230,7 +239,7 @@ export default function Contact() {
 													size='sm'
 													fw={600}
 													style={{
-														color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+														color: darkMode ? '#ffffff' : '#000000',
 													}}
 												>
 													{info.title}
@@ -270,7 +279,7 @@ export default function Contact() {
 								p={isMobile ? 'lg' : 'xl'}
 								radius='lg'
 								style={{
-									background: darkMode ? theme.other.background.paper : theme.colors.white,
+									background: darkMode ? theme.other.background.paper : theme.other.background.paper,
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
@@ -278,14 +287,23 @@ export default function Contact() {
 							>
 								<Stack gap='lg'>
 									<Stack align='center' gap='sm'>
-										<ThemeIcon size={60} variant='light' color='blue' radius='50%'>
+										<ThemeIcon 
+											size={60} 
+											variant='light' 
+											color={darkMode ? 'gray' : 'blue'} 
+											radius='50%'
+											style={{
+												backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.1)' : undefined,
+												color: darkMode ? '#ffffff' : undefined,
+											}}
+										>
 											<IconSend size={30} />
 										</ThemeIcon>
 										<Title
 											order={3}
 											ta='center'
 											style={{
-												color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+												color: darkMode ? '#ffffff' : '#000000',
 											}}
 										>
 											Send me a message

@@ -12,7 +12,7 @@ import {
 } from '@mantine/core';
 import { IconBrandGithub, IconBrandLinkedin, IconMail, IconDownload } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
-import Iridescence from '../iridescence/Iridescence';
+import Threads from '../threads/Threads';
 import DecryptedText from '../decryptedText/DecryptedText';
 import Lottie from 'lottie-react';
 import animatedScrollDark from '../../assets/scroll-down-dark.json';
@@ -24,10 +24,10 @@ export default function Hero() {
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
 	// Different colors for light and dark modes
-	const iridescenceColor: [number, number, number] =
+	const threadsColor: [number, number, number] =
 		colorScheme === 'dark'
-			? [0.1, 0.15, 0.3] // Deep dark blue-gray for dark mode
-			: [0.85, 0.9, 1.0]; // Soft blue-white for light mode
+			? [0.3, 0.35, 0.6] // Soft purple-blue for dark mode
+			: [0.2, 0.25, 0.4]; // Darker blue-gray for light mode
 
 	return (
 		<Box
@@ -38,9 +38,10 @@ export default function Hero() {
 				overflow: 'hidden',
 				display: 'flex',
 				alignItems: 'center',
+				background: colorScheme === 'dark' ? theme.other.background.default : theme.other.background.default,
 			}}
 		>
-			{/* Iridescence Background */}
+			{/* Threads Background */}
 			<Box
 				style={{
 					position: 'absolute',
@@ -51,7 +52,12 @@ export default function Hero() {
 					zIndex: 0,
 				}}
 			>
-				<Iridescence color={iridescenceColor} speed={0.3} amplitude={0.05} mouseReact={false} />
+				<Threads
+					color={threadsColor}
+					amplitude={0.8}
+					distance={0}
+					enableMouseInteraction={false}
+				/>
 			</Box>
 
 			<Container size='lg' style={{ position: 'relative', zIndex: 1 }}>

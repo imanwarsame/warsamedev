@@ -20,7 +20,6 @@ import {
 	IconExternalLink,
 	IconBrandGithub,
 	IconEye,
-	IconCode,
 	IconX,
 	IconPlayerPlay,
 } from '@tabler/icons-react';
@@ -205,7 +204,7 @@ export default function Projects() {
 			py={isMobile ? 60 : 100}
 			style={{
 				width: '100vw',
-				background: darkMode ? theme.other.background.default : theme.other.background.paper,
+				background: darkMode ? theme.other.background.default : theme.other.background.default,
 			}}
 		>
 			<Container size='lg'>
@@ -255,7 +254,9 @@ export default function Projects() {
 										overflow: 'hidden',
 										cursor: 'pointer',
 										transition: 'all 0.3s ease',
-										background: darkMode ? theme.other.background.paper : theme.colors.white,
+										background: darkMode
+											? theme.other.background.paper
+											: theme.other.background.paper,
 										border: `1px solid ${
 											darkMode ? theme.other.border.light : theme.other.border.light
 										}`,
@@ -384,22 +385,6 @@ export default function Projects() {
 							</motion.div>
 						))}
 					</SimpleGrid>
-
-					{/* View All Projects Button */}
-					<motion.div variants={itemVariants}>
-						<Group justify='center' mt={60}>
-							<Button
-								size='lg'
-								variant='outline'
-								leftSection={<IconCode size={20} />}
-								style={{
-									borderRadius: theme.radius.md,
-								}}
-							>
-								View All Projects
-							</Button>
-						</Group>
-					</motion.div>
 				</motion.div>
 			</Container>
 

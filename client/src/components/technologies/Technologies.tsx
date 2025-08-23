@@ -1,4 +1,4 @@
-import { Container, Title, Text, Badge, Stack, Box } from '@mantine/core';
+import { Container, Title, Text, Badge, Stack, Box, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import {
 	IconBrandReact,
@@ -18,6 +18,7 @@ import { LogoLoop } from '../logoLoop/LogoLoop';
 import type { LogoItem } from '../logoLoop/LogoLoop';
 
 export default function Technologies() {
+	const theme = useMantineTheme();
 	const { darkMode } = useDevStore();
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -26,7 +27,9 @@ export default function Technologies() {
 	const technologiesLogos: LogoItem[] = [
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandReact size={iconSize} color='#61DAFB' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						React
@@ -38,7 +41,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandTypescript size={iconSize} color='#3178C6' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						TypeScript
@@ -50,7 +55,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandJavascript size={iconSize} color='#F7DF1E' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						JavaScript
@@ -62,7 +69,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandCSharp size={iconSize} color='#239120' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						C#
@@ -74,7 +83,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandPython size={iconSize} color='#3776AB' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						Python
@@ -86,7 +97,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandMongodb size={iconSize} color='#47A248' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						MongoDB
@@ -98,7 +111,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandNodejs size={iconSize} color='#339933' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						Node.js
@@ -110,7 +125,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandGit size={iconSize} color='#F05032' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						Git
@@ -122,7 +139,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandFigma size={iconSize} color='#F24E1E' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						Figma
@@ -134,7 +153,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconDatabase size={iconSize} color='#336791' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						SQL
@@ -146,7 +167,9 @@ export default function Technologies() {
 		},
 		{
 			node: (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
 					<IconBrandAzure size={iconSize} color='#007ACC' />
 					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
 						Azure
@@ -163,7 +186,7 @@ export default function Technologies() {
 			py={isMobile ? 60 : 100}
 			style={{
 				width: '100vw',
-				background: darkMode ? '#0a0a0a' : '#fafafa',
+				background: darkMode ? theme.other.background.default : theme.other.background.default,
 			}}
 		>
 			<Container size='lg'>
@@ -198,12 +221,14 @@ export default function Technologies() {
 				{/* Technologies Loop */}
 				<LogoLoop
 					logos={technologiesLogos}
-					speed={60}
+					speed={40}
 					direction='left'
 					logoHeight={48}
 					gap={40}
 					pauseOnHover={true}
 					scaleOnHover={true}
+					fadeOut={true}
+					fadeOutColor={darkMode ? '#0a0a0a' : '#fafafa'}
 					ariaLabel='Technologies and tools'
 				/>
 			</Container>
