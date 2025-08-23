@@ -31,8 +31,6 @@ import { useDevStore } from '../../store';
 interface Project {
 	id: number;
 	title: string;
-	title1: string;
-	title2: string;
 	imageUrl: string | null;
 	webLink?: string | null;
 	githubLink?: string | null;
@@ -76,7 +74,12 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 					<Title order={2} size='h3'>
 						{project.title}
 					</Title>
-					<ActionIcon variant='subtle' color={darkMode ? 'white' : 'gray'} onClick={onClose} size='lg'>
+					<ActionIcon
+						variant='subtle'
+						color={darkMode ? 'white' : 'gray'}
+						onClick={onClose}
+						size='lg'
+					>
 						<IconX size={20} />
 					</ActionIcon>
 				</Group>
@@ -123,7 +126,7 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 					{project.technologies && (
 						<Group gap='xs'>
 							{project.technologies.map((tech: string, index: number) => (
-								<Badge key={index} variant='light' size='md' color={darkMode ? 'white' : 'blue'}>
+								<Badge key={index} variant='light' size='md' color={darkMode ? 'indigo' : 'blue'}>
 									{tech}
 								</Badge>
 							))}
@@ -217,7 +220,7 @@ export default function Projects() {
 					{/* Section Header */}
 					<motion.div variants={itemVariants}>
 						<Stack align='center' gap='md' mb={60}>
-							<Badge size='lg' variant='light' color='blue'>
+							<Badge size='lg' variant='light' color={darkMode ? 'cyan' : 'blue'}>
 								Projects
 							</Badge>
 							<Title
@@ -318,7 +321,7 @@ export default function Projects() {
 												{project.title1} {project.title2}
 											</Title>
 											{project.featured && (
-												<Badge size='sm' variant='light' color='blue'>
+												<Badge size='sm' variant='light' color={darkMode ? 'orange' : 'blue'}>
 													Featured
 												</Badge>
 											)}
@@ -335,12 +338,17 @@ export default function Projects() {
 												{project.technologies
 													.slice(0, 3)
 													.map((tech: string, techIndex: number) => (
-														<Badge key={techIndex} size='xs' variant='outline' color={darkMode ? 'white' : 'blue'}>
+														<Badge
+															key={techIndex}
+															size='xs'
+															variant='outline'
+															color={darkMode ? 'lime' : 'blue'}
+														>
 															{tech}
 														</Badge>
 													))}
 												{project.technologies.length > 3 && (
-													<Badge size='xs' variant='outline' color='gray'>
+													<Badge size='xs' variant='outline' color={darkMode ? 'grape' : 'gray'}>
 														+{project.technologies.length - 3}
 													</Badge>
 												)}

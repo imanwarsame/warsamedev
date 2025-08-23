@@ -192,7 +192,7 @@ export default function Technologies() {
 			<Container size='lg'>
 				{/* Section Header */}
 				<Stack align='center' gap='md' mb={60}>
-					<Badge size='lg' variant='light' color='violet'>
+					<Badge size='lg' variant='light' color={darkMode ? 'yellow' : 'violet'}>
 						Technologies
 					</Badge>
 					<Title

@@ -163,7 +163,7 @@ export default function Contact() {
 						{/* Section Header */}
 						<motion.div variants={itemVariants}>
 							<Stack align='center' gap='md' mb={60}>
-								<Badge size='lg' variant='light' color='blue'>
+								<Badge size='lg' variant='light' color={darkMode ? 'pink' : 'blue'}>
 									Contact
 								</Badge>
 								<Title

@@ -82,7 +82,7 @@ export default function About() {
 				<Container size='lg'>
 					{/* Section Header */}
 					<Stack align='center' gap='md' mb={60}>
-						<Badge size='lg' variant='light' color='blue'>
+						<Badge size='lg' variant='light' color={darkMode ? 'green' : 'blue'}>
 							About Me
 						</Badge>
 						<Title
@@ -211,7 +211,7 @@ export default function About() {
 										</Text>
 										<Group gap='xs'>
 											{role.skills.map((skill, skillIndex) => (
-												<Badge key={skillIndex} size='xs' variant='outline' color={darkMode ? 'white' : role.color}>
+												<Badge key={skillIndex} size='xs' variant='outline' color={darkMode ? 'teal' : role.color}>
 													{skill}
 												</Badge>
 											))}
