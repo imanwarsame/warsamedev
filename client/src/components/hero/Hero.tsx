@@ -24,10 +24,8 @@ export default function Hero() {
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
 	// Different colors for light and dark modes
-	const threadsColor: [number, number, number] =
-		colorScheme === 'dark'
-			? [0.3, 0.35, 0.6] // Soft purple-blue for dark mode
-			: [0.2, 0.25, 0.4]; // Darker blue-gray for light mode
+	const threadsColour: [number, number, number] =
+		colorScheme === 'dark' ? [0.239, 0.212, 0.361] : [0.953, 0.973, 1];
 
 	return (
 		<Box
@@ -54,7 +52,7 @@ export default function Hero() {
 				}}
 			>
 				<Threads
-					color={threadsColor}
+					color={threadsColour}
 					amplitude={1.2}
 					distance={0}
 					enableMouseInteraction={false}
