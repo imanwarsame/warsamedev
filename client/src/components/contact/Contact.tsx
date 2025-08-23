@@ -147,8 +147,11 @@ export default function Contact() {
 				ref={ref}
 				style={{
 					width: '100vw',
+					minHeight: '100vh',
 					background: darkMode ? theme.other.background.default : theme.other.background.default,
 					paddingTop: isMobile ? '120px' : '140px',
+					paddingBottom: '0',
+					marginBottom: '0',
 				}}
 			>
 				<Container size='lg'>
@@ -252,7 +255,7 @@ export default function Contact() {
 														<ActionIcon
 															size='xs'
 															variant='subtle'
-															color='gray'
+															color={darkMode ? 'white' : 'gray'}
 															onClick={(e) => {
 																e.preventDefault();
 																e.stopPropagation();
@@ -371,7 +374,7 @@ export default function Contact() {
 
 						{/* Footer */}
 						<motion.div variants={itemVariants}>
-							<Stack align='center' gap='md' mt={30} mb={10}>
+							<Stack align='center' gap='md' mt={30} mb={0} pb={20}>
 								<GlassIcons
 									items={[
 										{

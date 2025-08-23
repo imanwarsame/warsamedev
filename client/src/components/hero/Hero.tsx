@@ -38,7 +38,8 @@ export default function Hero() {
 				overflow: 'hidden',
 				display: 'flex',
 				alignItems: 'center',
-				background: colorScheme === 'dark' ? theme.other.background.default : theme.other.background.default,
+				background:
+					colorScheme === 'dark' ? theme.other.background.default : theme.other.background.default,
 			}}
 		>
 			{/* Threads Background */}
@@ -54,7 +55,7 @@ export default function Hero() {
 			>
 				<Threads
 					color={threadsColor}
-					amplitude={0.8}
+					amplitude={1.2}
 					distance={0}
 					enableMouseInteraction={false}
 				/>

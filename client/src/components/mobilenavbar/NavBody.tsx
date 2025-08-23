@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { JSX } from 'react/jsx-runtime';
 import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
 import { useEffect } from 'react';
+import { useDevStore } from '../../store';
 
 interface LinkType {
 	title: string;
@@ -28,6 +29,7 @@ export default function NavBody({
 	isOpen,
 }: NavBodyProps) {
 	const theme = useMantineTheme();
+	const { darkMode } = useDevStore();
 
 	useEffect(() => {
 		//Disable scrolling on mount
@@ -188,7 +190,7 @@ export default function NavBody({
 									aria-label="Silhoutte of an octopus cat hybrid"
 									variant="subtle"
 								>
-									<IconBrandGithub size={32} color={theme.colors.gray[6]} />
+									<IconBrandGithub size={32} color={darkMode ? theme.colors.gray[3] : theme.colors.gray[6]} />
 								</ActionIcon>
 								<ActionIcon
 									component="a"
@@ -199,7 +201,7 @@ export default function NavBody({
 									aria-label="The letters i and n representing the LinkedIn logo"
 									variant="subtle"
 								>
-									<IconBrandLinkedin size={36} color={theme.colors.gray[6]} />
+									<IconBrandLinkedin size={36} color={darkMode ? theme.colors.gray[3] : theme.colors.gray[6]} />
 								</ActionIcon>
 							</Box>
 						</Stack>

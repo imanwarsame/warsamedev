@@ -54,6 +54,7 @@ interface ProjectDetailModalProps {
 
 function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProps) {
 	const theme = useMantineTheme();
+	const { darkMode } = useDevStore();
 
 	if (!project) return null;
 
@@ -75,7 +76,7 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 					<Title order={2} size='h3'>
 						{project.title}
 					</Title>
-					<ActionIcon variant='subtle' color='gray' onClick={onClose} size='lg'>
+					<ActionIcon variant='subtle' color={darkMode ? 'white' : 'gray'} onClick={onClose} size='lg'>
 						<IconX size={20} />
 					</ActionIcon>
 				</Group>
@@ -122,7 +123,7 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 					{project.technologies && (
 						<Group gap='xs'>
 							{project.technologies.map((tech: string, index: number) => (
-								<Badge key={index} variant='light' size='md'>
+								<Badge key={index} variant='light' size='md' color={darkMode ? 'white' : 'blue'}>
 									{tech}
 								</Badge>
 							))}
@@ -294,7 +295,7 @@ export default function Projects() {
 											<ActionIcon
 												size='xl'
 												variant='filled'
-												color='blue'
+												color={darkMode ? 'white' : 'blue'}
 												style={{
 													borderRadius: '50%',
 												}}
@@ -334,7 +335,7 @@ export default function Projects() {
 												{project.technologies
 													.slice(0, 3)
 													.map((tech: string, techIndex: number) => (
-														<Badge key={techIndex} size='xs' variant='outline'>
+														<Badge key={techIndex} size='xs' variant='outline' color={darkMode ? 'white' : 'blue'}>
 															{tech}
 														</Badge>
 													))}
@@ -355,7 +356,7 @@ export default function Projects() {
 													target='_blank'
 													rel='noopener noreferrer'
 													variant='light'
-													color='blue'
+													color={darkMode ? 'white' : 'blue'}
 													onClick={(e) => e.stopPropagation()}
 												>
 													<IconExternalLink size={16} />
@@ -368,14 +369,14 @@ export default function Projects() {
 													target='_blank'
 													rel='noopener noreferrer'
 													variant='light'
-													color='gray'
+													color={darkMode ? 'white' : 'gray'}
 													onClick={(e) => e.stopPropagation()}
 												>
 													<IconBrandGithub size={16} />
 												</ActionIcon>
 											)}
 											{project.videoUrl && (
-												<ActionIcon variant='light' color='green'>
+												<ActionIcon variant='light' color={darkMode ? 'white' : 'green'}>
 													<IconPlayerPlay size={16} />
 												</ActionIcon>
 											)}

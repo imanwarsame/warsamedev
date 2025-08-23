@@ -211,7 +211,7 @@ export default function About() {
 										</Text>
 										<Group gap='xs'>
 											{role.skills.map((skill, skillIndex) => (
-												<Badge key={skillIndex} size='xs' variant='outline' color={role.color}>
+												<Badge key={skillIndex} size='xs' variant='outline' color={darkMode ? 'white' : role.color}>
 													{skill}
 												</Badge>
 											))}
@@ -229,7 +229,7 @@ export default function About() {
 						mt={60}
 						style={{
 							background: darkMode
-								? `linear-gradient(135deg, ${theme.colors.blue[9]} 0%, ${theme.colors.purple[9]} 100%)`
+								? `linear-gradient(135deg, ${theme.colors.blue[3]} 0%, ${theme.colors.purple[3]} 100%)`
 								: theme.other.gradient.primary,
 							color: 'white',
 							textAlign: 'center',
@@ -248,14 +248,14 @@ export default function About() {
 							>
 								<IconHeart size={30} />
 							</ThemeIcon>
-							<Title order={3} size='h4' style={{ color: 'white' }}>
+							<Title order={3} size='h4' style={{ color: darkMode ? 'white' : 'white' }}>
 								Driven by Impact
 							</Title>
 							<Text
 								size='lg'
 								maw={600}
 								style={{
-									color: 'rgba(255,255,255,0.9)',
+									color: darkMode ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.9)',
 									lineHeight: 1.6,
 								}}
 							>
@@ -265,8 +265,8 @@ export default function About() {
 								solve meaningful problems.
 							</Text>
 							<Group gap='xs' mt='md'>
-								<IconRocket size={20} style={{ color: 'rgba(255,255,255,0.8)' }} />
-								<Text size='sm' style={{ color: 'rgba(255,255,255,0.8)' }}>
+								<IconRocket size={20} style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }} />
+								<Text size='sm' style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }}>
 									Currently building the future of engineering software at Ramboll
 								</Text>
 							</Group>
