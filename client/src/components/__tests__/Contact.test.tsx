@@ -1,8 +1,7 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi, beforeEach } from 'vitest';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import Contact from '../contact/Contact';
-import userEvent from '@testing-library/user-event';
 
 // Mock EmailJS
 vi.mock('@emailjs/browser', () => ({
@@ -22,7 +21,18 @@ vi.mock('../glassIcons/GlassIcons', () => ({
   )
 }));
 
+// Mock clipboard API globally
+Object.defineProperty(window, 'navigator', {
+  value: {
+    clipboard: {
+      writeText: vi.fn().mockResolvedValue(undefined)
+    }
+  },
+  configurable: true
+});
+
 describe('Contact Component', () => {
+
   test('should render section badge', () => {
     render(<Contact />);
     
@@ -44,9 +54,14 @@ describe('Contact Component', () => {
   test('should render contact information cards', () => {
     render(<Contact />);
     
-    expect(screen.getByText('Email')).toBeDefined();
-    expect(screen.getByText('LinkedIn')).toBeDefined();
-    expect(screen.getByText('GitHub')).toBeDefined();
+    // Use getAllByText to handle multiple "Email" occurrences
+    const emailElements = screen.getAllByText('Email');
+    expect(emailElements.length).toBeGreaterThan(0);
+    
+    const linkedinElements = screen.getAllByText('LinkedIn');
+    expect(linkedinElements.length).toBeGreaterThan(0);
+    const githubElements = screen.getAllByText('GitHub');
+    expect(githubElements.length).toBeGreaterThan(0);
     expect(screen.getByText('Location')).toBeDefined();
   });
 
@@ -61,15 +76,15 @@ describe('Contact Component', () => {
 
   test('should handle form input changes', async () => {
     render(<Contact />);
-    const user = userEvent.setup();
     
     const nameInput = screen.getByLabelText(/Name/i);
     const emailInput = screen.getByLabelText(/Email/i);
     const messageInput = screen.getByLabelText(/Message/i);
     
-    await user.type(nameInput, 'John Doe');
-    await user.type(emailInput, 'john@example.com');
-    await user.type(messageInput, 'Hello, this is a test message.');
+    // Use fireEvent instead of userEvent to avoid clipboard conflicts
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+    fireEvent.change(messageInput, { target: { value: 'Hello, this is a test message.' } });
     
     expect((nameInput as HTMLInputElement).value).toBe('John Doe');
     expect((emailInput as HTMLInputElement).value).toBe('john@example.com');
@@ -91,7 +106,7 @@ describe('Contact Component', () => {
   test('should render copyright text', () => {
     render(<Contact />);
     
-    expect(screen.getByText(/© \d{4} Iman Warsame/)).toBeDefined();
+    expect(screen.getByText(/© \d{4} Iman Warsame\./)).toBeDefined();
   });
 
   test('should have email copy functionality', () => {
@@ -131,17 +146,16 @@ describe('Contact Component', () => {
 
   test('submit button click handling', async () => {
     render(<Contact />);
-    const user = userEvent.setup();
 
     const submitButton = screen.getByText('Send Message');
     
-    // Fill required fields
-    await user.type(screen.getByLabelText(/Name/i), 'Test User');
-    await user.type(screen.getByLabelText(/Email/i), 'test@example.com');
-    await user.type(screen.getByLabelText(/Message/i), 'Test message');
+    // Fill required fields using fireEvent
+    fireEvent.change(screen.getByLabelText(/Name/i), { target: { value: 'Test User' } });
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: 'test@example.com' } });
+    fireEvent.change(screen.getByLabelText(/Message/i), { target: { value: 'Test message' } });
     
     // Click submit
-    await user.click(submitButton);
+    fireEvent.click(submitButton);
     
     // Button should be clickable
     expect(submitButton).toBeDefined();

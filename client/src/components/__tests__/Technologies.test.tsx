@@ -5,6 +5,7 @@ import Technologies from '../technologies/Technologies';
 
 // Mock LogoLoop component
 vi.mock('../logoLoop/LogoLoop', () => ({
+  LogoLoop: () => <div data-testid="logo-loop-mock">Logo Loop</div>,
   default: () => <div data-testid="logo-loop-mock">Logo Loop</div>
 }));
 
@@ -25,13 +26,13 @@ describe('Technologies Component', () => {
   test('should render main heading', () => {
     render(<Technologies />);
     
-    expect(screen.getByText('Technologies & Tools I Use')).toBeDefined();
+    expect(screen.getByText('Tech Stack & Tools')).toBeDefined();
   });
 
   test('should render description text', () => {
     render(<Technologies />);
     
-    expect(screen.getByText(/I work with modern technologies/i)).toBeDefined();
+    expect(screen.getByText(/Technologies and frameworks I use to build modern/i)).toBeDefined();
   });
 
   test('should render logo loop component', () => {
@@ -44,7 +45,7 @@ describe('Technologies Component', () => {
     render(<Technologies />);
     
     // Check that the component renders within a container
-    const container = screen.getByText('Technologies & Tools I Use').closest('.mantine-Container-root');
+    const container = screen.getByText('Tech Stack & Tools').closest('.mantine-Container-root');
     expect(container).toBeDefined();
   });
 });

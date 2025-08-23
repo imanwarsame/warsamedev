@@ -9,7 +9,7 @@ vi.mock('../threads/Threads', () => ({
 }));
 
 vi.mock('../decryptedText/DecryptedText', () => ({
-  default: ({ text }: { text: string }) => <div data-testid="decrypted-text-mock">{text}</div>
+  default: ({ text }: { text: string }) => <span data-testid="decrypted-text-mock">{text}</span>
 }));
 
 vi.mock('lottie-react', () => ({
@@ -26,7 +26,9 @@ describe('Hero Component', () => {
   test('should render role descriptions', () => {
     render(<Hero />);
     
-    expect(screen.getByTestId('decrypted-text-mock')).toBeDefined();
+    // There are multiple DecryptedText components, so use getAllByTestId
+    const decryptedElements = screen.getAllByTestId('decrypted-text-mock');
+    expect(decryptedElements.length).toBeGreaterThan(0);
   });
 
   test('should render call-to-action buttons', () => {
@@ -41,19 +43,24 @@ describe('Hero Component', () => {
     
     // Check for social links by their href attributes
     const socialLinks = screen.getAllByRole('link');
-    const githubLink = socialLinks.find(link => 
+    
+    // Should have at least 3 social links
+    expect(socialLinks.length).toBeGreaterThanOrEqual(3);
+    
+    // Check that we have links with the right hrefs
+    const hasGithub = socialLinks.some(link => 
       link.getAttribute('href') === 'https://github.com/imanwarsame'
     );
-    const linkedinLink = socialLinks.find(link => 
+    const hasLinkedin = socialLinks.some(link => 
       link.getAttribute('href') === 'https://linkedin.com/in/imanwarsame'
     );
-    const emailLink = socialLinks.find(link => 
+    const hasEmail = socialLinks.some(link => 
       link.getAttribute('href') === 'mailto:hello@warsame.dev'
     );
 
-    expect(githubLink).toBeDefined();
-    expect(linkedinLink).toBeDefined();
-    expect(emailLink).toBeDefined();
+    expect(hasGithub).toBeTruthy();
+    expect(hasLinkedin).toBeTruthy();
+    expect(hasEmail).toBeTruthy();
   });
 
   test('should render threads background', () => {

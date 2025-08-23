@@ -9,7 +9,7 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: 'test-setup.tsx',
 		deps: {
-			inline: ['vitest-canvas-mock'],
+			inline: ['vitest-canvas-mock', '@theme-toggles/react'],
 		},
 		threads: false,
 		environmentOptions: {

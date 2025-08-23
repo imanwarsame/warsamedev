@@ -32,7 +32,7 @@ describe('About Component', () => {
     
     expect(screen.getByText('Full Stack Developer')).toBeDefined();
     expect(screen.getByText('Product Owner')).toBeDefined();
-    expect(screen.getByText('Civil Engineer')).toBeDefined();
+    expect(screen.getByText('Chartered Civil Engineer')).toBeDefined();
   });
 
   test('should render skill badges', () => {

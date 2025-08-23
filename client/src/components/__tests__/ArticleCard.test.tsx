@@ -1,4 +1,4 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi, beforeEach } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 import { render } from '../../test-utils';
 import ArticleCard from '../articles/ArticleCard';
@@ -20,15 +20,10 @@ vi.mock('react-router-dom', async () => {
 	};
 });
 
-const mockArticle = {
-	id: '1',
+const mockProps = {
 	title: 'Test Article Title',
-	summary: 'This is a test article summary that describes the content.',
-	createdAt: '2024-01-01T00:00:00Z',
-	readTime: '5 min read',
-	tags: ['React', 'Testing', 'TypeScript'],
+	date: '1st Jan 2024',
 	url: '/articles/test-article',
-	mdFile: 'test-article.md',
 };
 
 describe('ArticleCard Component', () => {
@@ -37,51 +32,37 @@ describe('ArticleCard Component', () => {
 	});
 
 	test('should render article title', () => {
-		render(<ArticleCard article={mockArticle} />);
+		render(<ArticleCard {...mockProps} />);
 
 		expect(screen.getByText('Test Article Title')).toBeDefined();
 	});
 
-	test('should render article summary', () => {
-		render(<ArticleCard article={mockArticle} />);
+	test('should render article date', () => {
+		render(<ArticleCard {...mockProps} />);
 
-		expect(
-			screen.getByText('This is a test article summary that describes the content.'),
-		).toBeDefined();
+		expect(screen.getByText('1st Jan 2024')).toBeDefined();
 	});
 
-	test('should render read time', () => {
-		render(<ArticleCard article={mockArticle} />);
+	test('should render read more button', () => {
+		render(<ArticleCard {...mockProps} />);
 
-		expect(screen.getByText('5 min read')).toBeDefined();
+		expect(screen.getByText('Read more')).toBeDefined();
 	});
 
-	test('should render tags', () => {
-		render(<ArticleCard article={mockArticle} />);
+	test('should navigate to article when clicked', () => {
+		render(<ArticleCard {...mockProps} />);
 
-		expect(screen.getByText('React')).toBeDefined();
-		expect(screen.getByText('Testing')).toBeDefined();
-		expect(screen.getByText('TypeScript')).toBeDefined();
-	});
-
-	test('should render read article button', () => {
-		render(<ArticleCard article={mockArticle} />);
-
-		expect(screen.getByText('Read Article')).toBeDefined();
-	});
-
-	test('should navigate to article when button is clicked', () => {
-		render(<ArticleCard article={mockArticle} />);
-
-		const readButton = screen.getByText('Read Article');
+		const readButton = screen.getByText('Read more');
 		fireEvent.click(readButton);
 
 		expect(mockNavigate).toHaveBeenCalledWith('/articles/test-article');
 	});
 
-	test('should render article card with proper structure', () => {
-		const { container } = render(<ArticleCard article={mockArticle} />);
+	test('should render paper component', () => {
+		const { container } = render(<ArticleCard {...mockProps} />);
 
 		expect(container.firstChild).toBeDefined();
 	});
+
+
 });

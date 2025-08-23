@@ -13,36 +13,37 @@ vi.mock('react-type-animation', () => ({
 }));
 
 describe('AnimatedText Component', () => {
-  test('should render with simple text', () => {
-    render(<AnimatedText text="Hello World" />);
-    
-    expect(screen.getByTestId('type-animation')).toBeDefined();
-    expect(screen.getByText('Hello World')).toBeDefined();
-  });
-
-  test('should render with array of texts', () => {
-    const texts = ['Text 1', 'Text 2', 'Text 3'];
-    render(<AnimatedText text={texts} />);
-    
-    expect(screen.getByTestId('type-animation')).toBeDefined();
-    expect(screen.getByText('Text 1')).toBeDefined();
-  });
-
-  test('should render with custom speed', () => {
-    render(<AnimatedText text="Fast text" speed={50} />);
+  test('should render with array of items', () => {
+    const items = ['Hello World', 'Test Text'];
+    render(<AnimatedText items={items} />);
     
     expect(screen.getByTestId('type-animation')).toBeDefined();
   });
 
-  test('should render with repeat option', () => {
-    render(<AnimatedText text="Repeating text" repeat={true} />);
+  test('should render with multiple text items', () => {
+    const items = ['Text 1', 'Text 2', 'Text 3'];
+    render(<AnimatedText items={items} />);
     
     expect(screen.getByTestId('type-animation')).toBeDefined();
   });
 
-  test('should handle empty text gracefully', () => {
-    render(<AnimatedText text="" />);
+  test('should render with single item', () => {
+    const items = ['Single text'];
+    render(<AnimatedText items={items} />);
     
     expect(screen.getByTestId('type-animation')).toBeDefined();
+  });
+
+  test('should handle empty array gracefully', () => {
+    render(<AnimatedText items={[]} />);
+    
+    expect(screen.getByTestId('type-animation')).toBeDefined();
+  });
+
+  test('should render within a Box container', () => {
+    const items = ['Container test'];
+    const { container } = render(<AnimatedText items={items} />);
+    
+    expect(container.firstChild).toBeDefined();
   });
 });

@@ -10,56 +10,76 @@ vi.mock('framer-motion', () => ({
   }
 }));
 
-// Mock ArticleCard component
+// Mock ArticleCard component  
 vi.mock('../articles/ArticleCard', () => ({
-  default: ({ article }: any) => (
+  default: ({ title, date, url }: any) => (
     <div data-testid="article-card">
-      <h3>{article.title}</h3>
-      <p>{article.summary}</p>
+      <h3>{title}</h3>
+      <p>{date}</p>
+      <p>{url}</p>
     </div>
   )
 }));
 
 // Mock articles data
-vi.mock('../articles/ArticlesData', () => ({
-  articles: [
-    {
-      id: '1',
-      title: 'Test Article 1',
-      summary: 'This is a test article summary',
-      createdAt: '2024-01-01',
-      readTime: '5 min read',
-      tags: ['React', 'Testing'],
-      url: '/articles/test-article-1',
-      mdFile: 'test-article-1.md'
-    },
-    {
-      id: '2',
-      title: 'Test Article 2',
-      summary: 'Another test article',
-      createdAt: '2024-01-02',
-      readTime: '3 min read',
-      tags: ['TypeScript'],
-      url: '/articles/test-article-2',
-      mdFile: 'test-article-2.md'
-    }
-  ]
-}));
+vi.mock('../articles/ArticlesData', () => {
+  const mockMoment = {
+    format: (format?: string) => '1st Jan 2024',
+    diff: () => 0,
+    unix: () => 1640995200,
+    valueOf: () => 1640995200000,
+    toDate: () => new Date('2024-01-01'),
+    isAfter: () => false,
+    isBefore: () => false,
+    isSame: () => true
+  };
+
+  return {
+    articles: [
+      {
+        id: '1',
+        title: 'Test Article 1',
+        date: mockMoment,
+        url: '/articles/test-article-1',
+        mdFile: 'test-article-1.md'
+      },
+      {
+        id: '2',
+        title: 'Test Article 2',
+        date: mockMoment,
+        url: '/articles/test-article-2',
+        mdFile: 'test-article-2.md'
+      }
+    ]
+  };
+});
 
 // Mock moment
-vi.mock('moment', () => ({
-  default: (date: string) => ({
-    format: () => '2024-01-01',
-    fromNow: () => 'a few days ago'
-  })
-}));
+vi.mock('moment', () => {
+  const mockMoment = (date?: string) => ({
+    format: (format?: string) => '1st Jan 2024',
+    fromNow: () => 'a few days ago',
+    diff: (other: any) => 0,
+    unix: () => 1640995200,
+    valueOf: () => 1640995200000,
+    toDate: () => new Date('2024-01-01'),
+    isAfter: () => false,
+    isBefore: () => false,
+    isSame: () => true
+  });
+  
+  return {
+    default: mockMoment,
+    __esModule: true
+  };
+});
 
 describe('Articles Component', () => {
   test('should render articles page', () => {
     render(<Articles />);
     
     // Component should render without errors
-    expect(screen.getByTestId('article-card')).toBeDefined();
+    expect(screen.getAllByTestId('article-card')).toBeDefined();
   });
 
   test('should render all article cards', () => {
@@ -76,10 +96,9 @@ describe('Articles Component', () => {
     expect(screen.getByText('Test Article 2')).toBeDefined();
   });
 
-  test('should display article summaries', () => {
+  test('should display article dates', () => {
     render(<Articles />);
     
-    expect(screen.getByText('This is a test article summary')).toBeDefined();
-    expect(screen.getByText('Another test article')).toBeDefined();
+    expect(screen.getAllByText('1st Jan 2024')).toBeDefined();
   });
 });

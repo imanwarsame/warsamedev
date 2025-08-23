@@ -1,4 +1,4 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi, beforeEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import MDPage from '../articles/MDPage';
@@ -20,7 +20,8 @@ vi.mock('framer-motion', () => ({
 }));
 
 // Mock fetch
-global.fetch = vi.fn();
+const mockFetch = vi.fn();
+global.fetch = mockFetch;
 
 describe('MDPage Component', () => {
   beforeEach(() => {
@@ -28,22 +29,22 @@ describe('MDPage Component', () => {
   });
 
   test('should render loading state initially', () => {
-    (global.fetch as any).mockResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       text: () => Promise.resolve('# Test Markdown Content'),
     });
 
-    render(<MDPage fileName="test.md" />);
+    render(<MDPage fileName="test" />);
     
     // Component should render (loading state)
     expect(document.body).toBeDefined();
   });
 
   test('should fetch and render markdown content', async () => {
-    (global.fetch as any).mockResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       text: () => Promise.resolve('# Test Markdown Content\n\nThis is test content.'),
     });
 
-    render(<MDPage fileName="test.md" />);
+    render(<MDPage fileName="test" />);
     
     await waitFor(() => {
       expect(screen.getByTestId('markdown-content')).toBeDefined();
@@ -51,32 +52,38 @@ describe('MDPage Component', () => {
   });
 
   test('should handle fetch errors gracefully', async () => {
-    (global.fetch as any).mockRejectedValueOnce(new Error('Fetch failed'));
+    mockFetch.mockRejectedValueOnce(new Error('Fetch failed'));
 
+    console.log = vi.fn();
+    console.error = vi.fn();
+    
     const { container } = render(<MDPage fileName="test.md" />);
     
-    // Component should still render without crashing
-    expect(container.firstChild).toBeDefined();
+    // Wait for the component to handle the error
+    await waitFor(() => {
+      // Component should still render without crashing
+      expect(container.firstChild).toBeDefined();
+    });
   });
 
   test('should construct correct file path', async () => {
-    (global.fetch as any).mockResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       text: () => Promise.resolve('# Test Content'),
     });
 
-    render(<MDPage fileName="example.md" />);
+    render(<MDPage fileName="example" />);
     
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith('/articles/example.md');
+      expect(mockFetch).toHaveBeenCalledWith('/example.md');
     });
   });
 
   test('should handle empty markdown content', async () => {
-    (global.fetch as any).mockResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       text: () => Promise.resolve(''),
     });
 
-    render(<MDPage fileName="empty.md" />);
+    render(<MDPage fileName="empty" />);
     
     await waitFor(() => {
       expect(screen.getByTestId('markdown-content')).toBeDefined();
@@ -84,7 +91,7 @@ describe('MDPage Component', () => {
   });
 
   test('should render progress indicator', () => {
-    (global.fetch as any).mockResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       text: () => Promise.resolve('# Test Content'),
     });
 

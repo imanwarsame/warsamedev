@@ -1,34 +1,22 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi, beforeEach } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 import { render } from '../../test-utils';
 import DarkModeToggle from '../darkmode/DarkModeToggle';
 
 // Mock the store
-const mockToggleDarkMode = vi.fn();
+const mockSetDarkMode = vi.fn();
 vi.mock('../../store', () => ({
   useDevStore: () => ({
     darkMode: false,
-    toggleDarkMode: mockToggleDarkMode,
+    setDarkMode: mockSetDarkMode,
   }),
 }));
 
-// Mock theme-toggles
-vi.mock('@theme-toggles/react', () => ({
-  Classic: ({ toggled, onToggle, ...props }: any) => (
-    <button 
-      data-testid="theme-toggle"
-      onClick={onToggle}
-      aria-pressed={toggled}
-      {...props}
-    >
-      {toggled ? 'Dark Mode' : 'Light Mode'}
-    </button>
-  )
-}));
+// Theme-toggles is mocked globally in test-setup.tsx
 
 describe('DarkModeToggle Component', () => {
   beforeEach(() => {
-    mockToggleDarkMode.mockClear();
+    mockSetDarkMode.mockClear();
   });
 
   test('should render toggle button', () => {
@@ -37,13 +25,13 @@ describe('DarkModeToggle Component', () => {
     expect(screen.getByTestId('theme-toggle')).toBeDefined();
   });
 
-  test('should call toggleDarkMode when clicked', () => {
+  test('should call setDarkMode when clicked', () => {
     render(<DarkModeToggle />);
     
     const toggleButton = screen.getByTestId('theme-toggle');
     fireEvent.click(toggleButton);
     
-    expect(mockToggleDarkMode).toHaveBeenCalledOnce();
+    expect(mockSetDarkMode).toHaveBeenCalledOnce();
   });
 
   test('should display current theme state', () => {
