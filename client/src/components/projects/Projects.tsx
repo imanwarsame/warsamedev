@@ -28,7 +28,7 @@ import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { projects } from './ProjectsData';
 import { useDevStore } from '../../store';
 
-interface Project {
+export interface Project {
 	id: number;
 	title: string;
 	imageUrl: string | null;
@@ -37,11 +37,6 @@ interface Project {
 	description?: string;
 	technologies?: string[];
 	videoUrl?: string | null;
-	featured?: boolean;
-	category?: string;
-	year?: string;
-	role?: string;
-	highlights?: string[];
 }
 
 interface ProjectDetailModalProps {
@@ -310,23 +305,6 @@ export default function Projects() {
 
 									{/* Project Content */}
 									<Stack gap='sm' p='md'>
-										<Group justify='space-between'>
-											<Title
-												order={3}
-												size='h4'
-												style={{
-													color: darkMode ? theme.other.text.primary : theme.other.text.primary,
-												}}
-											>
-												{project.title1} {project.title2}
-											</Title>
-											{project.featured && (
-												<Badge size='sm' variant='light' color={darkMode ? 'orange' : 'blue'}>
-													Featured
-												</Badge>
-											)}
-										</Group>
-
 										{project.description && (
 											<Text size='sm' c='dimmed' lineClamp={2} style={{ lineHeight: 1.5 }}>
 												{project.description}

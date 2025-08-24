@@ -1,78 +1,41 @@
 import GPI from '../../assets/Projects/GPI.png';
 import Garviz from '../../assets/Projects/Garviz.png';
+import EnergyPlanner from '../../assets/Projects/EnergyPlanner.png';
+import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
+import { Project } from './Projects';
 
-export const projects = [
+export const projects: Project[] = [
 	{
 		id: 1,
 		title: 'GPI Designer',
 		imageUrl: GPI,
 		webLink: 'https://designer.groundplug.dk/',
 		githubLink: null,
-		featured: true,
 		description:
-			'A comprehensive web application for designing and analyzing ground plug installations. Features advanced 3D visualization, real-time calculations, and automated report generation for civil engineering projects.',
-		technologies: ['React', 'TypeScript', 'Three.js', 'Node.js', 'PostgreSQL', 'WebGL'],
+			'Three JS-based 3D web application for designing decking solutions with Ground Plug International&apos;s innovative foundation systems. Features real-time 3D rendering, quantity take offs for quotations, material optimisation, and drawing generation for GPI reps.',
+		technologies: ['React', 'TypeScript', 'Three.js', 'ASP.NET', 'C#', 'MUI', 'Vite'],
 		videoUrl: null,
-		category: 'Full Stack Development',
-		year: '2024',
-		role: 'Lead Developer & Product Owner',
-		highlights: [
-			'3D visualization engine for complex engineering calculations',
-			'Real-time collaboration features for engineering teams',
-			'Automated PDF report generation with custom templates',
-			'Integration with industry-standard engineering software',
-		],
 	},
 	{
 		id: 2,
 		title: 'Garviz',
 		imageUrl: Garviz,
 		webLink: 'https://garviz.net/',
-		githubLink: 'https://github.com/imanwarsame/garviz',
-		featured: true,
+		githubLink: 'https://github.com/imanwarsame/garvizlanding',
 		description:
-			'An innovative data visualization platform that transforms complex datasets into interactive, beautiful charts and graphs. Built with modern web technologies for optimal performance and user experience.',
-		technologies: ['React', 'D3.js', 'TypeScript', 'Vite', 'Tailwind CSS', 'Chart.js'],
+			'Landing page for Garviz, a platform for gathering, visualising and analysing football data.',
+		technologies: ['React', 'MUI', 'TypeScript', 'Vite'],
 		videoUrl: null,
-		category: 'Data Visualization',
-		year: '2023',
-		role: 'Full Stack Developer',
-		highlights: [
-			'Interactive data visualization with D3.js',
-			'Real-time data processing and analysis',
-			'Responsive design for all device types',
-			'Export capabilities for various formats',
-		],
 	},
 	{
-		id: 5,
-		title1: 'Smart',
-		title2: 'Bridge',
-		title: 'Smart Bridge Monitoring',
-		imageUrl: null,
-		webLink: null,
-		githubLink: null,
-		featured: true,
+		id: 3,
+		title: 'Energy Planner',
+		imageUrl: EnergyPlanner,
+		webLink: 'https://energy-planner.netlify.app/',
+		githubLink: 'https://github.com/imanwarsame/cityenergyplanner',
+		videoUrl: EnergyPlannerVideo,
 		description:
-			'An IoT-based bridge monitoring system that uses sensors to collect real-time structural health data. Includes predictive analytics for maintenance scheduling and safety assessments.',
-		technologies: [
-			'Python',
-			'IoT Sensors',
-			'Machine Learning',
-			'AWS',
-			'React Dashboard',
-			'Time Series DB',
-		],
-		videoUrl: '/videos/smart-bridge-demo.mp4',
-		category: 'Civil Engineering Tech',
-		year: '2024',
-		role: 'Principal Engineer & Developer',
-		highlights: [
-			'Real-time structural health monitoring',
-			'Predictive maintenance algorithms',
-			'Mobile alerts for critical conditions',
-			'Historical data analysis and reporting',
-		],
+			'A web-based application to identify optimal locations for renewable energy installations in urban areas.',
+		technologies: ['TypeScript', 'React', 'MapBox', 'Mantine', 'Vite'],
 	},
 ];
-export const featuredProjects = projects.filter((project) => project.featured);

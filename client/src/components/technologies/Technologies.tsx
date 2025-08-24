@@ -12,6 +12,8 @@ import {
 	IconBrandFigma,
 	IconBrandAzure,
 	IconDatabase,
+	IconBrandVite,
+	IconBrandThreejs,
 } from '@tabler/icons-react';
 import { useDevStore } from '../../store';
 import { LogoLoop } from '../logoLoop/LogoLoop';
@@ -178,6 +180,34 @@ export default function Technologies() {
 			),
 			title: 'Azure',
 			ariaLabel: 'Azure',
+		},
+		{
+			node: (
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
+					<IconBrandVite size={iconSize} color='#007ACC' />
+					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
+						Vite
+					</Text>
+				</div>
+			),
+			title: 'Vite',
+			ariaLabel: 'Vite',
+		},
+		{
+			node: (
+				<div
+					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+				>
+					<IconBrandThreejs size={iconSize} color='#007ACC' />
+					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
+						Three.js
+					</Text>
+				</div>
+			),
+			title: 'Three.js',
+			ariaLabel: 'Three.js',
 		},
 	];
 

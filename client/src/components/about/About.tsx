@@ -264,12 +264,12 @@ export default function About() {
 								or leading teams to success, I believe in the power of thoughtful innovation to
 								solve meaningful problems.
 							</Text>
-							<Group gap='xs' mt='md'>
+							<Stack align='center' gap='xs' mt='md'>
 								<IconRocket size={20} style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }} />
-								<Text size='sm' style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }}>
+								<Text size='sm' ta='center' style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }}>
 									Currently building the future of engineering software at Ramboll
 								</Text>
-							</Group>
+							</Stack>
 						</Stack>
 					</Paper>
 				</Container>
