@@ -258,7 +258,7 @@ export default function Technologies() {
 					pauseOnHover={true}
 					scaleOnHover={true}
 					fadeOut={true}
-					fadeOutColor={darkMode ? '#0a0a0a' : '#fafafa'}
+					fadeOutColor={darkMode ? '#0f0f0f' : '#ffffff'}
 					ariaLabel='Technologies and tools'
 				/>
 			</Container>
