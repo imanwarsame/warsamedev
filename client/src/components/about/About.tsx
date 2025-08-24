@@ -29,9 +29,9 @@ export default function About() {
 			icon: IconCode,
 			title: 'Full Stack Developer',
 			description:
-				'Building scalable web applications with modern technologies like React, TypeScript, and Node.js. Passionate about clean code, user experience, and performance optimization.',
+				'Building scalable web applications with modern technologies. Passionate about clean code and an excellent user experience.',
 			color: 'blue',
-			skills: ['React/TypeScript', 'Node.js', 'Python', 'Database Design', 'Cloud Architecture'],
+			skills: ['React', 'TypeScript', 'C#', 'Node.js', 'Python', 'CI/CD', 'Cloud Architecture'],
 		},
 		{
 			icon: IconUsers,
@@ -40,9 +40,9 @@ export default function About() {
 				'Leading cross-functional teams to deliver innovative digital products. Expert in agile methodologies, stakeholder management, and translating business needs into technical solutions.',
 			color: 'green',
 			skills: [
-				'Agile/Scrum',
+				'Agile',
+				'Scrum',
 				'Stakeholder Management',
-				'User Research',
 				'Technical Strategy',
 				'Team Leadership',
 			],
@@ -51,14 +51,13 @@ export default function About() {
 			icon: IconBuilding,
 			title: 'Chartered Civil Engineer',
 			description:
-				'Applying engineering principles to solve complex infrastructure challenges. Specialized in digital transformation and sustainable engineering solutions for the built environment.',
+				'Using my knowledge from a masters degree in civil engineering and being a chartered civil engineer with the Institution of Civil Engineers, has given me the insight to build technology for the built environment.',
 			color: 'orange',
 			skills: [
-				'Structural Design',
 				'Project Management',
 				'Digital Transformation',
-				'Sustainability',
-				'Risk Assessment',
+				'Critical Thinking',
+				'Problem Solving',
 			],
 		},
 	];
@@ -267,10 +266,10 @@ export default function About() {
 									lineHeight: 1.6,
 								}}
 							>
-								I&apos;m passionate about creating technology that makes a real difference. Whether
-								it&apos;s streamlining engineering workflows, building user-friendly applications,
-								or leading teams to success, I believe in the power of thoughtful innovation to
-								solve meaningful problems.
+								I&apos;m passionate about creating technology that makes a difference in the real
+								world. Whether it&apos;s streamlining engineering workflows, building user-friendly
+								applications, or leading teams to success, I believe in the power of thoughtful
+								innovation to solve meaningful problems in the built environment.
 							</Text>
 							<Stack align='center' gap='xs' mt='md'>
 								<IconRocket

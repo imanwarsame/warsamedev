@@ -163,7 +163,7 @@ export default function Hero() {
 						{[
 							{ icon: IconBrandGithub, href: 'https://github.com/imanwarsame' },
 							{ icon: IconBrandLinkedin, href: 'https://linkedin.com/in/imanwarsame' },
-							{ icon: IconMail, href: 'mailto:hello@warsame.dev' },
+							{ icon: IconMail, href: 'mailto:iwarsame38@gmail.com' },
 						].map((social, index) => (
 							<ActionIcon
 								key={index}

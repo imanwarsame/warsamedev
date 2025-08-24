@@ -113,7 +113,7 @@ describe('Contact Component', () => {
     render(<Contact />);
     
     // Look for copy button (should be present for email contact info)
-    const emailSection = screen.getByText('hello@warsame.dev').closest('div');
+    const emailSection = screen.getByText('iwarsame38@gmail.com').closest('div');
     expect(emailSection).toBeDefined();
   });
 

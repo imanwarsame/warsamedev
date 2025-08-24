@@ -100,7 +100,7 @@ export default function Contact() {
 	};
 
 	const copyEmail = () => {
-		navigator.clipboard.writeText('hello@warsame.dev');
+		navigator.clipboard.writeText('iwarsame38@gmail.com');
 		notifications.show({
 			title: 'Email Copied!',
 			message: 'Email address has been copied to clipboard',
@@ -113,8 +113,8 @@ export default function Contact() {
 		{
 			icon: IconMail,
 			title: 'Email',
-			value: 'hello@warsame.dev',
-			href: 'mailto:hello@warsame.dev',
+			value: 'iwarsame38@gmail.com',
+			href: 'mailto:iwarsame38@gmail.com',
 			color: 'blue',
 			showCopy: true,
 		},
@@ -396,7 +396,7 @@ export default function Contact() {
 											color: 'purple',
 											label: 'Email',
 											customClass: 'social-icon',
-											onClick: () => window.open('mailto:hello@warsame.dev', '_blank'),
+											onClick: () => window.open('mailto:iwarsame38@gmail.com', '_blank'),
 										},
 									]}
 									className="social-icons"

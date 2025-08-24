@@ -55,7 +55,7 @@ describe('Hero Component', () => {
       link.getAttribute('href') === 'https://linkedin.com/in/imanwarsame'
     );
     const hasEmail = socialLinks.some(link => 
-      link.getAttribute('href') === 'mailto:hello@warsame.dev'
+      link.getAttribute('href') === 'mailto:iwarsame38@gmail.com'
     );
 
     expect(hasGithub).toBeTruthy();
