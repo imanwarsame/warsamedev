@@ -12,11 +12,11 @@ import {
 } from '@mantine/core';
 import { IconBrandGithub, IconBrandLinkedin, IconMail, IconDownload } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
-import Threads from '../threads/Threads';
 import DecryptedText from '../decryptedText/DecryptedText';
 import Lottie from 'lottie-react';
 import animatedScrollDark from '../../assets/scroll-down-dark.json';
 import animatedScrollLight from '../../assets/scroll-down-light.json';
+import LiquidChrome from '../liquidChrome/LiquidChrome';
 
 export default function Hero() {
 	const theme = useMantineTheme();
@@ -25,7 +25,7 @@ export default function Hero() {
 
 	// Different colors for light and dark modes
 	const threadsColour: [number, number, number] =
-		colorScheme === 'dark' ? [0.239, 0.212, 0.361] : [0.953, 0.973, 1];
+		colorScheme === 'dark' ? [0.15, 0.15, 0.2] : [0.8, 0.85, 0.9];
 
 	return (
 		<Box
@@ -51,12 +51,7 @@ export default function Hero() {
 					zIndex: 0,
 				}}
 			>
-				<Threads
-					color={threadsColour}
-					amplitude={1.2}
-					distance={0}
-					enableMouseInteraction={false}
-				/>
+				<LiquidChrome baseColor={threadsColour} speed={0.2} amplitude={0.5} interactive={false} />
 			</Box>
 
 			<Container size='lg' style={{ position: 'relative', zIndex: 1 }}>
