@@ -2,7 +2,7 @@
 @import '@mantine/core/styles.css';
 @import '@mantine/notifications/styles.css';
 
-/* Global styles */
+/* Global styles with performance optimizations */
 html {
 	-webkit-overflow-scrolling: touch;
 	margin: 0;
@@ -17,6 +17,10 @@ body {
 	padding: 0;
 	width: 100%;
 	overflow-x: hidden;
+	/* Improve font rendering performance */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeSpeed;
 }
 
 /* Ensure root container takes full width */
@@ -56,4 +60,30 @@ body {
 * {
 	scrollbar-width: thin;
 	scrollbar-color: rgba(128, 128, 128, 0.3) transparent;
+}
+
+/* Performance optimizations */
+.liquidChrome-container {
+	will-change: transform;
+	transform: translateZ(0);
+	/* Ensure it covers the full area */
+	min-width: 100vw;
+	min-height: 100vh;
+}
+
+/* Reduce layout shifts */
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

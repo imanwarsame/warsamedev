@@ -17,15 +17,28 @@ import Lottie from 'lottie-react';
 import animatedScrollDark from '../../assets/scroll-down-dark.json';
 import animatedScrollLight from '../../assets/scroll-down-light.json';
 import LiquidChrome from '../liquidChrome/LiquidChrome';
+import { useMemo } from 'react';
 
 export default function Hero() {
 	const theme = useMantineTheme();
 	const { colorScheme } = useMantineColorScheme();
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
-	// Different colors for light and dark modes
-	const threadsColour: [number, number, number] =
-		colorScheme === 'dark' ? [0.15, 0.15, 0.2] : [0.8, 0.85, 0.9];
+	// Memoize colours to prevent unnecessary recalculations
+	const threadsColour: [number, number, number] = useMemo(
+		() => (colorScheme === 'dark' ? [0.15, 0.15, 0.2] : [0.7, 0.7, 0.9]),
+		[colorScheme],
+	);
+
+	// Memoize social links array
+	const socialLinks = useMemo(
+		() => [
+			{ icon: IconBrandGithub, href: 'https://github.com/imanwarsame' },
+			{ icon: IconBrandLinkedin, href: 'https://linkedin.com/in/imanwarsame' },
+			{ icon: IconMail, href: 'mailto:iwarsame38@gmail.com' },
+		],
+		[],
+	);
 
 	return (
 		<Box
@@ -126,8 +139,8 @@ export default function Hero() {
 							Get In Touch
 						</Button>
 						<Button
-							component="a"
-							href="/CV_Iman_Warsame.pdf"
+							component='a'
+							href='/CV_Iman_Warsame.pdf'
 							download
 							size={isMobile ? 'md' : 'lg'}
 							variant='light'
@@ -163,11 +176,7 @@ export default function Hero() {
 				<Stack align='center' gap='sm'>
 					{/* Social Links */}
 					<Group justify='center' gap='md'>
-						{[
-							{ icon: IconBrandGithub, href: 'https://github.com/imanwarsame' },
-							{ icon: IconBrandLinkedin, href: 'https://linkedin.com/in/imanwarsame' },
-							{ icon: IconMail, href: 'mailto:iwarsame38@gmail.com' },
-						].map((social, index) => (
+						{socialLinks.map((social, index) => (
 							<ActionIcon
 								key={index}
 								component='a'
