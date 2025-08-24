@@ -78,21 +78,5 @@ HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
   clip: vi.fn(),
 })) as any;
 
-// Mock @theme-toggles/react globally
-vi.mock('@theme-toggles/react', () => ({
-  Expand: ({ toggled, toggle, ...props }: any) => (
-    <button 
-      data-testid="theme-toggle"
-      onClick={toggle}
-      aria-pressed={toggled}
-      {...props}
-    >
-      {toggled ? 'Dark Mode' : 'Light Mode'}
-    </button>
-  )
-}));
-
-// Mock CSS imports
-vi.mock('@theme-toggles/react/css/Expand.css', () => ({}));
 
 afterEach(cleanup);

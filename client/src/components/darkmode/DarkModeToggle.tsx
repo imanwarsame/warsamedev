@@ -1,7 +1,6 @@
-import '@theme-toggles/react/css/Expand.css';
-import { Expand } from '@theme-toggles/react';
 import { useMediaQuery } from '@mantine/hooks';
 import { useDevStore } from '../../store';
+import './DarkModeToggle.css';
 
 export default function DarkModeToggle() {
 	const { darkMode, setDarkMode } = useDevStore();
@@ -12,27 +11,29 @@ export default function DarkModeToggle() {
 	};
 
 	return (
-		<Expand
-			duration={750}
-			toggled={darkMode}
-			toggle={handleDarkModeToggle}
+		<button
+			className={`theme-toggle ${darkMode ? 'theme-toggle--dark' : ''}`}
+			onClick={handleDarkModeToggle}
 			style={{
 				color: darkMode ? '#fafafa' : '#18181b',
-				margin: 0,
-				padding: 0,
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
+				width: isMobile ? '1.8em' : '2.2em',
+				height: isMobile ? '1.8em' : '2.2em',
 			}}
+			aria-label="Toggle dark mode"
 		>
-			<style>
-				{`
-						.theme-toggle__expand {
-						height: ${isMobile ? '1.8em' : '2.2em'};
-						width: ${isMobile ? '1.8em' : '2.2em'};
-						}
-					`}
-			</style>
-		</Expand>
+			<div className="theme-toggle__icon">
+				<div className="sun-moon-toggle">
+					<div className="sun">
+						<div className="sun-rays"></div>
+						<div className="sun-center"></div>
+					</div>
+					<div className="moon">
+						<div className="moon-crater moon-crater-1"></div>
+						<div className="moon-crater moon-crater-2"></div>
+						<div className="moon-crater moon-crater-3"></div>
+					</div>
+				</div>
+			</div>
+		</button>
 	);
 }
