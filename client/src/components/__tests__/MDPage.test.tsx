@@ -10,14 +10,22 @@ vi.mock('react-markdown', () => ({
   )
 }));
 
-// Mock framer-motion
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-  },
-  useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
-  useSpring: () => ({ get: () => 0 }),
-}));
+// Mock framer-motion with all necessary exports
+vi.mock('framer-motion', async () => {
+  const actual = await vi.importActual('framer-motion');
+  return {
+    ...actual,
+    motion: {
+      div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+      h2: ({ children, ...props }: any) => <h2 {...props}>{children}</h2>,
+      p: ({ children, ...props }: any) => <p {...props}>{children}</p>,
+    },
+    useInView: () => true,
+    useTransform: () => 0,
+    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
+    useSpring: () => ({ get: () => 0 }),
+  };
+});
 
 // Mock fetch
 const mockFetch = vi.fn();

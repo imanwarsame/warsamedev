@@ -3,41 +3,44 @@ import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import Projects from '../projects/Projects';
 
-// Mock framer-motion
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-  },
-  useInView: () => true,
-}));
+// Mock framer-motion with all necessary exports
+vi.mock('framer-motion', async () => {
+  const actual = await vi.importActual('framer-motion');
+  return {
+    ...actual,
+    motion: {
+      div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+      h2: ({ children, ...props }: any) => <h2 {...props}>{children}</h2>,
+      p: ({ children, ...props }: any) => <p {...props}>{children}</p>,
+    },
+    useInView: () => true,
+    useTransform: () => 0,
+    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
+  };
+});
 
 // Mock the projects data
 vi.mock('../projects/ProjectsData', () => ({
   projects: [
     {
       id: 1,
-      title: 'Test Project 1',
-      title1: 'Test',
-      title2: 'Project 1',
+      title: 'GPI Designer',
       imageUrl: '/test-image-1.png',
       description: 'This is a test project description',
       technologies: ['React', 'TypeScript', 'Vite'],
       webLink: 'https://test-project-1.com',
       githubLink: 'https://github.com/test/project-1',
-      featured: true,
-      category: 'Web Development'
+      videoUrl: null,
     },
     {
       id: 2,
-      title: 'Test Project 2',
-      title1: 'Test',
-      title2: 'Project 2',
+      title: 'Garviz',
       imageUrl: '/test-image-2.png',
       description: 'Another test project',
-      technologies: ['Vue', 'JavaScript'],
+      technologies: ['React', 'MUI', 'TypeScript'],
       webLink: 'https://test-project-2.com',
-      featured: false,
-      category: 'Mobile App'
+      githubLink: 'https://github.com/test/project-2',
+      videoUrl: null,
     }
   ]
 }));
@@ -66,16 +69,8 @@ describe('Projects Component', () => {
     render(<Projects />);
     
     await waitFor(() => {
-      expect(screen.getByText('Test Project 1')).toBeDefined();
-      expect(screen.getByText('Test Project 2')).toBeDefined();
-    });
-  });
-
-  test('should display featured badge for featured projects', async () => {
-    render(<Projects />);
-    
-    await waitFor(() => {
-      expect(screen.getByText('Featured')).toBeDefined();
+      expect(screen.getByAltText('GPI Designer')).toBeDefined();
+      expect(screen.getByAltText('Garviz')).toBeDefined();
     });
   });
 
@@ -83,9 +78,9 @@ describe('Projects Component', () => {
     render(<Projects />);
     
     await waitFor(() => {
-      expect(screen.getByText('React')).toBeDefined();
-      expect(screen.getByText('TypeScript')).toBeDefined();
-      expect(screen.getByText('Vite')).toBeDefined();
+      expect(screen.getAllByText('React')).toHaveLength(2); // React appears in both projects
+      expect(screen.getAllByText('TypeScript')).toHaveLength(2); // TypeScript appears in both projects
+      expect(screen.getByText('Vite')).toBeDefined(); // Vite only appears in first project
     });
   });
 
@@ -93,7 +88,7 @@ describe('Projects Component', () => {
     render(<Projects />);
     
     await waitFor(() => {
-      const projectCard = screen.getByText('Test Project 1').closest('.mantine-Paper-root');
+      const projectCard = screen.getByAltText('GPI Designer').closest('.mantine-Paper-root');
       expect(projectCard).toBeDefined();
       
       if (projectCard) {

@@ -4,9 +4,6 @@ import { render } from '../../test-utils';
 import Hero from '../hero/Hero';
 
 // Mock the modules that might cause issues in tests
-vi.mock('../threads/Threads', () => ({
-  default: () => <div data-testid="threads-mock">Threads Component</div>
-}));
 
 vi.mock('../decryptedText/DecryptedText', () => ({
   default: ({ text }: { text: string }) => <span data-testid="decrypted-text-mock">{text}</span>
@@ -14,6 +11,10 @@ vi.mock('../decryptedText/DecryptedText', () => ({
 
 vi.mock('lottie-react', () => ({
   default: () => <div data-testid="lottie-mock">Lottie Animation</div>
+}));
+
+vi.mock('../liquidChrome/LiquidChrome', () => ({
+  default: () => <div data-testid="liquid-chrome-mock">Liquid Chrome Background</div>
 }));
 
 describe('Hero Component', () => {
@@ -63,10 +64,10 @@ describe('Hero Component', () => {
     expect(hasEmail).toBeTruthy();
   });
 
-  test('should render threads background', () => {
+  test('should render liquid chrome background', () => {
     render(<Hero />);
     
-    expect(screen.getByTestId('threads-mock')).toBeDefined();
+    expect(screen.getByTestId('liquid-chrome-mock')).toBeDefined();
   });
 
   test('should render scroll indicator', () => {

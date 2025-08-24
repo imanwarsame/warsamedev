@@ -8,6 +8,22 @@ vi.mock('../countUp/CountUp', () => ({
   default: ({ value }: { value: number }) => <span data-testid="count-up">{value}</span>
 }));
 
+// Mock framer-motion with all necessary exports
+vi.mock('framer-motion', async () => {
+  const actual = await vi.importActual('framer-motion');
+  return {
+    ...actual,
+    motion: {
+      div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+      h2: ({ children, ...props }: any) => <h2 {...props}>{children}</h2>,
+      p: ({ children, ...props }: any) => <p {...props}>{children}</p>,
+    },
+    useInView: () => true,
+    useTransform: () => 0,
+    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
+  };
+});
+
 describe('About Component', () => {
   test('should render section badge', () => {
     render(<About />);
@@ -39,9 +55,10 @@ describe('About Component', () => {
     render(<About />);
     
     // Check for some key skills
-    expect(screen.getByText('React/TypeScript')).toBeDefined();
+    expect(screen.getByText('React')).toBeDefined();
+    expect(screen.getByText('TypeScript')).toBeDefined();
     expect(screen.getByText('Node.js')).toBeDefined();
-    expect(screen.getByText('Agile/Scrum')).toBeDefined();
+    expect(screen.getByText('Agile')).toBeDefined();
   });
 
   test('should render stats with CountUp components', () => {
