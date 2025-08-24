@@ -7,18 +7,43 @@ export default defineConfig({
 	build: {
 		rollupOptions: {
 			output: {
-				manualChunks: {
-					// Vendor chunks for better caching
-					'react-vendor': ['react', 'react-dom'],
-					'mantine-vendor': ['@mantine/core', '@mantine/hooks', '@mantine/notifications', '@mantine/modals'],
-					'animation-vendor': ['framer-motion', 'lottie-react'],
-					'utils-vendor': ['moment', 'uuid', 'zustand'],
+				manualChunks: (id) => {
+					// Vendor chunks for better caching and splitting
+					if (id.includes('node_modules')) {
+						if (id.includes('react') || id.includes('react-dom')) {
+							return 'react-vendor';
+						}
+						if (id.includes('@mantine') || id.includes('mantine')) {
+							return 'mantine-vendor';
+						}
+						if (id.includes('framer-motion') || id.includes('lottie-react')) {
+							return 'animation-vendor';
+						}
+						if (id.includes('moment') || id.includes('uuid') || id.includes('zustand')) {
+							return 'utils-vendor';
+						}
+						if (id.includes('ogl')) {
+							return 'webgl-vendor';
+						}
+						return 'vendor';
+					}
 				},
 			},
 		},
-		// Enable gzip compression and other optimizations
+		target: 'esnext',
+		minify: 'terser',
+		terserOptions: {
+			compress: {
+				drop_console: true,
+				drop_debugger: true,
+				pure_funcs: ['console.log', 'console.info', 'console.debug'],
+			},
+			mangle: {
+				safari10: true,
+			},
+		},
 		chunkSizeWarningLimit: 1000,
-		sourcemap: false, // Disable sourcemaps in production for smaller bundle
+		sourcemap: false,
 	},
 	test: {
 		globals: true,

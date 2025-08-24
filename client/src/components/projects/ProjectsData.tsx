@@ -1,6 +1,6 @@
-import GPI from '../../assets/Projects/GPI.png';
-import Garviz from '../../assets/Projects/Garviz.png';
-import EnergyPlanner from '../../assets/Projects/EnergyPlanner.png';
+import GPI from '../../assets/Projects/GPI.webp';
+import Garviz from '../../assets/Projects/Garviz.webp';
+import EnergyPlanner from '../../assets/Projects/EnergyPlanner.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
 import { Project } from './Projects';
 

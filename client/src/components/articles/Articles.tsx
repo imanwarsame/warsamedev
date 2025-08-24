@@ -2,11 +2,14 @@ import { Box, Stack, Text, useMantineTheme } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { articles } from './ArticlesData';
 import ArticleCard from './ArticleCard';
-import moment from 'moment';
 
 export default function Articles() {
 	const theme = useMantineTheme();
-	const sortedArticles = articles.sort((a, b) => moment(b.date).diff(moment(a.date)));
+	const sortedArticles = articles.sort((a, b) => {
+		const dateA = a.date instanceof Date ? a.date : new Date(a.date);
+		const dateB = b.date instanceof Date ? b.date : new Date(b.date);
+		return dateB.getTime() - dateA.getTime();
+	});
 
 	return (
 		<motion.div
@@ -29,9 +32,9 @@ export default function Articles() {
 					{sortedArticles.map((article) => (
 						<ArticleCard
 							key={article.id}
-							title={article.title.toString()}
-							date={article.date.format('Do MMM YYYY').toString()}
-							url={article.url.toString()}
+							title={article.title}
+							date={(article.date instanceof Date ? article.date : new Date(article.date)).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+							url={article.url}
 						/>
 					))}
 					

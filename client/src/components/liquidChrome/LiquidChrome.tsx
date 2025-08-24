@@ -107,21 +107,47 @@ export const LiquidChrome: React.FC<LiquidChromeProps> = ({
 		});
 		const mesh = new Mesh(gl, { geometry, program });
 
+		let cachedRect: DOMRect | null = null;
+		let rafId: number | null = null;
+
 		function resize() {
-			const scale = 1;
-			renderer.setSize(container.offsetWidth * scale, container.offsetHeight * scale);
-			const resUniform = program.uniforms.uResolution.value as Float32Array;
-			resUniform[0] = gl.canvas.width;
-			resUniform[1] = gl.canvas.height;
-			resUniform[2] = gl.canvas.width / gl.canvas.height;
+			if (rafId) return;
+			
+			rafId = requestAnimationFrame(() => {
+				if (!cachedRect) {
+					cachedRect = container.getBoundingClientRect();
+				}
+				
+				const scale = 1;
+				const width = cachedRect.width;
+				const height = cachedRect.height;
+				
+				renderer.setSize(width * scale, height * scale);
+				const resUniform = program.uniforms.uResolution.value as Float32Array;
+				resUniform[0] = width * scale;
+				resUniform[1] = height * scale;
+				resUniform[2] = width / height;
+				
+				rafId = null;
+			});
 		}
-		window.addEventListener('resize', resize);
+
+		const resizeObserver = new ResizeObserver((entries) => {
+			for (const entry of entries) {
+				cachedRect = entry.contentRect;
+				resize();
+			}
+		});
+		
+		resizeObserver.observe(container);
 		resize();
 
 		function handleMouseMove(event: MouseEvent) {
-			const rect = container.getBoundingClientRect();
-			const x = (event.clientX - rect.left) / rect.width;
-			const y = 1 - (event.clientY - rect.top) / rect.height;
+			if (!cachedRect) {
+				cachedRect = container.getBoundingClientRect();
+			}
+			const x = (event.clientX - cachedRect.left) / cachedRect.width;
+			const y = 1 - (event.clientY - cachedRect.top) / cachedRect.height;
 			const mouseUniform = program.uniforms.uMouse.value as Float32Array;
 			mouseUniform[0] = x;
 			mouseUniform[1] = y;
@@ -130,9 +156,11 @@ export const LiquidChrome: React.FC<LiquidChromeProps> = ({
 		function handleTouchMove(event: TouchEvent) {
 			if (event.touches.length > 0) {
 				const touch = event.touches[0];
-				const rect = container.getBoundingClientRect();
-				const x = (touch.clientX - rect.left) / rect.width;
-				const y = 1 - (touch.clientY - rect.top) / rect.height;
+				if (!cachedRect) {
+					cachedRect = container.getBoundingClientRect();
+				}
+				const x = (touch.clientX - cachedRect.left) / cachedRect.width;
+				const y = 1 - (touch.clientY - cachedRect.top) / cachedRect.height;
 				const mouseUniform = program.uniforms.uMouse.value as Float32Array;
 				mouseUniform[0] = x;
 				mouseUniform[1] = y;
@@ -156,7 +184,10 @@ export const LiquidChrome: React.FC<LiquidChromeProps> = ({
 
 		return () => {
 			cancelAnimationFrame(animationId);
-			window.removeEventListener('resize', resize);
+			if (rafId) {
+				cancelAnimationFrame(rafId);
+			}
+			resizeObserver?.disconnect();
 			if (interactive) {
 				container.removeEventListener('mousemove', handleMouseMove);
 				container.removeEventListener('touchmove', handleTouchMove);
