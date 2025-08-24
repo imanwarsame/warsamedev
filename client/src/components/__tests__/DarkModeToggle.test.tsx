@@ -12,8 +12,6 @@ vi.mock('../../store', () => ({
   }),
 }));
 
-// Theme-toggles is mocked globally in test-setup.tsx
-
 describe('DarkModeToggle Component', () => {
   beforeEach(() => {
     mockSetDarkMode.mockClear();
@@ -22,29 +20,38 @@ describe('DarkModeToggle Component', () => {
   test('should render toggle button', () => {
     render(<DarkModeToggle />);
     
-    expect(screen.getByTestId('theme-toggle')).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Toggle dark mode' })).toBeDefined();
   });
 
   test('should call setDarkMode when clicked', () => {
     render(<DarkModeToggle />);
     
-    const toggleButton = screen.getByTestId('theme-toggle');
+    const toggleButton = screen.getByRole('button', { name: 'Toggle dark mode' });
     fireEvent.click(toggleButton);
     
-    expect(mockSetDarkMode).toHaveBeenCalledOnce();
+    expect(mockSetDarkMode).toHaveBeenCalledWith(true);
   });
 
-  test('should display current theme state', () => {
+  test('should have correct CSS class based on theme state', () => {
     render(<DarkModeToggle />);
     
-    const toggleButton = screen.getByTestId('theme-toggle');
-    expect(toggleButton.getAttribute('aria-pressed')).toBe('false');
+    const toggleButton = screen.getByRole('button', { name: 'Toggle dark mode' });
+    expect(toggleButton.className).toContain('theme-toggle');
+    expect(toggleButton.className).not.toContain('theme-toggle--dark');
   });
 
   test('should render with proper accessibility attributes', () => {
     render(<DarkModeToggle />);
     
-    const toggleButton = screen.getByTestId('theme-toggle');
-    expect(toggleButton.getAttribute('aria-pressed')).toBeDefined();
+    const toggleButton = screen.getByRole('button', { name: 'Toggle dark mode' });
+    expect(toggleButton.getAttribute('aria-label')).toBe('Toggle dark mode');
+  });
+
+  test('should contain sun and moon elements', () => {
+    render(<DarkModeToggle />);
+    
+    const toggleButton = screen.getByRole('button', { name: 'Toggle dark mode' });
+    expect(toggleButton.querySelector('.sun')).toBeDefined();
+    expect(toggleButton.querySelector('.moon')).toBeDefined();
   });
 });

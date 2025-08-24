@@ -1,0 +1,172 @@
+.theme-toggle {
+	background: none;
+	border: none;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+	transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.theme-toggle__icon {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sun-moon-toggle {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-origin: center;
+	transition: transform 0.75s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.theme-toggle--dark .sun-moon-toggle {
+	transform: rotate(180deg);
+}
+
+.sun,
+.moon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: all 0.75s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Sun styles */
+.sun {
+	opacity: 1;
+	transform: scale(1) rotate(0deg);
+}
+
+.theme-toggle--dark .sun {
+	opacity: 0;
+	transform: scale(0.5) rotate(180deg);
+}
+
+.sun-center {
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+	background-color: currentColor;
+}
+
+.sun-rays {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.sun-rays::before,
+.sun-rays::after {
+	content: '';
+	position: absolute;
+	background-color: currentColor;
+	border-radius: 2px;
+}
+
+/* Main rays */
+.sun-rays::before {
+	top: 10%;
+	left: 47%;
+	width: 6%;
+	height: 20%;
+	box-shadow: 
+		0 70% 0 currentColor,
+		67% -25% 0 currentColor,
+		-67% -25% 0 currentColor,
+		47% 35% 0 currentColor,
+		-47% 35% 0 currentColor;
+}
+
+/* Diagonal rays */
+.sun-rays::after {
+	top: 18%;
+	left: 77%;
+	width: 4%;
+	height: 15%;
+	transform: rotate(45deg);
+	box-shadow: 
+		-120% 120% 0 currentColor,
+		-120% -120% 0 currentColor,
+		120% -120% 0 currentColor;
+}
+
+/* Moon styles */
+.moon {
+	opacity: 0;
+	transform: scale(0.5) rotate(-180deg);
+	background-color: currentColor;
+	border-radius: 50%;
+}
+
+.theme-toggle--dark .moon {
+	opacity: 1;
+	transform: scale(1) rotate(0deg);
+}
+
+.moon-crater {
+	position: absolute;
+	border-radius: 50%;
+	background-color: transparent;
+	border: 1px solid;
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle--dark .moon-crater {
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+.moon-crater-1 {
+	top: 20%;
+	left: 30%;
+	width: 15%;
+	height: 15%;
+}
+
+.moon-crater-2 {
+	top: 45%;
+	left: 65%;
+	width: 10%;
+	height: 10%;
+}
+
+.moon-crater-3 {
+	top: 65%;
+	left: 25%;
+	width: 8%;
+	height: 8%;
+}
+
+/* Add subtle glow effect */
+.theme-toggle--dark .moon {
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.sun-center {
+	box-shadow: 0 0 8px rgba(255, 200, 50, 0.2);
+}

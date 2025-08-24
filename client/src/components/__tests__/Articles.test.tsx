@@ -24,7 +24,7 @@ vi.mock('../articles/ArticleCard', () => ({
 // Mock articles data
 vi.mock('../articles/ArticlesData', () => {
   const mockMoment = {
-    format: (format?: string) => '1st Jan 2024',
+    format: () => '1st Jan 2024',
     diff: () => 0,
     unix: () => 1640995200,
     valueOf: () => 1640995200000,
@@ -56,10 +56,10 @@ vi.mock('../articles/ArticlesData', () => {
 
 // Mock moment
 vi.mock('moment', () => {
-  const mockMoment = (date?: string) => ({
-    format: (format?: string) => '1st Jan 2024',
+  const mockMoment = () => ({
+    format: () => '1st Jan 2024',
     fromNow: () => 'a few days ago',
-    diff: (other: any) => 0,
+    diff: () => 0,
     unix: () => 1640995200,
     valueOf: () => 1640995200000,
     toDate: () => new Date('2024-01-01'),
