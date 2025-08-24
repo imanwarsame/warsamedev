@@ -1,4 +1,4 @@
-import { Button, Divider, Paper, Stack, Typography } from '@mui/material';
+import { Button, Divider, Paper, Stack, Title, Text, Group } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,30 +14,29 @@ export default function ArticleCard({ title, date, url }: CardProps) {
 	return (
 		<Paper
 			component={motion.div}
-			variant='outlined'
-			sx={{
-				width: { xs: '80vw', md: '50vw' },
-				height: 'auto',
-				paddingTop: 3,
-				paddingBottom: 1,
-				paddingX: 3,
+			withBorder
+			p="lg"
+			style={{
+				width: '100%',
 			}}
 		>
-			<Stack direction='column'>
-				<Typography sx={{ typography: { xs: 'h6', md: 'h4' } }}>{title}</Typography>
-				<Divider sx={{ paddingTop: 2 }} />
-				<Stack
-					direction='row'
-					sx={{
-						marginTop: 1,
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-					}}
-				>
-					<Typography sx={{ typography: { xs: 'body2', md: 'body2' } }}>{date}</Typography>
-					<Button onClick={() => navigate(url)}>Read more</Button>
-				</Stack>
+			<Stack gap="sm">
+				<Title order={3} size="h4">
+					{title}
+				</Title>
+				<Divider />
+				<Group justify="space-between" align="center">
+					<Text size="sm" c="dimmed">
+						{date}
+					</Text>
+					<Button 
+						variant="light" 
+						color="green" 
+						onClick={() => navigate(url)}
+					>
+						Read more
+					</Button>
+				</Group>
 			</Stack>
 		</Paper>
 	);

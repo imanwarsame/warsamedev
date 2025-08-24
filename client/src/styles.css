@@ -1,0 +1,59 @@
+/* Mantine CSS import */
+@import '@mantine/core/styles.css';
+@import '@mantine/notifications/styles.css';
+
+/* Global styles */
+html {
+	-webkit-overflow-scrolling: touch;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	-webkit-tap-highlight-color: transparent;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* Ensure root container takes full width */
+#root {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* Selection highlight */
+::selection {
+	background: var(--mantine-color-green-3);
+}
+
+::-moz-selection {
+	background: var(--mantine-color-green-3);
+}
+
+/* Transparent scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(128, 128, 128, 0.3);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(128, 128, 128, 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(128, 128, 128, 0.3) transparent;
+}
