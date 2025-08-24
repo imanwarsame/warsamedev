@@ -1,4 +1,4 @@
-import { Box, useMantineTheme } from '@mantine/core';
+import { Box, useMantineTheme, Text } from '@mantine/core';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
@@ -73,10 +73,22 @@ export default function MDPage({ fileName }: { fileName: string }) {
 					paddingLeft: isMobile ? '15vw' : '7.5vw', 
 					paddingRight: isMobile ? '8vw' : '7.5vw', 
 					paddingTop: '12vh', 
-					paddingBottom: '7vh' 
+					paddingBottom: '2vh' 
 				}}
 			>
 				<ReactMarkdown>{content}</ReactMarkdown>
+				
+				{/* Footer */}
+				<Box style={{ 
+					marginTop: '4vh', 
+					paddingTop: '2vh', 
+					borderTop: `1px solid ${theme.colors.gray[3]}`,
+					textAlign: 'center' 
+				}}>
+					<Text size='sm' c='dimmed'>
+						© 2025 Iman Warsame
+					</Text>
+				</Box>
 			</Box>
 		</>
 	);
