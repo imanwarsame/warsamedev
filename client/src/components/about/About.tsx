@@ -51,7 +51,7 @@ export default function About() {
 			icon: IconBuilding,
 			title: 'Chartered Civil Engineer',
 			description:
-				'Using my knowledge from a masters degree in civil engineering and being a chartered civil engineer with the Institution of Civil Engineers, has given me the insight to build technology for the built environment.',
+				'Using my knowledge from a Masters degree in Civil Engineering and as a Chartered Civil Engineer with the Institution of Civil Engineers, has given me the insight to build impactful technology for the built environment.',
 			color: 'orange',
 			skills: [
 				'Project Management',

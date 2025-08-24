@@ -128,12 +128,19 @@ export default function Hero() {
 					{/* CTA Buttons */}
 					<Group justify='center' gap='md'>
 						<Button
+							component='a'
+							href='#contact_element'
 							size={isMobile ? 'md' : 'lg'}
 							variant={colorScheme === 'dark' ? 'white' : 'filled'}
 							color={colorScheme === 'dark' ? undefined : 'dark'}
 							leftSection={<IconMail size={20} />}
 							style={{
 								borderRadius: theme.radius.md,
+							}}
+							onClick={(e) => {
+								e.preventDefault();
+								const element = document.querySelector('[name="contact_element"]');
+								element?.scrollIntoView({ behavior: 'smooth' });
 							}}
 						>
 							Get In Touch
