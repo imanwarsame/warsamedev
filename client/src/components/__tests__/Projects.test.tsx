@@ -5,7 +5,7 @@ import Projects from '../projects/Projects';
 
 // Mock framer-motion with all necessary exports
 vi.mock('framer-motion', async () => {
-  const actual = await vi.importActual('framer-motion');
+  const actual = await vi.importActual<typeof import('framer-motion')>('framer-motion');
   return {
     ...actual,
     motion: {

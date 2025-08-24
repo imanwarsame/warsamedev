@@ -36,8 +36,8 @@ describe('DarkModeToggle Component', () => {
     render(<DarkModeToggle />);
     
     const toggleButton = screen.getByRole('button', { name: 'Toggle dark mode' });
-    expect(toggleButton).toHaveClass('theme-toggle');
-    expect(toggleButton).not.toHaveClass('theme-toggle--dark');
+    expect(toggleButton.className).toContain('theme-toggle');
+    expect(toggleButton.className).not.toContain('theme-toggle--dark');
   });
 
   test('should render with proper accessibility attributes', () => {

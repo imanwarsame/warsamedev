@@ -1,5 +1,5 @@
-import { describe, expect, test, vi, beforeEach } from 'vitest';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { describe, expect, test, vi } from 'vitest';
+import { fireEvent, screen } from '@testing-library/react';
 import { render } from '../../test-utils';
 import Contact from '../contact/Contact';
 

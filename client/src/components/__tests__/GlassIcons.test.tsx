@@ -1,4 +1,4 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi, beforeEach } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 import { render } from '../../test-utils';
 import GlassIcons from '../glassIcons/GlassIcons';
@@ -23,7 +23,7 @@ const mockItems = [
 describe('GlassIcons Component', () => {
   beforeEach(() => {
     mockItems.forEach(item => {
-      if (item.onClick) {
+      if (typeof item.onClick === 'function') {
         vi.clearAllMocks();
       }
     });
