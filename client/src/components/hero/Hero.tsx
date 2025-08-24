@@ -126,6 +126,9 @@ export default function Hero() {
 							Get In Touch
 						</Button>
 						<Button
+							component="a"
+							href="/CV_Iman_Warsame.pdf"
+							download
 							size={isMobile ? 'md' : 'lg'}
 							variant='light'
 							color={colorScheme === 'dark' ? 'white' : 'dark'}
