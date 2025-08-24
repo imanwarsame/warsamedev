@@ -1,63 +1,80 @@
 import { Box, useMantineTheme } from '@mantine/core';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 
 export default function MDPage({ fileName }: { fileName: string }) {
 	const theme = useMantineTheme();
 	const [content, setContent] = useState('');
+	const [isContentLoaded, setIsContentLoaded] = useState(false);
 	const { scrollYProgress } = useScroll();
+	const isMobile = useMediaQuery('(max-width: 768px)');
 
-	const scaleY = useSpring(scrollYProgress, {
-		stiffness: 100,
-		damping: 30,
-		restDelta: 0.001,
-	});
+	// Transform scroll progress to create a smooth fill effect - only after content loads
+	const scrollHeight = useTransform(
+		scrollYProgress, 
+		[0, 1], 
+		isContentLoaded ? ['0%', '100%'] : ['0%', '0%']
+	);
+	const scrollOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
 
 	//UseEffect hook to grab markdown file from public folder
 	useEffect(() => {
 		fetch(`/${fileName}.md`)
 			.then((res) => res.text())
-			.then((text) => setContent(text))
+			.then((text) => {
+				setContent(text);
+				// Small delay to ensure content is rendered before enabling scrollbar
+				setTimeout(() => {
+					setIsContentLoaded(true);
+				}, 100);
+			})
 			.catch((error) => console.error('Error fetching file:', error));
 
-		window.scrollTo(0, 5);
-	}, []);
+		window.scrollTo(0, 0);
+	}, [fileName]);
 
 	return (
 		<>
-			<Box
+			{/* Flat Scrollbar Container */}
+			<motion.div
 				style={{
 					position: 'fixed',
-					top: '25vh',
+					top: '15vh',
 					left: 20,
-					width: '5px',
-					height: '50vh',
-					backgroundColor: theme.colors.gray[1],
-					zIndex: 3,
-					border: '0.1px solid grey',
-					borderRadius: '8px',
+					width: '4px',
+					height: '70vh',
+					backgroundColor: theme.colors.gray[2],
+					zIndex: 100,
+					borderRadius: '2px',
+					opacity: scrollOpacity,
 				}}
 			>
-				<Box
-					component={motion.div}
+				{/* Animated Fill Bar */}
+				<motion.div
 					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
 						width: '100%',
-						height: '100%',
+						height: scrollHeight,
 						backgroundColor: theme.colors.blue[6],
-						transformOrigin: 'top',
-						zIndex: 2,
-						borderRadius: '8px',
-						scaleY
+						borderRadius: '2px',
 					}}
 				/>
-			</Box>
+			</motion.div>
 			<Box
 				component={motion.div}
 				initial={{ opacity: 0 }} //Initial state (invisible)
 				animate={{ opacity: 1 }} //Final state (fully visible)
 				transition={{ duration: 1, ease: 'easeInOut' }} //Duration of the fade-in effect
-				style={{ paddingLeft: '80px', paddingRight: '80px', paddingTop: '7vh', paddingBottom: '7vh' }}
+				style={{ 
+					paddingLeft: isMobile ? '15vw' : '7.5vw', 
+					paddingRight: isMobile ? '8vw' : '7.5vw', 
+					paddingTop: '12vh', 
+					paddingBottom: '7vh' 
+				}}
 			>
 				<ReactMarkdown>{content}</ReactMarkdown>
 			</Box>

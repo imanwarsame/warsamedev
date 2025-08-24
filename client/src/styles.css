@@ -13,7 +13,6 @@ html {
 
 body {
 	-webkit-tap-highlight-color: transparent;
-	cursor: wait; /* For splash screen */
 	margin: 0;
 	padding: 0;
 	width: 100%;

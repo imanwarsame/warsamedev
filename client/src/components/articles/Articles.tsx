@@ -24,7 +24,7 @@ export default function Articles() {
 					paddingRight: '20px',
 				}}
 			>
-				<Stack gap="md" style={{ paddingTop: '10vh', width: '100%', maxWidth: '1200px' }}>
+				<Stack gap="md" style={{ paddingTop: '15vh', width: '100%', maxWidth: '1200px' }}>
 					{sortedArticles.map((article) => (
 						<ArticleCard
 							key={article.id}

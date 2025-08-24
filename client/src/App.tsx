@@ -4,10 +4,9 @@ import { ModalsProvider } from '@mantine/modals';
 import GlassNavbar from './components/navbar/GlassNavbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
-import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Home from './components/home/Home';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Articles from './components/articles/Articles';
 import { articles } from './components/articles/ArticlesData';
 import MDPage from './components/articles/MDPage';
@@ -16,7 +15,6 @@ import './styles.css';
 
 export default function App() {
 	const { darkMode } = useDevStore();
-	const location = useLocation();
 	const theme = darkMode ? darkTheme : lightTheme;
 
 	console.log(`
@@ -34,19 +32,6 @@ export default function App() {
 		 ####   ####         ###              
 		  ##     ##          ##               
 	`);
-
-	useEffect(() => {
-		if (location.pathname === '/') {
-			(async () => {
-				setTimeout(() => {
-					document.body.style.cursor = 'default';
-					window.scrollTo(0, 0);
-				}, 2000);
-			})();
-		} else {
-			document.body.style.cursor = 'default';
-		}
-	}, [location.pathname]);
 
 	return (
 		<MantineProvider theme={theme} forceColorScheme={darkMode ? 'dark' : 'light'}>

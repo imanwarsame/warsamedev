@@ -65,8 +65,7 @@ export default function About() {
 
 	const stats = [
 		{ label: 'Years Experience', value: 6, suffix: '+' },
-		{ label: 'Technologies Mastered', value: 20, suffix: '+' },
-		{ label: 'Team Members Led', value: 15, suffix: '+' },
+		{ label: 'Major Software Projects Delivered', value: 8, suffix: '+' },
 	];
 
 	return (
@@ -122,7 +121,9 @@ export default function About() {
 								p='md'
 								radius='lg'
 								style={{
-									background: darkMode ? theme.other.background.paper : theme.other.background.paper,
+									background: darkMode
+										? theme.other.background.paper
+										: theme.other.background.paper,
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
@@ -156,7 +157,9 @@ export default function About() {
 								radius='lg'
 								style={{
 									height: '100%',
-									background: darkMode ? theme.other.background.paper : theme.other.background.paper,
+									background: darkMode
+										? theme.other.background.paper
+										: theme.other.background.paper,
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
@@ -171,10 +174,10 @@ export default function About() {
 							>
 								<Stack gap='md' h='100%'>
 									<Group>
-										<ThemeIcon 
-											size='xl' 
-											variant='light' 
-											color={darkMode ? 'gray' : role.color} 
+										<ThemeIcon
+											size='xl'
+											variant='light'
+											color={darkMode ? 'gray' : role.color}
 											radius='lg'
 											style={{
 												backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.1)' : undefined,
@@ -211,7 +214,12 @@ export default function About() {
 										</Text>
 										<Group gap='xs'>
 											{role.skills.map((skill, skillIndex) => (
-												<Badge key={skillIndex} size='xs' variant='outline' color={darkMode ? 'teal' : role.color}>
+												<Badge
+													key={skillIndex}
+													size='xs'
+													variant='outline'
+													color={darkMode ? 'teal' : role.color}
+												>
 													{skill}
 												</Badge>
 											))}
@@ -236,10 +244,10 @@ export default function About() {
 						}}
 					>
 						<Stack align='center' gap='md'>
-							<ThemeIcon 
-								size={60} 
-								variant='white' 
-								color={darkMode ? 'gray' : 'blue'} 
+							<ThemeIcon
+								size={60}
+								variant='white'
+								color={darkMode ? 'gray' : 'blue'}
 								radius='50%'
 								style={{
 									backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.9)' : undefined,
@@ -265,8 +273,15 @@ export default function About() {
 								solve meaningful problems.
 							</Text>
 							<Stack align='center' gap='xs' mt='md'>
-								<IconRocket size={20} style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }} />
-								<Text size='sm' ta='center' style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }}>
+								<IconRocket
+									size={20}
+									style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }}
+								/>
+								<Text
+									size='sm'
+									ta='center'
+									style={{ color: darkMode ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.8)' }}
+								>
 									Currently building the future of engineering software at Ramboll
 								</Text>
 							</Stack>
