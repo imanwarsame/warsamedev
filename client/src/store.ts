@@ -1,24 +1,38 @@
 import { create } from 'zustand';
+import { subscribeWithSelector } from 'zustand/middleware';
 
 interface CounterState {
 	darkMode: boolean;
 	setDarkMode: (mode: boolean) => void;
 }
 
-export const useDevStore = create<CounterState>((set) => {
-	//Retrieve dark mode value from local storage
-	const savedDarkMode = localStorage.getItem('IW_dark_mode');
+// Utility function to safely access localStorage
+const getStoredDarkMode = (): boolean => {
+	try {
+		const savedDarkMode = localStorage.getItem('IW_dark_mode');
+		return savedDarkMode ? savedDarkMode === 'true' : false;
+	} catch {
+		// Fallback if localStorage is not available
+		return false;
+	}
+};
 
-	//Determine default value based on local storage or default to false
-	const defaultDarkMode = savedDarkMode ? savedDarkMode === 'true' : false;
+// Utility function to safely save to localStorage
+const saveToStorage = (key: string, value: string) => {
+	try {
+		localStorage.setItem(key, value);
+	} catch {
+		// Silently fail if localStorage is not available
+		console.warn('Unable to save to localStorage');
+	}
+};
 
-	return {
-		darkMode: defaultDarkMode,
+export const useDevStore = create<CounterState>()(
+	subscribeWithSelector((set) => ({
+		darkMode: getStoredDarkMode(),
 		setDarkMode: (mode: boolean) => {
-			// Save dark mode to local storage
-			localStorage.setItem('IW_dark_mode', mode.toString());
-			// Update dark mode state
+			saveToStorage('IW_dark_mode', mode.toString());
 			set(() => ({ darkMode: mode }));
 		},
-	};
-});
+	}))
+);

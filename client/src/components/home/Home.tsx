@@ -1,10 +1,13 @@
 import { Box, Stack } from '@mantine/core';
 import Hero from '../hero/Hero';
-import About from '../about/About';
-import Contact from '../contact/Contact';
-import Projects from '../projects/Projects';
-import Technologies from '../technologies/Technologies';
 import { motion } from 'framer-motion';
+import { lazy, Suspense } from 'react';
+
+// Lazy load non-critical sections
+const About = lazy(() => import('../about/About'));
+const Technologies = lazy(() => import('../technologies/Technologies'));
+const Projects = lazy(() => import('../projects/Projects'));
+const Contact = lazy(() => import('../contact/Contact'));
 
 export default function Home() {
 	return (
@@ -25,10 +28,18 @@ export default function Home() {
 			>
 				<Stack gap={0} style={{ width: '100%' }}>
 					<Hero />
-					<About />
-					<Technologies />
-					<Projects />
-					<Contact />
+					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
+						<About />
+					</Suspense>
+					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
+						<Technologies />
+					</Suspense>
+					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
+						<Projects />
+					</Suspense>
+					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
+						<Contact />
+					</Suspense>
 				</Stack>
 			</Box>
 		</motion.div>

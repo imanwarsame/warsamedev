@@ -204,14 +204,22 @@ export const LogoLoop = React.memo<LogoLoopProps>(
 
 		const updateDimensions = useCallback(() => {
 			const containerWidth = containerRef.current?.clientWidth ?? 0;
-			const sequenceWidth = seqRef.current?.getBoundingClientRect?.()?.width ?? 0;
-
-			if (sequenceWidth > 0) {
-				setSeqWidth(Math.ceil(sequenceWidth));
-				const copiesNeeded =
-					Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
-				setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
-			}
+			const sequenceEl = seqRef.current;
+			
+			if (!sequenceEl) return;
+			
+			let sequenceWidth = 0;
+			
+			requestAnimationFrame(() => {
+				sequenceWidth = sequenceEl.getBoundingClientRect?.()?.width ?? 0;
+				
+				if (sequenceWidth > 0) {
+					setSeqWidth(Math.ceil(sequenceWidth));
+					const copiesNeeded =
+						Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
+					setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+				}
+			});
 		}, []);
 
 		useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight]);

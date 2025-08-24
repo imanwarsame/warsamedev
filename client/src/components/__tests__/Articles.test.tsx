@@ -23,30 +23,19 @@ vi.mock('../articles/ArticleCard', () => ({
 
 // Mock articles data
 vi.mock('../articles/ArticlesData', () => {
-  const mockMoment = {
-    format: () => '1st Jan 2024',
-    diff: () => 0,
-    unix: () => 1640995200,
-    valueOf: () => 1640995200000,
-    toDate: () => new Date('2024-01-01'),
-    isAfter: () => false,
-    isBefore: () => false,
-    isSame: () => true
-  };
-
   return {
     articles: [
       {
         id: '1',
         title: 'Test Article 1',
-        date: mockMoment,
+        date: new Date('2024-01-01'),
         url: '/articles/test-article-1',
         mdFile: 'test-article-1.md'
       },
       {
         id: '2',
         title: 'Test Article 2',
-        date: mockMoment,
+        date: new Date('2024-01-01'),
         url: '/articles/test-article-2',
         mdFile: 'test-article-2.md'
       }
@@ -99,6 +88,6 @@ describe('Articles Component', () => {
   test('should display article dates', () => {
     render(<Articles />);
     
-    expect(screen.getAllByText('1st Jan 2024')).toBeDefined();
+    expect(screen.getAllByText('1 Jan 2024')).toBeDefined();
   });
 });

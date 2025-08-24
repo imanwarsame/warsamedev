@@ -12,10 +12,8 @@ import {
 	Paper,
 	Stack,
 	Group,
-	ActionIcon,
 	ThemeIcon,
 	Badge,
-	SimpleGrid,
 	useMantineTheme,
 } from '@mantine/core';
 import GlassIcons from '../glassIcons/GlassIcons';
@@ -24,10 +22,8 @@ import {
 	IconMail,
 	IconBrandLinkedin,
 	IconBrandGithub,
-	IconMapPin,
 	IconSend,
 	IconCheck,
-	IconCopy,
 } from '@tabler/icons-react';
 import { Element } from 'react-scroll';
 import { notifications } from '@mantine/notifications';
@@ -99,48 +95,6 @@ export default function Contact() {
 		}
 	};
 
-	const copyEmail = () => {
-		navigator.clipboard.writeText('iwarsame38@gmail.com');
-		notifications.show({
-			title: 'Email Copied!',
-			message: 'Email address has been copied to clipboard',
-			color: 'green',
-			icon: <IconCheck size={16} />,
-		});
-	};
-
-	const contactInfo = [
-		{
-			icon: IconMail,
-			title: 'Email',
-			value: 'iwarsame38@gmail.com',
-			href: 'mailto:iwarsame38@gmail.com',
-			color: 'blue',
-			showCopy: true,
-		},
-		{
-			icon: IconBrandLinkedin,
-			title: 'LinkedIn',
-			value: '/in/imanwarsame',
-			href: 'https://linkedin.com/in/imanwarsame',
-			color: 'blue',
-		},
-		{
-			icon: IconBrandGithub,
-			title: 'GitHub',
-			value: '/imanwarsame',
-			href: 'https://github.com/imanwarsame',
-			color: 'gray',
-		},
-		{
-			icon: IconMapPin,
-			title: 'Location',
-			value: 'Copenhagen, Denmark',
-			href: null,
-			color: 'red',
-		},
-	];
-
 	return (
 		<Element name='contact_element'>
 			<Box
@@ -191,109 +145,26 @@ export default function Contact() {
 							</Stack>
 						</motion.div>
 
-						{/* Contact Info Cards */}
-						<motion.div variants={itemVariants}>
-							<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing='md' mb={30}>
-								{contactInfo.map((info, index) => (
-									<Paper
-										key={index}
-										component={info.href ? 'a' : 'div'}
-										href={info.href || undefined}
-										target={info.href ? '_blank' : undefined}
-										rel={info.href ? 'noopener noreferrer' : undefined}
-										p='lg'
-										radius='lg'
-										style={{
-											background: darkMode ? theme.other.background.paper : theme.other.background.paper,
-											border: `1px solid ${
-												darkMode ? theme.other.border.light : theme.other.border.light
-											}`,
-											textDecoration: 'none',
-											cursor: info.href ? 'pointer' : 'default',
-											transition: 'all 0.3s ease',
-											position: 'relative',
-										}}
-										onMouseEnter={(e: { currentTarget: { style: { transform: string } } }) => {
-											if (info.href) {
-												e.currentTarget.style.transform = 'translateY(-2px)';
-											}
-										}}
-										onMouseLeave={(e: { currentTarget: { style: { transform: string } } }) => {
-											if (info.href) {
-												e.currentTarget.style.transform = 'translateY(0)';
-											}
-										}}
-									>
-										<Stack align='center' gap='sm'>
-											<ThemeIcon 
-												size='lg' 
-												variant='light' 
-												color={darkMode ? 'gray' : info.color} 
-												radius='lg'
-												style={{
-													backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.1)' : undefined,
-													color: darkMode ? '#ffffff' : undefined,
-												}}
-											>
-												<info.icon size={20} />
-											</ThemeIcon>
-											<Stack gap={4} align='center'>
-												<Text
-													size='sm'
-													fw={600}
-													style={{
-														color: darkMode ? '#ffffff' : '#000000',
-													}}
-												>
-													{info.title}
-												</Text>
-												<Group gap={4} align='center'>
-													<Text size='xs' c='dimmed' ta='center'>
-														{info.value}
-													</Text>
-													{info.showCopy && (
-														<ActionIcon
-															size='xs'
-															variant='subtle'
-															color={darkMode ? 'white' : 'gray'}
-															onClick={(e) => {
-																e.preventDefault();
-																e.stopPropagation();
-																copyEmail();
-															}}
-															style={{
-																cursor: 'pointer',
-															}}
-														>
-															<IconCopy size={12} />
-														</ActionIcon>
-													)}
-												</Group>
-											</Stack>
-										</Stack>
-									</Paper>
-								))}
-							</SimpleGrid>
-						</motion.div>
-
 						{/* Contact Form */}
 						<motion.div variants={itemVariants}>
 							<Paper
 								p={isMobile ? 'lg' : 'xl'}
 								radius='lg'
 								style={{
-									background: darkMode ? theme.other.background.paper : theme.other.background.paper,
+									background: darkMode
+										? theme.other.background.paper
+										: theme.other.background.paper,
 									border: `1px solid ${
 										darkMode ? theme.other.border.light : theme.other.border.light
 									}`,
 								}}
 							>
-								<Stack gap='lg'>
-									<Stack align='center' gap='sm'>
-										<ThemeIcon 
-											size={60} 
-											variant='light' 
-											color={darkMode ? 'gray' : 'blue'} 
+								<Stack gap='sm' justify='center'>
+									<Group justify='center' gap='sm'>
+										<ThemeIcon
+											size={60}
+											variant='light'
+											color={darkMode ? 'gray' : 'blue'}
 											radius='50%'
 											style={{
 												backgroundColor: darkMode ? 'rgba(255, 255, 255, 0.1)' : undefined,
@@ -311,10 +182,10 @@ export default function Contact() {
 										>
 											Send me a message
 										</Title>
-									</Stack>
+									</Group>
 
 									<form ref={form} onSubmit={sendEmail}>
-										<Stack gap='md'>
+										<Stack gap='sm'>
 											<Grid>
 												<Grid.Col span={{ base: 12, md: 6 }}>
 													<TextInput
@@ -349,7 +220,7 @@ export default function Contact() {
 												label='Message'
 												placeholder='Tell me about your project or just say hello...'
 												rows={6}
-												size='md'
+												size='sm'
 												radius='md'
 											/>
 
@@ -399,7 +270,7 @@ export default function Contact() {
 											onClick: () => window.open('mailto:iwarsame38@gmail.com', '_blank'),
 										},
 									]}
-									className="social-icons"
+									className='social-icons'
 								/>
 								<Text size='sm' c='dimmed' ta='center'>
 									© {currentYear} Iman Warsame.

@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { render } from '../../test-utils';
 import Home from '../home/Home';
 
@@ -25,30 +25,48 @@ vi.mock('../contact/Contact', () => ({
 }));
 
 describe('Home Component', () => {
-  test('should render all main sections', () => {
+  test('should render all main sections', async () => {
     render(<Home />);
     
     expect(screen.getByTestId('hero-mock')).toBeDefined();
-    expect(screen.getByTestId('about-mock')).toBeDefined();
-    expect(screen.getByTestId('technologies-mock')).toBeDefined();
-    expect(screen.getByTestId('projects-mock')).toBeDefined();
-    expect(screen.getByTestId('contact-mock')).toBeDefined();
+    
+    // Wait for lazy-loaded components to render
+    await waitFor(() => {
+      expect(screen.getByTestId('about-mock')).toBeDefined();
+    });
+    
+    await waitFor(() => {
+      expect(screen.getByTestId('technologies-mock')).toBeDefined();
+    });
+    
+    await waitFor(() => {
+      expect(screen.getByTestId('projects-mock')).toBeDefined();
+    });
+    
+    await waitFor(() => {
+      expect(screen.getByTestId('contact-mock')).toBeDefined();
+    });
   });
 
-  test('should render components in correct order', () => {
+  test('should render components in correct order', async () => {
     render(<Home />);
     
-    const components = [
-      screen.getByTestId('hero-mock'),
-      screen.getByTestId('about-mock'),
-      screen.getByTestId('technologies-mock'),
-      screen.getByTestId('projects-mock'),
-      screen.getByTestId('contact-mock')
-    ];
+    expect(screen.getByTestId('hero-mock')).toBeDefined();
+    
+    // Wait for all lazy-loaded components to render
+    await waitFor(() => {
+      const components = [
+        screen.getByTestId('hero-mock'),
+        screen.getByTestId('about-mock'),
+        screen.getByTestId('technologies-mock'),
+        screen.getByTestId('projects-mock'),
+        screen.getByTestId('contact-mock')
+      ];
 
-    // Verify all components are present
-    components.forEach(component => {
-      expect(component).toBeDefined();
+      // Verify all components are present
+      components.forEach(component => {
+        expect(component).toBeDefined();
+      });
     });
   });
 
