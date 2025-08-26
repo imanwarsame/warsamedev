@@ -4,7 +4,6 @@ import { ModalsProvider } from '@mantine/modals';
 import GlassNavbar from './components/navbar/GlassNavbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
-import { AnimatePresence } from 'framer-motion';
 import { Routes, Route } from 'react-router-dom';
 import { articles } from './components/articles/ArticlesData';
 import { lazy, Suspense } from 'react';
@@ -26,15 +25,10 @@ export default function App() {
 		usePerformanceMonitor();
 	}
 
-
 	return (
 		<MantineProvider theme={theme} forceColorScheme={darkMode ? 'dark' : 'light'}>
 			<ModalsProvider>
 				<Notifications />
-				<AnimatePresence mode='wait'>
-					{/* {location.pathname === '/' && loading && <Splash />} */}
-				</AnimatePresence>
-
 				<GlassNavbar />
 
 				<Suspense fallback={<div style={{ minHeight: '100vh' }} />}>

@@ -5,106 +5,89 @@ import MDPage from '../articles/MDPage';
 
 // Mock react-markdown
 vi.mock('react-markdown', () => ({
-  default: ({ children }: { children: string }) => (
-    <div data-testid="markdown-content">{children}</div>
-  )
+	default: ({ children }: { children: string }) => (
+		<div data-testid='markdown-content'>{children}</div>
+	),
 }));
-
-// Mock framer-motion with all necessary exports
-vi.mock('framer-motion', async () => {
-  const actual = await vi.importActual<typeof import('framer-motion')>('framer-motion');
-  return {
-    ...actual,
-    motion: {
-      div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-      h2: ({ children, ...props }: any) => <h2 {...props}>{children}</h2>,
-      p: ({ children, ...props }: any) => <p {...props}>{children}</p>,
-    },
-    useInView: () => true,
-    useTransform: () => 0,
-    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
-    useSpring: () => ({ get: () => 0 }),
-  };
-});
 
 // Mock fetch
 const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
 describe('MDPage Component', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
+	beforeEach(() => {
+		vi.clearAllMocks();
+	});
 
-  test('should render loading state initially', () => {
-    mockFetch.mockResolvedValueOnce({
-      text: () => Promise.resolve('# Test Markdown Content'),
-    });
+	test('should render loading state initially', () => {
+		mockFetch.mockResolvedValueOnce({
+			text: () => Promise.resolve('# Test Markdown Content'),
+		});
 
-    render(<MDPage fileName="test" />);
-    
-    // Component should render (loading state)
-    expect(document.body).toBeDefined();
-  });
+		render(<MDPage fileName='test' />);
 
-  test('should fetch and render markdown content', async () => {
-    mockFetch.mockResolvedValueOnce({
-      text: () => Promise.resolve('# Test Markdown Content\n\nThis is test content.'),
-    });
+		// Component should render (loading state)
+		expect(document.body).toBeDefined();
+	});
 
-    render(<MDPage fileName="test" />);
-    
-    await waitFor(() => {
-      expect(screen.getByTestId('markdown-content')).toBeDefined();
-    });
-  });
+	test('should fetch and render markdown content', async () => {
+		mockFetch.mockResolvedValueOnce({
+			text: () => Promise.resolve('# Test Markdown Content\n\nThis is test content.'),
+		});
 
-  test('should handle fetch errors gracefully', async () => {
-    mockFetch.mockRejectedValueOnce(new Error('Fetch failed'));
+		render(<MDPage fileName='test' />);
 
-    console.log = vi.fn();
-    console.error = vi.fn();
-    
-    const { container } = render(<MDPage fileName="test.md" />);
-    
-    // Wait for the component to handle the error
-    await waitFor(() => {
-      // Component should still render without crashing
-      expect(container.firstChild).toBeDefined();
-    });
-  });
+		await waitFor(() => {
+			expect(screen.getByTestId('markdown-content')).toBeDefined();
+		});
+	});
 
-  test('should construct correct file path', async () => {
-    mockFetch.mockResolvedValueOnce({
-      text: () => Promise.resolve('# Test Content'),
-    });
+	test('should handle fetch errors gracefully', async () => {
+		mockFetch.mockRejectedValueOnce(new Error('Fetch failed'));
 
-    render(<MDPage fileName="example" />);
-    
-    await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('/example.md');
-    });
-  });
+		console.log = vi.fn();
+		console.error = vi.fn();
 
-  test('should handle empty markdown content', async () => {
-    mockFetch.mockResolvedValueOnce({
-      text: () => Promise.resolve(''),
-    });
+		const { container } = render(<MDPage fileName='test.md' />);
 
-    render(<MDPage fileName="empty" />);
-    
-    await waitFor(() => {
-      expect(screen.getByTestId('markdown-content')).toBeDefined();
-    });
-  });
+		// Wait for the component to handle the error
+		await waitFor(() => {
+			// Component should still render without crashing
+			expect(container.firstChild).toBeDefined();
+		});
+	});
 
-  test('should render progress indicator', () => {
-    mockFetch.mockResolvedValueOnce({
-      text: () => Promise.resolve('# Test Content'),
-    });
+	test('should construct correct file path', async () => {
+		mockFetch.mockResolvedValueOnce({
+			text: () => Promise.resolve('# Test Content'),
+		});
 
-    const { container } = render(<MDPage fileName="test.md" />);
-    
-    expect(container.firstChild).toBeDefined();
-  });
+		render(<MDPage fileName='example' />);
+
+		await waitFor(() => {
+			expect(mockFetch).toHaveBeenCalledWith('/example.md');
+		});
+	});
+
+	test('should handle empty markdown content', async () => {
+		mockFetch.mockResolvedValueOnce({
+			text: () => Promise.resolve(''),
+		});
+
+		render(<MDPage fileName='empty' />);
+
+		await waitFor(() => {
+			expect(screen.getByTestId('markdown-content')).toBeDefined();
+		});
+	});
+
+	test('should render progress indicator', () => {
+		mockFetch.mockResolvedValueOnce({
+			text: () => Promise.resolve('# Test Content'),
+		});
+
+		const { container } = render(<MDPage fileName='test.md' />);
+
+		expect(container.firstChild).toBeDefined();
+	});
 });

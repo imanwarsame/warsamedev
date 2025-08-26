@@ -3,13 +3,6 @@ import { screen, fireEvent } from '@testing-library/react';
 import { render } from '../../test-utils';
 import ArticleCard from '../articles/ArticleCard';
 
-// Mock framer-motion
-vi.mock('framer-motion', () => ({
-	motion: {
-		div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-	},
-}));
-
 // Mock react-router-dom
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {
@@ -63,6 +56,4 @@ describe('ArticleCard Component', () => {
 
 		expect(container.firstChild).toBeDefined();
 	});
-
-
 });

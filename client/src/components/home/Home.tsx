@@ -1,6 +1,5 @@
 import { Box, Stack } from '@mantine/core';
 import Hero from '../hero/Hero';
-import { motion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
 
 // Lazy load non-critical sections
@@ -11,12 +10,7 @@ const Contact = lazy(() => import('../contact/Contact'));
 
 export default function Home() {
 	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 1, ease: 'easeInOut' }}
-			style={{ width: '100%' }}
-		>
+		<div style={{ width: '100%' }}>
 			<Box
 				style={{
 					width: '100vw',
@@ -42,6 +36,6 @@ export default function Home() {
 					</Suspense>
 				</Stack>
 			</Box>
-		</motion.div>
+		</div>
 	);
 }
