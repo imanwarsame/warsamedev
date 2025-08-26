@@ -20,7 +20,7 @@ export const projects: Project[] = [
 		id: 2,
 		title: 'Garviz',
 		imageUrl: Garviz,
-		webLink: 'https://garviz.net/',
+		webLink: 'https://garviz.netlify.app/',
 		githubLink: 'https://github.com/imanwarsame/garvizlanding',
 		description:
 			'Landing page for Garviz, a platform for gathering, visualising and analysing football data.',
