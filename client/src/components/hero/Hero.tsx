@@ -18,6 +18,7 @@ import animatedScrollDark from '../../assets/scroll-down-dark.json';
 import animatedScrollLight from '../../assets/scroll-down-light.json';
 import LiquidChrome from '../liquidChrome/LiquidChrome';
 import { useMemo } from 'react';
+import { scroller } from 'react-scroll';
 
 export default function Hero() {
 	const theme = useMantineTheme();
@@ -128,8 +129,6 @@ export default function Hero() {
 					{/* CTA Buttons */}
 					<Group justify='center' gap='md'>
 						<Button
-							component='a'
-							href='#contact_element'
 							size={isMobile ? 'md' : 'lg'}
 							variant={colorScheme === 'dark' ? 'white' : 'filled'}
 							color={colorScheme === 'dark' ? undefined : 'dark'}
@@ -137,10 +136,12 @@ export default function Hero() {
 							style={{
 								borderRadius: theme.radius.md,
 							}}
-							onClick={(e) => {
-								e.preventDefault();
-								const element = document.querySelector('[name="contact_element"]');
-								element?.scrollIntoView({ behavior: 'smooth' });
+							onClick={() => {
+								scroller.scrollTo('contact_element', {
+									duration: 800,
+									delay: 0,
+									smooth: 'easeInOutQuart',
+								});
 							}}
 						>
 							Get In Touch
