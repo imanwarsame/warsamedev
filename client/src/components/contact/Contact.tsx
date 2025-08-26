@@ -70,10 +70,10 @@ export default function Contact() {
 		if (form.current) {
 			try {
 				await emailjs.sendForm(
-					import.meta.env.VITE_EMAILJS_SERVICE_ID,
-					import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+					import.meta.env.VITE_EMAILJS_SRVCE_ID,
+					import.meta.env.VITE_EMAILJS_TPLTE_ID,
 					form.current,
-					import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+					import.meta.env.VITE_EMAILJS_PUB_KEY,
 				);
 
 				form.current?.reset();
