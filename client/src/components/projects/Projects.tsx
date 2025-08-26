@@ -15,7 +15,6 @@ import {
 	useMantineTheme,
 	Overlay,
 } from '@mantine/core';
-import { motion, useInView } from 'framer-motion';
 import {
 	IconExternalLink,
 	IconBrandGithub,
@@ -164,33 +163,9 @@ export default function Projects() {
 	const theme = useMantineTheme();
 	const { darkMode } = useDevStore();
 	const ref = useRef<HTMLDivElement>(null);
-	const isInView = useInView(ref, { once: true, amount: 0.2 });
 	const isMobile = useMediaQuery('(max-width: 768px)');
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const [opened, { open, close }] = useDisclosure(false);
-
-	const containerVariants = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: {
-				duration: 0.6,
-				staggerChildren: 0.1,
-			},
-		},
-	};
-
-	const itemVariants = {
-		hidden: { opacity: 0, y: 30 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 0.6,
-				ease: 'easeOut',
-			},
-		},
-	};
 
 	const handleProjectClick = (project: Project) => {
 		setSelectedProject(project);
@@ -207,172 +182,159 @@ export default function Projects() {
 			}}
 		>
 			<Container size='lg'>
-				<motion.div
-					variants={containerVariants}
-					initial='hidden'
-					animate={isInView ? 'visible' : 'hidden'}
-				>
-					{/* Section Header */}
-					<motion.div variants={itemVariants}>
-						<Stack align='center' gap='md' mb={60}>
-							<Badge size='lg' variant='light' color={darkMode ? 'cyan' : 'blue'}>
-								Projects
-							</Badge>
-							<Title
-								order={2}
-								size={isMobile ? 'h3' : 'h2'}
-								ta='center'
-								style={{
-									color: darkMode ? theme.other.text.primary : theme.other.text.primary,
-								}}
-							>
-								Featured Work
-							</Title>
-							<Text
-								size='lg'
-								ta='center'
-								maw={600}
-								style={{
-									color: darkMode ? theme.other.text.secondary : theme.other.text.secondary,
-									lineHeight: 1.6,
-								}}
-							>
-								A collection of projects showcasing my expertise in full-stack development, product
-								management, and engineering solutions.
-							</Text>
-						</Stack>
-					</motion.div>
+				{/* Section Header */}
+				<Stack align='center' gap='md' mb={60}>
+					<Badge size='lg' variant='light' color={darkMode ? 'cyan' : 'blue'}>
+						Projects
+					</Badge>
+					<Title
+						order={2}
+						size={isMobile ? 'h3' : 'h2'}
+						ta='center'
+						style={{
+							color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+						}}
+					>
+						Featured Work
+					</Title>
+					<Text
+						size='lg'
+						ta='center'
+						maw={600}
+						style={{
+							color: darkMode ? theme.other.text.secondary : theme.other.text.secondary,
+							lineHeight: 1.6,
+						}}
+					>
+						A collection of projects showcasing my expertise in full-stack development, product
+						management, and engineering solutions.
+					</Text>
+				</Stack>
 
-					{/* Projects Grid */}
-					<SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing={isMobile ? 'md' : 'lg'}>
-						{projects.map((project) => (
-							<motion.div key={project.id} variants={itemVariants}>
-								<Paper
-									radius='lg'
+				{/* Projects Grid */}
+				<SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing={isMobile ? 'md' : 'lg'}>
+					{projects.map((project) => (
+						<Paper
+							key={project.id}
+							radius='lg'
+							style={{
+								overflow: 'hidden',
+								cursor: 'pointer',
+								transition: 'all 0.3s ease',
+								background: darkMode ? theme.other.background.paper : theme.other.background.paper,
+								border: `1px solid ${
+									darkMode ? theme.other.border.light : theme.other.border.light
+								}`,
+							}}
+							onMouseEnter={(e) => {
+								e.currentTarget.style.transform = 'translateY(-4px)';
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.transform = 'translateY(0)';
+							}}
+							onClick={() => handleProjectClick(project)}
+						>
+							{/* Project Image */}
+							<Box style={{ position: 'relative' }}>
+								{project.imageUrl && (
+									<Image src={project.imageUrl} alt={project.title} h={200} fit='cover' />
+								)}
+								<Overlay
+									color='#000'
+									opacity={0}
 									style={{
-										overflow: 'hidden',
-										cursor: 'pointer',
-										transition: 'all 0.3s ease',
-										background: darkMode
-											? theme.other.background.paper
-											: theme.other.background.paper,
-										border: `1px solid ${
-											darkMode ? theme.other.border.light : theme.other.border.light
-										}`,
+										transition: 'opacity 0.3s ease',
 									}}
-									onMouseEnter={(e) => {
-										e.currentTarget.style.transform = 'translateY(-4px)';
+								/>
+								<Box
+									style={{
+										position: 'absolute',
+										top: '50%',
+										left: '50%',
+										transform: 'translate(-50%, -50%)',
+										opacity: 0,
+										transition: 'opacity 0.3s ease',
 									}}
-									onMouseLeave={(e) => {
-										e.currentTarget.style.transform = 'translateY(0)';
-									}}
-									onClick={() => handleProjectClick(project)}
 								>
-									{/* Project Image */}
-									<Box style={{ position: 'relative' }}>
-										{project.imageUrl && (
-											<Image src={project.imageUrl} alt={project.title} h={200} fit='cover' />
-										)}
-										<Overlay
-											color='#000'
-											opacity={0}
-											style={{
-												transition: 'opacity 0.3s ease',
-											}}
-										/>
-										<Box
-											style={{
-												position: 'absolute',
-												top: '50%',
-												left: '50%',
-												transform: 'translate(-50%, -50%)',
-												opacity: 0,
-												transition: 'opacity 0.3s ease',
-											}}
-										>
-											<ActionIcon
-												size='xl'
-												variant='filled'
-												color={darkMode ? 'white' : 'blue'}
-												style={{
-													borderRadius: '50%',
-												}}
+									<ActionIcon
+										size='xl'
+										variant='filled'
+										color={darkMode ? 'white' : 'blue'}
+										style={{
+											borderRadius: '50%',
+										}}
+									>
+										<IconEye size={24} />
+									</ActionIcon>
+								</Box>
+							</Box>
+
+							{/* Project Content */}
+							<Stack gap='sm' p='md'>
+								{project.description && (
+									<Text size='sm' c='dimmed' lineClamp={2} style={{ lineHeight: 1.5 }}>
+										{project.description}
+									</Text>
+								)}
+
+								{project.technologies && (
+									<Group gap='xs' mt='xs'>
+										{project.technologies.slice(0, 3).map((tech: string, techIndex: number) => (
+											<Badge
+												key={techIndex}
+												size='xs'
+												variant='outline'
+												color={darkMode ? 'lime' : 'blue'}
 											>
-												<IconEye size={24} />
-											</ActionIcon>
-										</Box>
-									</Box>
-
-									{/* Project Content */}
-									<Stack gap='sm' p='md'>
-										{project.description && (
-											<Text size='sm' c='dimmed' lineClamp={2} style={{ lineHeight: 1.5 }}>
-												{project.description}
-											</Text>
+												{tech}
+											</Badge>
+										))}
+										{project.technologies.length > 3 && (
+											<Badge size='xs' variant='outline' color={darkMode ? 'grape' : 'gray'}>
+												+{project.technologies.length - 3}
+											</Badge>
 										)}
+									</Group>
+								)}
 
-										{project.technologies && (
-											<Group gap='xs' mt='xs'>
-												{project.technologies
-													.slice(0, 3)
-													.map((tech: string, techIndex: number) => (
-														<Badge
-															key={techIndex}
-															size='xs'
-															variant='outline'
-															color={darkMode ? 'lime' : 'blue'}
-														>
-															{tech}
-														</Badge>
-													))}
-												{project.technologies.length > 3 && (
-													<Badge size='xs' variant='outline' color={darkMode ? 'grape' : 'gray'}>
-														+{project.technologies.length - 3}
-													</Badge>
-												)}
-											</Group>
-										)}
-
-										{/* Action Buttons */}
-										<Group gap='xs' mt='md'>
-											{project.webLink && (
-												<ActionIcon
-													component='a'
-													href={project.webLink}
-													target='_blank'
-													rel='noopener noreferrer'
-													variant='light'
-													color={darkMode ? 'white' : 'blue'}
-													onClick={(e) => e.stopPropagation()}
-												>
-													<IconExternalLink size={16} />
-												</ActionIcon>
-											)}
-											{project.githubLink && (
-												<ActionIcon
-													component='a'
-													href={project.githubLink}
-													target='_blank'
-													rel='noopener noreferrer'
-													variant='light'
-													color={darkMode ? 'white' : 'gray'}
-													onClick={(e) => e.stopPropagation()}
-												>
-													<IconBrandGithub size={16} />
-												</ActionIcon>
-											)}
-											{project.videoUrl && (
-												<ActionIcon variant='light' color={darkMode ? 'white' : 'green'}>
-													<IconPlayerPlay size={16} />
-												</ActionIcon>
-											)}
-										</Group>
-									</Stack>
-								</Paper>
-							</motion.div>
-						))}
-					</SimpleGrid>
-				</motion.div>
+								{/* Action Buttons */}
+								<Group gap='xs' mt='md'>
+									{project.webLink && (
+										<ActionIcon
+											component='a'
+											href={project.webLink}
+											target='_blank'
+											rel='noopener noreferrer'
+											variant='light'
+											color={darkMode ? 'white' : 'blue'}
+											onClick={(e) => e.stopPropagation()}
+										>
+											<IconExternalLink size={16} />
+										</ActionIcon>
+									)}
+									{project.githubLink && (
+										<ActionIcon
+											component='a'
+											href={project.githubLink}
+											target='_blank'
+											rel='noopener noreferrer'
+											variant='light'
+											color={darkMode ? 'white' : 'gray'}
+											onClick={(e) => e.stopPropagation()}
+										>
+											<IconBrandGithub size={16} />
+										</ActionIcon>
+									)}
+									{project.videoUrl && (
+										<ActionIcon variant='light' color={darkMode ? 'white' : 'green'}>
+											<IconPlayerPlay size={16} />
+										</ActionIcon>
+									)}
+								</Group>
+							</Stack>
+						</Paper>
+					))}
+				</SimpleGrid>
 			</Container>
 
 			{/* Project Detail Modal */}

@@ -22,7 +22,6 @@
     "@mantine/notifications": "^8.2.5",
     "@tabler/icons-react": "^3.34.1",
     "@types/react-scroll": "^1.8.7",
-    "framer-motion": "^10.12.18",
     "lottie-react": "^2.4.0",
     "motion": "^12.23.12",
     "ogl": "^1.0.11",
