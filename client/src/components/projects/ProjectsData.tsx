@@ -6,7 +6,6 @@ import { Project } from './Projects';
 
 export const projects: Project[] = [
 	{
-		id: 1,
 		title: 'GPI Designer',
 		imageUrl: GPI,
 		webLink: 'https://designer.groundplug.dk/',
@@ -17,7 +16,6 @@ export const projects: Project[] = [
 		videoUrl: null,
 	},
 	{
-		id: 2,
 		title: 'Garviz',
 		imageUrl: Garviz,
 		webLink: 'https://garviz.netlify.app/',
@@ -28,14 +26,34 @@ export const projects: Project[] = [
 		videoUrl: null,
 	},
 	{
-		id: 3,
 		title: 'Energy Planner',
 		imageUrl: EnergyPlanner,
 		webLink: 'https://energy-planner.netlify.app/',
 		githubLink: 'https://github.com/imanwarsame/cityenergyplanner',
-		videoUrl: EnergyPlannerVideo,
 		description:
 			'A web-based application to identify optimal locations for renewable energy installations in urban areas.',
 		technologies: ['TypeScript', 'React', 'MapBox', 'Mantine', 'Vite'],
+		videoUrl: EnergyPlannerVideo,
+	},
+	{
+		title: 'AirPave',
+		imageUrl: null,
+		webLink: null,
+		githubLink: null,
+		description:
+			'Asset management system for airport pavements, allows users to inspect and log defects on site using mobile devices. And plan maintenance activities and generate recommendations for airport owners.',
+		technologies: [
+			'React',
+			'TypeScript',
+			'ASP.NET',
+			'C#',
+			'Mantine',
+			'SQL Server',
+			'Azure',
+			'Entity Framework',
+			'OpenLayers',
+			'MapBox',
+		],
+		videoUrl: null,
 	},
 ];

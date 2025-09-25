@@ -26,9 +26,9 @@ import { useRef, useState } from 'react';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { projects } from './ProjectsData';
 import { useDevStore } from '../../store';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface Project {
-	id: number;
 	title: string;
 	imageUrl: string | null;
 	webLink?: string | null;
@@ -215,7 +215,7 @@ export default function Projects() {
 				<SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing={isMobile ? 'md' : 'lg'}>
 					{projects.map((project) => (
 						<Paper
-							key={project.id}
+							key={uuidv4()}
 							radius='lg'
 							style={{
 								overflow: 'hidden',
