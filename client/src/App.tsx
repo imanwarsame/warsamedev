@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import { articles } from './components/articles/ArticlesData';
 import { lazy, Suspense } from 'react';
 import { usePerformanceMonitor } from './hooks/usePerformanceMonitor';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Lazy load components to reduce initial bundle size
 const Home = lazy(() => import('./components/home/Home'));
@@ -44,6 +45,8 @@ export default function App() {
 						))}
 					</Routes>
 				</Suspense>
+
+				<SpeedInsights />
 			</ModalsProvider>
 		</MantineProvider>
 	);
