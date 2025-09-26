@@ -15,7 +15,7 @@ export const usePerformanceMonitor = () => {
 			// First Input Delay
 			const fidObserver = new PerformanceObserver((list) => {
 				for (const entry of list.getEntries()) {
-					const fidEntry = entry as any;
+					const fidEntry = entry as PerformanceEventTiming;
 					console.log('FID:', fidEntry.processingStart - fidEntry.startTime);
 				}
 			});
@@ -25,8 +25,9 @@ export const usePerformanceMonitor = () => {
 			const clsObserver = new PerformanceObserver((list) => {
 				let clsValue = 0;
 				for (const entry of list.getEntries()) {
-					if (!(entry as any).hadRecentInput) {
-						clsValue += (entry as any).value;
+					const layoutShiftEntry = entry as PerformanceEntry & { value: number; hadRecentInput: boolean };
+					if (!layoutShiftEntry.hadRecentInput) {
+						clsValue += layoutShiftEntry.value;
 					}
 				}
 				if (clsValue > 0) {

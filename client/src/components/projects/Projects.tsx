@@ -236,8 +236,34 @@ export default function Projects() {
 						>
 							{/* Project Image */}
 							<Box style={{ position: 'relative' }}>
-								{project.imageUrl && (
+								{project.imageUrl ? (
 									<Image src={project.imageUrl} alt={project.title} h={200} fit='cover' />
+								) : (
+									<Box
+										h={200}
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
+											background: darkMode
+												? 'linear-gradient(135deg, #1a1b1e 0%, #2c2e33 100%)'
+												: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+											border: `1px solid ${
+												darkMode ? theme.other.border.light : theme.other.border.light
+											}`,
+										}}
+									>
+										<Title
+											order={1}
+											ta='center'
+											px='md'
+											style={{
+												color: darkMode ? theme.other.text.primary : theme.other.text.primary,
+											}}
+										>
+											{project.title}
+										</Title>
+									</Box>
 								)}
 								<Overlay
 									color='#000'
