@@ -8,7 +8,7 @@ export type LogoItem =
 			href?: string;
 			title?: string;
 			ariaLabel?: string;
-		}
+	  }
 	| {
 			src: string;
 			alt?: string;
@@ -18,7 +18,7 @@ export type LogoItem =
 			sizes?: string;
 			width?: number;
 			height?: number;
-		};
+	  };
 
 export interface LogoLoopProps {
 	logos: LogoItem[];
@@ -139,7 +139,7 @@ const useAnimationLoop = (
 				lastTimestampRef.current = timestamp;
 			}
 
-			const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
+			const deltaTime = Math.max(0, Math.min(timestamp - lastTimestampRef.current, 100)) / 1000;
 			lastTimestampRef.current = timestamp;
 
 			const target = pauseOnHover && isHovered ? 0 : targetVelocity;
@@ -150,9 +150,12 @@ const useAnimationLoop = (
 			if (seqWidth > 0) {
 				let nextOffset = offsetRef.current + velocityRef.current * deltaTime;
 				nextOffset = ((nextOffset % seqWidth) + seqWidth) % seqWidth;
-				offsetRef.current = nextOffset;
 
-				const translateX = -offsetRef.current;
+				// Round to prevent sub-pixel flickering
+				const roundedOffset = Math.round(nextOffset * 100) / 100;
+				offsetRef.current = roundedOffset;
+
+				const translateX = Math.round(-offsetRef.current * 100) / 100;
 				track.style.transform = `translate3d(${translateX}px, 0, 0)`;
 			}
 
@@ -205,22 +208,25 @@ export const LogoLoop = React.memo<LogoLoopProps>(
 		const updateDimensions = useCallback(() => {
 			const containerWidth = containerRef.current?.clientWidth ?? 0;
 			const sequenceEl = seqRef.current;
-			
+
 			if (!sequenceEl) return;
-			
-			let sequenceWidth = 0;
-			
-			requestAnimationFrame(() => {
-				sequenceWidth = sequenceEl.getBoundingClientRect?.()?.width ?? 0;
-				
-				if (sequenceWidth > 0) {
-					setSeqWidth(Math.ceil(sequenceWidth));
-					const copiesNeeded =
-						Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
-					setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+
+			// Use getBoundingClientRect directly instead of requestAnimationFrame to prevent flickering
+			const sequenceWidth = sequenceEl.getBoundingClientRect?.()?.width ?? 0;
+
+			if (sequenceWidth > 0) {
+				const roundedWidth = Math.ceil(sequenceWidth);
+				const copiesNeeded =
+					Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
+				const finalCopyCount = Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded);
+
+				// Batch state updates to prevent multiple re-renders
+				if (roundedWidth !== seqWidth || finalCopyCount !== copyCount) {
+					setSeqWidth(roundedWidth);
+					setCopyCount(finalCopyCount);
 				}
-			});
-		}, []);
+			}
+		}, [seqWidth, copyCount]);
 
 		useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight]);
 

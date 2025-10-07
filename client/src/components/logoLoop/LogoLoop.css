@@ -1,6 +1,11 @@
 .logoloop {
 	position: relative;
 	overflow: hidden;
+	/* Performance optimizations to prevent flickering */
+	transform: translateZ(0);
+	will-change: transform;
+	/* Contain layout and paint to prevent reflows */
+	contain: layout paint;
 
 	--logoloop-gap: 32px;
 	--logoloop-logoHeight: 28px;
@@ -19,6 +24,14 @@
 	width: max-content;
 	will-change: transform;
 	user-select: none;
+	/* Prevent flickering by promoting to compositor layer */
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	/* Ensure smooth sub-pixel rendering */
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	/* Prevent layout thrashing */
+	contain: layout style;
 }
 
 .logoloop__list {
@@ -57,6 +70,12 @@
 	pointer-events: none;
 	/* Links handle interaction */
 	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	/* Prevent flickering on images */
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	/* Optimize image rendering for animations */
+	image-rendering: crisp-edges;
+	image-rendering: -moz-crisp-edges;
 }
 
 .logoloop--scale-hover .logoloop__item {
@@ -71,6 +90,9 @@
 
 .logoloop--scale-hover .logoloop__node {
 	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	/* Prevent flickering during transitions */
+	transform: translateZ(0);
+	backface-visibility: hidden;
 }
 
 .logoloop__link {
@@ -99,6 +121,9 @@
 	width: clamp(24px, 8%, 120px);
 	pointer-events: none;
 	z-index: 1;
+	/* Prevent flickering on fade overlays */
+	transform: translateZ(0);
+	will-change: opacity;
 }
 
 .logoloop--fade::before {

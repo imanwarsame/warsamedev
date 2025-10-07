@@ -31,6 +31,9 @@ export default function Books() {
 						overflow: 'hidden',
 						transition: 'transform 0.2s ease',
 						position: 'relative',
+						// Prevent flickering during animations
+						transform: 'translateZ(0)',
+						backfaceVisibility: 'hidden',
 					}}
 				>
 					<Image
