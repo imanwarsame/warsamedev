@@ -5,6 +5,7 @@ import { lazy, Suspense } from 'react';
 // Lazy load non-critical sections
 const About = lazy(() => import('../about/About'));
 const Technologies = lazy(() => import('../technologies/Technologies'));
+const Books = lazy(() => import('../books/Books'));
 const Projects = lazy(() => import('../projects/Projects'));
 const Contact = lazy(() => import('../contact/Contact'));
 
@@ -30,6 +31,9 @@ export default function Home() {
 					</Suspense>
 					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
 						<Projects />
+					</Suspense>
+					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
+						<Books />
 					</Suspense>
 					<Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
 						<Contact />
