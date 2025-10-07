@@ -21,6 +21,7 @@ import {
 	IconEye,
 	IconX,
 	IconPlayerPlay,
+	IconBrandYoutube,
 } from '@tabler/icons-react';
 import { useRef, useState } from 'react';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
@@ -35,8 +36,36 @@ export interface Project {
 	githubLink?: string | null;
 	description?: string;
 	technologies?: string[];
+	/** Video URL - supports both local video files (e.g., '/videos/demo.mp4') and YouTube URLs (e.g., 'https://www.youtube.com/watch?v=VIDEO_ID') */
 	videoUrl?: string | null;
 }
+
+// Helper functions for video handling
+const isYouTubeUrl = (url: string): boolean => {
+	return url.includes('youtube.com') || url.includes('youtu.be');
+};
+
+const getYouTubeEmbedUrl = (url: string): string => {
+	try {
+		// Handle different YouTube URL formats
+		if (url.includes('youtube.com/watch?v=')) {
+			const videoId = url.split('v=')[1]?.split('&')[0];
+			if (videoId) {
+				return `https://www.youtube.com/embed/${videoId}`;
+			}
+		} else if (url.includes('youtu.be/')) {
+			const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+			if (videoId) {
+				return `https://www.youtube.com/embed/${videoId}`;
+			}
+		} else if (url.includes('youtube.com/embed/')) {
+			return url; // Already in embed format
+		}
+	} catch (error) {
+		console.warn('Failed to parse YouTube URL:', url, error);
+	}
+	return url;
+};
 
 interface ProjectDetailModalProps {
 	project: Project | null;
@@ -89,20 +118,38 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 								overflow: 'hidden',
 							}}
 						>
-							<video
-								controls
-								style={{
-									position: 'absolute',
-									top: 0,
-									left: 0,
-									width: '100%',
-									height: '100%',
-									borderRadius: theme.radius.md,
-								}}
-							>
-								<source src={project.videoUrl} type='video/mp4' />
-								Your browser does not support the video tag.
-							</video>
+							{isYouTubeUrl(project.videoUrl) ? (
+								<iframe
+									src={getYouTubeEmbedUrl(project.videoUrl)}
+									title={project.title}
+									allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+									allowFullScreen
+									style={{
+										position: 'absolute',
+										top: 0,
+										left: 0,
+										width: '100%',
+										height: '100%',
+										borderRadius: theme.radius.md,
+										border: 'none',
+									}}
+								/>
+							) : (
+								<video
+									controls
+									style={{
+										position: 'absolute',
+										top: 0,
+										left: 0,
+										width: '100%',
+										height: '100%',
+										borderRadius: theme.radius.md,
+									}}
+								>
+									<source src={project.videoUrl} type='video/mp4' />
+									Your browser does not support the video tag.
+								</video>
+							)}
 						</Box>
 					) : (
 						project.imageUrl && (
@@ -166,6 +213,45 @@ export default function Projects() {
 	const isMobile = useMediaQuery('(max-width: 768px)');
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const [opened, { open, close }] = useDisclosure(false);
+
+	// Color schemes for projects without images
+	const projectColourSchemes = [
+		{
+			background: darkMode
+				? 'linear-gradient(135deg, #1e2a1e 0%, #334433 100%)'
+				: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+			text: darkMode ? '#86efac' : '#166534',
+		},
+		{
+			background: darkMode
+				? 'linear-gradient(135deg, #1e2a2d 0%, #334a55 100%)'
+				: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+			text: darkMode ? '#7dd3fc' : '#0c4a6e',
+		},
+		{
+			background: darkMode
+				? 'linear-gradient(135deg, #2d2a1e 0%, #4a4433 100%)'
+				: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
+			text: darkMode ? '#fbbf24' : '#92400e',
+		},
+		{
+			background: darkMode
+				? 'linear-gradient(135deg, #2a1e2d 0%, #443355 100%)'
+				: 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%)',
+			text: darkMode ? '#c084fc' : '#7c3aed',
+		},
+	];
+
+	const getProjectColourScheme = (projectTitle: string) => {
+		// Use a hash-like function to consistently assign colors based on project title
+		const hash = projectTitle.split('').reduce((a, b) => {
+			a = (a << 5) - a + b.charCodeAt(0);
+			return a & a;
+		}, 0);
+
+		const colorIndex = Math.abs(hash) % projectColourSchemes.length;
+		return projectColourSchemes[colorIndex];
+	};
 
 	const handleProjectClick = (project: Project) => {
 		setSelectedProject(project);
@@ -239,31 +325,37 @@ export default function Projects() {
 								{project.imageUrl ? (
 									<Image src={project.imageUrl} alt={project.title} h={200} fit='cover' />
 								) : (
-									<Box
-										h={200}
-										style={{
-											display: 'flex',
-											alignItems: 'center',
-											justifyContent: 'center',
-											background: darkMode
-												? 'linear-gradient(135deg, #1a1b1e 0%, #2c2e33 100%)'
-												: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
-											border: `1px solid ${
-												darkMode ? theme.other.border.light : theme.other.border.light
-											}`,
-										}}
-									>
-										<Title
-											order={1}
-											ta='center'
-											px='md'
-											style={{
-												color: darkMode ? theme.other.text.primary : theme.other.text.primary,
-											}}
-										>
-											{project.title}
-										</Title>
-									</Box>
+									(() => {
+										const colorScheme = getProjectColourScheme(project.title);
+										return (
+											<Box
+												h={200}
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													justifyContent: 'center',
+													background: colorScheme.background,
+													border: `1px solid ${
+														darkMode ? theme.other.border.light : theme.other.border.light
+													}`,
+												}}
+											>
+												<Title
+													order={1}
+													ta='center'
+													px='md'
+													style={{
+														color: colorScheme.text,
+														textShadow: darkMode
+															? '0 1px 2px rgba(0,0,0,0.3)'
+															: '0 1px 2px rgba(255,255,255,0.3)',
+													}}
+												>
+													{project.title}
+												</Title>
+											</Box>
+										);
+									})()
 								)}
 								<Overlay
 									color='#000'
@@ -352,8 +444,15 @@ export default function Projects() {
 										</ActionIcon>
 									)}
 									{project.videoUrl && (
-										<ActionIcon variant='light' color={darkMode ? 'white' : 'green'}>
-											<IconPlayerPlay size={16} />
+										<ActionIcon
+											variant='light'
+											color={isYouTubeUrl(project.videoUrl) ? 'red' : darkMode ? 'white' : 'green'}
+										>
+											{isYouTubeUrl(project.videoUrl) ? (
+												<IconBrandYoutube size={16} />
+											) : (
+												<IconPlayerPlay size={16} />
+											)}
 										</ActionIcon>
 									)}
 								</Group>

@@ -4,6 +4,19 @@ import EnergyPlanner from '../../assets/Projects/EnergyPlanner.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
 import { Project } from './Projects';
 
+/**
+ * Projects data configuration
+ *
+ * Video URL supports:
+ * - Local video files: './assets/Projects/video.mp4'
+ * - YouTube videos: 'https://www.youtube.com/watch?v=VIDEO_ID' or 'https://youtu.be/VIDEO_ID'
+ * - Null: No video
+ *
+ * The component will automatically detect the video type and render appropriately:
+ * - YouTube videos: Embedded iframe with YouTube branding
+ * - Local videos: HTML5 video player with controls
+ */
+
 export const projects: Project[] = [
 	{
 		title: 'GPI Designer',
@@ -54,7 +67,7 @@ export const projects: Project[] = [
 			'OpenLayers',
 			'MapBox',
 		],
-		videoUrl: null,
+		videoUrl: null, // Can be: null, '/assets/video.mp4', or 'https://www.youtube.com/watch?v=VIDEO_ID'
 	},
 	{
 		title: 'LEAP',
@@ -84,5 +97,16 @@ export const projects: Project[] = [
 			'WASP is a desktop application that integrates with Plaxis 2D. An application for automating the design of single and twin embedded retaining walls. Confidential project.',
 		technologies: ['Avalonia', 'C#', 'MVVM', 'Python'],
 		videoUrl: null,
+	},
+	{
+		title: 'HS2',
+		imageUrl: null,
+		webLink: null,
+		githubLink: null,
+		description:
+			'HS2 is a high-speed rail project in the UK. Confidential project. I worked on several aspects including; cat III design checks of Carol Green Rail Underbridge (see video), assistnat project manager for SL8 managing > £3M worth of work and around 40 assets with teams across multiple companies, prototyping web based project management platform to manage disparate data sources and provide a single source of truth for the project team.',
+		technologies: ['React', 'JavaScript', 'ASP.NET', 'C#', 'MongoDB', 'Azure'],
+		videoUrl:
+			'https://www.youtube.com/watch?v=Sl84gfVv5FA&list=PLQHXGU97P0FJ4cdR_sB669tRAv0f5em8_&index=1',
 	},
 ];
