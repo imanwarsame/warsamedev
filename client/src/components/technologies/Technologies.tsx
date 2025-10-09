@@ -15,9 +15,44 @@ import {
 	IconBrandVite,
 	IconBrandThreejs,
 } from '@tabler/icons-react';
+import type { Icon } from '@tabler/icons-react';
 import { useDevStore } from '../../store';
 import { LogoLoop } from '../logoLoop/LogoLoop';
 import type { LogoItem } from '../logoLoop/LogoLoop';
+
+interface TechData {
+	name: string;
+	icon: Icon;
+	color: string;
+	ariaLabel?: string;
+}
+
+// Helper function to create technology logo items with consistent styling
+const createTechItem = (tech: TechData, darkMode: boolean, iconSize: number): LogoItem => ({
+	node: (
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				gap: '8px',
+				transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+				position: 'relative',
+				// Optimize for smooth animations
+				transform: 'translate3d(0, 0, 0)',
+				backfaceVisibility: 'hidden',
+				WebkitFontSmoothing: 'antialiased',
+			}}
+		>
+			<tech.icon size={iconSize} color={tech.color} />
+			<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
+				{tech.name}
+			</Text>
+		</div>
+	),
+	title: tech.name,
+	ariaLabel: tech.ariaLabel || tech.name,
+});
 
 export default function Technologies() {
 	const theme = useMantineTheme();
@@ -26,190 +61,27 @@ export default function Technologies() {
 
 	const iconSize = 48;
 
-	const technologiesLogos: LogoItem[] = [
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandReact size={iconSize} color='#61DAFB' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						React
-					</Text>
-				</div>
-			),
-			title: 'React',
-			ariaLabel: 'React',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandTypescript size={iconSize} color='#3178C6' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						TypeScript
-					</Text>
-				</div>
-			),
-			title: 'TypeScript',
-			ariaLabel: 'TypeScript',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandJavascript size={iconSize} color='#F7DF1E' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						JavaScript
-					</Text>
-				</div>
-			),
-			title: 'JavaScript',
-			ariaLabel: 'JavaScript',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandCSharp size={iconSize} color='#239120' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						C#
-					</Text>
-				</div>
-			),
-			title: 'C#',
-			ariaLabel: 'C# Programming Language',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandPython size={iconSize} color='#3776AB' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Python
-					</Text>
-				</div>
-			),
-			title: 'Python',
-			ariaLabel: 'Python',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandMongodb size={iconSize} color='#47A248' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						MongoDB
-					</Text>
-				</div>
-			),
-			title: 'MongoDB',
-			ariaLabel: 'MongoDB',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandNodejs size={iconSize} color='#339933' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Node.js
-					</Text>
-				</div>
-			),
-			title: 'Node.js',
-			ariaLabel: 'Node.js',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandGit size={iconSize} color='#F05032' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Git
-					</Text>
-				</div>
-			),
-			title: 'Git',
-			ariaLabel: 'Git',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandFigma size={iconSize} color='#F24E1E' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Figma
-					</Text>
-				</div>
-			),
-			title: 'Figma',
-			ariaLabel: 'Figma',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconDatabase size={iconSize} color='#336791' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						SQL
-					</Text>
-				</div>
-			),
-			title: 'SQL',
-			ariaLabel: 'SQL',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandAzure size={iconSize} color='#007ACC' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Azure
-					</Text>
-				</div>
-			),
-			title: 'Azure',
-			ariaLabel: 'Azure',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandVite size={iconSize} color='#007ACC' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Vite
-					</Text>
-				</div>
-			),
-			title: 'Vite',
-			ariaLabel: 'Vite',
-		},
-		{
-			node: (
-				<div
-					style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-				>
-					<IconBrandThreejs size={iconSize} color='#007ACC' />
-					<Text size='xs' fw={500} style={{ color: darkMode ? '#ffffff' : '#000000' }}>
-						Three.js
-					</Text>
-				</div>
-			),
-			title: 'Three.js',
-			ariaLabel: 'Three.js',
-		},
+	// Technology data array
+	const technologiesData: TechData[] = [
+		{ name: 'React', icon: IconBrandReact, color: '#61DAFB' },
+		{ name: 'TypeScript', icon: IconBrandTypescript, color: '#3178C6' },
+		{ name: 'JavaScript', icon: IconBrandJavascript, color: '#F7DF1E' },
+		{ name: 'C#', icon: IconBrandCSharp, color: '#239120', ariaLabel: 'C# Programming Language' },
+		{ name: 'Python', icon: IconBrandPython, color: '#3776AB' },
+		{ name: 'MongoDB', icon: IconBrandMongodb, color: '#47A248' },
+		{ name: 'Node.js', icon: IconBrandNodejs, color: '#339933' },
+		{ name: 'Git', icon: IconBrandGit, color: '#F05032' },
+		{ name: 'Figma', icon: IconBrandFigma, color: '#F24E1E' },
+		{ name: 'SQL', icon: IconDatabase, color: '#336791' },
+		{ name: 'Azure', icon: IconBrandAzure, color: '#007ACC' },
+		{ name: 'Vite', icon: IconBrandVite, color: '#007ACC' },
+		{ name: 'Three.js', icon: IconBrandThreejs, color: '#007ACC' },
 	];
+
+	// Generate logo items from the data array
+	const technologiesLogos: LogoItem[] = technologiesData.map((tech) =>
+		createTechItem(tech, darkMode, iconSize),
+	);
 
 	return (
 		<Box

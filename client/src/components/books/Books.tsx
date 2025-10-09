@@ -29,11 +29,12 @@ export default function Books() {
 						height: `${bookHeight}px`,
 						borderRadius: '8px',
 						overflow: 'hidden',
-						transition: 'transform 0.2s ease',
+						transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 						position: 'relative',
-						// Prevent flickering during animations
-						transform: 'translateZ(0)',
+						// Optimize for smooth animations
+						transform: 'translate3d(0, 0, 0)',
 						backfaceVisibility: 'hidden',
+						WebkitFontSmoothing: 'antialiased',
 					}}
 				>
 					<Image
@@ -117,10 +118,10 @@ export default function Books() {
 				{/* Books Loop */}
 				<LogoLoop
 					logos={booksLogos}
-					speed={30}
+					speed={25}
 					direction='right'
 					logoHeight={bookHeight + 60} // Extra space for text
-					gap={30}
+					gap={32}
 					pauseOnHover={true}
 					scaleOnHover={true}
 					fadeOut={true}

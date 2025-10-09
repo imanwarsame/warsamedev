@@ -8,6 +8,7 @@ export type LogoItem =
 			href?: string;
 			title?: string;
 			ariaLabel?: string;
+			// eslint-disable-next-line no-mixed-spaces-and-tabs
 	  }
 	| {
 			src: string;
@@ -18,6 +19,7 @@ export type LogoItem =
 			sizes?: string;
 			width?: number;
 			height?: number;
+			// eslint-disable-next-line no-mixed-spaces-and-tabs
 	  };
 
 export interface LogoLoopProps {
@@ -151,11 +153,11 @@ const useAnimationLoop = (
 				let nextOffset = offsetRef.current + velocityRef.current * deltaTime;
 				nextOffset = ((nextOffset % seqWidth) + seqWidth) % seqWidth;
 
-				// Round to prevent sub-pixel flickering
-				const roundedOffset = Math.round(nextOffset * 100) / 100;
-				offsetRef.current = roundedOffset;
+				// Use more precise sub-pixel positioning to reduce juddering
+				offsetRef.current = nextOffset;
 
-				const translateX = Math.round(-offsetRef.current * 100) / 100;
+				// Apply transform with better precision
+				const translateX = -offsetRef.current;
 				track.style.transform = `translate3d(${translateX}px, 0, 0)`;
 			}
 

@@ -2,10 +2,13 @@
 	position: relative;
 	overflow: hidden;
 	/* Performance optimizations to prevent flickering */
-	transform: translateZ(0);
+	transform: translate3d(0, 0, 0);
 	will-change: transform;
 	/* Contain layout and paint to prevent reflows */
-	contain: layout paint;
+	contain: layout paint style;
+	/* Improve animation smoothness */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
 	--logoloop-gap: 32px;
 	--logoloop-logoHeight: 28px;
@@ -25,13 +28,13 @@
 	will-change: transform;
 	user-select: none;
 	/* Prevent flickering by promoting to compositor layer */
-	transform: translateZ(0);
+	transform: translate3d(0, 0, 0);
 	backface-visibility: hidden;
-	/* Ensure smooth sub-pixel rendering */
-	-webkit-perspective: 1000;
-	perspective: 1000;
+	/* Optimize for smooth animations */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	/* Prevent layout thrashing */
-	contain: layout style;
+	contain: layout style paint;
 }
 
 .logoloop__list {
@@ -65,17 +68,16 @@
 	width: auto;
 	display: block;
 	object-fit: contain;
-	image-rendering: -webkit-optimize-contrast;
 	-webkit-user-drag: none;
 	pointer-events: none;
 	/* Links handle interaction */
 	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	/* Prevent flickering on images */
-	transform: translateZ(0);
+	transform: translate3d(0, 0, 0);
 	backface-visibility: hidden;
-	/* Optimize image rendering for animations */
-	image-rendering: crisp-edges;
-	image-rendering: -moz-crisp-edges;
+	/* Optimize image rendering for smooth animations */
+	image-rendering: auto;
+	-webkit-font-smoothing: antialiased;
 }
 
 .logoloop--scale-hover .logoloop__item {
@@ -91,8 +93,9 @@
 .logoloop--scale-hover .logoloop__node {
 	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	/* Prevent flickering during transitions */
-	transform: translateZ(0);
+	transform: translate3d(0, 0, 0);
 	backface-visibility: hidden;
+	-webkit-font-smoothing: antialiased;
 }
 
 .logoloop__link {
