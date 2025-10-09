@@ -87,6 +87,7 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 			padding='xl'
 			centered
 			withCloseButton={false}
+			zIndex={1000}
 			overlayProps={{
 				backgroundOpacity: 0.8,
 				blur: 3,
