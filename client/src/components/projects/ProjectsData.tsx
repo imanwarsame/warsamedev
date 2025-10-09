@@ -69,7 +69,7 @@ export const projects: Project[] = [
 			'OpenLayers',
 			'MapBox',
 		],
-		videoUrl: null, // Can be: null, '/assets/video.mp4', or 'https://www.youtube.com/watch?v=VIDEO_ID'
+		videoUrl: null,
 	},
 	{
 		title: 'LEAP',
@@ -106,7 +106,7 @@ export const projects: Project[] = [
 		webLink: 'https://www.bbc.com/news/articles/ce784xdg47do',
 		githubLink: null,
 		description:
-			'HS2 is a high-speed rail project in the UK. Confidential project. I worked on several aspects including; cat III design checks of Carol Green Rail Underbridge (see video), assistnat project manager for SL8 managing > £3M worth of work and around 40 assets with teams across multiple companies, prototyping web based project management platform to manage disparate data sources and provide a single source of truth for the project team. Total project value £67-87 billion.',
+			'HS2 is a high-speed rail project in the UK. I worked on several aspects including; cat III design checks of Carol Green Rail Underbridge (see video), assistnat project manager for SL8 managing > £3M worth of work and around 40 assets with teams across multiple companies, prototyping web based project management platform to manage disparate data sources and provide a single source of truth for the project team. Total project value £67-87 billion.',
 		technologies: ['React', 'JavaScript', 'ASP.NET', 'C#', 'MongoDB', 'Azure'],
 		videoUrl:
 			'https://www.youtube.com/watch?v=Sl84gfVv5FA&list=PLQHXGU97P0FJ4cdR_sB669tRAv0f5em8_&index=1',
