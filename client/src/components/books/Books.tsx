@@ -110,7 +110,7 @@ export default function Books() {
 						}}
 					>
 						A collection of books that have shaped my thinking and inspired my approach to
-						engineering, leadership, and life
+						engineering, leadership, and life as well as a few of my favourite fiction reads.
 					</Text>
 				</Stack>
 

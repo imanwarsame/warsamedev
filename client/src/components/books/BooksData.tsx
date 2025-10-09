@@ -5,8 +5,11 @@ import HowBigThingsGetDone from '../../assets/Books/HowBigThingsGetDone.jpg';
 import HowToBuildACar from '../../assets/Books/HowToBuildACar.jpg';
 import LivingThe7Habits from '../../assets/Books/LivingThe7Habits.jpg';
 import MuhammadAliTheGreatesMyOwnStory from '../../assets/Books/MuhammadAliTheGreatesMyOwnStory.jpg';
+import Never from '../../assets/Books/Never.jpg';
 import SteveJobs from '../../assets/Books/SteveJobs.jpg';
 import TheAlchemist from '../../assets/Books/TheAlchemist.jpg';
+import TheFearIndex from '../../assets/Books/TheFearIndex.jpg';
+import TheHuntForRedOctober from '../../assets/Books/TheHuntForRedOctober.jpg';
 import TheMomTest from '../../assets/Books/TheMomTest.jpg';
 
 export interface Book {
@@ -65,5 +68,20 @@ export const books: Book[] = [
 		title: 'The Mom Test',
 		author: 'Rob Fitzpatrick',
 		coverImage: TheMomTest,
+	},
+	{
+		title: 'Never',
+		author: 'Ken Follett',
+		coverImage: Never,
+	},
+	{
+		title: 'The Fear Index',
+		author: 'Robert Harris',
+		coverImage: TheFearIndex,
+	},
+	{
+		title: 'The Hunt for Red October',
+		author: 'Tom Clancy',
+		coverImage: TheHuntForRedOctober,
 	},
 ];

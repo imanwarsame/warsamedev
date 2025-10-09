@@ -1,6 +1,8 @@
 import GPI from '../../assets/Projects/GPI.webp';
 import Garviz from '../../assets/Projects/Garviz.webp';
 import EnergyPlanner from '../../assets/Projects/EnergyPlanner.webp';
+import HS2 from '../../assets/Projects/HS2.webp';
+import Genoa from '../../assets/Projects/Genoa.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
 import { Project } from './Projects';
 
@@ -100,13 +102,24 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'HS2',
-		imageUrl: null,
-		webLink: null,
+		imageUrl: HS2,
+		webLink: 'https://www.bbc.com/news/articles/ce784xdg47do',
 		githubLink: null,
 		description:
-			'HS2 is a high-speed rail project in the UK. Confidential project. I worked on several aspects including; cat III design checks of Carol Green Rail Underbridge (see video), assistnat project manager for SL8 managing > £3M worth of work and around 40 assets with teams across multiple companies, prototyping web based project management platform to manage disparate data sources and provide a single source of truth for the project team.',
+			'HS2 is a high-speed rail project in the UK. Confidential project. I worked on several aspects including; cat III design checks of Carol Green Rail Underbridge (see video), assistnat project manager for SL8 managing > £3M worth of work and around 40 assets with teams across multiple companies, prototyping web based project management platform to manage disparate data sources and provide a single source of truth for the project team. Total project value £67-87 billion.',
 		technologies: ['React', 'JavaScript', 'ASP.NET', 'C#', 'MongoDB', 'Azure'],
 		videoUrl:
 			'https://www.youtube.com/watch?v=Sl84gfVv5FA&list=PLQHXGU97P0FJ4cdR_sB669tRAv0f5em8_&index=1',
+	},
+	{
+		title: 'Port of Genoa Breakwater',
+		imageUrl: Genoa,
+		webLink:
+			'https://www.webuildgroup.com/en/projects/dams-hydroelectric-plants/genoa-s-new-breakwater/',
+		githubLink: null,
+		description:
+			'The Port of Genoa is building a new breakwater, which will be the deepest in Europe and one of the deepest in the world, designed to guarantee direct access to the terminal facilities and a wide turning basin for ultra-large ships. I contributed to the parametric design system for the concrete caissons. Total project value €937 million.',
+		technologies: ['Sofistik'],
+		videoUrl: 'https://www.youtube.com/watch?v=CZL7jlurelY',
 	},
 ];

@@ -105,6 +105,9 @@ export default function About() {
 							Hi! I&apos;m Iman, a multidisciplinary professional who combines technical expertise
 							with engineering precision to create innovative digital solutions. My unique
 							background spans software development, product management, and civil engineering.
+							I&apos;ve been honored with the Digital Rising Star Award (New Civil Engineer
+							TechFest 2023) and have spoken at numerous industry events, including the Institution
+							of Civil Engineers, Shape to Fabrication and Speckle Con.
 						</Text>
 					</Stack>
 
