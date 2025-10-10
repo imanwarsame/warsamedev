@@ -112,7 +112,7 @@ export const projects: Project[] = [
 			'https://www.youtube.com/watch?v=Sl84gfVv5FA&list=PLQHXGU97P0FJ4cdR_sB669tRAv0f5em8_&index=1',
 	},
 	{
-		title: 'Port of Genoa Breakwater',
+		title: 'Genoa Breakwater',
 		imageUrl: Genoa,
 		webLink:
 			'https://www.webuildgroup.com/en/projects/dams-hydroelectric-plants/genoa-s-new-breakwater/',
