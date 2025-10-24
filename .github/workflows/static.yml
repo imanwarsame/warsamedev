@@ -4,10 +4,8 @@ on:
   push:
     branches:
       - main # Change this to your main branch name if it's different (e.g., master)
-    paths:
-      - 'client/**' # Trigger automatically only when changes happen in the client folder
   
-  # 💡 NEW: This line enables manual triggering from the GitHub UI
+  # This line enables manual triggering from the GitHub UI
   workflow_dispatch: 
 
 jobs:
@@ -34,12 +32,10 @@ jobs:
       # 3. Install dependencies in the client folder
       - name: Install Dependencies
         run: npm install
-        working-directory: ./client
 
       # 4. Build the Vite project
       - name: Build Project
         run: npm run build
-        working-directory: ./client
         
       # 5. Setup GitHub Pages environment
       - name: Setup Pages
@@ -49,7 +45,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'client/dist'
+          path: 'dist'
 
       # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
