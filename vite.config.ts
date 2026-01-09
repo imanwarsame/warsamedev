@@ -9,12 +9,6 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				manualChunks: undefined,
-				assetFileNames: (assetInfo) => {
-					if (assetInfo.name && /\.(woff|woff2|eot|ttf|otf)$/i.test(assetInfo.name)) {
-						return 'assets/[name][extname]';
-					}
-					return 'assets/[name]-[hash][extname]';
-				},
 			},
 		},
 		target: 'esnext',
