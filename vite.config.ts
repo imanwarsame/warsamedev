@@ -11,7 +11,7 @@ export default defineConfig({
 				manualChunks: undefined,
 			},
 		},
-		target: 'esnext',
+		target: 'es2020',
 		minify: 'terser',
 		terserOptions: {
 			compress: {
