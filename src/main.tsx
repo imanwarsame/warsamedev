@@ -13,18 +13,3 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 		</ErrorBoundary>
 	</React.StrictMode>,
 );
-
-// Cleanup: explicitly unregister any existing service workers
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', () => {
-		navigator.serviceWorker.getRegistrations().then((registrations) => {
-			for (const registration of registrations) {
-				registration.unregister().then(() => {
-					console.log('Service Worker unregistered');
-					// Optional: force reload if a SW was found and removed
-					// window.location.reload();
-				});
-			}
-		});
-	});
-}

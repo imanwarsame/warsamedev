@@ -2,8 +2,20 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<!-- Global Error Trap for mobile debugging -->
+		<!-- Global Error Trap & Service Worker Killer -->
 		<script>
+			// 1. Force Unregister Service Workers (Run immediately)
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.getRegistrations().then(function(registrations) {
+					for(let registration of registrations) {
+						registration.unregister().then(function() {
+							console.log('Service Worker unregistered via index.html');
+						});
+					}
+				});
+			}
+
+			// 2. Global Error Handler
 			window.onerror = function(msg, url, line, col, error) {
 				var div = document.createElement('div');
 				div.style.position = 'fixed';
