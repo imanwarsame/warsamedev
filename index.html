@@ -2,40 +2,6 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<!-- Global Error Trap & Service Worker Killer -->
-		<script>
-			// 1. Force Unregister Service Workers (Run immediately)
-			if ('serviceWorker' in navigator) {
-				navigator.serviceWorker.getRegistrations().then(function(registrations) {
-					for(let registration of registrations) {
-						registration.unregister().then(function() {
-							console.log('Service Worker unregistered via index.html');
-						});
-					}
-				});
-			}
-
-			// 2. Global Error Handler
-			window.onerror = function(msg, url, line, col, error) {
-				var div = document.createElement('div');
-				div.style.position = 'fixed';
-				div.style.top = '0';
-				div.style.left = '0';
-				div.style.width = '100%';
-				div.style.height = '100%';
-				div.style.backgroundColor = 'white';
-				div.style.color = 'red';
-				div.style.zIndex = '9999';
-				div.style.padding = '20px';
-				div.style.overflow = 'auto';
-				div.innerHTML = '<h3>Startup Error</h3>' +
-					'<p><strong>Message:</strong> ' + msg + '</p>' +
-					'<p><strong>URL:</strong> ' + url + '</p>' +
-					'<p><strong>Line:</strong> ' + line + '</p>' +
-					'<pre>' + (error ? error.stack : 'No stack trace') + '</pre>';
-				document.body.appendChild(div);
-			};
-		</script>
 		<link rel="icon" type="image/png" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta
@@ -43,11 +9,6 @@
 			content="My name is Iman, and I am a full stack developer and chartered civil engineer. I am currently a senior engineer at Ramboll. This portfolio showcases some of my software development projects."
 		/>
 		
-		<!-- Cache control -->
-		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-		<meta http-equiv="Pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="0" />
-
 		<!-- Preload critical resources -->
 		<link rel="preload" href="/src/main.tsx" as="script" />
 		<link rel="preload" href="/src/styles.css" as="style" />
