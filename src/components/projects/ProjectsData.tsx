@@ -3,6 +3,7 @@ import Garviz from '../../assets/Projects/Garviz.webp';
 import EnergyPlanner from '../../assets/Projects/EnergyPlanner.webp';
 import HS2 from '../../assets/Projects/HS2.webp';
 import Genoa from '../../assets/Projects/Genoa.webp';
+import SpeckleCon from '../../assets/Projects/SpeckleCon.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
 import { Project } from './Projects';
 
@@ -121,5 +122,16 @@ export const projects: Project[] = [
 			'The Port of Genoa is building a new breakwater, which will be the deepest in Europe and one of the deepest in the world, designed to guarantee direct access to the terminal facilities and a wide turning basin for ultra-large ships. I contributed to the parametric design system for the concrete caissons. Total project value €937 million.',
 		technologies: ['Sofistik'],
 		videoUrl: 'https://www.youtube.com/watch?v=CZL7jlurelY',
+	},
+	{
+		title: 'Conferences',
+		imageUrl: SpeckleCon,
+		webLink:
+			'https://speckle.systems/customer-stories/automating-engineering-design-with-speckle-at-ramboll/',
+		githubLink: null,
+		description:
+			'I have presented at several industry events including Shape to Fabrication, SpeckleCon, Institution of Civil Engineers, Institution of Structural Engineers, and Smart Manufacturing Week.',
+		technologies: ['Public Speaking', 'AEC Tech'],
+		videoUrl: 'https://www.youtube.com/watch?v=DDYjs0L6Maw',
 	},
 ];
