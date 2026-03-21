@@ -1,64 +1,60 @@
-import P_20250421_DSC_0407 from '../../assets/Photos/20250421-DSC_0407.jpg';
-import P_20250421_DSC_0410 from '../../assets/Photos/20250421-DSC_0410.jpg';
-import P_20250421_DSC_0413 from '../../assets/Photos/20250421-DSC_0413.jpg';
-import P_20250421_DSC_0416 from '../../assets/Photos/20250421-DSC_0416.jpg';
-import P_20250421_DSC_0440 from '../../assets/Photos/20250421-DSC_0440.jpg';
-import P_20250422_DSC_0490 from '../../assets/Photos/20250422-DSC_0490.jpg';
-import P_20250422_DSC_0579 from '../../assets/Photos/20250422-DSC_0579.jpg';
-import P_20250424_DSC_0638 from '../../assets/Photos/20250424-DSC_0638.jpg';
-import P_20250425_DSC_0672 from '../../assets/Photos/20250425-DSC_0672.jpg';
-import P_20250426_DSC_0724 from '../../assets/Photos/20250426-DSC_0724.jpg';
-import P_20250426_DSC_0734 from '../../assets/Photos/20250426-DSC_0734.jpg';
-import P_20250426_DSC_0736 from '../../assets/Photos/20250426-DSC_0736.jpg';
-import P_20250426_DSC_0737 from '../../assets/Photos/20250426-DSC_0737.jpg';
-import P_20250426_DSC_0749 from '../../assets/Photos/20250426-DSC_0749.jpg';
-import P_20250426_DSC_0765 from '../../assets/Photos/20250426-DSC_0765.jpg';
-import P_20250427_DSC_0794 from '../../assets/Photos/20250427-DSC_0794.jpg';
-import P_20250427_DSC_0800 from '../../assets/Photos/20250427-DSC_0800.jpg';
-import P_20250429_DSC_0831 from '../../assets/Photos/20250429-DSC_0831.jpg';
-import P_20250429_DSC_0833 from '../../assets/Photos/20250429-DSC_0833.jpg';
-import P_20250429_DSC_0835 from '../../assets/Photos/20250429-DSC_0835.jpg';
-import P_20250503_DSC_0839 from '../../assets/Photos/20250503-DSC_0839.jpg';
-import P_20250503_DSC_0841 from '../../assets/Photos/20250503-DSC_0841.jpg';
-import P_20250503_DSC_0844 from '../../assets/Photos/20250503-DSC_0844.jpg';
-import P_20250503_DSC_0851 from '../../assets/Photos/20250503-DSC_0851.jpg';
-import P_20250503_DSC_0864 from '../../assets/Photos/20250503-DSC_0864.jpg';
-import P_20250503_DSC_0900 from '../../assets/Photos/20250503-DSC_0900.jpg';
-import P_20250503_DSC_0921 from '../../assets/Photos/20250503-DSC_0921.jpg';
-import P_4SlingsbyPlace_2 from '../../assets/Photos/4SlingsbyPlace-2.jpg';
-import DSC_0536 from '../../assets/Photos/DSC_0536.JPG';
-import DSC_0730 from '../../assets/Photos/DSC_0730.JPG';
-import DSC_1551 from '../../assets/Photos/DSC_1551.JPG';
-import DSC_2461 from '../../assets/Photos/DSC_2461.jpg';
-import DSC_6391_4 from '../../assets/Photos/DSC_6391-4.jpg';
-import DSC_6458 from '../../assets/Photos/DSC_6458.jpg';
-import DSC_6525 from '../../assets/Photos/DSC_6525.jpg';
-import DSC_6640 from '../../assets/Photos/DSC_6640.jpg';
-import DSC_7056 from '../../assets/Photos/DSC_7056.jpg';
-import DSC_7198 from '../../assets/Photos/DSC_7198.jpg';
-import DSC_7354 from '../../assets/Photos/DSC_7354.jpg';
-import DSC_7362 from '../../assets/Photos/DSC_7362.jpg';
-import DSC_9028 from '../../assets/Photos/DSC_9028.jpg';
-import DSC_9118 from '../../assets/Photos/DSC_9118.jpg';
-import DSC_9123 from '../../assets/Photos/DSC_9123.jpg';
-import DSC_9125 from '../../assets/Photos/DSC_9125.jpg';
-import DSC_9252 from '../../assets/Photos/DSC_9252.jpg';
-import DSC_9312 from '../../assets/Photos/DSC_9312.jpg';
-import DSC_9377 from '../../assets/Photos/DSC_9377.jpg';
-import DSC_9384 from '../../assets/Photos/DSC_9384.jpg';
-import DSC_9468 from '../../assets/Photos/DSC_9468.jpg';
-import DSC_9472 from '../../assets/Photos/DSC_9472.jpg';
-import DSC_9498 from '../../assets/Photos/DSC_9498.jpg';
-import IW from '../../assets/Photos/IW.jpg';
-import IW_108 from '../../assets/Photos/IW-108.jpg';
-import IW_12 from '../../assets/Photos/IW-12.jpg';
-import IW_19 from '../../assets/Photos/IW-19.jpg';
-import IW_23 from '../../assets/Photos/IW-23.jpg';
-import IW_4 from '../../assets/Photos/IW-4.jpg';
-import IW_87 from '../../assets/Photos/IW-87.jpg';
-import PS_2 from '../../assets/Photos/PS-2.jpg';
-import TheShard from '../../assets/Photos/TheShard.jpg';
-import ImanUnsplash from '../../assets/Photos/iman-warsame-GjCnF8InuXc-unsplash.jpg';
+import P1 from '../../assets/Photos/P1.jpg';
+import P2 from '../../assets/Photos/P2.jpg';
+import P3 from '../../assets/Photos/P3.jpg';
+import P4 from '../../assets/Photos/P4.jpg';
+import P5 from '../../assets/Photos/P5.jpg';
+import P6 from '../../assets/Photos/P6.jpg';
+import P7 from '../../assets/Photos/P7.jpg';
+import P8 from '../../assets/Photos/P8.jpg';
+import P9 from '../../assets/Photos/P9.jpg';
+import P10 from '../../assets/Photos/P10.jpg';
+import P11 from '../../assets/Photos/P11.jpg';
+import P12 from '../../assets/Photos/P12.jpg';
+import P13 from '../../assets/Photos/P13.jpg';
+import P14 from '../../assets/Photos/P14.jpg';
+import P15 from '../../assets/Photos/P15.jpg';
+import P16 from '../../assets/Photos/P16.jpg';
+import P17 from '../../assets/Photos/P17.jpg';
+import P18 from '../../assets/Photos/P18.jpg';
+import P19 from '../../assets/Photos/P19.jpg';
+import P20 from '../../assets/Photos/P20.jpg';
+import P21 from '../../assets/Photos/P21.jpg';
+import P22 from '../../assets/Photos/P22.jpg';
+import P23 from '../../assets/Photos/P23.jpg';
+import P25 from '../../assets/Photos/P25.jpg';
+import P26 from '../../assets/Photos/P26.jpg';
+import P27 from '../../assets/Photos/P27.jpg';
+import P28 from '../../assets/Photos/P28.jpg';
+import P29 from '../../assets/Photos/P29.jpg';
+import P30 from '../../assets/Photos/P30.jpg';
+import P31 from '../../assets/Photos/P31.jpg';
+import P32 from '../../assets/Photos/P32.jpg';
+import P33 from '../../assets/Photos/P33.jpg';
+import P34 from '../../assets/Photos/P34.jpg';
+import P35 from '../../assets/Photos/P35.jpg';
+import P36 from '../../assets/Photos/P36.jpg';
+import P37 from '../../assets/Photos/P37.jpg';
+import P38 from '../../assets/Photos/P38.jpg';
+import P39 from '../../assets/Photos/P39.jpg';
+import P40 from '../../assets/Photos/P40.jpg';
+import P41 from '../../assets/Photos/P41.jpg';
+import P42 from '../../assets/Photos/P42.jpg';
+import P43 from '../../assets/Photos/P43.jpg';
+import P44 from '../../assets/Photos/P44.jpg';
+import P45 from '../../assets/Photos/P45.jpg';
+import P46 from '../../assets/Photos/P46.jpg';
+import P47 from '../../assets/Photos/P47.jpg';
+import P48 from '../../assets/Photos/P48.jpg';
+import P49 from '../../assets/Photos/P49.jpg';
+import P50 from '../../assets/Photos/P50.jpg';
+import P51 from '../../assets/Photos/P51.jpg';
+import P52 from '../../assets/Photos/P52.jpg';
+import P53 from '../../assets/Photos/P53.jpg';
+import P54 from '../../assets/Photos/P54.jpg';
+import P55 from '../../assets/Photos/P55.jpg';
+import P56 from '../../assets/Photos/P56.jpg';
+import P57 from '../../assets/Photos/P57.jpg';
+import P58 from '../../assets/Photos/P58.jpg';
 
 export interface Photo {
 	id: number;
@@ -69,65 +65,61 @@ export interface Photo {
 }
 
 export const photos: Photo[] = [
-	{ id: 1, src: DSC_9028, width: 4000, height: 6000 },
-	{ id: 2, src: P_20250503_DSC_0900, width: 6000, height: 4000 },
-	{ id: 3, src: IW_19, width: 6000, height: 4000 },
-	{ id: 4, src: DSC_7056, width: 6000, height: 4000 },
-	{ id: 5, src: P_20250421_DSC_0413, width: 6000, height: 4000 },
-	{ id: 6, src: TheShard, width: 5864, height: 3909 },
-	{ id: 7, src: DSC_9312, width: 6000, height: 4000 },
-	{ id: 8, src: P_20250426_DSC_0749, width: 6000, height: 4000 },
-	{ id: 9, src: IW_108, width: 6000, height: 4000 },
-	{ id: 10, src: DSC_6458, width: 6000, height: 4000 },
-	{ id: 11, src: P_20250429_DSC_0835, width: 4000, height: 6000 },
-	{ id: 12, src: DSC_0536, width: 6000, height: 4000 },
-	{ id: 13, src: P_20250503_DSC_0844, width: 6000, height: 4000 },
-	{ id: 14, src: IW_4, width: 6000, height: 4000 },
-	{ id: 15, src: DSC_9252, width: 6000, height: 3718 },
-	{ id: 16, src: P_20250422_DSC_0490, width: 6000, height: 4000 },
-	{ id: 17, src: DSC_7354, width: 6000, height: 4000 },
-	{ id: 18, src: P_20250426_DSC_0734, width: 6000, height: 4000 },
-	{ id: 19, src: ImanUnsplash, width: 6000, height: 4000 },
-	{ id: 20, src: DSC_9125, width: 3432, height: 6000 },
-	{ id: 21, src: P_20250503_DSC_0851, width: 5828, height: 4000 },
-	{ id: 22, src: DSC_2461, width: 6000, height: 4000 },
-	{ id: 23, src: P_20250427_DSC_0794, width: 6000, height: 4000 },
-	{ id: 24, src: IW_87, width: 6000, height: 4000 },
-	{ id: 25, src: DSC_6640, width: 6000, height: 4000 },
-	{ id: 26, src: P_20250421_DSC_0407, width: 6000, height: 4000 },
-	{ id: 27, src: DSC_9377, width: 5801, height: 4000 },
-	{ id: 28, src: P_20250503_DSC_0864, width: 6000, height: 4000 },
-	{ id: 29, src: PS_2, width: 6000, height: 4000 },
-	{ id: 30, src: DSC_9118, width: 6000, height: 4000 },
-	{ id: 31, src: P_20250424_DSC_0638, width: 6000, height: 4000 },
-	{ id: 32, src: IW_12, width: 6000, height: 4000 },
-	{ id: 33, src: DSC_6391_4, width: 4096, height: 2865 },
-	{ id: 34, src: P_20250426_DSC_0736, width: 6000, height: 4000 },
-	{ id: 35, src: DSC_9468, width: 6000, height: 4000 },
-	{ id: 36, src: P_20250429_DSC_0831, width: 6000, height: 4000 },
-	{ id: 37, src: IW, width: 6000, height: 4000 },
-	{ id: 38, src: DSC_7198, width: 6000, height: 4000 },
-	{ id: 39, src: P_20250503_DSC_0839, width: 6000, height: 4000 },
-	{ id: 40, src: DSC_9123, width: 4000, height: 6000 },
-	{ id: 41, src: P_20250421_DSC_0416, width: 6000, height: 4000 },
-	{ id: 42, src: DSC_0730, width: 6000, height: 4000 },
-	{ id: 43, src: P_20250426_DSC_0765, width: 6000, height: 4000 },
-	{ id: 44, src: IW_23, width: 4967, height: 4000 },
-	{ id: 45, src: DSC_9384, width: 6000, height: 3742 },
-	{ id: 46, src: P_20250503_DSC_0921, width: 6000, height: 4000 },
-	{ id: 47, src: DSC_6525, width: 2317, height: 1527 },
-	{ id: 48, src: P_20250422_DSC_0579, width: 6000, height: 4000 },
-	{ id: 49, src: DSC_9472, width: 6000, height: 4000 },
-	{ id: 50, src: P_20250426_DSC_0724, width: 6000, height: 4000 },
-	{ id: 51, src: P_4SlingsbyPlace_2, width: 5883, height: 4000 },
-	{ id: 52, src: DSC_7362, width: 6000, height: 4000 },
-	{ id: 53, src: P_20250503_DSC_0841, width: 6000, height: 4000 },
-	{ id: 54, src: DSC_9498, width: 6000, height: 4000 },
-	{ id: 55, src: P_20250425_DSC_0672, width: 5121, height: 4000 },
-	{ id: 56, src: DSC_1551, width: 6000, height: 4000 },
-	{ id: 57, src: P_20250427_DSC_0800, width: 5528, height: 3685 },
-	{ id: 58, src: P_20250421_DSC_0410, width: 6000, height: 4000 },
-	{ id: 59, src: P_20250426_DSC_0737, width: 6000, height: 4000 },
-	{ id: 60, src: P_20250429_DSC_0833, width: 6000, height: 4000 },
-	{ id: 61, src: P_20250421_DSC_0440, width: 6000, height: 4000 },
+	{ id: 1, src: P1, width: 1920, height: 1280 },
+	{ id: 2, src: P2, width: 1920, height: 1265 },
+	{ id: 3, src: P3, width: 5864, height: 3909 },
+	{ id: 4, src: P4, width: 1920, height: 1343 },
+	{ id: 5, src: P5, width: 1588, height: 1080 },
+	{ id: 6, src: P6, width: 1920, height: 1280 },
+	{ id: 7, src: P7, width: 1920, height: 1280 },
+	{ id: 8, src: P8, width: 1920, height: 1280 },
+	{ id: 9, src: P9, width: 1920, height: 1280 },
+	{ id: 10, src: P10, width: 1920, height: 1280 },
+	{ id: 11, src: P11, width: 1920, height: 1280 },
+	{ id: 12, src: P12, width: 1920, height: 1280 },
+	{ id: 13, src: P13, width: 1920, height: 1280 },
+	{ id: 14, src: P14, width: 1920, height: 1280 },
+	{ id: 15, src: P15, width: 1920, height: 1280 },
+	{ id: 16, src: P16, width: 1920, height: 1324 },
+	{ id: 17, src: P17, width: 1920, height: 1280 },
+	{ id: 18, src: P18, width: 6000, height: 4000 },
+	{ id: 19, src: P19, width: 1920, height: 1280 },
+	{ id: 20, src: P20, width: 1920, height: 1280 },
+	{ id: 21, src: P21, width: 1920, height: 1280 },
+	{ id: 22, src: P22, width: 1920, height: 1500 },
+	{ id: 23, src: P23, width: 1920, height: 1280 },
+	{ id: 24, src: P25, width: 1920, height: 1280 },
+	{ id: 25, src: P26, width: 1920, height: 1280 },
+	{ id: 26, src: P27, width: 1920, height: 1280 },
+	{ id: 27, src: P28, width: 1920, height: 1280 },
+	{ id: 28, src: P29, width: 1920, height: 1280 },
+	{ id: 29, src: P30, width: 1000, height: 1500 },
+	{ id: 30, src: P31, width: 1920, height: 1280 },
+	{ id: 31, src: P32, width: 1920, height: 1190 },
+	{ id: 32, src: P33, width: 1920, height: 1280 },
+	{ id: 33, src: P34, width: 1920, height: 1197 },
+	{ id: 34, src: P35, width: 1920, height: 1280 },
+	{ id: 35, src: P36, width: 1920, height: 1280 },
+	{ id: 36, src: P37, width: 858, height: 1500 },
+	{ id: 37, src: P38, width: 1920, height: 1280 },
+	{ id: 38, src: P39, width: 1920, height: 1546 },
+	{ id: 39, src: P40, width: 1920, height: 1280 },
+	{ id: 40, src: P41, width: 1920, height: 1280 },
+	{ id: 41, src: P42, width: 1920, height: 1280 },
+	{ id: 42, src: P43, width: 1920, height: 1280 },
+	{ id: 43, src: P44, width: 1920, height: 1280 },
+	{ id: 44, src: P45, width: 1920, height: 1280 },
+	{ id: 45, src: P46, width: 1000, height: 1500 },
+	{ id: 46, src: P47, width: 1920, height: 1280 },
+	{ id: 47, src: P48, width: 1920, height: 1280 },
+	{ id: 48, src: P49, width: 1920, height: 1280 },
+	{ id: 49, src: P50, width: 1920, height: 1280 },
+	{ id: 50, src: P51, width: 1920, height: 1280 },
+	{ id: 51, src: P52, width: 1920, height: 1280 },
+	{ id: 52, src: P53, width: 1920, height: 2880 },
+	{ id: 53, src: P54, width: 1920, height: 1280 },
+	{ id: 54, src: P55, width: 1920, height: 1280 },
+	{ id: 55, src: P56, width: 1920, height: 1280 },
+	{ id: 56, src: P57, width: 1920, height: 1280 },
+	{ id: 57, src: P58, width: 1920, height: 1280 },
 ];
