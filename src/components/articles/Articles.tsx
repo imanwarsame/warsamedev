@@ -4,6 +4,7 @@ import ArticleCard from './ArticleCard';
 
 export default function Articles() {
 	const theme = useMantineTheme();
+	const currentYear = new Date().getFullYear();
 	const sortedArticles = articles.sort((a, b) => {
 		const dateA = a.date instanceof Date ? a.date : new Date(a.date);
 		const dateB = b.date instanceof Date ? b.date : new Date(b.date);
@@ -45,7 +46,7 @@ export default function Articles() {
 					}}
 				>
 					<Text size='sm' c='dimmed'>
-						© 2025 Iman Warsame
+						© {currentYear} Iman Warsame
 					</Text>
 				</Box>
 			</Stack>

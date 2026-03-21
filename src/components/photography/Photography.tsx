@@ -1,4 +1,4 @@
-import { Container, Title, Text, Modal, Stack, useMantineTheme } from '@mantine/core';
+import { Box, Container, Title, Text, Modal, Stack, useMantineTheme } from '@mantine/core';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { IconChevronLeft, IconChevronRight, IconCamera } from '@tabler/icons-react';
 import { photos } from './PhotographyData.tsx';
@@ -128,6 +128,7 @@ function PhotoItem({
 export default function Photography() {
 	const { darkMode } = useDevStore();
 	const theme = useMantineTheme();
+	const currentYear = new Date().getFullYear();
 	const viewportWidth = useViewportWidth();
 	const reducedMotion = usePrefersReducedMotion();
 	const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -254,6 +255,20 @@ export default function Photography() {
 						))}
 					</div>
 				)}
+
+				{/* Footer */}
+				<Box
+					style={{
+						marginTop: '4vh',
+						paddingTop: '2vh',
+						borderTop: `1px solid ${theme.colors.gray[3]}`,
+						textAlign: 'center',
+					}}
+				>
+					<Text size='sm' c='dimmed'>
+						© {currentYear} Iman Warsame
+					</Text>
+				</Box>
 			</Container>
 
 			{/* Lightbox Modal */}

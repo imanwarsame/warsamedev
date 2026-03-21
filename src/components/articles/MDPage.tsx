@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 export default function MDPage({ fileName }: { fileName: string }) {
 	const theme = useMantineTheme();
+	const currentYear = new Date().getFullYear();
 	const [content, setContent] = useState('');
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -42,7 +43,7 @@ export default function MDPage({ fileName }: { fileName: string }) {
 					}}
 				>
 					<Text size='sm' c='dimmed'>
-						© 2025 Iman Warsame
+						© {currentYear} Iman Warsame
 					</Text>
 				</Box>
 			</Box>
