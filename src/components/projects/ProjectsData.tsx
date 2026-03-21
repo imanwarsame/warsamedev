@@ -4,6 +4,7 @@ import EnergyPlanner from '../../assets/Projects/EnergyPlanner.webp';
 import HS2 from '../../assets/Projects/HS2.webp';
 import Genoa from '../../assets/Projects/Genoa.webp';
 import SpeckleCon from '../../assets/Projects/SpeckleCon.webp';
+import PhotographyPicture from '../../assets/Projects/Photography.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
 import { Project } from './Projects';
 
@@ -133,5 +134,15 @@ export const projects: Project[] = [
 			'I have presented at several industry events including Shape to Fabrication, SpeckleCon, Institution of Civil Engineers, Institution of Structural Engineers, and Smart Manufacturing Week.',
 		technologies: ['Public Speaking', 'AEC Tech'],
 		videoUrl: 'https://www.youtube.com/watch?v=DDYjs0L6Maw',
+	},
+	{
+		title: 'Photography',
+		imageUrl: PhotographyPicture,
+		webLink: '/photography',
+		githubLink: null,
+		description:
+			'A curated collection of my photography work over the years. Moments captured through my lens across travels and everyday life.',
+		technologies: ['Photography'],
+		videoUrl: null,
 	},
 ];

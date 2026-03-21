@@ -14,6 +14,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 const Home = lazy(() => import('./components/home/Home'));
 const Articles = lazy(() => import('./components/articles/Articles'));
 const MDPage = lazy(() => import('./components/articles/MDPage'));
+const Photography = lazy(() => import('./components/photography/Photography'));
 
 import './styles.css';
 
@@ -36,6 +37,7 @@ export default function App() {
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/articles' element={<Articles />} />
+						<Route path='/photography' element={<Photography />} />
 						{articles.map((article) => (
 							<Route
 								key={article.id}

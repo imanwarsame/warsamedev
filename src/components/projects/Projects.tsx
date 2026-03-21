@@ -176,18 +176,33 @@ function ProjectDetailModal({ project, opened, onClose }: ProjectDetailModalProp
 					)}
 
 					<Group gap='md' mt='lg'>
-						{project.webLink && (
-							<Button
-								component='a'
-								href={project.webLink}
-								target='_blank'
-								rel='noopener noreferrer'
-								leftSection={<IconExternalLink size={16} />}
-								variant='filled'
-							>
-								View Live
-							</Button>
-						)}
+						{project.webLink &&
+							(project.webLink.startsWith('/') ? (
+								<Button
+									component='a'
+									href={project.webLink}
+									leftSection={<IconExternalLink size={16} />}
+									variant='filled'
+									onClick={(e: React.MouseEvent) => {
+										e.preventDefault();
+										onClose();
+										window.location.href = project.webLink!;
+									}}
+								>
+									View
+								</Button>
+							) : (
+								<Button
+									component='a'
+									href={project.webLink}
+									target='_blank'
+									rel='noopener noreferrer'
+									leftSection={<IconExternalLink size={16} />}
+									variant='filled'
+								>
+									View Live
+								</Button>
+							))}
 						{project.githubLink && (
 							<Button
 								component='a'
@@ -418,19 +433,32 @@ export default function Projects() {
 
 								{/* Action Buttons */}
 								<Group gap='xs' mt='md'>
-									{project.webLink && (
-										<ActionIcon
-											component='a'
-											href={project.webLink}
-											target='_blank'
-											rel='noopener noreferrer'
-											variant='light'
-											color={darkMode ? 'white' : 'blue'}
-											onClick={(e) => e.stopPropagation()}
-										>
-											<IconExternalLink size={16} />
-										</ActionIcon>
-									)}
+									{project.webLink &&
+										(project.webLink.startsWith('/') ? (
+											<ActionIcon
+												component='a'
+												href={project.webLink}
+												variant='light'
+												color={darkMode ? 'white' : 'blue'}
+												onClick={(e) => {
+													e.stopPropagation();
+												}}
+											>
+												<IconExternalLink size={16} />
+											</ActionIcon>
+										) : (
+											<ActionIcon
+												component='a'
+												href={project.webLink}
+												target='_blank'
+												rel='noopener noreferrer'
+												variant='light'
+												color={darkMode ? 'white' : 'blue'}
+												onClick={(e) => e.stopPropagation()}
+											>
+												<IconExternalLink size={16} />
+											</ActionIcon>
+										))}
 									{project.githubLink && (
 										<ActionIcon
 											component='a'
