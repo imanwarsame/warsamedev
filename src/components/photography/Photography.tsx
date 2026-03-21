@@ -1,5 +1,5 @@
 import { Container, Title, Text, Modal, Stack, useMantineTheme } from '@mantine/core';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { IconChevronLeft, IconChevronRight, IconCamera } from '@tabler/icons-react';
 import { photos } from './PhotographyData.tsx';
 import type { Photo } from './PhotographyData.tsx';
@@ -140,6 +140,24 @@ export default function Photography() {
 	const pageTopPadding = isMobile ? 100 : 120;
 	const navButtonSize = isMobile ? 36 : 44;
 
+	// Distribute photos into columns by always placing the next photo
+	// into the shortest column (by cumulative aspect-ratio height).
+	const columns = useMemo(() => {
+		const cols: { photo: Photo; index: number }[][] = Array.from(
+			{ length: columnCount },
+			() => [],
+		);
+		const heights = new Array(columnCount).fill(0);
+
+		for (let i = 0; i < photos.length; i++) {
+			const shortest = heights.indexOf(Math.min(...heights));
+			cols[shortest].push({ photo: photos[i], index: i });
+			heights[shortest] += photos[i].height / photos[i].width;
+		}
+
+		return cols;
+	}, [columnCount]);
+
 	const openLightbox = (index: number) => setLightboxIndex(index);
 	const closeLightbox = () => setLightboxIndex(null);
 
@@ -216,18 +234,23 @@ export default function Photography() {
 				) : (
 					<div
 						style={{
-							columnCount,
-							columnGap,
+							display: 'flex',
+							gap: columnGap,
+							alignItems: 'flex-start',
 						}}
 					>
-						{photos.map((photo, index) => (
-							<PhotoItem
-								key={photo.id}
-								photo={photo}
-								index={index}
-								onOpen={openLightbox}
-								reducedMotion={reducedMotion}
-							/>
+						{columns.map((col, colIndex) => (
+							<div key={colIndex} style={{ flex: 1, minWidth: 0 }}>
+								{col.map(({ photo, index }) => (
+									<PhotoItem
+										key={photo.id}
+										photo={photo}
+										index={index}
+										onOpen={openLightbox}
+										reducedMotion={reducedMotion}
+									/>
+								))}
+							</div>
 						))}
 					</div>
 				)}
