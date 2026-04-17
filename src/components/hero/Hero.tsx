@@ -96,7 +96,7 @@ export default function Hero() {
 						}}
 					>
 						<DecryptedText
-							text='Full Stack Developer'
+							text='Technical Product Lead'
 							animateOn='view'
 							speed={50}
 							maxIterations={12}
@@ -106,7 +106,7 @@ export default function Hero() {
 						/>
 						{' | '}
 						<DecryptedText
-							text='Product Owner'
+							text='Full Stack Developer'
 							animateOn='view'
 							speed={70}
 							maxIterations={12}

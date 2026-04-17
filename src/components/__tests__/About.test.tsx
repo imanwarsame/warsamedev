@@ -31,7 +31,7 @@ describe('About Component', () => {
 		render(<About />);
 
 		expect(screen.getByText('Full Stack Developer')).toBeDefined();
-		expect(screen.getByText('Product Owner')).toBeDefined();
+		expect(screen.getByText('Technical Product Lead')).toBeDefined();
 		expect(screen.getByText('Chartered Civil Engineer')).toBeDefined();
 	});
 
