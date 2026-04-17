@@ -35,15 +35,15 @@ export default function About() {
 		},
 		{
 			icon: IconUsers,
-			title: 'Product Owner',
+			title: 'Technical Product Lead',
 			description:
-				'Leading cross-functional teams to deliver innovative digital products. Expert in agile methodologies, stakeholder management, and translating business needs into technical solutions.',
+				'Driving product vision and technical direction from zero to one. I bridge engineering teams and business stakeholders — owning roadmaps, making architecture trade-offs, and ensuring every decision moves the product forward.',
 			color: 'green',
 			skills: [
-				'Agile',
-				'Scrum',
+				'Product Strategy',
+				'Roadmapping',
+				'Technical Architecture',
 				'Stakeholder Management',
-				'Technical Strategy',
 				'Team Leadership',
 			],
 		},
@@ -102,9 +102,10 @@ export default function About() {
 								lineHeight: 1.6,
 							}}
 						>
-							Hi! I&apos;m Iman, a multidisciplinary professional who combines technical expertise
-							with engineering precision to create innovative digital solutions. My unique
-							background spans software development, product management, and civil engineering.
+							Hi! I&apos;m Iman, a technical leader who combines deep engineering expertise with
+							product intuition to build software that matters. My background spans full-stack
+							development, technical product leadership, and civil engineering — giving me a rare
+							ability to move fast, ship well, and solve hard problems in the built environment.
 							I&apos;ve been honoured with the Digital Rising Star Award (New Civil Engineer
 							TechFest 2023) and have spoken at numerous industry events, including the Institution
 							of Civil Engineers, Shape to Fabrication and Speckle Con.
@@ -269,10 +270,10 @@ export default function About() {
 									lineHeight: 1.6,
 								}}
 							>
-								I&apos;m passionate about creating technology that makes a difference in the real
-								world. Whether it&apos;s streamlining engineering workflows, building user-friendly
-								applications, or leading teams to success, I believe in the power of thoughtful
-								innovation to solve meaningful problems in the built environment.
+								I care about building products that fundamentally change how the construction and
+								engineering industries operate. I thrive where technical depth and product ownership
+								intersect — where decisions matter, speed counts, and the work directly shapes what
+								gets shipped and the teams that ship it.
 							</Text>
 							<Stack align='center' gap='xs' mt='md'>
 								<IconRocket
