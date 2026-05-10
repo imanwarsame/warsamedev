@@ -27,7 +27,7 @@ export default function Hero() {
 
 	// Memoize colours to prevent unnecessary recalculations
 	const threadsColour: [number, number, number] = useMemo(
-		() => (colorScheme === 'dark' ? [0.15, 0.15, 0.2] : [0.7, 0.7, 0.9]),
+		() => (colorScheme === 'dark' ? [0.04, 0.07, 0.16] : [0.7, 0.7, 0.9]),
 		[colorScheme],
 	);
 
@@ -73,13 +73,13 @@ export default function Hero() {
 					{/* Main Title */}
 					<Title
 						order={1}
-						size={isMobile ? 'h2' : 'h1'}
 						ta='center'
 						style={{
-							color: colorScheme === 'dark' ? 'white' : 'black',
-							fontSize: isMobile ? '2.5rem' : '4rem',
-							fontWeight: 700,
-							lineHeight: 1.1,
+							color: colorScheme === 'dark' ? '#ffffff' : '#0f172a',
+							fontSize: isMobile ? '3.5rem' : '6rem',
+							fontWeight: 800,
+							lineHeight: 1.05,
+							letterSpacing: '-0.02em',
 						}}
 					>
 						Iman Warsame

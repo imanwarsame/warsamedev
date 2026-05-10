@@ -1,15 +1,33 @@
-import { createTheme } from '@mantine/core';
+﻿import { createTheme } from '@mantine/core';
 import '@fontsource/poppins';
 import '@fontsource/inter';
 
 const lightTheme = createTheme({
-	primaryColor: 'blue',
+	primaryColor: 'indigo',
+	primaryShade: 6,
 	fontFamily: 'Poppins, sans-serif',
 	headings: {
 		fontFamily: 'Poppins, sans-serif',
-		fontWeight: '600',
+		fontWeight: '700',
+		sizes: {
+			h1: { fontSize: '6rem', lineHeight: '1.05' },
+			h2: { fontSize: '4rem', lineHeight: '1.1' },
+			h3: { fontSize: '2.5rem', lineHeight: '1.2' },
+		},
 	},
 	colors: {
+		indigo: [
+			'#f0f0ff',
+			'#e0dfff',
+			'#c1bfff',
+			'#9d99ff',
+			'#7b76ff',
+			'#6461fd',
+			'#4f46e5',
+			'#3d34d4',
+			'#3029bf',
+			'#2621a8',
+		],
 		blue: [
 			'#f0f4ff',
 			'#d9e2ff',
@@ -20,19 +38,19 @@ const lightTheme = createTheme({
 			'#2c47fd',
 			'#1d39e2',
 			'#1530ca',
-			'#0026b3'
+			'#0026b3',
 		],
 		gray: [
-			'#fafafa',
-			'#f4f4f5',
-			'#e4e4e7',
-			'#d4d4d8',
-			'#a1a1aa',
-			'#71717a',
-			'#52525b',
-			'#3f3f46',
-			'#27272a',
-			'#18181b'
+			'#f8faff',
+			'#f1f4fb',
+			'#e2e8f5',
+			'#cbd5e1',
+			'#94a3b8',
+			'#64748b',
+			'#475569',
+			'#334155',
+			'#1e293b',
+			'#0f172a',
 		],
 		purple: [
 			'#faf5ff',
@@ -44,21 +62,20 @@ const lightTheme = createTheme({
 			'#9333ea',
 			'#7c3aed',
 			'#6d28d9',
-			'#5b21b6'
-		]
+			'#5b21b6',
+		],
 	},
-	primaryShade: 6,
 	defaultRadius: 'md',
 	shadows: {
-		xs: '0 1px 2px rgba(0, 0, 0, 0.05)',
-		sm: '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)',
-		md: '0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06)',
-		lg: '0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05)',
-		xl: '0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04)',
+		xs: '0 1px 2px rgba(79, 70, 229, 0.04)',
+		sm: '0 1px 3px rgba(79, 70, 229, 0.06), 0 1px 2px rgba(79, 70, 229, 0.04)',
+		md: '0 4px 16px rgba(79, 70, 229, 0.08)',
+		lg: '0 8px 32px rgba(79, 70, 229, 0.1)',
+		xl: '0 16px 48px rgba(79, 70, 229, 0.12)',
 	},
 	spacing: {
 		xs: '0.5rem',
-		sm: '0.75rem', 
+		sm: '0.75rem',
 		md: '1rem',
 		lg: '1.5rem',
 		xl: '2rem',
@@ -72,35 +89,48 @@ const lightTheme = createTheme({
 	},
 	other: {
 		background: {
-			default: '#ffffff',
-			paper: '#fafafa',
-			subtle: '#f4f4f5',
+			default: '#f0f4ff',
+			paper: '#ffffff',
+			subtle: '#e8edf8',
 		},
 		text: {
-			primary: '#18181b',
-			secondary: '#71717a',
-			subtle: '#a1a1aa',
+			primary: '#0f172a',
+			secondary: '#475569',
+			subtle: '#94a3b8',
 		},
 		border: {
-			light: '#e4e4e7',
-			default: '#d4d4d8',
+			light: 'rgba(79, 70, 229, 0.12)',
+			default: 'rgba(79, 70, 229, 0.22)',
 		},
 		gradient: {
-			primary: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-			secondary: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-			hero: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-		}
+			primary: 'linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%)',
+			secondary: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+			hero: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+		},
 	},
 });
 
 const darkTheme = createTheme({
-	primaryColor: 'blue',
+	primaryColor: 'indigo',
+	primaryShade: 6,
 	fontFamily: 'Poppins, sans-serif',
 	headings: {
 		fontFamily: 'Poppins, sans-serif',
-		fontWeight: '600',
+		fontWeight: '700',
 	},
 	colors: {
+		indigo: [
+			'#1e1b4b',
+			'#27265e',
+			'#312e81',
+			'#3730a3',
+			'#4338ca',
+			'#5448e0',
+			'#6366f1',
+			'#818cf8',
+			'#a5b4fc',
+			'#c7d2fe',
+		],
 		blue: [
 			'#0c1629',
 			'#111827',
@@ -111,19 +141,19 @@ const darkTheme = createTheme({
 			'#93c5fd',
 			'#bfdbfe',
 			'#dbeafe',
-			'#eff6ff'
+			'#eff6ff',
 		],
 		gray: [
-			'#18181b',
-			'#27272a',
-			'#3f3f46',
-			'#52525b',
-			'#71717a',
-			'#a1a1aa',
-			'#d4d4d8',
-			'#e4e4e7',
-			'#f4f4f5',
-			'#fafafa'
+			'#0f172a',
+			'#1e293b',
+			'#334155',
+			'#475569',
+			'#64748b',
+			'#94a3b8',
+			'#cbd5e1',
+			'#e2e8f0',
+			'#f1f5f9',
+			'#f8faff',
 		],
 		purple: [
 			'#1e1b4b',
@@ -135,22 +165,21 @@ const darkTheme = createTheme({
 			'#8b5cf6',
 			'#a78bfa',
 			'#c4b5fd',
-			'#ddd6fe'
-		]
+			'#ddd6fe',
+		],
 	},
-	primaryShade: 5,
 	defaultRadius: 'md',
 	shadows: {
-		xs: '0 1px 2px rgba(0, 0, 0, 0.3)',
-		sm: '0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3)',
-		md: '0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3)',
-		lg: '0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3)',
-		xl: '0 20px 25px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.2)',
+		xs: '0 1px 2px rgba(0, 0, 0, 0.4)',
+		sm: '0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4)',
+		md: '0 4px 16px rgba(0, 0, 0, 0.4)',
+		lg: '0 8px 32px rgba(0, 0, 0, 0.5)',
+		xl: '0 16px 48px rgba(0, 0, 0, 0.5)',
 	},
 	spacing: {
 		xs: '0.5rem',
 		sm: '0.75rem',
-		md: '1rem', 
+		md: '1rem',
 		lg: '1.5rem',
 		xl: '2rem',
 	},
@@ -163,24 +192,24 @@ const darkTheme = createTheme({
 	},
 	other: {
 		background: {
-			default: '#0f0f0f',
-			paper: '#18181b',
-			subtle: '#27272a',
+			default: '#070d1f',
+			paper: '#0e1628',
+			subtle: '#1a2442',
 		},
 		text: {
-			primary: '#fafafa',
-			secondary: '#a1a1aa',
-			subtle: '#71717a',
+			primary: '#f8faff',
+			secondary: '#94a3b8',
+			subtle: '#64748b',
 		},
 		border: {
-			light: '#3f3f46',
-			default: '#52525b',
+			light: 'rgba(99, 102, 241, 0.15)',
+			default: 'rgba(99, 102, 241, 0.3)',
 		},
 		gradient: {
-			primary: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-			secondary: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-			hero: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-		}
+			primary: 'linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)',
+			secondary: 'linear-gradient(135deg, #fbbf24 0%, #ef4444 100%)',
+			hero: 'linear-gradient(135deg, #6366f1 0%, #7c3aed 100%)',
+		},
 	},
 });
 

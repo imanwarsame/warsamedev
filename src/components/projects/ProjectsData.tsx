@@ -3,7 +3,7 @@ import Garviz from '../../assets/Projects/Garviz.webp';
 import EnergyPlanner from '../../assets/Projects/EnergyPlanner.webp';
 import HS2 from '../../assets/Projects/HS2.webp';
 import Genoa from '../../assets/Projects/Genoa.webp';
-import SpeckleCon from '../../assets/Projects/SpeckleCon.webp';
+import Conferences from '../../assets/Projects/Conferences.webp';
 import PhotographyPicture from '../../assets/Projects/Photography.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
 import HumanMaintenanceManual from '../../assets/Projects/HMM.webp';
@@ -40,7 +40,15 @@ export const projects: Project[] = [
 		githubLink: 'https://github.com/imanwarsame/human-maintenance-manual',
 		description:
 			'AI-powered personal health OS built for a single user. Claude acts as the intelligence layer — writing daily meal plans and coaching notes — while the app handles logging for nutrition, hydration, activity, and recovery. Full-stack monorepo with an MCP server powering the Claude integration.',
-		technologies: ['React', 'TypeScript', 'Supabase', 'Express', 'Tailwind', 'Claude MCP', 'Strava API'],
+		technologies: [
+			'React',
+			'TypeScript',
+			'Supabase',
+			'Express',
+			'Tailwind',
+			'Claude MCP',
+			'Strava API',
+		],
 		videoUrl: null,
 	},
 	{
@@ -137,7 +145,7 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Conferences',
-		imageUrl: SpeckleCon,
+		imageUrl: Conferences,
 		webLink:
 			'https://speckle.systems/customer-stories/automating-engineering-design-with-speckle-at-ramboll/',
 		githubLink: null,
