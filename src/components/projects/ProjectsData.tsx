@@ -6,6 +6,7 @@ import Genoa from '../../assets/Projects/Genoa.webp';
 import SpeckleCon from '../../assets/Projects/SpeckleCon.webp';
 import PhotographyPicture from '../../assets/Projects/Photography.webp';
 import EnergyPlannerVideo from '../../assets/Projects/EnergyPlanner.mp4';
+import HumanMaintenanceManual from '../../assets/Projects/HMM.webp';
 import { Project } from './Projects';
 
 /**
@@ -30,6 +31,16 @@ export const projects: Project[] = [
 		description:
 			'Three JS-based 3D web application for designing decking solutions with Ground Plug International&apos;s innovative foundation systems. Features real-time 3D rendering, quantity take offs for quotations, material optimisation, and drawing generation for GPI reps.',
 		technologies: ['React', 'TypeScript', 'Three.js', 'ASP.NET', 'C#', 'MUI', 'Vite'],
+		videoUrl: null,
+	},
+	{
+		title: 'Human Maintenance Manual',
+		imageUrl: HumanMaintenanceManual,
+		webLink: null,
+		githubLink: 'https://github.com/imanwarsame/human-maintenance-manual',
+		description:
+			'AI-powered personal health OS built for a single user. Claude acts as the intelligence layer — writing daily meal plans and coaching notes — while the app handles logging for nutrition, hydration, activity, and recovery. Full-stack monorepo with an MCP server powering the Claude integration.',
+		technologies: ['React', 'TypeScript', 'Supabase', 'Express', 'Tailwind', 'Claude MCP', 'Strava API'],
 		videoUrl: null,
 	},
 	{

@@ -1,11 +1,19 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'url';
+
+const lottieEsm = fileURLToPath(
+	new URL('./node_modules/lottie-react/build/index.es.js', import.meta.url),
+);
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
 	assetsInclude: ['**/*.JPG'],
 	base: '/',
+	resolve: {
+		alias: { 'lottie-react': lottieEsm },
+	},
 	build: {
 		rollupOptions: {
 			output: {
