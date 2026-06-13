@@ -1,21 +1,22 @@
 import { Box, Stack, Text, Title } from '@mantine/core';
-import { articles } from './ArticlesData';
 import ArticleCard from './ArticleCard';
 import { useDevStore } from '../../store';
+import { useArticles } from '../../hooks/useArticles';
 import './articles.css';
 
 export default function Articles() {
 	const { darkMode } = useDevStore();
+	const { articles } = useArticles();
 	const currentYear = new Date().getFullYear();
-	const sortedArticles = articles.sort((a, b) => {
-		const dateA = a.date instanceof Date ? a.date : new Date(a.date);
-		const dateB = b.date instanceof Date ? b.date : new Date(b.date);
-		return dateB.getTime() - dateA.getTime();
-	});
+
+	const sortedArticles = [...articles].sort(
+		(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+	);
 
 	const borderColor = darkMode ? 'rgba(59, 130, 246, 0.2)' : '#bfdbfe';
 	const titleColor = darkMode ? '#f1f5f9' : '#0f172a';
 	const footerColor = darkMode ? '#475569' : '#94a3b8';
+	const accentColor = darkMode ? '#60a5fa' : '#3b82f6';
 
 	return (
 		<Box
@@ -44,6 +45,18 @@ export default function Articles() {
 						paddingBottom: '1.5rem',
 					}}
 				>
+					<Text
+						size='xs'
+						fw={600}
+						style={{
+							color: accentColor,
+							letterSpacing: '0.1em',
+							textTransform: 'uppercase',
+							marginBottom: '0.5rem',
+						}}
+					>
+						Writing
+					</Text>
 					<Title
 						order={1}
 						style={{
@@ -62,10 +75,11 @@ export default function Articles() {
 					<ArticleCard
 						key={article.id}
 						title={article.title}
-						date={(article.date instanceof Date
-							? article.date
-							: new Date(article.date)
-						).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+						date={new Date(article.date).toLocaleDateString('en-GB', {
+							day: 'numeric',
+							month: 'short',
+							year: 'numeric',
+						})}
 						url={article.url}
 					/>
 				))}

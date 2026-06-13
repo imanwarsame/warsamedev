@@ -5,9 +5,9 @@ import GlassNavbar from './components/navbar/GlassNavbar';
 import { lightTheme, darkTheme } from '../theme';
 import { useDevStore } from './store';
 import { Routes, Route } from 'react-router-dom';
-import { articles } from './components/articles/ArticlesData';
 import { lazy, Suspense } from 'react';
 import { usePerformanceMonitor } from './hooks/usePerformanceMonitor';
+import { useArticles } from './hooks/useArticles';
 
 // Lazy load components to reduce initial bundle size
 const Home = lazy(() => import('./components/home/Home'));
@@ -20,6 +20,7 @@ import './styles.css';
 export default function App() {
 	const { darkMode } = useDevStore();
 	const theme = darkMode ? darkTheme : lightTheme;
+	const { articles } = useArticles();
 
 	// Monitor performance in development
 	if (process.env.NODE_ENV === 'development') {

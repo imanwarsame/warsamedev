@@ -15,47 +15,28 @@ vi.mock('../articles/ArticleCard', () => ({
 	),
 }));
 
-// Mock articles data
-vi.mock('../articles/ArticlesData', () => {
-	return {
+// Mock useArticles hook
+vi.mock('../../hooks/useArticles', () => ({
+	useArticles: () => ({
 		articles: [
 			{
 				id: '1',
 				title: 'Test Article 1',
-				date: new Date('2024-01-01'),
+				date: '2024-01-01',
 				url: '/articles/test-article-1',
-				mdFile: 'test-article-1.md',
+				mdFile: 'test-article-1',
 			},
 			{
 				id: '2',
 				title: 'Test Article 2',
-				date: new Date('2024-01-01'),
+				date: '2024-01-01',
 				url: '/articles/test-article-2',
-				mdFile: 'test-article-2.md',
+				mdFile: 'test-article-2',
 			},
 		],
-	};
-});
-
-// Mock moment
-vi.mock('moment', () => {
-	const mockMoment = () => ({
-		format: () => '1st Jan 2024',
-		fromNow: () => 'a few days ago',
-		diff: () => 0,
-		unix: () => 1640995200,
-		valueOf: () => 1640995200000,
-		toDate: () => new Date('2024-01-01'),
-		isAfter: () => false,
-		isBefore: () => false,
-		isSame: () => true,
-	});
-
-	return {
-		default: mockMoment,
-		__esModule: true,
-	};
-});
+		loading: false,
+	}),
+}));
 
 describe('Articles Component', () => {
 	test('should render articles page', () => {

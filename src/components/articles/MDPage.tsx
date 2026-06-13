@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import ReactMarkdown from 'react-markdown';
 import { useDevStore } from '../../store';
-import { articles } from './ArticlesData';
+import { useArticles } from '../../hooks/useArticles';
 import './articles.css';
 
 export default function MDPage({ fileName }: { fileName: string }) {
@@ -13,16 +13,18 @@ export default function MDPage({ fileName }: { fileName: string }) {
 	const [content, setContent] = useState('');
 	const isMobile = useMediaQuery('(max-width: 768px)');
 
+	const { articles } = useArticles();
 	const article = articles.find((a) => a.mdFile === fileName);
 	const formattedDate = article
-		? (article.date instanceof Date ? article.date : new Date(article.date)).toLocaleDateString(
-				'en-GB',
-				{ day: 'numeric', month: 'long', year: 'numeric' },
-			)
+		? new Date(article.date).toLocaleDateString('en-GB', {
+				day: 'numeric',
+				month: 'long',
+				year: 'numeric',
+			})
 		: '';
 
 	useEffect(() => {
-		fetch(`/${fileName}.md`)
+		fetch(`/articles/${fileName}.md`)
 			.then((res) => res.text())
 			.then((text) => setContent(text))
 			.catch((error) => console.error('Error fetching file:', error));

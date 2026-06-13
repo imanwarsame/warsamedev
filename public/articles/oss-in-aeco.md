@@ -24,10 +24,10 @@ For OSS to gain traction, it's crucial to give users a sense of ownership. When 
 
 ### Becoming an Industry Leader
 
-By embracing OSS, AECO firms can position themselves as pioneers in their field, enhancing their brand and attracting the brightest minds. This leadership not only boosts the company’s reputation but also drives forward the entire industry, setting new standards for innovation and collaboration.
+By embracing OSS, AECO firms can position themselves as pioneers in their field, enhancing their brand and attracting the brightest minds. This leadership not only boosts the company's reputation but also drives forward the entire industry, setting new standards for innovation and collaboration.
 
 ### Fighting Climate Change Together
 
-One of the most pressing challenges of our time is climate change. In the AECO industry, addressing this issue often involves developing numerous proprietary carbon accounting tools, each requiring significant resources. However, if we channel our efforts into a single, robust OSS carbon accounting tool, we can create a superior product that saves time and money while effectively reducing carbon in our designs. The ultimate goal isn't merely to create a tool; it’s to make our built environment more sustainable by reducing our impact, that’s what we should focus on.
+One of the most pressing challenges of our time is climate change. In the AECO industry, addressing this issue often involves developing numerous proprietary carbon accounting tools, each requiring significant resources. However, if we channel our efforts into a single, robust OSS carbon accounting tool, we can create a superior product that saves time and money while effectively reducing carbon in our designs. The ultimate goal isn't merely to create a tool; it's to make our built environment more sustainable by reducing our impact, that's what we should focus on.
 
 Open Source Software presents a tremendous opportunity for the AECO industry. By fostering a culture of collaboration, attracting top talent, and focusing our collective efforts on common goals, we can accelerate innovation, enhance sustainability, and lead the way towards a more open and innovative future.

@@ -1,6 +1,6 @@
 # Mastering the Art of 'Festina Lente' in Project Management
 
-In the dynamic world of project management, the age-old wisdom encapsulated by the Latin phrase "Festina Lente," meaning "Make haste slowly," holds profound relevance. It's about finding that delicate balance between acting swiftly and thinking deliberately, a balance that's especially difficult in the intricate domain of large-scale projects within the Architecture, Engineering, Construction, and Operations (AECO) industry. The following are some nuggets of wisdom from the book ‘How Big Things Get Done’ by Bent Flyvberg and Dan Gardner.
+In the dynamic world of project management, the age-old wisdom encapsulated by the Latin phrase "Festina Lente," meaning "Make haste slowly," holds profound relevance. It's about finding that delicate balance between acting swiftly and thinking deliberately, a balance that's especially difficult in the intricate domain of large-scale projects within the Architecture, Engineering, Construction, and Operations (AECO) industry. The following are some nuggets of wisdom from the book 'How Big Things Get Done' by Bent Flyvberg and Dan Gardner.
 
 When faced with decisions, taking the time to reflect on decisions ensures thoroughness, yet acting with agility maintains momentum – a fusion of careful consideration and decisive action.
 

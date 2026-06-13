@@ -131,8 +131,4 @@ As you develop your project, you might want to add more libraries. To keep track
 
 ## Well done!
 
-Congratulations! You have just set up your coding environment using Visual Studio Code and virtual environments, nothing can stand in your way now. Happy coding! 🐍
-
-```
-
-```
+Congratulations! You have just set up your coding environment using Visual Studio Code and virtual environments, nothing can stand in your way now. Happy coding!
