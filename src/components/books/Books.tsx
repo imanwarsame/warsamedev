@@ -125,7 +125,7 @@ export default function Books() {
 					pauseOnHover={true}
 					scaleOnHover={true}
 					fadeOut={true}
-					fadeOutColor={darkMode ? '#0f0f0f' : '#ffffff'}
+					fadeOutColor={darkMode ? 'rgba(7, 12, 31, 0.95)' : 'rgba(240, 244, 255, 0.95)'}
 					ariaLabel='Favourite books'
 				/>
 			</Container>
