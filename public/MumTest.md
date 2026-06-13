@@ -1,4 +1,4 @@
-**Navigating Problem Validation in AECO**
+# Navigating Problem Validation in AECO
 
 In the world of civil engineering consultancy, improvement is a constant pursuit. But before diving into solutions, it's crucial to figure out if the problem is worth solving. Let's break down how to ask the right questions and validate problems effectively in the AEC industry.
 

@@ -33,12 +33,14 @@ export default function GlassNavbar() {
 				height={isMobile ? 60 : 80}
 				borderRadius={isMobile ? 30 : 40}
 				className='glass-navbar'
-				backgroundOpacity={0.4}
+				backgroundOpacity={darkMode ? 0.35 : 0.25}
 				style={{
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
-					boxShadow: 'none',
+					boxShadow: darkMode
+						? '0 2px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.07)'
+						: '0 2px 24px rgba(14, 30, 80, 0.08), 0 0 0 1px rgba(0,0,0,0.07)',
 				}}
 			>
 				<div

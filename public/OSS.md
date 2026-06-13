@@ -1,4 +1,4 @@
-## Open Source Software in the AECO Industry: The Future of Collaborative Innovation
+# Open Source Software in the AECO Industry: The Future of Collaborative Innovation
 
 Open Source Software (OSS) holds the promise to fundamentally transform how we design, build, and manage our built environment. By shifting from siloed, proprietary solutions to collaborative, open-source platforms, the AECO sector can not only accelerate innovation but also attract top talent and make meaningful strides towards sustainability. Let's explore how OSS can drive these changes.
 

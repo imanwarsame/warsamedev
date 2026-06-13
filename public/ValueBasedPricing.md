@@ -1,4 +1,4 @@
-**Unlocking Innovation in the AECO Sector: Rethinking Incentives**
+# Unlocking Innovation in the AECO Sector: Rethinking Incentives
 
 Contracts, the backbone of the AECO sector, often wield more power than we give them credit for. They not only dictate the terms of engagement but also shape the very dynamics of innovation within the industry. While time and material contracts have long been the norm, their limitations are increasingly evident. Today, we delve into an alternative paradigm that promises to revolutionise how we incentivise innovation in the AECO sector: value-based pricing.
 
